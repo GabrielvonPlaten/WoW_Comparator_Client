@@ -1,13 +1,11 @@
 <template>
   <div>
-    <h2 class="home-title">Home Page</h2>
+    <h2>Blog View</h2>
   </div>
 </template>
 
 <style lang="sass" scoped>
-.home-title
+h2
   color: $white-0
-  font-size: 4rem
+  font-size: 2.5rem
 </style>
-
-
