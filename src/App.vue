@@ -1,12 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <ul>
-        <li><router-link to="/" class="btn btn--purple"><font-awesome-icon icon="home" /> &nbsp;Home</router-link></li>
-        <li><router-link to="/comparator" class="btn btn--purple"><font-awesome-icon icon="cogs" /> &nbsp;Compare</router-link></li>
-        <li><router-link to="/blog" class="btn btn--purple"><font-awesome-icon icon="book" /> &nbsp;Blog</router-link></li>
-      </ul>
-    </div>
+    <Navbar />
     <router-view/>
     <Footer />  
   </div>
@@ -14,10 +8,12 @@
 
 <script>
 import Footer from '@/components/Footer.vue';
+import Navbar from '@/components/Navbar.vue';
 
 export default {
   components: {
     Footer,
+    Navbar,
   }
 }
 </script>
@@ -50,10 +46,6 @@ html, body
 ::-webkit-scrollbar-thumb:hover
     background: $violet-5
 
-#nav
-  background: $blue-5
-  height: 3.3rem
-
 // Lines
 .line
   +line
@@ -74,21 +66,11 @@ html, body
   &--purple
     +btn--purple
 
-ul
-  padding: 0
-  margin: 0 2rem 0 0
-  display: flex
-  justify-content: flex-end
-
-li
-  margin: 1rem .5rem
-  list-style: none
-
-  a
-    transition: 0.5s
-    &.router-link-exact-active
-      background: $active-route
-    
-    &:hover
-      background: $hover-route
+a
+  transition: 0.5s
+  &.router-link-exact-active
+    background: $active-route
+  
+  &:hover
+    background: $hover-route
 </style>
