@@ -2,9 +2,9 @@
   <div id="app">
     <div id="nav">
       <ul>
-        <li><router-link to="/" class="btn btn--purple">Home</router-link></li>
-        <li><router-link to="/comparator" class="btn btn--purple">Compare</router-link></li>
-        <li><router-link to="/blog" class="btn btn--purple"><i class="fas fa-book"></i> Blog</router-link></li>
+        <li><router-link to="/" class="btn btn--purple"><font-awesome-icon icon="home" /> &nbsp;Home</router-link></li>
+        <li><router-link to="/comparator" class="btn btn--purple"><font-awesome-icon icon="cogs" /> &nbsp;Compare</router-link></li>
+        <li><router-link to="/blog" class="btn btn--purple"><font-awesome-icon icon="book" /> &nbsp;Blog</router-link></li>
       </ul>
     </div>
     <router-view/>
