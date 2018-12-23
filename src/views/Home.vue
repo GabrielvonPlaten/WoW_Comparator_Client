@@ -9,9 +9,25 @@
         <br>
       </div>
     </div>
-    <div class="boxes-container">
 
+    <div class="line line--vertical line--short line--margin"></div>
+
+    <div class="boxes-container">
+      <div class="home-box">
+        <h2>API</h2>
+        <p>Using Blizzard’s API, you can fetch the data available of any character by searching for its name and realm.</p>
+      </div>
+      <div class="home-box">
+        <h2>DATA</h2>
+        <p>Stats, Progress, Loot, Mounts. Receive the same data you have in-game here!</p>
+      </div>
+      <div class="home-box">
+        <h2>COMPARE</h2>
+        <p>Compare your character’s data with another character! See how far -- or behind -- you are with your friends!</p>
+      </div>
     </div>
+
+    <div class="line line--vertical line--short line--margin"></div>
   </div>
 </template>
 
@@ -42,10 +58,37 @@
       margin: 0 auto 2rem auto
 
 .boxes-container
-  height: 60rem
-  background: url('../assets/background_shape.svg')
-  background-repeat: no-repeat
-  background-position: 0% 50%
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  height: auto
+  margin: 4rem 0 4rem 0
+  color: $white-1
+  text-align: center
+
+  .home-box
+    padding: 1rem 2.5rem
+    width: 50%
+    height: 13rem
+    margin: 0rem auto 0 auto
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25)
+    background: $blue-5
+
+  h2
+    font-size: 1.9rem
+
+  p
+    font-size: 1.2rem
+
+// Lines
+.line
+  +line
+  margin: 70px auto 0 auto
+
+  &--vertical
+    +line--vertical(rotate(90deg))
+
+  &--short
+    width: 100px
 </style>
 
 

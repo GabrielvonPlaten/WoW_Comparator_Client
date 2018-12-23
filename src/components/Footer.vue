@@ -2,9 +2,7 @@
   <footer>
     <h3>WoW Comparator</h3>
     <p>Website made by Gabriel von Platen, {{date}}</p>
-    <ul>
-      <li><router-link to="/login" class="btn btn--purple">Admin</router-link></li>
-    </ul>
+    <router-link to="/login" class="btn btn--purple">Admin</router-link>
   </footer>
 </template>
 
@@ -20,6 +18,7 @@ export default {
 
 <style lang="sass" scoped>
 footer
+  margin-top: 4.5rem
   text-align: center
   background: $blue-5
   color: $white-3

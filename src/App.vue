@@ -31,6 +31,10 @@ html, body
     height: 100%
     background-color: $blue-7
 
+#app
+  background: url('./assets/background_dot.svg')
+  background-repeat: repeat
+
 ::-webkit-scrollbar
     width: 7px
 
