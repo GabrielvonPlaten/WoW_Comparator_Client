@@ -23,6 +23,7 @@ footer
   background: $blue-5
   color: $white-3
   padding: 1rem 0
+  height: 11rem
 
   h3
     font-size: 2rem

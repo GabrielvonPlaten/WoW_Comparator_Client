@@ -54,6 +54,17 @@ html, body
   background: $blue-5
   height: 3.3rem
 
+// Lines
+.line
+  +line
+  margin: 70px auto 0 auto
+
+  &--vertical
+    +line--vertical(rotate(90deg))
+
+  &--short
+    width: 100px
+
 .btn
   +btn
 

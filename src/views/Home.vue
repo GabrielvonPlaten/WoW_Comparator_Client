@@ -78,17 +78,6 @@
 
   p
     font-size: 1.2rem
-
-// Lines
-.line
-  +line
-  margin: 70px auto 0 auto
-
-  &--vertical
-    +line--vertical(rotate(90deg))
-
-  &--short
-    width: 100px
 </style>
 
 
