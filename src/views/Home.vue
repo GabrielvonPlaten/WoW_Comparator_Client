@@ -6,7 +6,11 @@
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with other’s peoples characters!</p>
         <br>
         <router-link to="/comparator" class="btn btn--purple">Start Comparing!</router-link>
+        <br>
       </div>
+    </div>
+    <div class="boxes-container">
+
     </div>
   </div>
 </template>
@@ -23,21 +27,25 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
   &__container
-    width: 25%
     margin: 9% auto 0 auto
     text-align: center
     color: $white-0
 
     h1
       font-weight: normal
-      font-size: 38px
+      font-size: 2.6rem
 
     p
       font-weight: 200
-      font-style: italic
-      font-size: 22px
-      margin-bottom: 20px
+      font-size: 1.3rem
+      max-width: 25%
+      margin: 0 auto 2rem auto
 
+.boxes-container
+  height: 60rem
+  background: url('../assets/background_shape.svg')
+  background-repeat: no-repeat
+  background-position: 0% 50%
 </style>
 
 

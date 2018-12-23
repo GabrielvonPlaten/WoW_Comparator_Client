@@ -4,12 +4,24 @@
       <ul>
         <li><router-link to="/" class="btn btn--purple">Home</router-link></li>
         <li><router-link to="/comparator" class="btn btn--purple">Compare</router-link></li>
-        <li><router-link to="/blog" class="btn btn--purple">Blog</router-link></li>
+        <li><router-link to="/blog" class="btn btn--purple"><i class="fas fa-book"></i> Blog</router-link></li>
       </ul>
     </div>
     <router-view/>
+    <Footer />  
   </div>
 </template>
+
+<script>
+import Footer from '@/components/Footer.vue';
+
+export default {
+  components: {
+    Footer,
+  }
+}
+</script>
+
 
 <style lang="sass">
 html, body
@@ -18,6 +30,21 @@ html, body
     margin: 0
     height: 100%
     background-color: $blue-7
+
+::-webkit-scrollbar
+    width: 7px
+
+/* Track */
+::-webkit-scrollbar-track
+    background: $blue-4 
+ 
+/* Handle */
+::-webkit-scrollbar-thumb
+    background: $violet-8
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+    background: $violet-5
 
 #nav
   background: $blue-5
@@ -46,4 +73,7 @@ li
     transition: 0.5s
     &.router-link-exact-active
       background: $active-route
+    
+    &:hover
+      background: $hover-route
 </style>
