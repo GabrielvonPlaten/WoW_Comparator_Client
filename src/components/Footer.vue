@@ -24,6 +24,7 @@ footer
   color: $white-3
   padding: 1rem 0
   height: 11rem
+  clear: both
 
   h3
     font-size: 2rem
