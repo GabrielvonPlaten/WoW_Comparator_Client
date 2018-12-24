@@ -30,76 +30,7 @@
 
     <ComparatorButtons :showView="showView" />
 
-    <div class="comparator-views">
-      <!-- PLAYER ONE -->
-      <div class="compViews__playerOne">
-        <div v-show="views[0].show" class="feed feed__playerOne">
-          <div v-if="this.$store.state.playerOneFeed">
-            <p>{{this.$store.state.playerOneFeed}}</p>
-          </div>
-        </div>
-        <div v-show="views[1].show" class="mounts mounts__playerOne">
-          <div v-if="this.$store.state.playerOneMounts">
-            <p>{{this.$store.state.playerOneMounts}}</p>
-          </div>
-        </div>
-        <div v-show="views[2].show" class="stats stats__playerOne">
-          <div v-if="this.$store.state.playerOneStats">
-            <p>{{this.$store.state.playerOneStats}}</p>
-          </div>
-        </div>
-        <div v-show="views[3].show" class="progress progress__playerOne">
-          <div v-if="this.$store.state.playerOneProg">
-            <p>{{this.$store.state.playerOneProg}}</p>
-          </div>
-        </div>
-        <div v-show="views[4].show" class="gear gear__playerOne">
-          <div v-if="this.$store.state.playerOneGear">
-            <p>{{this.$store.state.playerOneGear}}</p>
-          </div>
-        </div>
-        <div v-show="views[5].show" class="pets pets__playerOne">
-          <div v-if="this.$store.state.playerOnePets">
-            <p>{{this.$store.state.playerOnePets}}</p>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- PLAYER TWO -->
-      <div class="compViews__playerTwo">
-        <div v-show="views[0].show" class="feed feed__playerTwo">
-          <div v-if="this.$store.state.playerTwoFeed">
-            <p>{{this.$store.state.playerTwoFeed}}</p>
-          </div>
-        </div>
-        <div v-show="views[1].show" class="mounts mounts__playerTwo">
-          <div v-if="this.$store.state.playerTwoMounts">
-            <p>{{this.$store.state.playerTwoMounts}}</p>
-          </div>
-        </div>
-        <div v-show="views[2].show" class="stats stats__playerTwo">
-          <div v-if="this.$store.state.playerTwoStats">
-            <p>{{this.$store.state.playerTwoStats}}</p>
-          </div>
-        </div>
-        <div v-show="views[3].show" class="progress progress__playerTwo">
-          <div v-if="this.$store.state.playerTwoProg">
-            <p>{{this.$store.state.playerTwoProg}}</p>
-          </div>
-        </div>
-        <div v-show="views[4].show" class="gear gear__playerTwo">
-          <div v-if="this.$store.state.playerTwoGear">
-            <p>{{this.$store.state.playerTwoGear}}</p>
-          </div>
-        </div>
-        <div v-show="views[5].show" class="pets pets__playerTwo">
-          <div v-if="this.$store.state.playerTwoPets">
-            <p>{{this.$store.state.playerTwoPets}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <router-view class="comparator-views"></router-view>
   </div>
 </template>
 
@@ -116,38 +47,6 @@ export default {
       playerTwoRealm: "",
       playerTwoName: "",
       access_token: "",
-      views: [
-        {
-          id: 0,
-          name: 'Feed',
-          show: false,
-        },
-        {
-          id: 1,
-          name: 'Mounts',
-          show: false,
-        },
-        {
-          id: 2,
-          name: 'Stats',
-          show: true,
-        },
-        {
-          id: 3,
-          name: 'Progress',
-          show: false,
-        },
-        {
-          id: 4,
-          name: 'Gear',
-          show: false,
-        },
-        {
-          id: 5,
-          name: 'Pets',
-          show: false,
-        }
-      ]
     }
   },
 
@@ -191,7 +90,7 @@ export default {
 </script>
 
 
-<style lang="sass" scoped>
+<style lang="sass">
 .comparator-form 
   display: flex
   justify-content: space-between
@@ -230,7 +129,7 @@ export default {
 .search-error
   font-size: 1.1rem
   font-style: bold
-  margin: 0 1rem
+  margin: 0
 
 .comparator-views
   color: $white-0

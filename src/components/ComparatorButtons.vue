@@ -2,9 +2,14 @@
   <!-- The Buttons to change the view in the comparator -->
 
   <div class="comparator-buttons">
-    <div v-for="(button, index) in buttons" :key="index">
-      <button v-bind:class="{ 'btn btn--purple unactiveCompButton': !activeButton[index].active, 'btn btn--purple activeCompButton': activeButton[index].active }" @click="showView(index), activateButton(index)">{{button.text}}</button>
-    </div>
+    <ul>
+      <li><router-link to="/comparator/feed" class="btn btn--purple">Feed</router-link></li>
+      <li><router-link to="/comparator/mounts" class="btn btn--purple">Mounts</router-link></li>
+      <li><router-link to="/comparator/stats" class="btn btn--purple">Stats</router-link></li>
+      <li><router-link to="/comparator/progress" class="btn btn--purple">Progress</router-link></li>
+      <li><router-link to="/comparator/gear" class="btn btn--purple">Gear</router-link></li>
+      <li><router-link to="/comparator/pets" class="btn btn--purple">Pets</router-link></li>
+    </ul>
   </div>
 </template>
 
@@ -14,58 +19,27 @@ export default {
 
   data() {
     return {
-      buttons: [
-        {text: "Feed",},
-        {text: "Mounts",},
-        {text: "Stats",},
-        {text: "Progress",},
-        {text: "Gear",},
-        {text: "Pets",}
-      ],
-      activeButton: [
-        { id: 0, active: false },
-        { id: 1, active: false },
-        { id: 2, active: true },
-        { id: 3, active: false },
-        { id: 4, active: false },
-        { id: 5, active: false },
-      ]
     }
   },
 
-  methods: {
-    activateButton(x) {
-      this.activeButton.forEach(btn => {
-        if (btn.id === x) {
-          btn.active = true;
-          console.log(x)
-        } else {
-          btn.active = false;
-        }
-      })
-    }
-  }
 }
 </script>
 
 
 <style lang="sass" scoped>
 .comparator-buttons
-  display: flex
-  justify-content: space-between
-  width: 36%
+  width: 30%
   margin: 0 auto
 
-  button
-    position: relative
-    width: 6rem
-    &:hover
-      top: 1px
+  ul
+    padding: 0
+    margin: 0
+    list-style: none
+    display: flex
 
-  .unactiveCompButton
-    transition: all 0.3s
+    li
+      text-align: center
 
-  .activeCompButton
-    background: $active-route
-    transition: all 0.3s
+      a
+        padding: 0.3rem 1.2rem
 </style>
