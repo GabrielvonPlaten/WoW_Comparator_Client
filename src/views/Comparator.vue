@@ -51,7 +51,8 @@ export default {
   },
 
   created() {
-    axios.get('http://localhost:5000/api')
+    let url = '/api'
+    axios.get(url)
       .then(res => this.access_token = res.data.access_token)
   },
 

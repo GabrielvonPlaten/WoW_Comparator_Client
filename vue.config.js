@@ -7,5 +7,12 @@ module.exports = {
       preProcessor: "sass",
       patterns: [path.resolve(__dirname, "./src/sass/global.sass")]
     }
+  },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000'
+      }
+    }
   }
 }
