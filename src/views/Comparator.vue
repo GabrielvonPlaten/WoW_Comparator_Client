@@ -141,12 +141,26 @@ export default {
   height: 100%
   width: 90%
   margin: 0 auto
-  color: blue
 
 .compViews__playerTwo
   height: 100%
   width: 90%
   margin: 0 auto
-  color: red
+
+ul
+  padding: 0
+  margin: 0
+
+  li
+    list-style: none
+
+.avatar
+  text-align: center
+  padding: 0
+  margin: 0 auto 5em auto
+
+  h2
+    color: $white-0
+    font-weight: 300
 
 </style>
