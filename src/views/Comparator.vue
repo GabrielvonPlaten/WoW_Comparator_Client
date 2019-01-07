@@ -51,7 +51,7 @@ export default {
   },
 
   created() {
-    let url = '/api'
+    let url = '/api/comparator/'
     axios.get(url)
       .then(res => this.access_token = res.data.access_token)
   },
