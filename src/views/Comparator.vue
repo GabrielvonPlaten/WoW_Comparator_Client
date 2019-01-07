@@ -38,7 +38,6 @@
 import axios from 'axios';
 import ComparatorButtons from '@/components/ComparatorButtons.vue';
 
-
 export default {
   data() {
     return {

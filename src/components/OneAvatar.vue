@@ -1,17 +1,14 @@
 <template>
-  <div class="playerOne_avatar avatar">
-    <!-- <h2>Hello Avatar</h2> -->
-    <!-- <img :src="dynamicAvatarImage" @error="this.src = backdropAvatarImage"> -->
-    <img :src="'http://render-eu.worldofwarcraft.com/character/' + store.state.playerOneStats.thumbnail" >
+  <div class="playerOne_avatar avatar" v-if="this.$store.state.playerOneStats">
+    <img 
+      :src="'http://render-eu.worldofwarcraft.com/character/' + this.$store.state.playerOneStats.thumbnail" onerror="`https://us.battle.net/wow/static/images/2d/avatar/4-1.jpg`">
       <br>
-      <h2>{{store.state.playerOneStats.name}}</h2>
-      <h2>Level: {{store.state.playerOneStats.level}} - <span :style="{color: classColor[store.state.playerOneStats.class]}">{{classes[store.state.playerOneStats.class]}}</span></h2>
+      <h2>{{this.$store.state.playerOneStats.name}}</h2>
+      <h2>Level: {{this.$store.state.playerOneStats.level}} - <span :style="{color: classColor[this.$store.state.playerOneStats.class]}">{{classes[this.$store.state.playerOneStats.class]}}</span></h2>
   </div>
 </template>
 
 <script>
-import store from '../Vuex/store.js';
-
 export default {
   data() {
     return {
