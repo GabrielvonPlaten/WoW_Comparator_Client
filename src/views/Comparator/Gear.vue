@@ -291,7 +291,6 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex';
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 
