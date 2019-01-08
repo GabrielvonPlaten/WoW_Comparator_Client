@@ -14,7 +14,7 @@
               {{oneItems.items.head.name}}</a>
           </li>
           <li v-else>
-            Head: None
+            <span class="no-items">Head: None</span>
           </li>
           <li v-if="oneItems.items.neck">
             Neck: {{oneItems.items.neck.itemLevel}}
@@ -24,7 +24,7 @@
               {{oneItems.items.neck.name}}</a>
           </li>
           <li v-else>
-            Neck: None
+            <span class="no-items">Neck: None</span>
           </li>
           <li v-if="oneItems.items.shoulder">
             Shoulders: {{oneItems.items.shoulder.itemLevel}}
@@ -32,7 +32,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.shoulder.id + '&bonus=' + oneItems.items.shoulder.bonusLists[0] + ':' + oneItems.items.shoulder.bonusLists[1] + ':' + oneItems.items.shoulder.bonusLists[2] + ':' + oneItems.items.shoulder.bonusLists[3] + '&ilvl=' + oneItems.items.shoulder.itemLevel" :class="'gear-link q' + oneItems.items.shoulder.quality">{{oneItems.items.shoulder.name}}</a>
           </li>
           <li v-else>
-            Shoulders: None
+            <span class="no-items">Shoulders: None</span>
           </li>
           <li v-if="oneItems.items.back">
             Back: {{oneItems.items.back.itemLevel}}
@@ -40,7 +40,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.back.id + '&bonus=' + oneItems.items.back.bonusLists[0] + ':' + oneItems.items.back.bonusLists[1] + ':' + oneItems.items.back.bonusLists[2] + ':' + oneItems.items.back.bonusLists[3] + '&ilvl=' + oneItems.items.back.itemLevel" :class="'gear-link q' + oneItems.items.back.quality">{{oneItems.items.back.name}}</a>
           </li>
           <li v-else>
-            Back: None
+            <span class="no-items">Back: None</span>
           </li>
           <li v-if="oneItems.items.chest">
             Chest: {{oneItems.items.chest.itemLevel}}
@@ -48,7 +48,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.chest.id + '&bonus=' + oneItems.items.chest.bonusLists[0] + ':' + oneItems.items.chest.bonusLists[1] + ':' + oneItems.items.chest.bonusLists[2] + ':' + oneItems.items.chest.bonusLists[3] + '&ilvl=' + oneItems.items.chest.itemLevel" :class="'gear-link q' + oneItems.items.chest.quality">{{oneItems.items.chest.name}}</a>
           </li>
           <li v-else>
-            Chest: None
+            <span class="no-items">Chest: None</span>
           </li>
           <li v-if="oneItems.items.wrist">
             Wrist: {{oneItems.items.wrist.itemLevel}}
@@ -56,7 +56,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.wrist.id + '&bonus=' + oneItems.items.wrist.bonusLists[0] + ':' + oneItems.items.wrist.bonusLists[1] + ':' + oneItems.items.wrist.bonusLists[2] + ':' + oneItems.items.wrist.bonusLists[3] + '&ilvl=' + oneItems.items.wrist.itemLevel" :class="'gear-link q' + oneItems.items.wrist.quality">{{oneItems.items.wrist.name}}</a>
           </li>
           <li v-else>
-            Wrist: None
+            <span class="no-items">Wrist: None</span>
           </li>
           <br>
           <li v-if="oneItems.items.hands">
@@ -65,7 +65,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.hands.id + '&bonus=' + oneItems.items.hands.bonusLists[0] + ':' + oneItems.items.hands.bonusLists[1] + ':' + oneItems.items.hands.bonusLists[2] + ':' + oneItems.items.hands.bonusLists[3] + '&ilvl=' + oneItems.items.hands.itemLevel" :class="'gear-link q' + oneItems.items.hands.quality">{{oneItems.items.hands.name}}</a>
           </li>
           <li v-else>
-            Hands: None
+            <span class="no-items">Hands: None</span>
           </li>
           <li v-if="oneItems.items.waist">
             Waist: {{oneItems.items.waist.itemLevel}}
@@ -73,7 +73,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.waist.id + '&bonus=' + oneItems.items.waist.bonusLists[0] + ':' + oneItems.items.waist.bonusLists[1] + ':' + oneItems.items.waist.bonusLists[2] + ':' + oneItems.items.waist.bonusLists[3] + '&ilvl=' + oneItems.items.waist.itemLevel" :class="'gear-link q' + oneItems.items.waist.quality">{{oneItems.items.waist.name}}</a>
           </li>
           <li v-else>
-            Waist: None
+            <span class="no-items">Waist: None</span>
           </li>
           <li v-if="oneItems.items.legs">
             Legs: {{oneItems.items.legs.itemLevel}}
@@ -81,7 +81,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.legs.id + '&bonus=' + oneItems.items.legs.bonusLists[0] + ':' + oneItems.items.legs.bonusLists[1] + ':' + oneItems.items.legs.bonusLists[2] + ':' + oneItems.items.legs.bonusLists[3] + '&ilvl=' + oneItems.items.legs.itemLevel" :class="'gear-link q' + oneItems.items.legs.quality">{{oneItems.items.legs.name}}</a>
           </li>
           <li v-else>
-            Legs: None
+            <span class="no-items">Legs: None</span>
           </li>
           <li v-if="oneItems.items.feet">
             Feet: {{oneItems.items.feet.itemLevel}}
@@ -89,7 +89,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.feet.id + '&bonus=' + oneItems.items.feet.bonusLists[0] + ':' + oneItems.items.feet.bonusLists[1] + ':' + oneItems.items.feet.bonusLists[2] + ':' + oneItems.items.feet.bonusLists[3] + '&ilvl=' + oneItems.items.feet.itemLevel" :class="'gear-link q' + oneItems.items.feet.quality">{{oneItems.items.feet.name}}</a>
           </li>
           <li v-else>
-            Feet: None
+            <span class="no-items">Feet: None</span>
           </li>
           <li v-if="oneItems.items.finger1">
             Finger: {{oneItems.items.finger1.itemLevel}}
@@ -97,7 +97,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.finger1.id + '&bonus=' + oneItems.items.finger1.bonusLists[0] + ':' + oneItems.items.finger1.bonusLists[1] + ':' + oneItems.items.finger1.bonusLists[2] + ':' + oneItems.items.finger1.bonusLists[3] + '&ilvl=' + oneItems.items.finger1.itemLevel" :class="'gear-link q' + oneItems.items.finger1.quality">{{oneItems.items.finger1.name}}</a>
           </li>
           <li v-else>
-            Finger: None
+            <span class="no-items">Finger: None</span>
           </li>
           <li v-if="oneItems.items.finger2">
             Finger: {{oneItems.items.finger2.itemLevel}}
@@ -105,7 +105,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.finger2.id + '&bonus=' + oneItems.items.finger2.bonusLists[0] + ':' + oneItems.items.finger2.bonusLists[1] + ':' + oneItems.items.finger2.bonusLists[2] + ':' + oneItems.items.finger2.bonusLists[3] + '&ilvl=' + oneItems.items.finger2.itemLevel" :class="'gear-link q' + oneItems.items.finger2.quality">{{oneItems.items.finger2.name}}</a>
           </li>
           <li v-else>
-            Finger: None
+            <span class="no-items">Finger: None</span>
           </li>
           <li v-if="oneItems.items.trinket1">
             Trinket: {{oneItems.items.trinket1.itemLevel}}
@@ -113,7 +113,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.trinket1.id + '&bonus=' + oneItems.items.trinket1.bonusLists[0] + ':' + oneItems.items.trinket1.bonusLists[1] + ':' + oneItems.items.trinket1.bonusLists[2] + ':' + oneItems.items.trinket1.bonusLists[3] + '&ilvl=' + oneItems.items.trinket1.itemLevel" :class="'gear-link q' + oneItems.items.trinket1.quality">{{oneItems.items.trinket1.name}}</a>
           </li>
           <li v-else>
-            Trinket: None
+            <span class="no-items">Trinket: None</span>
           </li>
           <li v-if="oneItems.items.trinket2">
             Trinket: {{oneItems.items.trinket2.itemLevel}}
@@ -121,7 +121,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.trinket2.id + '&bonus=' + oneItems.items.trinket2.bonusLists[0] + ':' + oneItems.items.trinket2.bonusLists[1] + ':' + oneItems.items.trinket2.bonusLists[2] + ':' + oneItems.items.trinket2.bonusLists[3] + '&ilvl=' + oneItems.items.trinket2.itemLevel" :class="'gear-link q' + oneItems.items.trinket2.quality">{{oneItems.items.trinket2.name}}</a>
           </li>
           <li v-else>
-            Trinket: None
+            <span class="no-items">Trinket: None</span>
           </li>
           <br>
           <li v-if="oneItems.items.mainHand">
@@ -130,7 +130,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.mainHand.id + '&bonus=' + oneItems.items.mainHand.bonusLists[0] + ':' + oneItems.items.mainHand.bonusLists[1] + ':' + oneItems.items.mainHand.bonusLists[2] + ':' + oneItems.items.mainHand.bonusLists[3] + '&ilvl=' + oneItems.items.mainHand.itemLevel" :class="'gear-link q' + oneItems.items.mainHand.quality">{{oneItems.items.mainHand.name}}</a>
           </li>
           <li v-else>
-            Main-Hand: None
+            <span class="no-items">Main-Hand: None</span>
           </li>
           <li v-if="oneItems.items.offHand">
             Off-Hand: {{oneItems.items.offHand.itemLevel}}
@@ -138,7 +138,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + oneItems.items.offHand.id + '&bonus=' + oneItems.items.offHand.bonusLists[0] + ':' + oneItems.items.offHand.bonusLists[1] + ':' + oneItems.items.offHand.bonusLists[2] + ':' + oneItems.items.offHand.bonusLists[3] + '&ilvl=' + oneItems.items.offHand.itemLevel" :class="'gear-link q' + oneItems.items.offHand.quality">{{oneItems.items.offHand.name}}</a>
           </li>
           <li v-else>
-            Off-Hand: None
+            <span class="no-items">Off-Hand: None</span>
           </li>
         </ul>
       </div>
@@ -158,7 +158,7 @@
               {{twoItems.items.head.name}}</a>
           </li>
           <li v-else>
-            Head: None
+            <span class="no-items">Head: None</span>
           </li>
           <li v-if="twoItems.items.neck">
             Neck: {{twoItems.items.neck.itemLevel}}
@@ -168,7 +168,7 @@
               {{twoItems.items.neck.name}}</a>
           </li>
           <li v-else>
-            Neck: None
+            <span class="no-items">Neck: None</span>
           </li>
           <li v-if="twoItems.items.shoulder">
             Shoulders: {{twoItems.items.shoulder.itemLevel}}
@@ -176,7 +176,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.shoulder.id + '&bonus=' + twoItems.items.shoulder.bonusLists[0] + ':' + twoItems.items.shoulder.bonusLists[1] + ':' + twoItems.items.shoulder.bonusLists[2] + ':' + twoItems.items.shoulder.bonusLists[3] + '&ilvl=' + twoItems.items.shoulder.itemLevel" :class="'gear-link q' + twoItems.items.shoulder.quality">{{twoItems.items.shoulder.name}}</a>
           </li>
           <li v-else>
-            Shoulders: None
+            <span class="no-items">Shoulders: None</span>
           </li>
           <li v-if="twoItems.items.back">
             Back: {{twoItems.items.back.itemLevel}}
@@ -184,7 +184,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.back.id + '&bonus=' + twoItems.items.back.bonusLists[0] + ':' + twoItems.items.back.bonusLists[1] + ':' + twoItems.items.back.bonusLists[2] + ':' + twoItems.items.back.bonusLists[3] + '&ilvl=' + twoItems.items.back.itemLevel" :class="'gear-link q' + twoItems.items.back.quality">{{twoItems.items.back.name}}</a>
           </li>
           <li v-else>
-            Back: None
+            <span class="no-items">Back: None</span>
           </li>
           <li v-if="twoItems.items.chest">
             Chest: {{twoItems.items.chest.itemLevel}}
@@ -192,7 +192,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.chest.id + '&bonus=' + twoItems.items.chest.bonusLists[0] + ':' + twoItems.items.chest.bonusLists[1] + ':' + twoItems.items.chest.bonusLists[2] + ':' + twoItems.items.chest.bonusLists[3] + '&ilvl=' + twoItems.items.chest.itemLevel" :class="'gear-link q' + twoItems.items.chest.quality">{{twoItems.items.chest.name}}</a>
           </li>
           <li v-else>
-            Chest: None
+            <span class="no-items">Chest: None</span>
           </li>
           <li v-if="twoItems.items.wrist">
             Wrist: {{twoItems.items.wrist.itemLevel}}
@@ -200,7 +200,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.wrist.id + '&bonus=' + twoItems.items.wrist.bonusLists[0] + ':' + twoItems.items.wrist.bonusLists[1] + ':' + twoItems.items.wrist.bonusLists[2] + ':' + twoItems.items.wrist.bonusLists[3] + '&ilvl=' + twoItems.items.wrist.itemLevel" :class="'gear-link q' + twoItems.items.wrist.quality">{{twoItems.items.wrist.name}}</a>
           </li>
           <li v-else>
-            Wrist: None
+            <span class="no-items">Wrist: None</span>
           </li>
           <br>
           <li v-if="twoItems.items.hands">
@@ -209,7 +209,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.hands.id + '&bonus=' + twoItems.items.hands.bonusLists[0] + ':' + twoItems.items.hands.bonusLists[1] + ':' + twoItems.items.hands.bonusLists[2] + ':' + twoItems.items.hands.bonusLists[3] + '&ilvl=' + twoItems.items.hands.itemLevel" :class="'gear-link q' + twoItems.items.hands.quality">{{twoItems.items.hands.name}}</a>
           </li>
           <li v-else>
-            Hands: None
+            <span class="no-items">Hands: None</span>
           </li>
           <li v-if="twoItems.items.waist">
             Waist: {{twoItems.items.waist.itemLevel}}
@@ -217,7 +217,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.waist.id + '&bonus=' + twoItems.items.waist.bonusLists[0] + ':' + twoItems.items.waist.bonusLists[1] + ':' + twoItems.items.waist.bonusLists[2] + ':' + twoItems.items.waist.bonusLists[3] + '&ilvl=' + twoItems.items.waist.itemLevel" :class="'gear-link q' + twoItems.items.waist.quality">{{twoItems.items.waist.name}}</a>
           </li>
           <li v-else>
-            Waist: None
+            <span class="no-items">Waist: None</span>
           </li>
           <li v-if="twoItems.items.legs">
             Legs: {{twoItems.items.legs.itemLevel}}
@@ -225,7 +225,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.legs.id + '&bonus=' + twoItems.items.legs.bonusLists[0] + ':' + twoItems.items.legs.bonusLists[1] + ':' + twoItems.items.legs.bonusLists[2] + ':' + twoItems.items.legs.bonusLists[3] + '&ilvl=' + twoItems.items.legs.itemLevel" :class="'gear-link q' + twoItems.items.legs.quality">{{twoItems.items.legs.name}}</a>
           </li>
           <li v-else>
-            Legs: None
+            <span class="no-items">Legs: None</span>
           </li>
           <li v-if="twoItems.items.feet">
             Feet: {{twoItems.items.feet.itemLevel}}
@@ -233,7 +233,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.feet.id + '&bonus=' + twoItems.items.feet.bonusLists[0] + ':' + twoItems.items.feet.bonusLists[1] + ':' + twoItems.items.feet.bonusLists[2] + ':' + twoItems.items.feet.bonusLists[3] + '&ilvl=' + twoItems.items.feet.itemLevel" :class="'gear-link q' + twoItems.items.feet.quality">{{twoItems.items.feet.name}}</a>
           </li>
           <li v-else>
-            Feet: None
+            <span class="no-items">Feet: None</span>
           </li>
           <li v-if="twoItems.items.finger1">
             Finger: {{twoItems.items.finger1.itemLevel}}
@@ -241,7 +241,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.finger1.id + '&bonus=' + twoItems.items.finger1.bonusLists[0] + ':' + twoItems.items.finger1.bonusLists[1] + ':' + twoItems.items.finger1.bonusLists[2] + ':' + twoItems.items.finger1.bonusLists[3] + '&ilvl=' + twoItems.items.finger1.itemLevel" :class="'gear-link q' + twoItems.items.finger1.quality">{{twoItems.items.finger1.name}}</a>
           </li>
           <li v-else>
-            Finger: None
+            <span class="no-items">Finger: None</span>
           </li>
           <li v-if="twoItems.items.finger2">
             Finger: {{twoItems.items.finger2.itemLevel}}
@@ -249,7 +249,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.finger2.id + '&bonus=' + twoItems.items.finger2.bonusLists[0] + ':' + twoItems.items.finger2.bonusLists[1] + ':' + twoItems.items.finger2.bonusLists[2] + ':' + twoItems.items.finger2.bonusLists[3] + '&ilvl=' + twoItems.items.finger2.itemLevel" :class="'gear-link q' + twoItems.items.finger2.quality">{{twoItems.items.finger2.name}}</a>
           </li>
           <li v-else>
-            Finger: None
+            <span class="no-items">Finger: None</span>
           </li>
           <li v-if="twoItems.items.trinket1">
             Trinket: {{twoItems.items.trinket1.itemLevel}}
@@ -257,7 +257,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.trinket1.id + '&bonus=' + twoItems.items.trinket1.bonusLists[0] + ':' + twoItems.items.trinket1.bonusLists[1] + ':' + twoItems.items.trinket1.bonusLists[2] + ':' + twoItems.items.trinket1.bonusLists[3] + '&ilvl=' + twoItems.items.trinket1.itemLevel" :class="'gear-link q' + twoItems.items.trinket1.quality">{{twoItems.items.trinket1.name}}</a>
           </li>
           <li v-else>
-            Trinket: None
+            <span class="no-items">Trinket: None</span>
           </li>
           <li v-if="twoItems.items.trinket2">
             Trinket: {{twoItems.items.trinket2.itemLevel}}
@@ -265,7 +265,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.trinket2.id + '&bonus=' + twoItems.items.trinket2.bonusLists[0] + ':' + twoItems.items.trinket2.bonusLists[1] + ':' + twoItems.items.trinket2.bonusLists[2] + ':' + twoItems.items.trinket2.bonusLists[3] + '&ilvl=' + twoItems.items.trinket2.itemLevel" :class="'gear-link q' + twoItems.items.trinket2.quality">{{twoItems.items.trinket2.name}}</a>
           </li>
           <li v-else>
-            Trinket: None
+            <span class="no-items">Trinket: None</span>
           </li>
           <br>
           <li v-if="twoItems.items.mainHand">
@@ -274,7 +274,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.mainHand.id + '&bonus=' + twoItems.items.mainHand.bonusLists[0] + ':' + twoItems.items.mainHand.bonusLists[1] + ':' + twoItems.items.mainHand.bonusLists[2] + ':' + twoItems.items.mainHand.bonusLists[3] + '&ilvl=' + twoItems.items.mainHand.itemLevel" :class="'gear-link q' + twoItems.items.mainHand.quality">{{twoItems.items.mainHand.name}}</a>
           </li>
           <li v-else>
-            Main-Hand: None
+            <span class="no-items">Main-Hand: None</span>
           </li>
           <li v-if="twoItems.items.offHand">
             Off-Hand: {{twoItems.items.offHand.itemLevel}}
@@ -282,7 +282,7 @@
             <a target="_blank" :href="'//www.wowhead.com/item=' + twoItems.items.offHand.id + '&bonus=' + twoItems.items.offHand.bonusLists[0] + ':' + twoItems.items.offHand.bonusLists[1] + ':' + twoItems.items.offHand.bonusLists[2] + ':' + twoItems.items.offHand.bonusLists[3] + '&ilvl=' + twoItems.items.offHand.itemLevel" :class="'gear-link q' + twoItems.items.offHand.quality">{{twoItems.items.offHand.name}}</a>
           </li>
           <li v-else>
-            Off-Hand: None
+            <span class="no-items">Off-Hand: None</span>
           </li>
         </ul>
       </div>
@@ -393,4 +393,6 @@ export default {
       color: $orange-5
       text-align: left
 
+.no-items
+  color: $poor
 </style>
