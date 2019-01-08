@@ -1,9 +1,9 @@
 <template>
   <div id="nav">
       <ul>
-        <li><router-link to="/" class="btn btn--purple"><font-awesome-icon icon="home" /> &nbsp;Home</router-link></li>
-        <li><router-link to="/comparator/stats" class="btn btn--purple"><font-awesome-icon icon="cogs" /> &nbsp;Compare</router-link></li>
-        <li><router-link to="/blog" class="btn btn--purple"><font-awesome-icon icon="book" /> &nbsp;Blog</router-link></li>
+        <li><router-link to="/" class="router btn btn--purple"><font-awesome-icon icon="home" /> &nbsp;Home</router-link></li>
+        <li><router-link to="/comparator/stats" class="router btn btn--purple"><font-awesome-icon icon="cogs" /> &nbsp;Compare</router-link></li>
+        <li><router-link to="/blog" class="router btn btn--purple"><font-awesome-icon icon="book" /> &nbsp;Blog</router-link></li>
       </ul>
     </div>
 </template>

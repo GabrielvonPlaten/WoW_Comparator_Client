@@ -66,7 +66,7 @@ html, body
   &--purple
     +btn--purple
 
-a
+.router
   transition: 0.5s
   &.router-link-exact-active
     background: $active-route

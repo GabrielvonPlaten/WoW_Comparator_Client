@@ -74,7 +74,7 @@ export default {
     li
       border-radius: 8px
       color: $white-0
-      background-color: $blue-6
+      background-color: $blue-5
       padding: 10px
       margin-top: 10px
       font-size: 1.2em
@@ -83,7 +83,7 @@ export default {
       float: right
       width: 75%
       &:hover
-        background-color: $blue-5
+        background-color: $blue-4
 
       span
         position: relative
@@ -102,7 +102,7 @@ export default {
     li
       border-radius: 8px
       color: $white-0
-      background-color: $blue-6
+      background-color: $blue-5
       padding: 10px
       margin-top: 10px
       font-size: 1.2em
@@ -111,7 +111,7 @@ export default {
       float: left
       width: 75%
       &:hover
-        background-color: $blue-5
+        background-color: $blue-4
 
       span
         position: relative
