@@ -36,6 +36,7 @@ export default {
     margin: 0
     list-style: none
     display: flex
+    justify-content: space-around
 
     li
       text-align: center

@@ -51,29 +51,7 @@ export default {
   },
 
   computed: {
-    oneStats() {
-      return this.$store.state.playerOneStats
-    },
 
-    oneMounts() {
-      return this.$store.state.playerOneMounts
-    },
-
-    onePets() {
-      return this.$store.state.playerOnePets
-    },
-
-    oneGear() {
-      return this.$store.state.playerOneGear
-    },
-
-    oneProg() {
-      return this.$store.state.playerOneProg
-    },
-
-    oneFeed() {
-      return this.$store.state.playerOneFeed
-    },
   },
 
   created() {
