@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="compViews__playerOne">
-      <div class="playerOne__mounts" v-if="this.$store.state.playerOneMounts">
+      <Loader v-if="oneMounts === false"/>
+      <div class="playerOne__mounts" v-if="oneMounts">
         <playerOneAvatar />
         <ul>
-          <p>Collected: {{this.$store.state.playerOneMounts.mounts.numCollected}}</p>
-          <li v-for="(mount, index) in this.$store.state.playerOneMounts.mounts.collected" :key="index">
+          <p>Collected: {{oneMounts.mounts.numCollected}}</p>
+          <li v-for="(mount, index) in oneMounts.mounts.collected" :key="index">
             <div v-if="mount.qualityId === 4">
               <span class="mounts--epic">{{mount.name}}</span><img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
             </div>
@@ -21,11 +22,12 @@
     </div>
 
     <div class="compViews__playerTwo">
-      <div class="playerTwo__mounts" v-if="this.$store.state.playerTwoMounts">
+      <Loader v-if="twoMounts === false"/>
+      <div class="playerTwo__mounts" v-if="twoMounts">
         <playerTwoAvatar />
         <ul>
-          <p>Collected: {{this.$store.state.playerTwoMounts.mounts.numCollected}}</p>
-          <li v-for="(mount, index) in this.$store.state.playerTwoMounts.mounts.collected" :key="index">
+          <p>Collected: {{twoMounts.numCollected}}</p>
+          <li v-for="(mount, index) in twoMounts.collected" :key="index">
             <div v-if="mount.qualityId === 4">
               <span class="mounts--epic">{{mount.name}}</span><img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
             </div>
@@ -45,11 +47,24 @@
 <script>
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
+import Loader from '@/components/Loader.vue';
 
 export default {
+
+  computed: {
+    oneMounts() {
+      return this.$store.state.playerOneMounts
+    },
+
+    twoMounts() {
+      return this.$store.state.playerTwoMounts
+    }
+  },
+
   components: {
     playerOneAvatar,
     playerTwoAvatar,
+    Loader,
   }
 }
 </script>

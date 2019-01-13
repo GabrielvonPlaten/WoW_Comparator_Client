@@ -6,6 +6,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    // Each state is initially set to null so that it returns false for the
+    // components and so no errors are outputed.
+    // This happens only on the first visit to the website.
+    // Then, when the user makes a search, every null will be replaced by false.
+    // Then the loading spinners will appear because each spinner have tripple equals for false.
+    // Then each false will be replaced by the fetched data. Making them no longer
+    // false and therefore the spinners will dissappear.
     playerOneStats: null,
     playerOneMounts: null,
     playerOnePets: null,
@@ -91,16 +98,23 @@ export default new Vuex.Store({
       state.playerTwoError.color = err.errColor;
     },
   },
-
+  
   actions: {
     playerOneData(context, info) {
       context.commit('PLAYERONE_ERROR', "", "");
-
+      
+      // Reset the states
+      context.commit('PLAYERONE_STATS', false);
+      context.commit('PLAYERONE_PETS', false);
+      context.commit('PLAYERONE_MOUNTS', false);
+      context.commit('PLAYERONE_GEAR', false);
+      context.commit('PLAYERONE_PROG', false);
+      context.commit('PLAYERONE_FEED', false);
       // Stats
       axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
-        .then(res => {
-          context.commit('PLAYERONE_STATS', res.data);
-
+      .then(res => {
+        context.commit('PLAYERONE_STATS', res.data);
+          
           // Get pets
           return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
         })
@@ -135,9 +149,17 @@ export default new Vuex.Store({
         .catch(err => context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} ))
     },
 
+    // Player Two Fetches
     playerTwoData(context, info) {
       context.commit('PLAYERTWO_ERROR', "", "");
 
+      // Reset the states
+      context.commit('PLAYERTWO_STATS', false);
+      context.commit('PLAYERTWO_PETS', false);
+      context.commit('PLAYERTWO_MOUNTS', false);
+      context.commit('PLAYERTWO_GEAR', false);
+      context.commit('PLAYERTWO_PROG', false);
+      context.commit('PLAYERTWO_FEED', false);
       // Stats
       axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
         .then(res => {

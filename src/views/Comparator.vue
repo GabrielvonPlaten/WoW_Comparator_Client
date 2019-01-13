@@ -28,7 +28,7 @@
       </form>
     </div>
 
-    <ComparatorButtons :showView="showView" />
+    <ComparatorButtons />
 
     <router-view class="comparator-views"></router-view>
   </div>
@@ -46,7 +46,34 @@ export default {
       playerTwoRealm: "",
       playerTwoName: "",
       access_token: "",
+      playerOneLoader: false,
     }
+  },
+
+  computed: {
+    oneStats() {
+      return this.$store.state.playerOneStats
+    },
+
+    oneMounts() {
+      return this.$store.state.playerOneMounts
+    },
+
+    onePets() {
+      return this.$store.state.playerOnePets
+    },
+
+    oneGear() {
+      return this.$store.state.playerOneGear
+    },
+
+    oneProg() {
+      return this.$store.state.playerOneProg
+    },
+
+    oneFeed() {
+      return this.$store.state.playerOneFeed
+    },
   },
 
   created() {
@@ -56,9 +83,14 @@ export default {
   },
 
   methods: {
+    changeLoadingSpinnerBack() {
+      this.playerOneLoader = false;
+    },
+
     getPlayerOneData() {
       if (this.playerOneRealm && this.playerOneName) {
         this.$store.dispatch('playerOneData', {token: this.access_token, realm: this.playerOneRealm, name: this.playerOneName})
+        this.playerOneLoader = true;
       } else {
         this.$store.dispatch('playerOneEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
       }
@@ -71,16 +103,6 @@ export default {
         this.$store.dispatch('playerTwoEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
       }
     },
-
-    showView(x) {
-      this.views.forEach(view => {
-        if (view.id === x) {
-          view.show = true;
-        } else {
-          view.show = false;
-        }
-      })           
-    }
   },
 
   components: {
@@ -161,5 +183,4 @@ ul
   h2
     color: $white-0
     font-weight: 300
-
 </style>

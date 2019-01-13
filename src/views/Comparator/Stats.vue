@@ -1,77 +1,79 @@
 <template>
   <div>
     <div class="compViews__playerOne">
-      <div v-if="this.$store.state.playerOneStats">
+      <Loader v-if="oneStats === false"/>
+      <div v-if="oneStats">
         <playerOneAvatar />
         <span class="baseStat">Base Stat</span>
         <ul>
-          <li>Stamina<span class="statNumber">{{ this.$store.state.playerOneStats.stats.sta }}</span></li>
-          <li>Strength<span class="statNumber">{{ this.$store.state.playerOneStats.stats.str }}</span></li>
-          <li>Agility<span class="statNumber">{{ this.$store.state.playerOneStats.stats.agi }}</span></li>
-          <li>Intellect<span class="statNumber">{{ this.$store.state.playerOneStats.stats.int }}</span></li>
-          <li>Mastery<span class="statNumber">{{ this.$store.state.playerOneStats.stats.mastery }}</span></li>
-          <li>Versatility<span class="statNumber">{{ this.$store.state.playerOneStats.stats.versatility }}</span></li>
-          <li>Armor<span class="statNumber">{{ this.$store.state.playerOneStats.stats.armor }}</span></li>
-          <li>Haste<span class="statNumber">{{ this.$store.state.playerOneStats.stats.haste }}</span></li>
+          <li>Stamina<span class="statNumber">{{ oneStats.stats.sta }}</span></li>
+          <li>Strength<span class="statNumber">{{ oneStats.stats.str }}</span></li>
+          <li>Agility<span class="statNumber">{{ oneStats.stats.agi }}</span></li>
+          <li>Intellect<span class="statNumber">{{ oneStats.stats.int }}</span></li>
+          <li>Mastery<span class="statNumber">{{ oneStats.stats.mastery }}</span></li>
+          <li>Versatility<span class="statNumber">{{ oneStats.stats.versatility }}</span></li>
+          <li>Armor<span class="statNumber">{{ oneStats.stats.armor }}</span></li>
+          <li>Haste<span class="statNumber">{{ oneStats.stats.haste }}</span></li>
         </ul>
         <br>
         <span class="baseStat">Defense</span>
           <ul>
-            <li>Dodge<span class="statNumber">{{ this.$store.state.playerOneStats.stats.dodge }}</span></li>
-            <li>Parry<span class="statNumber">{{ this.$store.state.playerOneStats.stats.parry }}</span></li>
-            <li>Block<span class="statNumber">{{ this.$store.state.playerOneStats.stats.block }}</span></li>
+            <li>Dodge<span class="statNumber">{{ oneStats.stats.dodge }}</span></li>
+            <li>Parry<span class="statNumber">{{ oneStats.stats.parry }}</span></li>
+            <li>Block<span class="statNumber">{{ oneStats.stats.block }}</span></li>
           </ul>
         <br>
         <span class="baseStat">Melee / Ranged</span>
         <ul>
-          <li>Crit<span class="statNumber">{{ this.$store.state.playerOneStats.stats.crit }}</span></li>
-          <li>Haste Rating<span class="statNumber">{{ this.$store.state.playerOneStats.stats.hasteRating }}</span></li>
+          <li>Crit<span class="statNumber">{{ oneStats.stats.crit }}</span></li>
+          <li>Haste Rating<span class="statNumber">{{ oneStats.stats.hasteRating }}</span></li>
         </ul>
         <br>
         <span class="baseStat">Caster Info</span>
         <ul>
-          <li>MP5 out:<span class="statNumber">{{ this.$store.state.playerOneStats.stats.mana5Combat }}</span></li>
-          <li>MP5 in<span class="statNumber">{{ this.$store.state.playerOneStats.stats.mana5 }}</span></li>
-          <li>Spell Crit<span class="statNumber">{{ this.$store.state.playerOneStats.stats.spellCrit }}</span></li>
-          <li>Spell Crit Rating<span class="statNumber">{{ this.$store.state.playerOneStats.stats.spellCritRating }}</span></li>
+          <li>MP5 out:<span class="statNumber">{{ oneStats.stats.mana5Combat }}</span></li>
+          <li>MP5 in<span class="statNumber">{{ oneStats.stats.mana5 }}</span></li>
+          <li>Spell Crit<span class="statNumber">{{ oneStats.stats.spellCrit }}</span></li>
+          <li>Spell Crit Rating<span class="statNumber">{{ oneStats.stats.spellCritRating }}</span></li>
         </ul>
       </div>
     </div>
 
     <div class="compViews__playerTwo">
-      <div v-if="this.$store.state.playerTwoStats">
+      <Loader v-if="twoStats === false"/>
+      <div v-if="twoStats">
         <playerTwoAvatar />
         <span class="baseStat">Base Stat</span>
         <ul>
-          <li>Stamina<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.sta }}</span></li>
-          <li>Strength<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.str }}</span></li>
-          <li>Agility<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.agi }}</span></li>
-          <li>Intellect<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.int }}</span></li>
-          <li>Mastery<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.mastery }}</span></li>
-          <li>Versatility<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.versatility }}</span></li>
-          <li>Armor<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.armor }}</span></li>
-          <li>Haste<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.haste }}</span></li>
+          <li>Stamina<span class="statNumber">{{ twoStats.stats.sta }}</span></li>
+          <li>Strength<span class="statNumber">{{ twoStats.stats.str }}</span></li>
+          <li>Agility<span class="statNumber">{{ twoStats.stats.agi }}</span></li>
+          <li>Intellect<span class="statNumber">{{ twoStats.stats.int }}</span></li>
+          <li>Mastery<span class="statNumber">{{ twoStats.stats.mastery }}</span></li>
+          <li>Versatility<span class="statNumber">{{ twoStats.stats.versatility }}</span></li>
+          <li>Armor<span class="statNumber">{{ twoStats.stats.armor }}</span></li>
+          <li>Haste<span class="statNumber">{{ twoStats.stats.haste }}</span></li>
         </ul>
         <br>
         <span class="baseStat">Defense</span>
           <ul>
-            <li>Dodge<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.dodge }}</span></li>
-            <li>Parry<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.parry }}</span></li>
-            <li>Block<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.block }}</span></li>
+            <li>Dodge<span class="statNumber">{{ twoStats.stats.dodge }}</span></li>
+            <li>Parry<span class="statNumber">{{ twoStats.stats.parry }}</span></li>
+            <li>Block<span class="statNumber">{{ twoStats.stats.block }}</span></li>
           </ul>
         <br>
         <span class="baseStat">Melee / Ranged</span>
         <ul>
-          <li>Crit<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.crit }}</span></li>
-          <li>Haste Rating<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.hasteRating }}</span></li>
+          <li>Crit<span class="statNumber">{{ twoStats.stats.crit }}</span></li>
+          <li>Haste Rating<span class="statNumber">{{ twoStats.stats.hasteRating }}</span></li>
         </ul>
         <br>
         <span class="baseStat">Caster Info</span>
         <ul>
-          <li>MP5 out:<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.mana5Combat }}</span></li>
-          <li>MP5 in<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.mana5 }}</span></li>
-          <li>Spell Crit<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.spellCrit }}</span></li>
-          <li>Spell Crit Rating<span class="statNumber">{{ this.$store.state.playerTwoStats.stats.spellCritRating }}</span></li>
+          <li>MP5 out:<span class="statNumber">{{ twoStats.stats.mana5Combat }}</span></li>
+          <li>MP5 in<span class="statNumber">{{ twoStats.stats.mana5 }}</span></li>
+          <li>Spell Crit<span class="statNumber">{{ twoStats.stats.spellCrit }}</span></li>
+          <li>Spell Crit Rating<span class="statNumber">{{ twoStats.stats.spellCritRating }}</span></li>
         </ul>
       </div>
     </div>
@@ -81,11 +83,23 @@
 <script>
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
+import Loader from '@/components/Loader.vue';
 
 export default {
+  computed: {
+    oneStats() {
+      return this.$store.state.playerOneStats
+    },
+    
+    twoStats() {
+      return this.$store.state.playerTwoStats
+    }
+  },
+
   components: {
     playerOneAvatar,
     playerTwoAvatar,
+    Loader,
   }
 }
 </script>

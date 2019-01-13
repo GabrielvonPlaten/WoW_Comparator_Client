@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="compViews__playerOne">
+      <Loader v-if="onePets === false"/>
       <div class="playerOne__pets" v-if="onePets">
         <playerOneAvatar />
         <ul>
@@ -64,6 +65,7 @@
     </div>
 
     <div class="compViews__playerTwo">
+      <Loader v-if="twoPets === false"/>
       <div class="playerTwo__pets" v-if="twoPets">
         <playerTwoAvatar />
         <ul>
@@ -130,6 +132,7 @@
 <script>
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
+import Loader from '@/components/Loader.vue';
 
 export default {
   computed: {
@@ -144,6 +147,7 @@ export default {
   components: {
     playerOneAvatar,
     playerTwoAvatar,
+    Loader,
   }
 }
 </script>
