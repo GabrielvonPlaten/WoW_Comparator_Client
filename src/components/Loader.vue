@@ -1,7 +1,7 @@
 <template>
-  <span class="spinner-block">
-    <span class="spinner spinner-1"></span>
-  </span>
+  <div class="spinner-block">
+    <div class="spinner spinner-1"></div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -13,17 +13,9 @@ $main-spinner-dimensions: $basic-spinner-dimensions - $border-width * 0.5;
 $small-spinner-dimensions: $main-spinner-dimensions * 0.7; 
 
 /* COMMON STYLES: YOU DON'T NEED THEM */
-  
-  
-.spinner-block {
-  width: $basic-spinner-dimensions;
-  text-align: center;
-  display: block;
-}
 
 /* spinner style */
 .spinner {
-    position: relative;
     width: 2rem;
     height: $basic-spinner-dimensions;
 
@@ -40,8 +32,11 @@ $small-spinner-dimensions: $main-spinner-dimensions * 0.7;
 
 /* spinner-1 styles */
 .spinner.spinner-1 {
+  position: relative;
+  left: 50%;
+  top: 1.5rem;
   
-    @keyframes rotate-animation {
+  @keyframes rotate-animation {
     0% {
       transform: rotate(0deg);
     }

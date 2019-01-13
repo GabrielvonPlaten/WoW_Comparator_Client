@@ -183,4 +183,6 @@ ul
   h2
     color: $white-0
     font-weight: 300
+
+    
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="compViews__playerOne">
-      <Loader v-if="oneItems === false"/>
+      <Loader  class="one_spinnerGear" v-if="oneItems === false"/>
       <div class="playerOne__gear" v-if="oneItems">
         <playerOneAvatar />
         <ul>
@@ -376,6 +376,7 @@ export default {
       a
         margin: .5% 2% 0 0
         float: right
+        text-decoration: none
 
         span
           &:nth-child(1)
