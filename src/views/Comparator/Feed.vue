@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="compViews__playerOne">
-      <div v-if="twoFeed">
-        <p>{{twoFeed}}</p>
+      <div v-if="oneFeed">
+        <p>{{oneFeed}}</p>
       </div>
     </div>
 

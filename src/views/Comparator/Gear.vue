@@ -147,7 +147,7 @@
 
     <!-- Player Two -->
     <div class="compViews__playerTwo">
-      <Loader v-if="!twoItems === false"/>
+      <Loader v-if="twoItems === false"/>
       <div class="playerTwo__gear" v-if="twoItems">
         <playerTwoAvatar />
         <ul>

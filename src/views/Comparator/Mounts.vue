@@ -26,8 +26,8 @@
       <div class="playerTwo__mounts" v-if="twoMounts">
         <playerTwoAvatar />
         <ul>
-          <p>Collected: {{twoMounts.numCollected}}</p>
-          <li v-for="(mount, index) in twoMounts.collected" :key="index">
+          <p>Collected: {{twoMounts.mounts.numCollected}}</p>
+          <li v-for="(mount, index) in twoMounts.mounts.collected" :key="index">
             <div v-if="mount.qualityId === 4">
               <span class="mounts--epic">{{mount.name}}</span><img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
             </div>

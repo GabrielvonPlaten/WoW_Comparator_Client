@@ -51,7 +51,6 @@ export default new Vuex.Store({
     
     PLAYERONE_GEAR(state, data) {
       state.playerOneGear = data;
-      state.playerOneLoading = false;
     },
 
     PLAYERONE_PROG(state, data) {
@@ -82,7 +81,6 @@ export default new Vuex.Store({
     
     PLAYERTWO_GEAR(state, data) {
       state.playerTwoGear = data;
-      state.playerTwoLoading = false;
     },
 
     PLAYERTWO_PROG(state, data) {
