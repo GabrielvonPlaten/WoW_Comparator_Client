@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 import Comparator from './views/Comparator.vue'
 import Blog from './views/Blog.vue';
 
-import Feed from './views/Comparator/Feed.vue';
+import Talents from './views/Comparator/Talents.vue';
 import Mounts from './views/Comparator/Mounts.vue';
 import Stats from './views/Comparator/Stats.vue';
 import Progress from './views/Comparator/Progress.vue';
@@ -33,9 +33,9 @@ export default new Router({
       component: Comparator,
       children: [
         {
-          path: '/comparator/feed',
-          name: 'feed',
-          component: Feed
+          path: '/comparator/Talents',
+          name: 'talents',
+          component: Talents
         },
         {
           path: '/comparator/mounts',

@@ -3,7 +3,7 @@
 
   <div class="comparator-buttons">
     <ul>
-      <li><router-link to="/comparator/feed" class="router btn btn--purple">Feed</router-link></li>
+      <li><router-link to="/comparator/talents" class="router btn btn--purple">Talents</router-link></li>
       <li><router-link to="/comparator/mounts" class="router btn btn--purple">Mounts</router-link></li>
       <li><router-link to="/comparator/stats" class="router btn btn--purple">Stats</router-link></li>
       <li><router-link to="/comparator/progress" class="router btn btn--purple">Progress</router-link></li>

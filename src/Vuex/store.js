@@ -18,7 +18,7 @@ export default new Vuex.Store({
     playerOnePets: null,
     playerOneGear: null,
     playerOneProg: null,
-    playerOneFeed: null,
+    playerOneTalents: null,
     playerOneError: {
       message: "",
       color: "",
@@ -29,7 +29,7 @@ export default new Vuex.Store({
     playerTwoPets: null,
     playerTwoGear: null,
     playerTwoProg: null,
-    playerTwoFeed: null,
+    playerTwoTalents: null,
     playerTwoError: {
       message: "",
       color: "",
@@ -57,8 +57,8 @@ export default new Vuex.Store({
       state.playerOneProg = data;
     },
 
-    PLAYERONE_FEED(state, data) {
-      state.playerOneFeed = data;
+    PLAYERONE_TALENTS(state, data) {
+      state.playerOneTalents = data;
     },
 
     PLAYERONE_ERROR(state, err) {
@@ -87,8 +87,8 @@ export default new Vuex.Store({
       state.playerTwoProg = data;
     },
 
-    PLAYERTWO_FEED(state, data) {
-      state.playerTwoFeed = data;
+    PLAYERTWO_TALENTS(state, data) {
+      state.playerTwoTalents = data;
     },
 
     PLAYERTWO_ERROR(state, err) {
@@ -107,7 +107,7 @@ export default new Vuex.Store({
       context.commit('PLAYERONE_MOUNTS', false);
       context.commit('PLAYERONE_GEAR', false);
       context.commit('PLAYERONE_PROG', false);
-      context.commit('PLAYERONE_FEED', false);
+      context.commit('PLAYERONE_TALENTS', false);
       // Stats
       axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
       .then(res => {
@@ -138,10 +138,10 @@ export default new Vuex.Store({
           context.commit('PLAYERONE_PROG', res.data)
 
           // Feed
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=feed&locale=en_EU&access_token=${info.token}`)
+          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
         })
         .then(res => {
-          context.commit('PLAYERONE_FEED', res.data);
+          context.commit('PLAYERONE_TALENTS', res.data);
         })
         // Error
         .catch(err => context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} ))
@@ -157,7 +157,7 @@ export default new Vuex.Store({
       context.commit('PLAYERTWO_MOUNTS', false);
       context.commit('PLAYERTWO_GEAR', false);
       context.commit('PLAYERTWO_PROG', false);
-      context.commit('PLAYERTWO_FEED', false);
+      context.commit('PLAYERTWO_TALENTS', false);
       // Stats
       axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
         .then(res => {
@@ -188,10 +188,10 @@ export default new Vuex.Store({
           context.commit('PLAYERTWO_PROG', res.data)
 
           // Feed
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=feed&locale=en_EU&access_token=${info.token}`)
+          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
         })
         .then(res => {
-          context.commit('PLAYERTWO_FEED', res.data);
+          context.commit('PLAYERTWO_TALENTS', res.data);
         })
         // Error
         .catch(err => context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} ))
