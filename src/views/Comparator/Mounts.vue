@@ -4,9 +4,10 @@
       <Loader v-if="oneMounts === false"/>
       <div class="playerOne__mounts" v-if="oneMounts">
         <playerOneAvatar />
+        <input type="text" placeholder="Filter" v-model="oneSearchMounts">
         <ul>
           <p>Collected: {{oneMounts.mounts.numCollected}}</p>
-          <li v-for="(mount, index) in oneMounts.mounts.collected" :key="index">
+          <li v-for="(mount, index) in oneFilteredMounts" :key="index">
             <div v-if="mount.qualityId === 4">
               <span class="mounts--epic">{{mount.name}}</span><img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
             </div>
@@ -25,9 +26,10 @@
       <Loader v-if="twoMounts === false"/>
       <div class="playerTwo__mounts" v-if="twoMounts">
         <playerTwoAvatar />
+        <input type="text" placeholder="Filter" v-model="twoSearchMounts">
         <ul>
           <p>Collected: {{twoMounts.mounts.numCollected}}</p>
-          <li v-for="(mount, index) in twoMounts.mounts.collected" :key="index">
+          <li v-for="(mount, index) in twoFilteredMounts" :key="index">
             <div v-if="mount.qualityId === 4">
               <span class="mounts--epic">{{mount.name}}</span><img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
             </div>
@@ -50,6 +52,12 @@ import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
 
 export default {
+  data() {
+    return {
+      oneSearchMounts: "",
+      twoSearchMounts: "",
+    }
+  },
 
   computed: {
     oneMounts() {
@@ -58,6 +66,18 @@ export default {
 
     twoMounts() {
       return this.$store.state.playerTwoMounts
+    },
+
+    oneFilteredMounts() {
+      return this.oneMounts.mounts.collected.filter(mount => {
+        return mount.name.match(this.oneSearchMounts)
+      })
+    },
+
+    twoFilteredMounts() {
+      return this.twoMounts.mounts.collected.filter(mount => {
+        return mount.name.match(this.twoSearchMounts)
+      })
     }
   },
 
