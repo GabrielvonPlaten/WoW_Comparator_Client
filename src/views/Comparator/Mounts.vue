@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import _ from 'lodash';
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
@@ -115,6 +114,7 @@ export default {
   color: $white-0
   font-weight: 500
   
+// Player One Mounts
 .oneMountInput-count
   height: 1.6rem
   margin-bottom: 1rem
@@ -170,6 +170,7 @@ export default {
       text-align: right
       color: $white-0
 
+// Player Two Mounts
 .twoMountInput-count
   height: 1.6rem
   margin-bottom: 1rem
