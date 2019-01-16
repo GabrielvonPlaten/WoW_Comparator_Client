@@ -275,6 +275,7 @@ export default {
         background-color: $blue-4
 
       a
+        text-decoration: none
         color: $white-1
         position: relative
         top: 1rem
@@ -327,6 +328,7 @@ export default {
         background-color: $blue-4
 
       a
+        text-decoration: none
         color: $white-1
         position: relative
         top: 1rem
