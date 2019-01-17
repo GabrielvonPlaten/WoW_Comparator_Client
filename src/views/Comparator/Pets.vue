@@ -97,14 +97,14 @@
               <div v-if="pet.isFavorite">
                 <div class="pets--rare"></div>
                 <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
                   <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
                 </a>
               </div>
               <div v-else>
                 <div class="pets--rare"></div>
                 <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
+                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
                   <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
                 </a>
               </div>
