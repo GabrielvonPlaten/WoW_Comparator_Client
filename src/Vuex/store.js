@@ -108,43 +108,54 @@ export default new Vuex.Store({
       context.commit('PLAYERONE_GEAR', false);
       context.commit('PLAYERONE_PROG', false);
       context.commit('PLAYERONE_TALENTS', false);
-      // Stats
+      
+      // Plyaer Stats
       axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
       .then(res => {
-        context.commit('PLAYERONE_STATS', res.data);
-          
-          // Get pets
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
+        context.commit('PLAYERONE_STATS', res.data);    
         })
+        .catch(() => {
+          context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
+
+      // Plyaer Pets
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
         .then(res => {
-          context.commit('PLAYERONE_PETS', res.data);
-          
-          // Get Mounts
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
+          context.commit('PLAYERONE_PETS', res.data); 
         })
+        .catch(() => {
+          context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
+
+      // Plyaer Mounts
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_MOUNTS', res.data);
-
-          // Items
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
         })
+        .catch(() => {
+          context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
+      
+      // Plyaer Items
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_GEAR', res.data);
-
-          // Progression
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
         })
+        .catch(() => {
+          context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
+
+      // Plyaer Progression
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_PROG', res.data)
-
-          // Feed
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
         })
+        .catch(() => {
+          context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
+
+      // Plyaer OneTalents
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_TALENTS', res.data);
         })
-        // Error
-        .catch(err => context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} ))
+        .catch(() => {
+          context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
     },
 
     // Player Two Fetches
@@ -158,43 +169,54 @@ export default new Vuex.Store({
       context.commit('PLAYERTWO_GEAR', false);
       context.commit('PLAYERTWO_PROG', false);
       context.commit('PLAYERTWO_TALENTS', false);
-      // Stats
+
+      // Player Two Stats
       axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_STATS', res.data);
-
-          // Get pets
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
         })
+        .catch(() => {
+          context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
+
+      // Player Two Pets
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_PETS', res.data);
-          
-          // Get Mounts
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
         })
+        .catch(() => {
+          context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
+
+    // Player Two Mounts
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_MOUNTS', res.data);
-
-          // Items
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
         })
+        .catch(() => {
+          context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
+
+      // Player Two Items
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_GEAR', res.data);
-
-          // Progression
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
         })
+        .catch(() => {
+          context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
+
+      // Player Two Progression
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_PROG', res.data)
-
-          // Feed
-          return axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
         })
+        .catch(() => {
+          context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
+      
+      // Player Two Talents
+      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_TALENTS', res.data);
         })
-        // Error
-        .catch(err => context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} ))
+        .catch(() => {
+          context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
     },
 
     playerOneEmptyForm(context, payload) {
