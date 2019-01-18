@@ -32,7 +32,7 @@ html, body
   background-repeat: repeat
 
 ::-webkit-scrollbar
-    width: 7px
+    width: 0.8rem
 
 /* Track */
 ::-webkit-scrollbar-track
@@ -40,11 +40,11 @@ html, body
  
 /* Handle */
 ::-webkit-scrollbar-thumb
-    background: $violet-8
+    background: $violet-7
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover
-    background: $violet-5
+    background: $violet-4
 
 // Lines
 .line
