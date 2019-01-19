@@ -321,7 +321,14 @@ export default {
 <style lang="sass" scoped>
 
 .playerOne__gear
+  padding: 0 3.4rem
+  border-right: 1px solid $blue-4
+  height: 100%
+
   ul
+    padding: 0
+    margin: 0
+    
     li
       border-radius: 8px
       color: $orange-5
@@ -332,6 +339,7 @@ export default {
       margin-top: 15px
       font-size: 1.2em
       text-align: right
+      float: right
       list-style-position: inside
       &:hover
         background-color: $blue-4
@@ -358,7 +366,14 @@ export default {
       text-align: right
 
 .playerTwo__gear
+  padding: 0 3.4rem
+  border-left: 1px solid $blue-4
+  height: 100%
+
   ul
+    padding: 0
+    margin: 0
+
     li
       border-radius: 8px
       color: $orange-5
@@ -369,6 +384,7 @@ export default {
       margin-top: 15px
       font-size: 1.2em
       text-align: left
+      float: left
       list-style-position: inside
       &:hover
         background-color: $blue-4

@@ -3,6 +3,7 @@
     <div class="comparator-form">
       <form @submit.prevent="getPlayerOneData()" class="form form-playerOne">
         <label>Player One</label>
+        
         <span
           class="search-error"
           :style="{color: this.$store.state.playerOneError.color}" v-if="this.$store.state.playerOneError.message">
@@ -137,14 +138,14 @@ export default {
   grid-template-columns: 1fr 1fr
 
 .compViews__playerOne
+  width: 100%
   height: 100%
-  width: 90%
-  margin: 0 auto
+  margin: 1rem auto
 
 .compViews__playerTwo
+  width: 100%
   height: 100%
-  width: 90%
-  margin: 0 auto
+  margin: 1rem auto
 
 ul
   padding: 0

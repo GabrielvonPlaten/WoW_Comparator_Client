@@ -2,10 +2,9 @@
   <div>
     <div class="compViews__playerOne">
       <Loader v-if="oneTalents === false"/>
-      <div class="oneTalents-lists" v-if="oneTalents">
+      <div class="playerOne__talents" v-if="oneTalents">
         <playerOneAvatar />
         <br>
-
         <div class="active-spec oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[0].spec.name}}</h3>
@@ -57,7 +56,7 @@
 
     <div class="compViews__playerTwo">
       <Loader v-if="twoTalents === false"/>
-      <div class="twoTalents-lists" v-if="twoTalents">
+      <div class="playerTwo__talents" v-if="twoTalents">
         <playerTwoAvatar />
         <br>
 
@@ -144,8 +143,12 @@ export default {
 
 <style lang="sass" scoped>
 
-.oneTalents-lists
+.playerOne__talents
+  padding: 0 3.4rem
+  border-right: 1px solid $blue-4
   text-align: right
+
+.compViews__playerOne
 
   .oneList-container
     background: $blue-7
@@ -189,8 +192,13 @@ export default {
     border-color: $orange-5
     border-color: rgba(255, 222, 160, 0.8)
 
-.twoTalents-lists
+
+.playerTwo__talents
+  padding: 0 3.4rem
+  border-left: 1px solid $blue-4
   text-align: right
+
+.compViews__playerTwo
 
   .twoList-container
     background: $blue-7

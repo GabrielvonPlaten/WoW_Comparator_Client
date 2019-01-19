@@ -299,6 +299,8 @@ export default {
 <style lang="sass" scoped>
 .playerOne__progress
   color: $white-0
+  padding: 0 3.4rem
+  border-right: 1px solid $blue-4
 
   .playerOne__uldir
     padding-top: 3%
@@ -324,6 +326,8 @@ export default {
 
 .playerTwo__progress
   color: $white-0
+  padding: 0 3.4rem
+  border-left: 1px solid $blue-4
 
   .playerTwo__uldir
     padding-top: 3%
