@@ -19,6 +19,7 @@ export default new Vuex.Store({
     playerOneGear: null,
     playerOneProg: null,
     playerOneTalents: null,
+    playerOneRegion: null,
     playerOneError: {
       message: "",
       color: "",
@@ -30,6 +31,7 @@ export default new Vuex.Store({
     playerTwoGear: null,
     playerTwoProg: null,
     playerTwoTalents: null,
+    playerTwoRegion: null,
     playerTwoError: {
       message: "",
       color: "",
@@ -59,6 +61,10 @@ export default new Vuex.Store({
 
     PLAYERONE_TALENTS(state, data) {
       state.playerOneTalents = data;
+    },
+
+    PLAYERONE_REGION(state, data) {
+      state.playerOneRegion = data;
     },
 
     PLAYERONE_ERROR(state, err) {
@@ -91,6 +97,10 @@ export default new Vuex.Store({
       state.playerTwoTalents = data;
     },
 
+    PLAYERTWO_REGION(state, data) {
+      state.playerTwoRegion = data;
+    },
+
     PLAYERTWO_ERROR(state, err) {
       state.playerTwoError.message = err.errData;
       state.playerTwoError.color = err.errColor;
@@ -108,17 +118,19 @@ export default new Vuex.Store({
       context.commit('PLAYERONE_GEAR', false);
       context.commit('PLAYERONE_PROG', false);
       context.commit('PLAYERONE_TALENTS', false);
+      context.commit('PLAYERONE_REGION', false);
       
       // Plyaer Stats
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
       .then(res => {
-        context.commit('PLAYERONE_STATS', res.data);    
+        context.commit('PLAYERONE_STATS', res.data);   
+        context.commit('PLAYERONE_REGION', info.region); 
         })
         .catch(() => {
           context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
 
       // Plyaer Pets
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_PETS', res.data); 
         })
@@ -126,7 +138,7 @@ export default new Vuex.Store({
           context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
 
       // Plyaer Mounts
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_MOUNTS', res.data);
         })
@@ -134,7 +146,7 @@ export default new Vuex.Store({
           context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
       
       // Plyaer Items
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_GEAR', res.data);
         })
@@ -142,7 +154,7 @@ export default new Vuex.Store({
           context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
 
       // Plyaer Progression
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_PROG', res.data)
         })
@@ -150,7 +162,7 @@ export default new Vuex.Store({
           context.commit('PLAYERONE_ERROR', {errData: "Character not found", errColor: "red"} )})
 
       // Plyaer OneTalents
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERONE_TALENTS', res.data);
         })
@@ -169,17 +181,19 @@ export default new Vuex.Store({
       context.commit('PLAYERTWO_GEAR', false);
       context.commit('PLAYERTWO_PROG', false);
       context.commit('PLAYERTWO_TALENTS', false);
+      context.commit('PLAYERTWO_REGION', false);
 
       // Player Two Stats
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_STATS', res.data);
+          context.commit('PLAYERTWO_REGION', info.region);
         })
         .catch(() => {
           context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
 
       // Player Two Pets
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_PETS', res.data);
         })
@@ -187,7 +201,7 @@ export default new Vuex.Store({
           context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
 
     // Player Two Mounts
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_MOUNTS', res.data);
         })
@@ -195,7 +209,7 @@ export default new Vuex.Store({
           context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
 
       // Player Two Items
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_GEAR', res.data);
         })
@@ -203,7 +217,7 @@ export default new Vuex.Store({
           context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
 
       // Player Two Progression
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_PROG', res.data)
         })
@@ -211,7 +225,7 @@ export default new Vuex.Store({
           context.commit('PLAYERTWO_ERROR', {errData: "Character not found", errColor: "red"} )})
       
       // Player Two Talents
-      axios.get(`https://eu.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
+      axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
         .then(res => {
           context.commit('PLAYERTWO_TALENTS', res.data);
         })
