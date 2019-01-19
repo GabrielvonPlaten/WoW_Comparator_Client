@@ -3,7 +3,6 @@
     <div class="comparator-form">
       <form @submit.prevent="getPlayerOneData()" class="form form-playerOne">
         <label>Player One</label>
-        
         <span
           class="search-error"
           :style="{color: this.$store.state.playerOneError.color}" v-if="this.$store.state.playerOneError.message">
@@ -13,10 +12,18 @@
         <input v-model="playerOneRealm" type="text" placeholder="Realm"><br>
         <input v-model="playerOneName" type="text" placeholder="Character">
         <button class="btn btn--blue btn-playerOne">Search</button>
+
+        <!-- Region Selection -->
+        <select v-model="playerOneRegionSelected">
+          <option v-for="(option, index) in playerOneRegionOptions" :key="index" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
       </form>
 
-      <form class="form form-playerTwo">
+      <form @submit.prevent="getPlayerTwoData()" class="form form-playerTwo">
         <label>Player Two</label>
+        <br>
         <span
           class="search-error"
           :style="{color: this.$store.state.playerTwoError.color}" v-if="this.$store.state.playerTwoError.message">
@@ -25,7 +32,15 @@
         <br>
         <input v-model="playerTwoRealm" type="text" placeholder="Realm"><br>
         <input v-model="playerTwoName" type="text" placeholder="Character">
-        <button @click.prevent="getPlayerTwoData" class="btn btn--blue btn-playerTwo">Search</button>
+        <!-- Region Selection -->
+        <select v-model="playerTwoRegionSelected" class="playerTwo-region-selection">
+          <option v-for="(option, index) in playerTwoRegionOptions" :key="index" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+        <button class="btn btn--blue btn-playerTwo">Search</button>
+        
+
       </form>
     </div>
 
@@ -48,6 +63,24 @@ export default {
       playerTwoName: "",
       access_token: "",
       playerOneLoader: false,
+
+      playerOneRegionSelected: 'EU',
+      playerOneRegionOptions: [
+        { text: 'EU', value: 'EU' },
+        { text: 'US', value: 'US' },
+        { text: 'KR', value: 'KR'},
+        { text: 'TW', value: 'TW'},
+        { text: 'CN', value: 'CN'}
+      ],
+
+      playerTwoRegionSelected: 'EU',
+      playerTwoRegionOptions: [
+        { text: 'EU', value: 'EU' },
+        { text: 'US', value: 'US' },
+        { text: 'KR', value: 'KR'},
+        { text: 'TW', value: 'TW'},
+        { text: 'CN', value: 'CN'}
+      ]
     }
   },
 
@@ -68,7 +101,7 @@ export default {
 
     getPlayerOneData() {
       if (this.playerOneRealm && this.playerOneName) {
-        this.$store.dispatch('playerOneData', {token: this.access_token, realm: this.playerOneRealm, name: this.playerOneName})
+        this.$store.dispatch('playerOneData', {region: this.playerOneRegionSelected, token: this.access_token, realm: this.playerOneRealm, name: this.playerOneName})
         this.playerOneLoader = true;
       } else {
         this.$store.dispatch('playerOneEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
@@ -77,7 +110,7 @@ export default {
 
     getPlayerTwoData() {
       if (this.playerTwoRealm && this.playerTwoName) {
-        this.$store.dispatch('playerTwoData', {token: this.access_token, realm: this.playerTwoRealm, name: this.playerTwoName})
+        this.$store.dispatch('playerTwoData', {region: this.playerTwoRegionSelected, token: this.access_token, realm: this.playerTwoRealm, name: this.playerTwoName})
       } else {
         this.$store.dispatch('playerTwoEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
       }
@@ -103,10 +136,23 @@ export default {
   border-radius: 0.6rem
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25)
 
+  .form-playerOne
+    label
+      margin-bottom: 10px
+
+  select
+    background: $blue-4
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25)
+    color: $white-0
+    border: none
+    border-radius: 5px 
+    outline: none
+    font-size: 16px
+    height: 1.9rem
+
   .form
     label
       display: inline-block
-      margin-bottom: 0.3rem
       font-size: 1.3rem
 
   .form-playerTwo
@@ -124,7 +170,7 @@ export default {
     margin: 0.2rem 0
     padding: 0.1rem 0.2rem
 
-  .btn-playerTwo
+  .btn-playerTwo, .playerTwo-region-selection
     float: left
 
 .search-error

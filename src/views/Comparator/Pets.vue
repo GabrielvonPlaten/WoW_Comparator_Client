@@ -285,10 +285,6 @@ export default {
       return this.$store.state.playerTwoPets
     },
 
-    truncate() {
-      return substring(0, 30);
-    },
-
     oneFilteredPets() {
       return this.onePets.pets.collected.filter(pet => {
         return pet.name.match(this.petSearch.toLowerCase()
