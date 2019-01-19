@@ -323,6 +323,7 @@ export default {
 .playerOne__gear
   padding: 0 3.4rem
   border-right: 1px solid $blue-4
+  height: 100%
 
   ul
     padding: 0
@@ -338,6 +339,7 @@ export default {
       margin-top: 15px
       font-size: 1.2em
       text-align: right
+      float: right
       list-style-position: inside
       &:hover
         background-color: $blue-4
@@ -366,6 +368,7 @@ export default {
 .playerTwo__gear
   padding: 0 3.4rem
   border-left: 1px solid $blue-4
+  height: 100%
 
   ul
     padding: 0
@@ -381,6 +384,7 @@ export default {
       margin-top: 15px
       font-size: 1.2em
       text-align: left
+      float: left
       list-style-position: inside
       &:hover
         background-color: $blue-4

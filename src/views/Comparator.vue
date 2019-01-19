@@ -3,6 +3,7 @@
     <div class="comparator-form">
       <form @submit.prevent="getPlayerOneData()" class="form form-playerOne">
         <label>Player One</label>
+        
         <span
           class="search-error"
           :style="{color: this.$store.state.playerOneError.color}" v-if="this.$store.state.playerOneError.message">

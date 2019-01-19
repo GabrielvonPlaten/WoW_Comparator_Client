@@ -125,6 +125,7 @@ export default {
       width: 100%
       margin-top: 10px
       font-size: 1.2em
+      float: right
       &:hover
         background-color: $blue-5
 
@@ -147,6 +148,7 @@ export default {
       margin-top: 10px
       font-size: 1.2em
       text-align: right
+      float: left
       list-style-position: inside
       &:hover
         background-color: $blue-5
