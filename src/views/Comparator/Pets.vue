@@ -6,7 +6,7 @@
         <playerOneAvatar />
         <div class="onePetInput-count">
           <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch">
-          <p>Collected: {{onePets.pets.numCollected}}</p>
+          <p>Pets Collected: {{onePets.pets.numCollected}}</p>
         </div>
         <ul>
           <div v-for="(pet, index) in oneFilteredPets" :key="index">
@@ -136,7 +136,7 @@
       <div class="playerTwo__pets" v-if="twoPets">
         <playerTwoAvatar />
         <div class="twoPetsInput-count">
-          <p>Collected: {{twoPets.pets.numCollected}}</p>
+          <p>Pets Collected: {{twoPets.pets.numCollected}}</p>
           <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch">
         </div>
         <ul>

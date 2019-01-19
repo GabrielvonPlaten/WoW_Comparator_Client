@@ -6,21 +6,35 @@
         <playerOneAvatar />
         <div class="oneMountInput-count">
           <input v-if="oneMounts || twoMounts" type="text" placeholder="Search..." v-model="mountSearch">
-          <p>Collected: {{oneMounts.mounts.numCollected}}</p>
+          <p>Mounts Collected: {{oneMounts.mounts.numCollected}}</p>
         </div>
         <ul>
-          <li v-for="(mount, index) in oneFilteredMounts" :key="index">
+          <div v-for="(mount, index) in oneFilteredMounts" :key="index">
             <div v-if="mount.qualityId === 4">
-              <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId" class="mounts--epic">{{mount.name}}<img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'"></a>
+              <li class="mounts--epic">
+                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
+                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <p>{{mount.name}}</p>
+                </a>
+              </li>
             </div>
             <div v-else-if="mount.qualityId === 3">
-              <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId" class="mounts--rare">{{mount.name}}<img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'"></a>
+             <li class="mounts--rare">
+                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
+                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <p>{{mount.name}}</p>
+                </a>
+              </li>
             </div>
             <div v-else-if="mount.qualityId === 1">
-              <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId" class="mounts--common">{{mount.name}}<img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'"></a>
-             
+             <li class="mounts--common">
+                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
+                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <p>{{mount.name}}</p>
+                </a>
+              </li>
             </div>
-          </li>
+          </div>
         </ul>
       </div>
     </div>
@@ -30,21 +44,36 @@
       <div class="playerTwo__mounts" v-if="twoMounts">
         <playerTwoAvatar />
         <div class="twoMountInput-count">
-          <p>Collected: {{twoMounts.mounts.numCollected}}</p>
+          <p>Mounts  Collected: {{twoMounts.mounts.numCollected}}</p>
           <input v-if="oneMounts || twoMounts" type="text" placeholder="Search..." v-model="mountSearch">
         </div>
         <ul>
-          <li v-for="(mount, index) in twoFilteredMounts" :key="index">
+          <div v-for="(mount, index) in twoFilteredMounts" :key="index">
             <div v-if="mount.qualityId === 4">
-              <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId" class="mounts--epic">{{mount.name}}<img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'"></a>
+              <li class="mounts--epic">
+                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
+                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <p>{{mount.name}}</p>
+                </a>
+              </li>
             </div>
             <div v-else-if="mount.qualityId === 3">
-              <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId" class="mounts--rare">{{mount.name}}<img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'"></a>
+             <li class="mounts--rare">
+                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
+                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <p>{{mount.name}}</p>
+                </a>
+              </li>
             </div>
             <div v-else-if="mount.qualityId === 1">
-              <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId" class="mounts--common">{{mount.name}}<img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'"></a>
+             <li class="mounts--common">
+                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
+                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <p>{{mount.name}}</p>
+                </a>
+              </li>
             </div>
-          </li>
+          </div>
         </ul>
       </div>
     </div>
@@ -102,17 +131,13 @@ export default {
 
 <style lang="sass" scoped>
 .mounts--epic
-  color: $epic
-  font-size: 1.1em
-  font-weight: 500
+  border: 2px solid $epic
 
 .mounts--rare
-  color: $rare
-  font-weight: 500
+  border: 2px solid #0f6bff
 
 .mounts--common
-  color: $white-0
-  font-weight: 500
+  border: 2px solid $white-0
 
 // Player One Mounts
 .oneMountInput-count
@@ -129,7 +154,7 @@ export default {
     font-style: italic
     font-size: 1.1rem
     background: $blue-5
-    margin: 0.1rem 0 0.1rem 12.5rem
+    margin: 0.1rem 0 0.1rem 3.5%
     padding: 0.1rem 0.2rem
     position: relative
     top: 0.8rem
@@ -140,36 +165,33 @@ export default {
   height: 100%
 
   ul
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+
     li
       border-radius: 8px
       color: $white-0
       background-color: $blue-5
       padding: 10px
       margin-top: 10px
-      font-size: 1rem
+      font-size: 1.2em
       font-weight: 200
-      text-align: right
       float: right
       width: 75%
+      height: 6.5rem
+      text-align: center
       &:hover
         background-color: $blue-4
 
       a
+        margin-top: 1rem
         text-decoration: none
-        position: relative
-        top: 1rem
+        color: $white-1
+        font-size: 1rem
 
       img
-        float: right
-        margin-left: 1em
-
-    p
-      width: 10rem
-      color: #E0E0E0
-      float: right
-      margin: 0
-      text-align: right
-      color: $white-0
+        width: 2.5rem
+        height: 2.5rem
 
 // Player Two Mounts
 .twoMountInput-count
@@ -186,7 +208,7 @@ export default {
     font-style: italic
     font-size: 1.1rem
     background: $blue-5
-    margin: 0.1rem 12.5rem 0.1rem 0
+    margin: 0.1rem 3.5% 0.1rem 0
     padding: 0.1rem 0.2rem
     position: relative
     top: 0.8rem
@@ -197,6 +219,9 @@ export default {
   height: 100%
 
   ul
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+
     li
       border-radius: 8px
       color: $white-0
@@ -205,19 +230,21 @@ export default {
       margin-top: 10px
       font-size: 1.2em
       font-weight: 200
-      text-align: left
       float: left
       width: 75%
+      height: 6.5rem
+      text-align: center
       &:hover
         background-color: $blue-4
 
       a
+        margin-top: 1rem
         text-decoration: none
-        position: relative
-        top: 1rem
+        color: $white-1
+        font-size: 1rem
 
       img
-        float: left
-        margin-right: 1em
+        width: 2.5rem
+        height: 2.5rem
 
 </style>
