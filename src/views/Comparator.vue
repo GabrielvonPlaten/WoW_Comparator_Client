@@ -137,14 +137,14 @@ export default {
   grid-template-columns: 1fr 1fr
 
 .compViews__playerOne
+  width: 100%
   height: 100%
-  width: 90%
-  margin: 0 auto
+  margin: 1rem auto
 
 .compViews__playerTwo
+  width: 100%
   height: 100%
-  width: 90%
-  margin: 0 auto
+  margin: 1rem auto
 
 ul
   padding: 0

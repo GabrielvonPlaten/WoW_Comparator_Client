@@ -321,7 +321,13 @@ export default {
 <style lang="sass" scoped>
 
 .playerOne__gear
+  padding: 0 3.4rem
+  border-right: 1px solid $blue-4
+
   ul
+    padding: 0
+    margin: 0
+    
     li
       border-radius: 8px
       color: $orange-5
@@ -358,7 +364,13 @@ export default {
       text-align: right
 
 .playerTwo__gear
+  padding: 0 3.4rem
+  border-left: 1px solid $blue-4
+
   ul
+    padding: 0
+    margin: 0
+
     li
       border-radius: 8px
       color: $orange-5

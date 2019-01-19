@@ -113,7 +113,7 @@ export default {
 .mounts--common
   color: $white-0
   font-weight: 500
-  
+
 // Player One Mounts
 .oneMountInput-count
   height: 1.6rem
@@ -135,10 +135,11 @@ export default {
     top: 0.8rem
 
 .playerOne__mounts
-  ul
-    // display: grid
-    // grid-template-columns: repeat(4, 1fr)
+  padding: 0 3.4rem
+  border-right: 1px solid $blue-4
+  height: 100%
 
+  ul
     li
       border-radius: 8px
       color: $white-0
@@ -191,8 +192,11 @@ export default {
     top: 0.8rem
 
 .playerTwo__mounts
-  ul
+  padding: 0 3.4rem
+  border-left: 1px solid $blue-4
+  height: 100%
 
+  ul
     li
       border-radius: 8px
       color: $white-0
@@ -216,11 +220,4 @@ export default {
         float: left
         margin-right: 1em
 
-    p
-      width: 10rem
-      color: #E0E0E0
-      float: left
-      margin: 0
-      text-align: left
-      color: $white-0
 </style>

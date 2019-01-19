@@ -2,7 +2,7 @@
   <div>
     <div class="compViews__playerOne">
       <Loader v-if="oneStats === false"/>
-      <div v-if="oneStats">
+      <div v-if="oneStats" class="playerOne__stats">
         <playerOneAvatar />
         <span class="baseStat">Base Stat</span>
         <ul>
@@ -41,7 +41,7 @@
 
     <div class="compViews__playerTwo">
       <Loader v-if="twoStats === false"/>
-      <div v-if="twoStats">
+      <div v-if="twoStats" class="playerTwo__stats">
         <playerTwoAvatar />
         <span class="baseStat">Base Stat</span>
         <ul>
@@ -112,6 +112,10 @@ export default {
   font-size: 18px
   font-style: italic
 
+.playerOne__stats
+  padding: 0 3.4rem
+  border-right: 1px solid $blue-4
+
 .compViews__playerOne
   ul
     li
@@ -128,7 +132,12 @@ export default {
         float: right
         color: $cyan-4
 
+.playerTwo__stats
+  padding: 0 3.4rem
+  border-left: 1px solid $blue-4
+
 .compViews__playerTwo
+
   ul
     li
       color: $white-0
