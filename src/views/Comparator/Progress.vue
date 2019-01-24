@@ -228,7 +228,7 @@ export default {
 
 .progression__title
   text-align: center
-  letter-spacing: 3px
+  letter-spacing: 1px
 
 .killed
   color: $orange-5

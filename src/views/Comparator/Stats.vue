@@ -252,8 +252,8 @@ h2
 
 ul
   display: grid
-  grid-template-columns: repeat(4, 1fr) 
   grid-gap: 0.7rem
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr))
   padding-top: 1rem
   border:
     top: 1px solid $blue-4
