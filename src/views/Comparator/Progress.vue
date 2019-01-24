@@ -8,100 +8,31 @@
         <div class="playerOne__progress">
           <h1 class="progression__title">Uldir</h1>
           <ul class="playerOne__uldir">
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[0].id" > 
-                <img :src="Uldir[0].bossImage">
+            <li v-for="(boss, index) in oneProg.progression.raids[40].bosses" :key="index">
+              <a target="_blank" :href="'//www.wowhead.com/npc=' + boss.id">
+                <img :src="Uldir[index].bossImage">
               </a>
-              <h2>Taloc</h2>
+              <h2>{{boss.name}}</h2>
               <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: oneProg.progression.raids[40].bosses[0].lfrKills > 0}">{{oneProg.progression.raids[40].bosses[0].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: oneProg.progression.raids[40].bosses[0].normalKills > 0}">{{oneProg.progression.raids[40].bosses[0].normalKills}}</span></li>
-                <li>H: <span :class="{killed: oneProg.progression.raids[40].bosses[0].heroicKills > 0}">{{oneProg.progression.raids[40].bosses[0].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: oneProg.progression.raids[40].bosses[0].mythicKills > 0}">{{oneProg.progression.raids[40].bosses[0].mythicKills}}</span></li>
+                <li>LFR: <span :class="{killed: boss.lfrKills > 0}">{{boss.lfrKills}}</span></li>
+                <li>N: <span :class="{killed: boss.normalKills > 0}">{{boss.normalKills}}</span></li>
+                <li>H: <span :class="{killed: boss.heroicKills > 0}">{{boss.heroicKills}}</span></li>
+                <li>M: <span :class="{killed: boss.mythicKills > 0}">{{boss.mythicKills}}</span></li>
               </ul>
             </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[1].id" > 
-                <img :src="Uldir[1].bossImage">
+          </ul>
+          <h1 class="progression__title">Battle of Dazar'alor</h1>
+          <ul class="playerOne__dazar">
+            <li v-for="(boss, index) in oneProg.progression.raids[41].bosses" :key="index">
+              <a target="_blank" :href="'//www.wowhead.com/npc=' + boss.id">
+                <img :src="DazarAlor[index].bossImage">
               </a>
-              <h2>MOTHER</h2>
+              <h2>{{boss.name}}</h2>
               <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: oneProg.progression.raids[40].bosses[1].lfrKills > 0}">{{oneProg.progression.raids[40].bosses[1].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: oneProg.progression.raids[40].bosses[1].normalKills > 0}">{{oneProg.progression.raids[40].bosses[1].normalKills}}</span></li>
-                <li>H: <span :class="{killed: oneProg.progression.raids[40].bosses[1].heroicKills > 0}">{{oneProg.progression.raids[40].bosses[1].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: oneProg.progression.raids[40].bosses[1].mythicKills > 0}">{{oneProg.progression.raids[40].bosses[1].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[2].id" > 
-                <img :src="Uldir[2].bossImage">
-              </a>
-              <h2>Fetid Devourer</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: oneProg.progression.raids[40].bosses[2].lfrKills > 0}">{{oneProg.progression.raids[40].bosses[2].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: oneProg.progression.raids[40].bosses[2].normalKills > 0}">{{oneProg.progression.raids[40].bosses[2].normalKills}}</span></li>
-                <li>H: <span :class="{killed: oneProg.progression.raids[40].bosses[2].heroicKills > 0}">{{oneProg.progression.raids[40].bosses[2].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: oneProg.progression.raids[40].bosses[2].mythicKills > 0}">{{oneProg.progression.raids[40].bosses[2].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[3].id" > 
-                <img :src="Uldir[3].bossImage">
-              </a>
-              <h2>Zek'Voz</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: oneProg.progression.raids[40].bosses[3].lfrKills > 0}">{{oneProg.progression.raids[40].bosses[3].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: oneProg.progression.raids[40].bosses[3].normalKills > 0}">{{oneProg.progression.raids[40].bosses[3].normalKills}}</span></li>
-                <li>H: <span :class="{killed: oneProg.progression.raids[40].bosses[3].heroicKills > 0}">{{oneProg.progression.raids[40].bosses[3].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: oneProg.progression.raids[40].bosses[3].mythicKills > 0}">{{oneProg.progression.raids[40].bosses[3].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[4].id" > 
-                <img :src="Uldir[4].bossImage">
-              </a>
-              <h2>Vectis</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: oneProg.progression.raids[40].bosses[4].lfrKills > 0}">{{oneProg.progression.raids[40].bosses[4].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: oneProg.progression.raids[40].bosses[4].normalKills > 0}">{{oneProg.progression.raids[40].bosses[4].normalKills}}</span></li>
-                <li>H: <span :class="{killed: oneProg.progression.raids[40].bosses[4].heroicKills > 0}">{{oneProg.progression.raids[40].bosses[4].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: oneProg.progression.raids[40].bosses[4].mythicKills > 0}">{{oneProg.progression.raids[40].bosses[4].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[5].id" > 
-                <img :src="Uldir[5].bossImage">
-              </a>
-              <h2>Zul, Reborn</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: oneProg.progression.raids[40].bosses[5].lfrKills > 0}">{{oneProg.progression.raids[40].bosses[5].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: oneProg.progression.raids[40].bosses[5].normalKills > 0}">{{oneProg.progression.raids[40].bosses[5].normalKills}}</span></li>
-                <li>H: <span :class="{killed: oneProg.progression.raids[40].bosses[5].heroicKills > 0}">{{oneProg.progression.raids[40].bosses[5].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: oneProg.progression.raids[40].bosses[5].mythicKills > 0}">{{oneProg.progression.raids[40].bosses[5].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[6].id" > 
-                <img :src="Uldir[6].bossImage">
-              </a>
-              <h2>Mythrax</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: oneProg.progression.raids[40].bosses[6].lfrKills > 0}">{{oneProg.progression.raids[40].bosses[6].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: oneProg.progression.raids[40].bosses[6].normalKills > 0}">{{oneProg.progression.raids[40].bosses[6].normalKills}}</span></li>
-                <li>H: <span :class="{killed: oneProg.progression.raids[40].bosses[6].heroicKills > 0}">{{oneProg.progression.raids[40].bosses[6].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: oneProg.progression.raids[40].bosses[6].mythicKills > 0}">{{oneProg.progression.raids[40].bosses[6].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[7].id" > 
-                <img :src="Uldir[7].bossImage">
-              </a>
-              <h2>G'huun</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: oneProg.progression.raids[40].bosses[7].lfrKills > 0}">{{oneProg.progression.raids[40].bosses[7].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: oneProg.progression.raids[40].bosses[7].normalKills > 0}">{{oneProg.progression.raids[40].bosses[7].normalKills}}</span></li>
-                <li>H: <span :class="{killed: oneProg.progression.raids[40].bosses[7].heroicKills > 0}">{{oneProg.progression.raids[40].bosses[7].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: oneProg.progression.raids[40].bosses[7].mythicKills > 0}">{{oneProg.progression.raids[40].bosses[7].mythicKills}}</span></li>
+                <li>LFR: <span :class="{killed: boss.lfrKills > 0}">{{boss.lfrKills}}</span></li>
+                <li>N: <span :class="{killed: boss.normalKills > 0}">{{boss.normalKills}}</span></li>
+                <li>H: <span :class="{killed: boss.heroicKills > 0}">{{boss.heroicKills}}</span></li>
+                <li>M: <span :class="{killed: boss.mythicKills > 0}">{{boss.mythicKills}}</span></li>
               </ul>
             </li>
           </ul>
@@ -117,100 +48,31 @@
         <div class="playerTwo__progress">
           <h1 class="progression__title">Uldir</h1>
           <ul class="playerTwo__uldir">
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[0].id" > 
-                <img :src="Uldir[0].bossImage">
+            <li v-for="(boss, index) in twoProg.progression.raids[40].bosses" :key="index">
+              <a target="_blank" :href="'//www.wowhead.com/npc=' + boss.id">
+                <img :src="Uldir[index].bossImage">
               </a>
-              <h2>Taloc</h2>
+              <h2>{{boss.name}}</h2>
               <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: twoProg.progression.raids[40].bosses[0].lfrKills > 0}">{{twoProg.progression.raids[40].bosses[0].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: twoProg.progression.raids[40].bosses[0].normalKills > 0}">{{twoProg.progression.raids[40].bosses[0].normalKills}}</span></li>
-                <li>H: <span :class="{killed: twoProg.progression.raids[40].bosses[0].heroicKills > 0}">{{twoProg.progression.raids[40].bosses[0].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: twoProg.progression.raids[40].bosses[0].mythicKills > 0}">{{twoProg.progression.raids[40].bosses[0].mythicKills}}</span></li>
+                <li>LFR: <span :class="{killed: boss.lfrKills > 0}">{{boss.lfrKills}}</span></li>
+                <li>N: <span :class="{killed: boss.normalKills > 0}">{{boss.normalKills}}</span></li>
+                <li>H: <span :class="{killed: boss.heroicKills > 0}">{{boss.heroicKills}}</span></li>
+                <li>M: <span :class="{killed: boss.mythicKills > 0}">{{boss.mythicKills}}</span></li>
               </ul>
             </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[1].id" > 
-                <img :src="Uldir[1].bossImage">
+          </ul>
+          <h1 class="progression__title">Battle of Dazar'alor</h1>
+          <ul class="playerTwo__dazar">
+            <li v-for="(boss, index) in twoProg.progression.raids[41].bosses" :key="index">
+              <a target="_blank" :href="'//www.wowhead.com/npc=' + boss.id">
+                <img :src="DazarAlor[index].bossImage">
               </a>
-              <h2>MOTHER</h2>
+              <h2>{{boss.name}}</h2>
               <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: twoProg.progression.raids[40].bosses[1].lfrKills > 0}">{{twoProg.progression.raids[40].bosses[1].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: twoProg.progression.raids[40].bosses[1].normalKills > 0}">{{twoProg.progression.raids[40].bosses[1].normalKills}}</span></li>
-                <li>H: <span :class="{killed: twoProg.progression.raids[40].bosses[1].heroicKills > 0}">{{twoProg.progression.raids[40].bosses[1].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: twoProg.progression.raids[40].bosses[1].mythicKills > 0}">{{twoProg.progression.raids[40].bosses[1].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[2].id" > 
-                <img :src="Uldir[2].bossImage">
-              </a>
-              <h2>Fetid Devourer</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: twoProg.progression.raids[40].bosses[2].lfrKills > 0}">{{twoProg.progression.raids[40].bosses[2].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: twoProg.progression.raids[40].bosses[2].normalKills > 0}">{{twoProg.progression.raids[40].bosses[2].normalKills}}</span></li>
-                <li>H: <span :class="{killed: twoProg.progression.raids[40].bosses[2].heroicKills > 0}">{{twoProg.progression.raids[40].bosses[2].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: twoProg.progression.raids[40].bosses[2].mythicKills > 0}">{{twoProg.progression.raids[40].bosses[2].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[3].id" > 
-                <img :src="Uldir[3].bossImage">
-              </a>
-              <h2>Zek'Voz</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: twoProg.progression.raids[40].bosses[3].lfrKills > 0}">{{twoProg.progression.raids[40].bosses[3].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: twoProg.progression.raids[40].bosses[3].normalKills > 0}">{{twoProg.progression.raids[40].bosses[3].normalKills}}</span></li>
-                <li>H: <span :class="{killed: twoProg.progression.raids[40].bosses[3].heroicKills > 0}">{{twoProg.progression.raids[40].bosses[3].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: twoProg.progression.raids[40].bosses[3].mythicKills > 0}">{{twoProg.progression.raids[40].bosses[3].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[4].id" > 
-                <img :src="Uldir[4].bossImage">
-              </a>
-              <h2>Vectis</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: twoProg.progression.raids[40].bosses[4].lfrKills > 0}">{{twoProg.progression.raids[40].bosses[4].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: twoProg.progression.raids[40].bosses[4].normalKills > 0}">{{twoProg.progression.raids[40].bosses[4].normalKills}}</span></li>
-                <li>H: <span :class="{killed: twoProg.progression.raids[40].bosses[4].heroicKills > 0}">{{twoProg.progression.raids[40].bosses[4].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: twoProg.progression.raids[40].bosses[4].mythicKills > 0}">{{twoProg.progression.raids[40].bosses[4].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[5].id" > 
-                <img :src="Uldir[5].bossImage">
-              </a>
-              <h2>Zul, Reborn</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: twoProg.progression.raids[40].bosses[5].lfrKills > 0}">{{twoProg.progression.raids[40].bosses[5].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: twoProg.progression.raids[40].bosses[5].normalKills > 0}">{{twoProg.progression.raids[40].bosses[5].normalKills}}</span></li>
-                <li>H: <span :class="{killed: twoProg.progression.raids[40].bosses[5].heroicKills > 0}">{{twoProg.progression.raids[40].bosses[5].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: twoProg.progression.raids[40].bosses[5].mythicKills > 0}">{{twoProg.progression.raids[40].bosses[5].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[6].id" > 
-                <img :src="Uldir[6].bossImage">
-              </a>
-              <h2>Mythrax</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: twoProg.progression.raids[40].bosses[6].lfrKills > 0}">{{twoProg.progression.raids[40].bosses[6].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: twoProg.progression.raids[40].bosses[6].normalKills > 0}">{{twoProg.progression.raids[40].bosses[6].normalKills}}</span></li>
-                <li>H: <span :class="{killed: twoProg.progression.raids[40].bosses[6].heroicKills > 0}">{{twoProg.progression.raids[40].bosses[6].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: twoProg.progression.raids[40].bosses[6].mythicKills > 0}">{{twoProg.progression.raids[40].bosses[6].mythicKills}}</span></li>
-              </ul>
-            </li>
-            <li>
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + oneProg.progression.raids[40].bosses[7].id" > 
-                <img :src="Uldir[7].bossImage">
-              </a>
-              <h2>G'huun</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: twoProg.progression.raids[40].bosses[7].lfrKills > 0}">{{twoProg.progression.raids[40].bosses[7].lfrKills}}</span></li>
-                <li>N: <span :class="{killed: twoProg.progression.raids[40].bosses[7].normalKills > 0}">{{twoProg.progression.raids[40].bosses[7].normalKills}}</span></li>
-                <li>H: <span :class="{killed: twoProg.progression.raids[40].bosses[7].heroicKills > 0}">{{twoProg.progression.raids[40].bosses[7].heroicKills}}</span></li>
-                <li>M: <span :class="{killed: twoProg.progression.raids[40].bosses[7].mythicKills > 0}">{{twoProg.progression.raids[40].bosses[7].mythicKills}}</span></li>
+                <li>LFR: <span :class="{killed: boss.lfrKills > 0}">{{boss.lfrKills}}</span></li>
+                <li>N: <span :class="{killed: boss.normalKills > 0}">{{boss.normalKills}}</span></li>
+                <li>H: <span :class="{killed: boss.heroicKills > 0}">{{boss.heroicKills}}</span></li>
+                <li>M: <span :class="{killed: boss.mythicKills > 0}">{{boss.mythicKills}}</span></li>
               </ul>
             </li>
           </ul>
@@ -300,56 +162,58 @@ export default {
 .playerOne__progress
   color: $white-0
 
+  .playerOne__dazar
+    padding-top: 3%
+    border-radius: 8px
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    +progress__background("../../assets/raids/bfa/bod/Dazar'alor.jpg")
+
   .playerOne__uldir
     padding-top: 3%
     border-radius: 8px
     display: grid
     grid-template-columns: repeat(3, 1fr)
-    background: url('../../assets/raids/bfa/uldir/Nazmir.jpg')
-    background-repeat: no-repeat
-    background-color: darken($blue-5, 8%)
-    background-blend-mode: soft-light
-    background-position: left
+    +progress__background('../../assets/raids/bfa/uldir/Nazmir.jpg')
 
-    h2
-      color: $orange-5
-      margin: 1% 0 5% 0
-      padding: 0
-      font-size: 1.1rem
+  h2
+    color: $orange-5
+    margin: 1% 0 5% 0
+    padding: 0
+    font-size: 1.1rem
 
-    li
-      text-align: center
-      margin-bottom: 10%
-      font-weight: 600
+  li
+    text-align: center
+    margin-bottom: 10%
+    font-weight: 600
 
 .playerTwo__progress
   color: $white-0
+
+  .playerTwo__dazar
+    padding-top: 3%
+    border-radius: 8px
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    +progress__background("../../assets/raids/bfa/bod/Dazar'alor.jpg")
 
   .playerTwo__uldir
     padding-top: 3%
     border-radius: 8px
     display: grid
     grid-template-columns: repeat(3, 1fr)
-    background: url('../../assets/raids/bfa/uldir/Nazmir.jpg')
-    background-repeat: no-repeat
-    background-color: darken($blue-5, 8%)
-    background-blend-mode: soft-light
-    background-position: left
+    +progress__background('../../assets/raids/bfa/uldir/Nazmir.jpg')
 
-    h2
-      color: $orange-5
-      margin: 1% 0 5% 0
-      padding: 0
-      font-size: 1.1rem
+  h2
+    color: $orange-5
+    margin: 1% 0 5% 0
+    padding: 0
+    font-size: 1.1rem
 
-    img
-      padding: 0
-      margin: 0
-
-    li
-      text-align: center
-      margin-bottom: 10%
-      font-weight: 600
+  li
+    text-align: center
+    margin-bottom: 10%
+    font-weight: 600
 
 .total-kills__list
   padding: 0
