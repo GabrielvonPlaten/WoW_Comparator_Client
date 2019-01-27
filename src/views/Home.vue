@@ -61,9 +61,10 @@ export default {
   padding: 1px 0
   height: 34rem
 
-  background: url('../assets/world_of_warcraft_wrath_of_the_lich_king-1920x1080.jpg')
+  // background: url('../assets/world_of_warcraft_wrath_of_the_lich_king-1920x1080.jpg')
+  background: url('https://www.blazingboost.com/skin/upload/front/services/5bf16cc8-d654-4e74-a267-456a0541888e.jpg')
   background-repeat: no-repeat
-  background-color: $blue-7
+  background-color: $blue-5
   background-blend-mode: soft-light
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
