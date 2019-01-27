@@ -3,12 +3,12 @@
 
   <div class="comparator-buttons">
     <ul>
-      <li><router-link to="/comparator/talents" class="router btn btn--purple">Talents</router-link></li>
-      <li><router-link to="/comparator/mounts" class="router btn btn--purple">Mounts</router-link></li>
-      <li><router-link to="/comparator/stats" class="router btn btn--purple">Stats</router-link></li>
-      <li><router-link to="/comparator/progress" class="router btn btn--purple">Progress</router-link></li>
-      <li><router-link to="/comparator/gear" class="router btn btn--purple">Gear</router-link></li>
-      <li><router-link to="/comparator/pets" class="router btn btn--purple">Pets</router-link></li>
+      <li><router-link to="/comparator/talents" class="router btn btn--comparator">Talents</router-link></li>
+      <li><router-link to="/comparator/mounts" class="router btn btn--comparator">Mounts</router-link></li>
+      <li><router-link to="/comparator/stats" class="router btn btn--comparator">Stats</router-link></li>
+      <li><router-link to="/comparator/progress" class="router btn btn--comparator">Progress</router-link></li>
+      <li><router-link to="/comparator/gear" class="router btn btn--comparator">Gear</router-link></li>
+      <li><router-link to="/comparator/pets" class="router btn btn--comparator">Pets</router-link></li>
     </ul>
   </div>
 </template>

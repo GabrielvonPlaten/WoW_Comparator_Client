@@ -5,7 +5,7 @@
         <h1>WoW Comparator</h1>
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with other’s peoples characters!</p>
         <br>
-        <router-link to="/comparator/stats" class="btn btn--purple">Start Comparing!</router-link>
+        <router-link to="/comparator/stats" class="btn btn--purple jumbotron-btn">Compare</router-link>
         <br>
       </div>
     </div>
@@ -68,6 +68,12 @@ export default {
   background-blend-mode: soft-light
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
+  .jumbotron-btn
+    padding: 0.8rem 1rem
+    transition: all 0.5s
+    border: 2px solid $orange-5
+    &:hover
+      background: $orange-4
 
   &__title
     margin: 9% auto 0 auto

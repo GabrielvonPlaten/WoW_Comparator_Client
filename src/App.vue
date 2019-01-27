@@ -66,10 +66,14 @@ html, body
   &--purple
     +btn--purple
 
+  &--comparator
+    +btn--comparator
+
 .router
   transition: 0.5s
   &.router-link-exact-active
     background: $active-route
+    border: 2px solid transparent
   
   &:hover
     background: $hover-route
