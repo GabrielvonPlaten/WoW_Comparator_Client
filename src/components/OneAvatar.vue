@@ -1,7 +1,8 @@
 <template>
   <div class="playerOne_avatar avatar" v-if="oneInfo">
-    <img 
-      :src="'http://render-' + oneRegion + '.worldofwarcraft.com/character/' + oneInfo.thumbnail" onerror="`https://us.battle.net/wow/static/images/2d/avatar/4-1.jpg`">
+    <img
+      class="avatarImg"
+      :src="'http://render-' + oneRegion + '.worldofwarcraft.com/character/' + insetAvatar" onerror="`https://us.battle.net/wow/static/images/2d/inset/4-1.jpg`">
       <br>
       <h2>{{oneInfo.name}}</h2>
       <h2>Level: {{oneInfo.level}} - <span :style="{color: classColor[oneInfo.class]}">{{classes[oneInfo.class]}}</span></h2>
@@ -23,9 +24,19 @@ export default {
       return this.$store.state.playerOneStats
     },
 
+    insetAvatar() {
+      return this.oneInfo.thumbnail.replace('avatar.jpg', 'inset.jpg')
+    },
+
     oneRegion() {
       return this.$store.state.playerOneRegion
     }
   }
 }
 </script>
+
+<style lang="sass" scoped>
+.avatarImg
+  border: 1px solid $violet-3
+</style>
+

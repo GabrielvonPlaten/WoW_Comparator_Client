@@ -389,8 +389,8 @@ export default {
           font-size: 1rem
 
         img
-          width: 2.5rem
-          height: 2.5rem
+          width: 2.7rem
+          height: 2.7rem
 
     p
       color: $white-0
@@ -449,8 +449,8 @@ export default {
           font-size: 1rem
 
         img
-          width: 2.5rem
-          height: 2.5rem
+          width: 2.7rem
+          height: 2.7rem
 
 .fa-star
   color: yellow

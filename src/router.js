@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Comparator from './views/Comparator.vue'
-import Blog from './views/Blog.vue';
+import Post from './views/Post.vue';
 
 import Talents from './views/Comparator/Talents.vue';
 import Mounts from './views/Comparator/Mounts.vue';
@@ -23,9 +23,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/blog',
-      name: 'blog',
-      component: Blog,
+      path: '/Post',
+      name: 'post',
+      component: Post,
     },
     {
       path: '/comparator',

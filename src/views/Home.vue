@@ -1,51 +1,84 @@
 <template>
   <div>
     <div class="jumbotron">
-      <div class="jumbotron__container">
+      <div class="jumbotron__title">
         <h1>WoW Comparator</h1>
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with other’s peoples characters!</p>
         <br>
-        <router-link to="/comparator/stats" class="btn btn--purple">Start Comparing!</router-link>
+        <router-link to="/comparator/stats" class="btn btn--purple jumbotron-btn">Compare</router-link>
         <br>
       </div>
     </div>
+    <div class="recent-posts">
+      <a href="https://google.com" class="blog-post" v-for="(post, index) in posts" :key="index">
+        <div class="blog_block">
+          <div class="image-container">
+            <img :src="post.thumbnail">
+          </div>
 
-    <div class="line line--vertical line--short line--margin"></div>
-
-    <div class="boxes-container">
-      <div class="home-box">
-        <h2>API</h2>
-        <p>Using Blizzard’s API, you can fetch the data available of any character by searching for its name and realm.</p>
-      </div>
-      <div class="home-box">
-        <h2>DATA</h2>
-        <p>Stats, Progress, Loot, Mounts. Receive the same data you have in-game here!</p>
-      </div>
-      <div class="home-box">
-        <h2>COMPARE</h2>
-        <p>Compare your character’s data with another character! See how far -- or behind -- you are with your friends!</p>
-      </div>
+          <div class="blog_card-block">
+            <h2 class="title-text">{{post.title}}</h2>
+            <p class="title-description">{{post.description}}</p>
+            <br>
+            <b class="title-date">{{post.date}}</b>
+          </div>
+        </div>
+      </a>
     </div>
-
-    <div class="line line--vertical line--short line--margin"></div>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      posts: [],
+    }
+  },
+
+  filters: {
+    dateFormat(value) {
+      if (!value) return '';
+
+      value = new Date(value);
+    }
+  },
+
+  created() {
+    axios.get('http://localhost:5000/comparator/posts/api')
+      .then(res => this.posts = res.data)
+      .catch(err => console.log(err));
+  },
+}
+</script>
+
 
 <style lang="sass" scoped>
 .jumbotron
   padding: 1px 0
-  height: 40rem
-
-  background: url('../assets/world_of_warcraft_wrath_of_the_lich_king-1920x1080.jpg')
+  height: 70vh
+  background: url('https://www.blazingboost.com/skin/upload/front/services/5bf16cc8-d654-4e74-a267-456a0541888e.jpg')
+  background-attachment: fixed
   background-repeat: no-repeat
-  background-color: $blue-7
+  background-color: $blue-4
   background-blend-mode: soft-light
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
-  &__container
+  .jumbotron-btn
+    padding: 0.8rem 1rem
+    transition: all 0.5s
+    border: 2px solid $orange-5
+    font-size: 16px
+    &:hover
+      background: $orange-4
+
+  &__title
     margin: 9% auto 0 auto
     text-align: center
     color: $white-0
+    text-shadow: $text-shadow
 
     h1
       font-weight: normal
@@ -57,27 +90,67 @@
       max-width: 25%
       margin: 0 auto 2rem auto
 
-.boxes-container
+.recent-posts
   display: grid
-  grid-template-columns: repeat(3, 1fr)
-  height: auto
-  margin: 4rem 0 4rem 0
-  color: $white-1
-  text-align: center
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr))
+  color: $white-0
+  margin-top: 1rem
+  width: 90%
+  margin: 1rem auto -20rem auto
+  position: relative
+  top: -110px
 
-  .home-box
-    padding: 1rem 2.5rem
-    width: 50%
-    height: 13rem
-    margin: 0rem auto 0 auto
-    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25)
-    background: $blue-5
+  .blog-post
+    width: 94%
+    margin: 1rem auto
+    background: $blue-7
+    color: $white-3
+    text-decoration: none
+    box-shadow: 0 4px 8px rgba(0,0,0, .6), 0 8px 32px rgba(0,0,0, .4)
+    border-radius: 0.2rem
+    border: 2px solid $post-border
+    z-index: 20
 
-  h2
-    font-size: 1.9rem
+.blog_block
+  margin-bottom: 0
+  margin-top: 0
+  height: 100%
 
-  p
-    font-size: 1.2rem
+  .blog_card-block
+    margin: -2px
+    padding: 1.16961rem
+    transition: 0.4s
+    &:hover
+      color: $white-1
+
+    .title-text
+      text-shadow: 0 2px 4px $text-shadow
+      font-weight: bold
+      font-size: 1.36798em
+
+    .title-description
+      font-size: 1.16961em
+      color: $description-color
+
+    .title-date
+      text-shadow: 0 2px 4px $text-shadow
+      font-weight: 200
+      font-size: 1rem
+      color: $orange-5
+
+  .image-container
+    margin: -2px
+    border:
+      top: 2px solid $post-border
+      right: 2px solid $post-border
+      left: 2px solid $post-border
+
+    img
+      width: 100%
+      height: auto
+      border-bottom: 2px solid $post-border
+
+
 </style>
 
 
