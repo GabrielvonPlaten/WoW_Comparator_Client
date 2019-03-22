@@ -190,8 +190,8 @@ export default {
         font-size: 1rem
 
       img
-        width: 2.5rem
-        height: 2.5rem
+        width: 2.7rem
+        height: 2.7rem
 
 // Player Two Mounts
 .twoMountInput-count
@@ -244,7 +244,7 @@ export default {
         font-size: 1rem
 
       img
-        width: 2.5rem
-        height: 2.5rem
+        width: 2.7rem
+        height: 2.7rem
 
 </style>

@@ -14,7 +14,7 @@
         <button class="btn btn--blue btn-playerOne">Search</button>
 
         <!-- Region Selection -->
-        <select v-model="playerOneRegionSelected">
+        <select v-model="playerOneRegionSelected" class="playerOne-region-selection">
           <option v-for="(option, index) in playerOneRegionOptions" :key="index" v-bind:value="option.value">
             {{ option.text }}
           </option>
@@ -39,8 +39,6 @@
           </option>
         </select>
         <button class="btn btn--blue btn-playerTwo">Search</button>
-        
-
       </form>
     </div>
 
@@ -127,16 +125,23 @@ export default {
 <style lang="sass">
 .comparator-form 
   display: flex
-  justify-content: space-between
+  justify-content: center
   background: $blue-5
-  width: 70%
-  margin: 1.4rem auto 1.5rem auto
-  color: $white-0
+  margin-bottom: 1.5rem
+  color: $orange-5
   padding: 0.7rem
-  border-radius: 0.6rem
+  background: url('https://wow.4fansites.de/bilder/weltkarte/zandalar/zuldazar/zuldazar.jpg')
+  background-repeat: no-repeat
+  background-position: bottom
+  background-color: $blue-6
+  background-attachment: fixed
+  background-blend-mode: soft-light
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25)
 
+
   .form-playerOne
+    margin-right: 10rem
+
     label
       margin-bottom: 10px
 
@@ -145,17 +150,19 @@ export default {
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25)
     color: $white-0
     border: none
-    border-radius: 5px 
     outline: none
     font-size: 16px
-    height: 1.9rem
+    height: 1.7rem
 
   .form
     label
       display: inline-block
       font-size: 1.3rem
+      text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.35)
 
   .form-playerTwo
+    margin-left: 10rem
+
     input, label
       float: right
 
@@ -165,13 +172,21 @@ export default {
     color: $white-1
     font-style: italic
     font-size: 1.1rem
-    border: none
-    background: $blue-7
+    border: 1px solid $blue-4
+    background: $blue-5
     margin: 0.2rem 0
     padding: 0.1rem 0.2rem
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25)
+
+  .btn-playerOne, .playerOne-region-selection
+    margin: 0 5px
+    background: $blue-5
 
   .btn-playerTwo, .playerTwo-region-selection
     float: left
+    margin: 0 5px
+    background: $blue-5
+
 
 .search-error
   font-size: 1.1rem
@@ -186,12 +201,12 @@ export default {
 .compViews__playerOne
   width: 100%
   height: 100%
-  margin: 1rem auto
+  margin: 1rem auto 0 auto
 
 .compViews__playerTwo
   width: 100%
   height: 100%
-  margin: 1rem auto
+  margin: 1rem auto 0 auto
 
 ul
   padding: 0

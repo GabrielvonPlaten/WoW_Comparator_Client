@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar />
     <router-view/>
-    <Footer />  
+    <!-- <Footer />   -->
   </div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
   components: {
     Footer,
     Navbar,
-  }
+  },
+
 }
 </script>
 
@@ -28,7 +29,7 @@ html, body
     background-color: $blue-7
 
 #app
-  background: url('./assets/background_dot.svg')
+  // background: url('./assets/background_dot.svg')
   background-repeat: repeat
 
 ::-webkit-scrollbar
@@ -70,7 +71,7 @@ html, body
     +btn--comparator
 
 .router
-  transition: 0.5s
+  transition: 0.4s
   &.router-link-exact-active
     background: $active-route
     border: 2px solid transparent

@@ -3,24 +3,71 @@
 
   <div class="comparator-buttons">
     <ul>
-      <li><router-link to="/comparator/talents" class="router btn btn--comparator">Talents</router-link></li>
-      <li><router-link to="/comparator/mounts" class="router btn btn--comparator">Mounts</router-link></li>
-      <li><router-link to="/comparator/stats" class="router btn btn--comparator">Stats</router-link></li>
-      <li><router-link to="/comparator/progress" class="router btn btn--comparator">Progress</router-link></li>
-      <li><router-link to="/comparator/gear" class="router btn btn--comparator">Gear</router-link></li>
-      <li><router-link to="/comparator/pets" class="router btn btn--comparator">Pets</router-link></li>
+      <li v-for="(button, index) in buttons" :key="index">
+        <router-link :to="'/comparator/' + button.rName" :class="btnClass">{{button.name}}</router-link>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['showView'],
 
   data() {
     return {
+      btnClass: "router btn btn--comparator",
+      buttons: [
+        {
+          id: 0,
+          name: "Talents",
+          rName: "talents",
+          active: false,
+        },
+        {
+          id: 1,
+          name: "Mounts",
+          rName: "mounts",
+          active: false,
+        },
+        {
+          id: 2,
+          name: "Stats",
+          rName: "stats",
+          active: true,
+        },
+        {
+          id: 3,
+          name: "Progress",
+          rName: "progress",
+          active: false,
+        },
+        {
+          id: 4,
+          name: "Gear",
+          rName: "gear",
+          active: false,
+        },
+        {
+          id: 5,
+          name: "Pets",
+          rName: "pets",
+          active: false,
+        }
+      ]
     }
   },
+
+  methods: {
+    activeRoute(x) {
+      this.buttons.forEach(button => {
+        if (button.id === x) {
+          button.active = true;
+        } else {
+          button.active = false;
+        }
+      })
+    }
+  }
 
 }
 </script>
@@ -43,4 +90,5 @@ export default {
 
       a
         padding: 0.3rem 1.2rem
+        font-size: 16px
 </style>

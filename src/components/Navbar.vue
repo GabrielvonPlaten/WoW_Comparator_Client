@@ -2,15 +2,15 @@
   <div id="nav">
       <ul>
         <li><router-link to="/" class="router btn btn--purple">Home</router-link></li>
-        <li><router-link to="/comparator/stats" class="router btn btn--purple"><font-awesome-icon icon="cogs" /> &nbsp;Compare</router-link></li>
+        <li><router-link to="/comparator/stats" class="router btn btn--purple">Compare</router-link></li>
       </ul>
     </div>
 </template>
 
 <style lang="sass" scoped>
 #nav
-  background: $blue-5
   height: 3.6rem
+  background-color: $blue-7 
 
 ul
   padding: 0
