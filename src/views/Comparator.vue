@@ -180,12 +180,15 @@ export default {
 
   .btn-playerOne, .playerOne-region-selection
     margin: 0 5px
-    background: $blue-5
+    background: $blue-4
 
   .btn-playerTwo, .playerTwo-region-selection
     float: left
-    margin: 0 5px
-    background: $blue-5
+    margin: 
+      top: 4px
+      right: 5px
+      left: 5px 
+    background: $blue-4
 
 
 .search-error

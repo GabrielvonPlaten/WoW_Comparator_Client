@@ -17,41 +17,12 @@ export default {
     return {
       btnClass: "router btn btn--comparator",
       buttons: [
-        {
-          id: 0,
-          name: "Talents",
-          rName: "talents",
-          active: false,
-        },
-        {
-          id: 1,
-          name: "Mounts",
-          rName: "mounts",
-          active: false,
-        },
-        {
-          id: 2,
-          name: "Stats",
-          rName: "stats",
-          active: true,
-        },
-        {
-          id: 3,
-          name: "Progress",
-          rName: "progress",
-          active: false,
-        },
-        {
-          id: 4,
-          name: "Gear",
-          rName: "gear",
-          active: false,
-        },
-        {
-          id: 5,
-          name: "Pets",
-          rName: "pets",
-          active: false,
+        { id: 0, name: "Talents", rName: "talents", active: false, },
+        { id: 1, name: "Mounts", rName: "mounts", active: false, },
+        { id: 2, name: "Stats", rName: "stats", active: true, },
+        { id: 3, name: "Progress", rName: "progress", active: false, },
+        { id: 4, name: "Gear", rName: "gear", active: false,},
+        { id: 5, name: "Pets", rName: "pets", active: false,
         }
       ]
     }
