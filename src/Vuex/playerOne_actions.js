@@ -62,3 +62,7 @@ export const playerOneData = ({ commit }, info) => {
     .catch(() => {
       commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"} )})
 }
+
+export const playerOneEmptyForm = ({ commit }, payload) => {
+  commit(types.PLAYERONE_ERROR, { errData: payload.errData, errColor: payload.errColor });
+};

@@ -63,10 +63,6 @@ export const playerTwoData = ({ commit }, info) => {
       commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
 };
 
-export const playerOneEmptyForm = ({ context }, payload) => {
-  commit(types.PLAYERONE_ERROR, { errData: payload.errData, errColor: payload.errColor });
-};
-
-export const playerTwoEmptyForm = ({ context }, payload) => {
+export const playerTwoEmptyForm = ({ commit }, payload) => {
   commit(types.PLAYERTWO_ERROR, { errData: payload.errData, errColor: payload.errColor });
 };

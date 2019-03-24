@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios';
 import * as playerOneActions from './playerOne_actions';
 import * as playerTwoActions from './playerTwo_actions';
+import { playerOneMutations } from './playerOne_mutations';
+import { playerTwoMutations } from './playerTwo_mutations';
 
-const actions = Object.assign({}, playerOneActions, playerTwoActions)
+const actions = Object.assign({}, playerOneActions, playerTwoActions);
+const mutations = Object.assign({}, playerOneMutations, playerTwoMutations);
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -41,78 +43,6 @@ export default new Vuex.Store({
     },
   },
 
-  mutations: {
-    PLAYERONE_STATS(state, data) {
-      state.playerOneStats = data;
-    },
-    
-    PLAYERONE_MOUNTS(state, data) {
-      state.playerOneMounts = data;
-    },
-    
-    PLAYERONE_PETS(state, data) {
-      state.playerOnePets = data;
-    },
-    
-    PLAYERONE_GEAR(state, data) {
-      state.playerOneGear = data;
-    },
-
-    PLAYERONE_PROG(state, data) {
-      state.playerOneProg = data;
-    },
-
-    PLAYERONE_TALENTS(state, data) {
-      state.playerOneTalents = data;
-    },
-
-    PLAYERONE_REGION(state, data) {
-      state.playerOneRegion = data;
-    },
-
-    PLAYERONE_ERROR(state, err) {
-      state.playerOneError.message = err.errData;
-      state.playerOneError.color = err.errColor;
-    },
-
-    // PLAYER TWO
-    PLAYERTWO_STATS(state, data) {
-      state.playerTwoStats = data;
-    },
-    
-    PLAYERTWO_MOUNTS(state, data) {
-      state.playerTwoMounts = data;
-    },
-    
-    PLAYERTWO_PETS(state, data) {
-      state.playerTwoPets = data;
-    },
-    
-    PLAYERTWO_GEAR(state, data) {
-      state.playerTwoGear = data;
-    },
-
-    PLAYERTWO_PROG(state, data) {
-      state.playerTwoProg = data;
-    },
-
-    PLAYERTWO_TALENTS(state, data) {
-      state.playerTwoTalents = data;
-    },
-
-    PLAYERTWO_REGION(state, data) {
-      state.playerTwoRegion = data;
-    },
-
-    PLAYERTWO_ERROR(state, err) {
-      state.playerTwoError.message = err.errData;
-      state.playerTwoError.color = err.errColor;
-    },
-  },
-
+  mutations,
   actions,
-  
-  getters: {
-    
-  }
 })
