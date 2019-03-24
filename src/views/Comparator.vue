@@ -201,16 +201,6 @@ export default {
   display: grid
   grid-template-columns: 1fr 1fr
 
-.compViews__playerOne
-  width: 100%
-  height: 100%
-  margin: 1rem auto 0 auto
-
-.compViews__playerTwo
-  width: 100%
-  height: 100%
-  margin: 1rem auto 0 auto
-
 ul
   padding: 0
   margin: 0
