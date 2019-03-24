@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as types from './mutation-types';
+import * as types from '../mutation-types';
 
 export const playerOneData = ({ commit }, info) => {
   commit(types.PLAYERONE_ERROR, "", "");

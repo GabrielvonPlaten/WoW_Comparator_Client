@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as playerOneActions from './playerOne_actions';
-import * as playerTwoActions from './playerTwo_actions';
-import { playerOneMutations } from './playerOne_mutations';
-import { playerTwoMutations } from './playerTwo_mutations';
+import * as playerOneActions from './Actions/playerOne_actions';
+import * as playerTwoActions from './Actions/playerTwo_actions';
+import { playerOneMutations } from './Mutations/playerOne_mutations';
+import { playerTwoMutations } from './Mutations/playerTwo_mutations';
 
 const actions = Object.assign({}, playerOneActions, playerTwoActions);
 const mutations = Object.assign({}, playerOneMutations, playerTwoMutations);
