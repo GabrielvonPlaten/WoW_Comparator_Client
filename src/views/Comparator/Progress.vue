@@ -5,7 +5,9 @@
       <div class="playerOne__progression" v-if="oneProg">
         <playerOneAvatar />
       
-        <button class="btn btn--grid" @click="activeGrid">Grid</button>
+        <button
+          class="btn btn--grid" 
+          :class="{'btn btn--grid grid__active--button': grid}" @click="activeGrid">Grid</button>
         <div :class="{'playerOne__raids grid__active': grid, 'playerOne__raids': !grid}">
           <div class="raid_block">
             <h2 class="raid-name">Uldir - 120</h2>
@@ -69,7 +71,9 @@
       <div class="playerTwo__progression" v-if="twoProg">
         <playerTwoAvatar />
         
-        <button class="btn btn--grid" @click="activeGrid">Grid</button>
+        <button
+          class="btn btn--grid" 
+          :class="{'btn btn--grid grid__active--button': grid}" @click="activeGrid">Grid</button>
         <div :class="{'playerTwo__raids grid__active': grid}">
           <div class="raid_block">
             <h2 class="raid-name">Uldir - 120</h2>
@@ -130,6 +134,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store'
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
@@ -191,11 +196,11 @@ export default {
 
   computed: {
     oneProg() {
-      return this.$store.state.playerOneProg
+      return store.state.playerOneProg
     },
 
     twoProg() {
-      return this.$store.state.playerTwoProg
+      return store.state.playerTwoProg
     }
   },
 
@@ -229,21 +234,15 @@ export default {
 .playerOne__raids, .playerTwo__raids
   margin: 0 auto
 
+
 span
   font-size: 1.3rem
-
-.grid__active
-  display: grid
-  grid-template-columns: repeat(2, 1fr)
-
-  span
-    font-size: 1rem
 
 .raid_block
   margin: 1rem 1rem
 
 .raid-name
-  color: $orange-5
+  color: $orange-4
   font-weight: 200
   margin: 0 0 0.4rem 0
   font-size: 1.5rem
@@ -288,6 +287,17 @@ span
 .highKill
   color: #ff6124
 
+// Grid Classes
+.grid__active
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  
+  span
+    font-size: 1rem
+
+.grid__active--button
+  transition: 0.4s
+  background: $orange-5
 
 // Media Queries
 @media only screen and (max-width: 1440px) 

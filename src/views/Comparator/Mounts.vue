@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store'
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
@@ -94,11 +95,11 @@ export default {
 
   computed: {
     oneMounts() {
-      return this.$store.state.playerOneMounts
+      return store.state.playerOneMounts
     },
 
     twoMounts() {
-      return this.$store.state.playerTwoMounts
+      return store.state.playerTwoMounts
     },
 
     oneFilteredMounts() {

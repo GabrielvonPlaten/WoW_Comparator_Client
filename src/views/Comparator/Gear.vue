@@ -1,4 +1,10 @@
 <template>
+  <!-- IMPORTANT -->
+  <!-- 
+    Each and every item needs to have at least four bonusList in their href for the 
+    Wowhead's tooltip library to correctly show their stats and Item Level. 
+  -->
+
   <div>
     <div class="compViews__playerOne">
       <Loader  class="one_spinnerGear" v-if="oneItems === false"/>
@@ -294,6 +300,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store'
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
@@ -301,11 +308,11 @@ import Loader from '@/components/Loader.vue';
 export default {
   computed: {
     oneItems() {
-      return this.$store.state.playerOneGear
+      return store.state.playerOneGear
     },
 
     twoItems() {
-      return this.$store.state.playerTwoGear
+      return store.state.playerTwoGear
     }
   },
 
@@ -331,7 +338,7 @@ export default {
     
     li
       border-radius: 8px
-      color: $orange-5
+      color: $orange-4
       background-color: $blue-5
       padding: 15px 10px 0px 10px
       width: 100%
@@ -362,7 +369,7 @@ export default {
 
     p
       font-size: 1.2em
-      color: $orange-5
+      color: $orange-4
       text-align: right
 
 .playerTwo__gear
@@ -376,7 +383,7 @@ export default {
 
     li
       border-radius: 8px
-      color: $orange-5
+      color: $orange-4
       background-color: $blue-5
       padding: 15px 10px 0px 10px
       width: 100%
@@ -412,7 +419,7 @@ export default {
 
     p
       font-size: 1.2em
-      color: $orange-5
+      color: $orange-4
       text-align: left
 
 .no-items

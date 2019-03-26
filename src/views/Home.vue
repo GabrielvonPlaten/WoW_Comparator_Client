@@ -69,10 +69,10 @@ export default {
   .jumbotron-btn
     padding: 0.8rem 1rem
     transition: all 0.5s
-    border: 2px solid $orange-5
+    border: 2px solid $orange-4
     font-size: 16px
     &:hover
-      background: $orange-4
+      background: $orange-5
 
   &__title
     margin: 9% auto 0 auto
@@ -136,7 +136,7 @@ export default {
       text-shadow: 0 2px 4px $text-shadow
       font-weight: 200
       font-size: 1rem
-      color: $orange-5
+      color: $orange-4
 
   .image-container
     margin: -2px
