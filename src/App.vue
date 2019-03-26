@@ -28,25 +28,6 @@ html, body
     height: 100%
     background-color: $blue-7
 
-#app
-  // background: url('./assets/background_dot.svg')
-  background-repeat: repeat
-
-::-webkit-scrollbar
-    width: 0.8rem
-
-/* Track */
-::-webkit-scrollbar-track
-    background: $blue-4 
- 
-/* Handle */
-::-webkit-scrollbar-thumb
-    background: $violet-7
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover
-    background: $violet-4
-
 // Lines
 .line
   +line
