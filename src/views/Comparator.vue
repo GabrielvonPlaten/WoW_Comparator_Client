@@ -11,14 +11,15 @@
         <br>
         <input v-model="playerOneRealm" type="text" placeholder="Realm"><br>
         <input v-model="playerOneName" type="text" placeholder="Character">
-        <button class="btn btn--blue btn-playerOne">Search</button>
-
-        <!-- Region Selection -->
-        <select v-model="playerOneRegionSelected" class="playerOne-region-selection">
-          <option v-for="(option, index) in playerOneRegionOptions" :key="index" v-bind:value="option.value">
-            {{ option.text }}
-          </option>
-        </select>
+        <div class="playerOne__buttons">
+          <button class="btn btn--blue btn-playerOne">Search</button>
+          <!-- Region Selection -->
+          <select v-model="playerOneRegionSelected" class="playerOne-region-selection">
+            <option v-for="(option, index) in playerOneRegionOptions" :key="index" v-bind:value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+        </div>
       </form>
 
       <form @submit.prevent="getPlayerTwoData()" class="form form-playerTwo">
@@ -32,13 +33,15 @@
         <br>
         <input v-model="playerTwoRealm" type="text" placeholder="Realm"><br>
         <input v-model="playerTwoName" type="text" placeholder="Character">
-        <!-- Region Selection -->
-        <select v-model="playerTwoRegionSelected" class="playerTwo-region-selection">
-          <option v-for="(option, index) in playerTwoRegionOptions" :key="index" v-bind:value="option.value">
-            {{ option.text }}
-          </option>
-        </select>
-        <button class="btn btn--blue btn-playerTwo">Search</button>
+        <div class="playerTwo__buttons">
+          <!-- Region Selection -->
+          <select v-model="playerTwoRegionSelected" class="playerTwo-region-selection">
+            <option v-for="(option, index) in playerTwoRegionOptions" :key="index" v-bind:value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+          <button class="btn btn--blue btn-playerTwo">Search</button>
+        </div>
       </form>
     </div>
 
@@ -145,6 +148,11 @@ export default {
     label
       margin-bottom: 10px
 
+    .playerOne__buttons
+      float: right
+      display: flex
+      justify-content: space-between
+
   select
     background: $blue-4
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25)
@@ -163,6 +171,11 @@ export default {
   .form-playerTwo
     margin-left: 10rem
 
+    .playerTwo__buttons
+      float: left
+      display: flex
+      justify-content: space-between
+
     input, label
       float: right
 
@@ -179,7 +192,10 @@ export default {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25)
 
   .btn-playerOne, .playerOne-region-selection
-    margin: 0 5px
+    margin:
+      top: 4px
+      left: 5px
+      right: 5px
     background: $blue-4
 
   .btn-playerTwo, .playerTwo-region-selection
@@ -226,6 +242,5 @@ ul
   h2
     color: $white-0
     font-weight: 300
-
     
 </style>

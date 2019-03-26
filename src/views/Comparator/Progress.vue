@@ -5,77 +5,124 @@
       <div class="playerOne__progression" v-if="oneProg">
         <playerOneAvatar />
       
-        <div class="playerOne__progress">
-          <h1 class="progression__title">Uldir</h1>
-          <ul class="playerOne__uldir">
-            <li v-for="(boss, index) in oneProg.progression.raids[40].bosses" :key="index">
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + boss.id">
-                <img :src="Uldir[index].bossImage">
-              </a>
-              <h2>{{boss.name}}</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: boss.lfrKills > 0}">{{boss.lfrKills}}</span></li>
-                <li>N: <span :class="{killed: boss.normalKills > 0}">{{boss.normalKills}}</span></li>
-                <li>H: <span :class="{killed: boss.heroicKills > 0}">{{boss.heroicKills}}</span></li>
-                <li>M: <span :class="{killed: boss.mythicKills > 0}">{{boss.mythicKills}}</span></li>
-              </ul>
-            </li>
-          </ul>
-          <h1 class="progression__title">Battle of Dazar'alor</h1>
-          <ul class="playerOne__dazar">
-            <li v-for="(boss, index) in oneProg.progression.raids[41].bosses" :key="index">
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + boss.id">
-                <img :src="DazarAlor[index].bossImage">
-              </a>
-              <h2>{{boss.name}}</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: boss.lfrKills > 0}">{{boss.lfrKills}}</span></li>
-                <li>N: <span :class="{killed: boss.normalKills > 0}">{{boss.normalKills}}</span></li>
-                <li>H: <span :class="{killed: boss.heroicKills > 0}">{{boss.heroicKills}}</span></li>
-                <li>M: <span :class="{killed: boss.mythicKills > 0}">{{boss.mythicKills}}</span></li>
-              </ul>
-            </li>
-          </ul>
+        <button class="btn btn--grid" @click="activeGrid">Grid</button>
+        <div :class="{'playerOne__raids grid__active': grid, 'playerOne__raids': !grid}">
+          <div class="raid_block">
+            <h2 class="raid-name">Uldir - 120</h2>
+            <div class="raid_card">
+              <div class="image-container"><img :src="Uldir[8].Background"></div>
+              <table class="table">
+                <tr class="card_overhead_text">
+                  <th>Bosses</th>
+                  <th>LFR</th>
+                  <th>Normal</th>
+                  <th>Heroic</th>
+                  <th>Mythic</th>
+                </tr>
+                <tr v-for="(boss, index) in oneProg.progression.raids[40].bosses" :key="index">
+                  <td> 
+                    <a :href="'//wowhead.com/npc=' + boss.id">
+                      <img :src="Uldir[index].bossImage">
+                    </a>
+                  </td>
+                  <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5}">{{boss.lfrKills}}x</span></td>
+                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5}">{{boss.normalKills}}x</span></td>
+                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5}">{{boss.heroicKills}}x</span></td>
+                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5}">{{boss.mythicKills}}x</span></td>
+                </tr>
+              </table>
+            </div>
+            </div>
+            <div class="raid_block">
+              <h2 class="raid-name">Battle of Dazar'alor - 120</h2>
+              <div class="raid_card">
+                <div class="image-container"><img :src="DazarAlor[9].Background"></div>
+                <table class="table">
+                  <tr class="card_overhead_text">
+                    <th>Bosses</th>
+                    <th>LFR</th>
+                    <th>Normal</th>
+                    <th>Heroic</th>
+                    <th>Mythic</th>
+                  </tr>
+                  <tr v-for="(boss, index) in oneProg.progression.raids[41].bosses" :key="index">
+                    <td> 
+                      <a :href="'//wowhead.com/npc=' + boss.id">
+                        <img :src="DazarAlor[index].bossImage">
+                      </a>
+                    </td>
+                    <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5}">{{boss.lfrKills}}x</span></td>
+                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5}">{{boss.normalKills}}x</span></td>
+                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5}">{{boss.heroicKills}}x</span></td>
+                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5}">{{boss.mythicKills}}x</span></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
         </div>
       </div>
     </div>
 
+    <!-- Player Two -->
     <div class="compViews__playerTwo">
       <Loader v-if="twoProg === false"/>
       <div class="playerTwo__progression" v-if="twoProg">
         <playerTwoAvatar />
-
-        <div class="playerTwo__progress">
-          <h1 class="progression__title">Uldir</h1>
-          <ul class="playerTwo__uldir">
-            <li v-for="(boss, index) in twoProg.progression.raids[40].bosses" :key="index">
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + boss.id">
-                <img :src="Uldir[index].bossImage">
-              </a>
-              <h2>{{boss.name}}</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: boss.lfrKills > 0}">{{boss.lfrKills}}</span></li>
-                <li>N: <span :class="{killed: boss.normalKills > 0}">{{boss.normalKills}}</span></li>
-                <li>H: <span :class="{killed: boss.heroicKills > 0}">{{boss.heroicKills}}</span></li>
-                <li>M: <span :class="{killed: boss.mythicKills > 0}">{{boss.mythicKills}}</span></li>
-              </ul>
-            </li>
-          </ul>
-          <h1 class="progression__title">Battle of Dazar'alor</h1>
-          <ul class="playerTwo__dazar">
-            <li v-for="(boss, index) in twoProg.progression.raids[41].bosses" :key="index">
-              <a target="_blank" :href="'//www.wowhead.com/npc=' + boss.id">
-                <img :src="DazarAlor[index].bossImage">
-              </a>
-              <h2>{{boss.name}}</h2>
-              <ul class="total-kills__list">
-                <li>LFR: <span :class="{killed: boss.lfrKills > 0}">{{boss.lfrKills}}</span></li>
-                <li>N: <span :class="{killed: boss.normalKills > 0}">{{boss.normalKills}}</span></li>
-                <li>H: <span :class="{killed: boss.heroicKills > 0}">{{boss.heroicKills}}</span></li>
-                <li>M: <span :class="{killed: boss.mythicKills > 0}">{{boss.mythicKills}}</span></li>
-              </ul>
-            </li>
-          </ul>
+        
+        <button class="btn btn--grid" @click="activeGrid">Grid</button>
+        <div :class="{'playerTwo__raids grid__active': grid}">
+          <div class="raid_block">
+            <h2 class="raid-name">Uldir - 120</h2>
+            <div class="raid_card">
+              <div class="image-container"><img :src="Uldir[8].Background"></div>
+              <table class="table">
+                <tr class="card_overhead_text">
+                  <th>Bosses</th>
+                  <th>LFR</th>
+                  <th>Normal</th>
+                  <th>Heroic</th>
+                  <th>Mythic</th>
+                </tr>
+                <tr v-for="(boss, index) in twoProg.progression.raids[40].bosses" :key="index">
+                  <td> 
+                    <a :href="'//wowhead.com/npc=' + boss.id">
+                      <img :src="Uldir[index].bossImage">
+                    </a>
+                  </td>
+                  <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5}">{{boss.lfrKills}}x</span></td>
+                  <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5}">{{boss.normalKills}}x</span></td>
+                  <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5}">{{boss.heroicKills}}x</span></td>
+                  <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5}">{{boss.mythicKills}}x</span></td>
+                </tr>
+              </table>
+            </div>
+            </div>
+            <div class="raid_block">
+              <h2 class="raid-name">Uldir - 120</h2>
+              <div class="raid_card">
+                <div class="image-container"><img :src="DazarAlor[9].Background"></div>
+                <table class="table">
+                  <tr class="card_overhead_text">
+                    <th>Bosses</th>
+                    <th>LFR</th>
+                    <th>Normal</th>
+                    <th>Heroic</th>
+                    <th>Mythic</th>
+                  </tr>
+                  <tr v-for="(boss, index) in twoProg.progression.raids[41].bosses" :key="index">
+                    <td> 
+                      <a :href="'//wowhead.com/npc=' + boss.id">
+                        <img :src="DazarAlor[index].bossImage">
+                      </a>
+                    </td>
+                    <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5}">{{boss.lfrKills}}x</span></td>
+                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5}">{{boss.normalKills}}x</span></td>
+                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5}">{{boss.heroicKills}}x</span></td>
+                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5}">{{boss.mythicKills}}x</span></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -136,7 +183,9 @@ export default {
         { Boss: "Blockade", bossImage: Blockade},
         { Boss: "Jaina", bossImage: Jaina},
         { Background: Dazar}
-      ]
+      ],
+
+      grid: false,
     }
   },
 
@@ -150,6 +199,12 @@ export default {
     }
   },
 
+  methods: {
+    activeGrid() {
+      this.grid = !this.grid;
+    }
+  },
+
   components: {
     playerOneAvatar,
     playerTwoAvatar,
@@ -159,77 +214,85 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.playerOne__progress
+.playerOne__progression
   color: $white-0
-  padding: 0 3.4rem
+  padding: 0 1.4rem
   border-right: 1px solid $blue-4
+  height: 100%
 
-  .playerOne__dazar
-    padding-top: 3%
-    border-radius: 8px
-    display: grid
-    grid-template-columns: repeat(3, 1fr)
-    +progress__background("../../assets/raids/bfa/bod/Dazar'alor.jpg")
-
-  .playerOne__uldir
-    padding-top: 3%
-    border-radius: 8px
-    display: grid
-    grid-template-columns: repeat(3, 1fr)
-    +progress__background('../../assets/raids/bfa/uldir/Nazmir.jpg')
-
-  h2
-    color: $orange-5
-    margin: 1% 0 5% 0
-    padding: 0
-    font-size: 1.1rem
-
-  li
-    text-align: center
-    margin-bottom: 10%
-    font-weight: 600
-
-.playerTwo__progress
+.playerTwo__progression
   color: $white-0
-  padding: 0 3.4rem
+  padding: 0 1.4rem
   border-left: 1px solid $blue-4
+  height: 100%
 
-  .playerTwo__dazar
-    padding-top: 3%
-    border-radius: 8px
-    display: grid
-    grid-template-columns: repeat(3, 1fr)
-    +progress__background("../../assets/raids/bfa/bod/Dazar'alor.jpg")
-
-  .playerTwo__uldir
-    padding-top: 3%
-    border-radius: 8px
-    display: grid
-    grid-template-columns: repeat(3, 1fr)
-    +progress__background('../../assets/raids/bfa/uldir/Nazmir.jpg')
-
-  h2
-    color: $orange-5
-    margin: 1% 0 5% 0
-    padding: 0
-    font-size: 1.1rem
-
-  li
-    text-align: center
-    margin-bottom: 10%
-    font-weight: 600
-
-.total-kills__list
-  padding: 0
+.playerOne__raids, .playerTwo__raids
   margin: 0 auto
-  width: 50%
-  display: grid
-  grid-template-columns: 1fr 1fr
 
-.progression__title
+span
+  font-size: 1.3rem
+
+.grid__active
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+
+  span
+    font-size: 1rem
+
+.raid_block
+  margin: 1rem 1rem
+
+.raid-name
+  color: $orange-5
+  font-weight: 200
+  margin: 0 0 0.4rem 0
+  font-size: 1.5rem
+
+.raid_card
+  border-radius: 0.2rem
+  border: 2px solid $post-border
+  width: 100%
+
+  .image-container
+    margin: -2px
+    border:
+      top: 2px solid $post-border
+      right: 2px solid $post-border
+      left: 2px solid $post-border
+
+    img
+      width: 100%
+      // height: 20rem
+      border-bottom: 2px solid $post-border
+
+.table
+  color: $white-5
   text-align: center
-  letter-spacing: 1px
+  border-collapse: collapse
+  margin: 0 auto
+  width: 100%
+
+  .card_overhead_text
+    border-bottom: 2px solid $blue-5
+
+  th
+    padding: 0.6rem 0.8rem
+    color: $white-3
+
+  img
+    height: 70%
 
 .killed
-  color: $orange-5
+  color: #2cf900
+
+.highKill
+  color: #ff6124
+
+
+// Media Queries
+@media only screen and (max-width: 1440px) 
+  .playerOne__raids, .playerTwo__raids
+    grid-template-columns: 1fr
+  
+
 </style>
