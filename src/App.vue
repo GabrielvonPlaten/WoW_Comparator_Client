@@ -70,6 +70,9 @@ html, body
   &--comparator
     +btn--comparator
 
+  &--grid
+    +btn--grid
+
 .router
   transition: 0.4s
   &.router-link-exact-active
