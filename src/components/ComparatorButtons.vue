@@ -4,7 +4,7 @@
   <div class="comparator-buttons">
     <ul>
       <li v-for="(button, index) in buttons" :key="index">
-        <router-link :to="'/comparator/' + button.rName" :class="btnClass">{{button.name}}</router-link>
+        <router-link :to="'/comparator/' + button.rName" :class="btnClass" v-text="button.name" />
       </li>
     </ul>
   </div>
@@ -19,7 +19,7 @@ export default {
       buttons: [
         { id: 0, name: "Talents", rName: "talents", active: false, },
         { id: 1, name: "Mounts", rName: "mounts", active: false, },
-        { id: 2, name: "Stats", rName: "stats", active: true, },
+        { id: 2, name: "Stats", rName: "stats", active: true, }, // Default comparator router view
         { id: 3, name: "Progress", rName: "progress", active: false, },
         { id: 4, name: "Gear", rName: "gear", active: false,},
         { id: 5, name: "Pets", rName: "pets", active: false,

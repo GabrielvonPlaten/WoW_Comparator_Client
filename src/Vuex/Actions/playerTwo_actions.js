@@ -2,6 +2,8 @@ import axios from 'axios';
 import * as types from '../mutation-types';
 
 export const playerTwoData = ({ commit }, info) => {
+  let { token, realm, name, region} = info;
+  
   commit(types.PLAYERTWO_ERROR, "", "");
 
   // Reset the states
@@ -14,53 +16,36 @@ export const playerTwoData = ({ commit }, info) => {
   commit(types.PLAYERTWO_REGION, false);
 
   // Player Two Stats
-  axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=stats&locale=en_EU&access_token=${info.token}`)
+  axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=stats&locale=en_EU&access_token=${token}`)
     .then(res => {
       commit(types.PLAYERTWO_STATS, res.data);
-      commit(types.PLAYERTWO_REGION, info.region);
-    })
-    .catch(() => {
-      commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
+      commit(types.PLAYERTWO_REGION, region); })
+    .catch(() => { commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
 
   // Player Two Pets
-  axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=pets&locale=en_EU&access_token=${info.token}`)
-    .then(res => {
-      commit(types.PLAYERTWO_PETS, res.data);
-    })
-    .catch(() => {
-      commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
+  axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=pets&locale=en_EU&access_token=${token}`)
+    .then(res => { commit(types.PLAYERTWO_PETS, res.data); })
+    .catch(() => { commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
 
 // Player Two Mounts
-  axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=mounts&locale=en_EU&access_token=${info.token}`)
-    .then(res => {
-      commit(types.PLAYERTWO_MOUNTS, res.data);
-    })
-    .catch(() => {
-      commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
+  axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=mounts&locale=en_EU&access_token=${token}`)
+    .then(res => { commit(types.PLAYERTWO_MOUNTS, res.data); })
+    .catch(() => { commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
 
   // Player Two Items
-  axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=items&locale=en_EU&access_token=${info.token}`)
-    .then(res => {
-      commit(types.PLAYERTWO_GEAR, res.data);
-    })
-    .catch(() => {
-      commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
+  axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=items&locale=en_EU&access_token=${token}`)
+    .then(res => { commit(types.PLAYERTWO_GEAR, res.data); })
+    .catch(() => { commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
 
   // Player Two Progression
-  axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=progression&locale=en_EU&access_token=${info.token}`)
-    .then(res => {
-      commit(types.PLAYERTWO_PROG, res.data)
-    })
-    .catch(() => {
-      commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
+  axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=progression&locale=en_EU&access_token=${token}`)
+    .then(res => { commit(types.PLAYERTWO_PROG, res.data) })
+    .catch(() => { commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
   
   // Player Two Talents
-  axios.get(`https://${info.region}.api.blizzard.com/wow/character/${info.realm}/${info.name}?fields=talents&locale=en_EU&access_token=${info.token}`)
-    .then(res => {
-      commit(types.PLAYERTWO_TALENTS, res.data);
-    })
-    .catch(() => {
-      commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
+  axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=talents&locale=en_EU&access_token=${token}`)
+    .then(res => { commit(types.PLAYERTWO_TALENTS, res.data); })
+    .catch(() => { commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"} )})
 };
 
 export const playerTwoEmptyForm = ({ commit }, payload) => {

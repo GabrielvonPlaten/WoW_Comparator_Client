@@ -107,6 +107,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store';
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
@@ -140,11 +141,11 @@ export default {
 
   computed: {
     oneStats() {
-      return this.$store.state.playerOneStats
+      return store.state.playerOneStats
     },
     
     twoStats() {
-      return this.$store.state.playerTwoStats
+      return store.state.playerTwoStats
     },
 
     oneMasteryFloor() {

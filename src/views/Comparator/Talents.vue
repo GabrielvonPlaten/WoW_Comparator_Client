@@ -216,7 +216,7 @@ export default {
   .active-spec
     border-style: solid
     border-width: 1px
-    border-color: $orange-5
+    border-color: $orange-4
     border-color: rgba(255, 222, 160, 0.8)
 
 
@@ -265,7 +265,7 @@ export default {
   .active-spec
     border-style: solid
     border-width: 1px
-    border-color: $orange-5
+    border-color: $orange-4
     border-color: rgba(255, 222, 160, 0.8)
 
 .spec-info

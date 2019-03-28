@@ -5,8 +5,8 @@ import * as playerTwoActions from './Actions/playerTwo_actions';
 import { playerOneMutations } from './Mutations/playerOne_mutations';
 import { playerTwoMutations } from './Mutations/playerTwo_mutations';
 
-const actions = Object.assign({}, playerOneActions, playerTwoActions);
-const mutations = Object.assign({}, playerOneMutations, playerTwoMutations);
+const actions = {...actions, ...playerOneActions, ...playerTwoActions};
+const mutations = {...mutations, ...playerOneMutations, ...playerTwoMutations};
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -45,4 +45,27 @@ export default new Vuex.Store({
 
   mutations,
   actions,
+  getters: {
+    getGearOne: state => {
+      let obj = {...obj, ...state.playerOneGear.items};
+
+      delete obj["averageItemLevel"]; // App crashes if this is allowed through
+      delete obj["averageItemLevelEquipped"]; // App crashes if this is allowed through
+      delete obj["shirt"]; // Not needed
+      delete obj["tabard"]; // Not needed
+
+      return obj
+    },
+
+    getGearTwo: state => {
+      let obj = {...obj, ...state.playerTwoGear.items}
+
+      delete obj["averageItemLevel"];
+      delete obj["averageItemLevelEquipped"];
+      delete obj["shirt"];
+      delete obj["tabard"];
+
+      return obj
+    }
+  }
 })

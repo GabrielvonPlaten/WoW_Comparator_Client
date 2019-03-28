@@ -265,6 +265,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store'
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
@@ -279,10 +280,10 @@ export default {
   computed: {
 
     onePets() {
-      return this.$store.state.playerOnePets
+      return store.state.playerOnePets
     },
     twoPets() {
-      return this.$store.state.playerTwoPets
+      return store.state.playerTwoPets
     },
 
     oneFilteredPets() {

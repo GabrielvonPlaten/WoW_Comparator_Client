@@ -5,9 +5,9 @@
         <label>Player One</label>
         <span
           class="search-error"
-          :style="{color: this.$store.state.playerOneError.color}" v-if="this.$store.state.playerOneError.message">
-          {{this.$store.state.playerOneError.message}}
-        </span>
+          :style="{color: playerOneError.color}" v-if="playerOneError.message"
+          v-text="playerOneError.message" 
+        />
         <br>
         <input v-model="playerOneRealm" type="text" placeholder="Realm"><br>
         <input v-model="playerOneName" type="text" placeholder="Character">
@@ -15,7 +15,9 @@
           <button class="btn btn--blue btn-playerOne">Search</button>
           <!-- Region Selection -->
           <select v-model="playerOneRegionSelected" class="playerOne-region-selection">
-            <option v-for="(option, index) in playerOneRegionOptions" :key="index" v-bind:value="option.value">
+            <option 
+              v-for="(option, index) in playerOneRegionOptions" :key="index" 
+              v-bind:value="option.value">
               {{ option.text }}
             </option>
           </select>
@@ -27,8 +29,8 @@
         <br>
         <span
           class="search-error"
-          :style="{color: this.$store.state.playerTwoError.color}" v-if="this.$store.state.playerTwoError.message">
-          {{this.$store.state.playerTwoError.message}}
+          :style="{color: playerTwoError.color}" v-if="playerTwoError.message">
+          {{playerTwoError.message}}
         </span>
         <br>
         <input v-model="playerTwoRealm" type="text" placeholder="Realm"><br>
@@ -52,6 +54,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store'
 import axios from 'axios';
 import ComparatorButtons from '@/components/ComparatorButtons.vue';
 
@@ -86,7 +89,13 @@ export default {
   },
 
   computed: {
+    playerOneError() {
+      return store.state.playerOneError
+    },
 
+    playerTwoError() {
+      return store.state.playerTwoError
+    }
   },
 
   created() {
@@ -96,24 +105,23 @@ export default {
   },
 
   methods: {
-    changeLoadingSpinnerBack() {
-      this.playerOneLoader = false;
-    },
-
     getPlayerOneData() {
-      if (this.playerOneRealm && this.playerOneName) {
-        this.$store.dispatch('playerOneData', {region: this.playerOneRegionSelected, token: this.access_token, realm: this.playerOneRealm, name: this.playerOneName})
-        this.playerOneLoader = true;
+      let { playerOneRealm, playerOneName, playerOneRegionSelected, access_token } = this;
+
+      if (playerOneRealm && playerOneName) {
+        store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName})
       } else {
-        this.$store.dispatch('playerOneEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
+        store.dispatch('playerOneEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
       }
     },
 
     getPlayerTwoData() {
-      if (this.playerTwoRealm && this.playerTwoName) {
-        this.$store.dispatch('playerTwoData', {region: this.playerTwoRegionSelected, token: this.access_token, realm: this.playerTwoRealm, name: this.playerTwoName})
+      let { playerTwoRealm, playerTwoName, playerTwoRegionSelected, access_token } = this;
+
+      if (playerTwoRealm && playerTwoName) {
+        store.dispatch('playerTwoData', {region: playerTwoRegionSelected, token: access_token, realm: playerTwoRealm, name: playerTwoName})
       } else {
-        this.$store.dispatch('playerTwoEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
+        store.dispatch('playerTwoEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
       }
     },
   },
@@ -131,7 +139,7 @@ export default {
   justify-content: center
   background: $blue-5
   margin-bottom: 1.5rem
-  color: $orange-5
+  color: $orange-4
   padding: 0.7rem
   background: url('https://wow.4fansites.de/bilder/weltkarte/zandalar/zuldazar/zuldazar.jpg')
   background-repeat: no-repeat
