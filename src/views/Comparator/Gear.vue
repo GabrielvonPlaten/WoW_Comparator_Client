@@ -1,4 +1,8 @@
 <template>
+  <!-- Elements checking if a value is undefined are for the lower level characters
+      The application will crash if a character returns undefined for a value
+   -->
+
   <div>
     <div class="compViews__playerOne">
       <Loader  class="one_spinnerGear" v-if="oneCheckGearState === false"/>
