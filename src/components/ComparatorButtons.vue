@@ -4,7 +4,7 @@
   <div class="comparator-buttons">
     <ul>
       <li v-for="(button, index) in buttons" :key="index">
-        <router-link :to="'/comparator/' + button.rName" :class="btnClass">{{button.name}}</router-link>
+        <router-link :to="'/comparator/' + button.rName" :class="btnClass" v-text="button.name" />
       </li>
     </ul>
   </div>

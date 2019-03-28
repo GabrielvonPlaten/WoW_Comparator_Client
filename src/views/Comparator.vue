@@ -5,9 +5,9 @@
         <label>Player One</label>
         <span
           class="search-error"
-          :style="{color: playerOneError.color}" v-if="playerOneError.message">
-          {{playerOneError.message}}
-        </span>
+          :style="{color: playerOneError.color}" v-if="playerOneError.message"
+          v-text="playerOneError.message" 
+        />
         <br>
         <input v-model="playerOneRealm" type="text" placeholder="Realm"><br>
         <input v-model="playerOneName" type="text" placeholder="Character">
@@ -15,7 +15,9 @@
           <button class="btn btn--blue btn-playerOne">Search</button>
           <!-- Region Selection -->
           <select v-model="playerOneRegionSelected" class="playerOne-region-selection">
-            <option v-for="(option, index) in playerOneRegionOptions" :key="index" v-bind:value="option.value">
+            <option 
+              v-for="(option, index) in playerOneRegionOptions" :key="index" 
+              v-bind:value="option.value">
               {{ option.text }}
             </option>
           </select>
