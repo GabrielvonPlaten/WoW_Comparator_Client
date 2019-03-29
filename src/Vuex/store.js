@@ -53,6 +53,7 @@ export default new Vuex.Store({
       delete obj["averageItemLevelEquipped"]; // App crashes if this is allowed through
       delete obj["shirt"]; // Not needed
       delete obj["tabard"]; // Not needed
+      // The first two items are also not needed for the app
 
       return obj
     },
