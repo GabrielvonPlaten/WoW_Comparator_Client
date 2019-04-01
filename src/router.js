@@ -7,7 +7,8 @@ import Post from './views/Post.vue';
 import Talents from './views/Comparator/Talents.vue';
 import Mounts from './views/Comparator/Mounts.vue';
 import Stats from './views/Comparator/Stats.vue';
-import Progress from './views/Comparator/Progress.vue';
+import Raids from './views/Comparator/Raids.vue';
+import Mythics from './views/Comparator/Mythics.vue';
 import Gear from './views/Comparator/Gear.vue';
 import Pets from './views/Comparator/Pets.vue';
 
@@ -48,9 +49,14 @@ export default new Router({
           component: Stats
         },
         {
-          path: '/comparator/progress',
-          name: 'progress',
-          component: Progress
+          path: '/comparator/raids',
+          name: 'raids',
+          component: Raids
+        },
+        {
+          path: '/comparator/mythics',
+          name: 'mythics',
+          component: Mythics
         },
         {
           path: '/comparator/gear',
