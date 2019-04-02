@@ -46,12 +46,13 @@ export const playerOneData = ({ commit }, info) => {
   // Player Talents
   axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=talents&locale=en_EU&access_token=${token}`)
     .then(res => commit(types.PLAYERONE_TALENTS, res.data))
-    .catch(() => commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"})) 
+    .catch(() => commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"}))
+
+  axios.get(`https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name}/mythic-keystone-profile/season/${season_number}?namespace=profile-${region}&locale=en_US&access_token=${token}`)
+    .then(res => commit(types.PLAYERONE_MYTHICS, res.data))
+    .catch(() => commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"}))
 }
 
-export const playerOneMythics = ({commit}, payload) => {
-  commit(types.PLAYERONE_MYTHICS, payload.runs)
-};
 
 export const playerOneEmptyForm = ({ commit }, payload) => {
   commit(types.PLAYERONE_ERROR, { errData: payload.errData, errColor: payload.errColor });
