@@ -25,6 +25,7 @@ export default new Vuex.Store({
     playerOneProg: null,
     playerOneTalents: null,
     playerOneRegion: null,
+    playerOneMythics: null,
     playerOneError: {
       message: "",
       color: "",
@@ -37,6 +38,7 @@ export default new Vuex.Store({
     playerTwoProg: null,
     playerTwoTalents: null,
     playerTwoRegion: null,
+    playerTwoMythics: null,
     playerTwoError: {
       message: "",
       color: "",

@@ -30,6 +30,10 @@ export const playerTwoMutations = {
     state.playerTwoRegion = data;
   },
 
+  [types.PLAYERTWO_MYTHICS] (state, data) {
+    state.playerTwoMythics = data
+  },
+
   [types.PLAYERTWO_ERROR] (state, err) {
     state.playerTwoError.message = err.errData;
     state.playerTwoError.color = err.errColor;

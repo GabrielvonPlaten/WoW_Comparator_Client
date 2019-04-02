@@ -57,6 +57,7 @@
 import store from '@/Vuex/store'
 import axios from 'axios';
 import ComparatorButtons from '@/components/ComparatorButtons.vue';
+import GCMKP from '@/apis/Mythics/getCharacterMythicKeystoneProfile'
 
 export default {
   data() {
@@ -66,7 +67,7 @@ export default {
       playerTwoRealm: "",
       playerTwoName: "",
       access_token: "",
-      playerOneLoader: false,
+      current_season: 2,
 
       playerOneRegionSelected: 'EU',
       playerOneRegionOptions: [
@@ -109,6 +110,9 @@ export default {
       let { playerOneRealm, playerOneName, playerOneRegionSelected, access_token } = this;
 
       if (playerOneRealm && playerOneName) {
+        GCMKP.getCharMythicKeyProfileSeason({ realm: playerOneRealm, name: playerOneName, region: playerOneRegionSelected, season_number: 2, token: access_token })
+          .then(res => store.dispatch('playerOneMythics', { runs: res.best_runs}))
+
         store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName})
       } else {
         store.dispatch('playerOneEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
@@ -116,9 +120,12 @@ export default {
     },
 
     getPlayerTwoData() {
-      let { playerTwoRealm, playerTwoName, playerTwoRegionSelected, access_token } = this;
+      let { playerTwoRealm, playerTwoName, playerTwoRegionSelected, current_season, access_token } = this;
 
       if (playerTwoRealm && playerTwoName) {
+        GCMKP.getCharMythicKeyProfileSeason({ realm: playerTwoRealm, name: playerTwoName, region: playerTwoRegionSelected, season_number: current_season, token: access_token })
+          .then(res => store.dispatch('playerTwoMythics', { runs: res.best_runs}))
+
         store.dispatch('playerTwoData', {region: playerTwoRegionSelected, token: access_token, realm: playerTwoRealm, name: playerTwoName})
       } else {
         store.dispatch('playerTwoEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
