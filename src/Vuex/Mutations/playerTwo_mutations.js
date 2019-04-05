@@ -34,6 +34,10 @@ export const playerTwoMutations = {
     state.playerTwoMythics = data.best_runs
   },
 
+  [types.PLAYERTWO_NO_MYTHICS] (state, data) {
+    state.playerTwoMythicError = data;
+  },
+
   [types.PLAYERTWO_ERROR] (state, err) {
     state.playerTwoError.message = err.errData;
     state.playerTwoError.color = err.errColor;

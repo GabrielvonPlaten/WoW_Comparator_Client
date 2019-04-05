@@ -34,6 +34,10 @@ export const playerOneMutations = {
     state.playerOneMythics = data.best_runs
   },
 
+  [types.PLAYERONE_NO_MYTHICS] (state, data) {
+    state.playerOneMythicError = data
+  },
+
   [types.PLAYERONE_ERROR] (state, err) {
     state.playerOneError.message = err.errData;
     state.playerOneError.color = err.errColor;

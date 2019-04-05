@@ -50,7 +50,7 @@ export const playerOneData = ({ commit }, info) => {
 
   axios.get(`https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name}/mythic-keystone-profile/season/${season_number}?namespace=profile-${region}&locale=en_US&access_token=${token}`)
     .then(res => commit(types.PLAYERONE_MYTHICS, res.data))
-    .catch(() => commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"}))
+    .catch(() => commit(types.PLAYERONE_NO_MYTHICS, {errData: "This player does not have a recorded M+ run this season.", errColor: "orange"}))
 }
 
 

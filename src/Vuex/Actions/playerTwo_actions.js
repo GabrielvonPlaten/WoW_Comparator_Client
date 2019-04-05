@@ -50,7 +50,7 @@ export const playerTwoData = ({ commit }, info) => {
   // Player Two Mythics
   axios.get(`https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name}/mythic-keystone-profile/season/${season_number}?namespace=profile-${region}&locale=en_US&access_token=${token}`)
     .then(res => commit(types.PLAYERTWO_MYTHICS, res.data))
-    .catch(() => commit(types.PLAYERTWO_ERROR, {errData: "Character not found", errColor: "red"}))
+    .catch(() => commit(types.PLAYERTWO_NO_MYTHICS, {errData: "This player does not have a recorded M+ run this season.", errColor: "orange"}))
 };
 
 export const playerTwoEmptyForm = ({ commit }, payload) => {
