@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import _ from 'lodash';
 import * as playerOneActions from './Actions/playerOne_actions';
 import * as playerTwoActions from './Actions/playerTwo_actions';
 import { playerOneMutations } from './Mutations/playerOne_mutations';
@@ -50,6 +51,7 @@ export default new Vuex.Store({
   mutations,
   actions,
   getters: {
+    // GET GEAR
     getGearOne: state => {
       let obj = {...obj, ...state.playerOneGear.items};
 
@@ -71,6 +73,13 @@ export default new Vuex.Store({
       delete obj["tabard"];
 
       return obj
+    },
+
+    // GET MYTHIC RUNS
+    getRunsOne: state => {
+      let obj = {...obj, ...state.playerOneMythics}
+
+      return obj;
     }
-  }
+  },
 })
