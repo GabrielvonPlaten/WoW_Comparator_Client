@@ -4,6 +4,7 @@ import * as types from '../mutation-types';
 export const playerTwoData = ({ commit }, info) => {
   let { token, realm, name, region, season_number} = info;
   
+  // Clear the Error Message
   commit(types.PLAYERTWO_ERROR, "", "");
 
   // Reset the states
@@ -13,6 +14,8 @@ export const playerTwoData = ({ commit }, info) => {
   commit(types.PLAYERTWO_GEAR, false);
   commit(types.PLAYERTWO_PROG, false);
   commit(types.PLAYERTWO_TALENTS, false);
+  commit(types.PLAYERTWO_MYTHICS, false);
+  commit(types.PLAYERTWO_NO_MYTHICS, false);
   commit(types.PLAYERTWO_REGION, false);
 
   // Player Two Stats
@@ -50,7 +53,7 @@ export const playerTwoData = ({ commit }, info) => {
   // Player Two Mythics
   axios.get(`https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name}/mythic-keystone-profile/season/${season_number}?namespace=profile-${region}&locale=en_US&access_token=${token}`)
     .then(res => commit(types.PLAYERTWO_MYTHICS, res.data))
-    .catch(() => commit(types.PLAYERTWO_NO_MYTHICS, {errMessage: "This player does not have a recorded M+ run this season.", errColor: "orange"}))
+    .catch(() => commit(types.PLAYERTWO_NO_MYTHICS, {errMessage: "This player does not have a recorded M+ run this season.", errColor: "#2e72ba"}))
 };
 
 export const playerTwoEmptyForm = ({ commit }, payload) => {

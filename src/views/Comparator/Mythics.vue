@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="compViews__playerOne">
-      <Loader v-if="oneProg === false"/>
-      <div class="playerOne__mythics" v-if="oneProg">
+      <Loader v-if="oneStats === false"/>
+      <div class="playerOne__mythics" v-if="oneStats">
         <playerOneAvatar />
+
         <ul>
           <li
             class="mythic-dungeon-item" 
@@ -17,7 +18,6 @@
                 <a
                   class="affix-name" 
                   :href="'https://wowhead.com/affix=' + affix.id">{{affix.name}}</a>
-                <!-- <img :src="getAffixImg(affix.key.href)" ref="img"> -->
               </span>
               <h3>{{run.dungeon.name}}
                 <span> +{{run.keystone_level}}</span>
@@ -34,12 +34,19 @@
             </div>
           </li>
         </ul>
+        <div v-if="oneNoMythicRuns">
+          <h2
+            class="errorMessage"
+            :style="'color:' + oneNoMythicRuns.errColor">
+            {{oneNoMythicRuns.errMessage}}
+          </h2>
+        </div>
       </div>
     </div>
 
     <div class="compViews__playerOne">
-      <Loader v-if="twoProg === false"/>
-      <div class="playerTwo__mythics" v-if="twoProg">
+      <Loader v-if="twoStats === false"/>
+      <div class="playerTwo__mythics" v-if="twoStats">
         <playerTwoAvatar />
 
         <ul>
@@ -58,7 +65,6 @@
                 <a
                   class="affix-name" 
                   :href="'https://wowhead.com/affix=' + affix.id">{{affix.name}}</a>
-                <!-- <img :src="getAffixImg(affix.key.href)" ref="img"> -->
               </span>
             </div>
             <br>
@@ -71,10 +77,14 @@
               </ul>
             </div>
           </li>
-              </ul>
-            </div>
-          </li>
         </ul>
+        <div v-if="twoNoMythicRuns">
+          <h2
+            class="errorMessage"
+            :style="'color:' + twoNoMythicRuns.errColor">
+            {{twoNoMythicRuns.errMessage}}
+          </h2>
+        </div>
       </div>
     </div>
   </div>
@@ -104,12 +114,22 @@ export default {
   },
 
   computed: {
-    oneProg() {
-      return store.state.playerOneProg
+    // For some reason this has to return the stats
+    // otherwise the rendering will bug out
+    oneStats() {
+      return store.state.playerOneStats
     },
 
-    twoProg() {
-      return store.state.playerTwoProg
+    twoStats() {
+      return store.state.playerTwoStats
+    },
+
+    oneNoMythicRuns() {
+      return store.state.playerOneMythicError
+    },
+
+    twoNoMythicRuns() {
+      return store.state.playerTwoMythicError
     },
 
     getRunsOne() {
@@ -265,5 +285,10 @@ export default {
   background: $blue-6
   border-radius: 0.4rem
   border: 1px solid $blue-4
+
+.errorMessage
+  text-align: center
+  font-weight: 300
+
 </style>
 

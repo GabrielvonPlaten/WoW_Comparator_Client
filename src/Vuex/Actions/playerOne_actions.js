@@ -14,13 +14,15 @@ export const playerOneData = ({ commit }, info) => {
   commit(types.PLAYERONE_GEAR, false);
   commit(types.PLAYERONE_PROG, false);
   commit(types.PLAYERONE_TALENTS, false);
+  commit(types.PLAYERONE_MYTHICS, false);
+  commit(types.PLAYERONE_NO_MYTHICS, false);
   commit(types.PLAYERONE_REGION, false);
 
   // Player Stats
   axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=stats&locale=en_EU&access_token=${token}`)
-  .then(res => {
-    commit(types.PLAYERONE_STATS, res.data);   
-    commit(types.PLAYERONE_REGION, region); })
+    .then(res => {
+      commit(types.PLAYERONE_STATS, res.data);   
+      commit(types.PLAYERONE_REGION, region); })
     .catch(() => { commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"})})
 
   // Player Pets
@@ -48,9 +50,10 @@ export const playerOneData = ({ commit }, info) => {
     .then(res => commit(types.PLAYERONE_TALENTS, res.data))
     .catch(() => commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"}))
 
+  // Player One Mythics
   axios.get(`https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name}/mythic-keystone-profile/season/${season_number}?namespace=profile-${region}&locale=en_US&access_token=${token}`)
     .then(res => commit(types.PLAYERONE_MYTHICS, res.data))
-    .catch(() => commit(types.PLAYERONE_NO_MYTHICS, {errData: "This player does not have a recorded M+ run this season.", errColor: "orange"}))
+    .catch(() => commit(types.PLAYERONE_NO_MYTHICS, {errMessage: "This player does not have a recorded M+ run this season.", errColor: "#2e72ba"}))
 }
 
 
