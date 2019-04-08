@@ -41,6 +41,40 @@
       <Loader v-if="twoProg === false"/>
       <div class="playerTwo__mythics" v-if="twoProg">
         <playerTwoAvatar />
+
+        <ul>
+          <li
+            class="mythic-dungeon-item" 
+            v-for="(run, index) in getRunsTwo" :key="index">
+            <div class="timestamps">
+              <p class="dungeon-timestamp">{{completedAt(run.completed_timestamp)}}</p>
+              <p>{{durationTime(run.duration)}}</p>
+            </div>
+            <div class="dungeon-item-title">
+              <h3>{{run.dungeon.name}}
+                <span> +{{run.keystone_level}}</span>
+              </h3>
+              <span v-for="(affix, j) in run.keystone_affixes" :key="j">
+                <a
+                  class="affix-name" 
+                  :href="'https://wowhead.com/affix=' + affix.id">{{affix.name}}</a>
+                <!-- <img :src="getAffixImg(affix.key.href)" ref="img"> -->
+              </span>
+            </div>
+            <br>
+            <div class="dungeon-members">
+              <ul class="members-list">
+                <li v-for="(m, index) in run.members" :key="index">
+                  <p class="member-name">{{m.character.name}}</p>
+                  <p>iLvL: <span class="member-itemlevel">{{m.equipped_item_level}}</span></p>
+                </li>
+              </ul>
+            </div>
+          </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -82,6 +116,11 @@ export default {
       // The API response is ordered by date in ascending order 
       // Sort by dungeon level in ascending order with lodash then sort by descending order
       let runs_obj = _.sortBy(store.getters.getRunsOne, 'keystone_level').reverse()
+      return runs_obj;
+    },
+
+    getRunsTwo() {
+      let runs_obj = _.sortBy(store.getters.getRunsTwo, 'keystone_level').reverse()
       return runs_obj;
     },
   },
@@ -148,6 +187,8 @@ export default {
       color: $orange-4
 
     .affix-name
+      position: relative
+      top: 2px
       color: $cyan-4
       margin: 0 0.3rem
       text-decoration: none
@@ -164,25 +205,59 @@ export default {
     .duration
       color: green
 
-  .members-list
-    display: grid
-    grid-template-columns: repeat(5, 1fr)
-    margin: 1rem 0 0 0
+.playerTwo__mythics
+  padding: 0 1.4rem
+  border-right: 1px solid $blue-4
+  height: 100%
 
-    li
-      border: 1px solid $blue-4
-      border-radius: .3rem
-      background: $blue-7
-      margin: 0 0.5rem
-      padding: 0.5rem
+  .dungeon-item-title
+    display: flex
+    justify-content: flex-start
+    width: 75%
+    font-weight: 200
 
-      .member-name
-        color: $white-2
-        margin: 0
+    h3
+      margin: 0 1rem 0 0
+      font-weight: 300
+      color: $orange-4
 
-      .member-itemlevel
-        color: $orange-4
-        margin: 0
+    .affix-name
+      position: relative
+      top: 2px
+      color: $cyan-4
+      margin: 0 0.3rem
+      text-decoration: none
+
+  .timestamps
+    float: right
+
+    p
+      margin: 0.2rem 0
+      font-weight: 400
+      letter-spacing: 1px
+
+    .duration
+      color: green
+
+.members-list
+  display: grid
+  grid-template-columns: repeat(5, 1fr)
+  margin: 1rem 0 0 0
+
+  li
+    border: 1px solid $blue-4
+    border-radius: .3rem
+    background: $blue-7
+    margin: 0 0.5rem
+    padding: 0.5rem
+
+    .member-name
+      color: $white-2
+      margin: 0
+
+    .member-itemlevel
+      color: $orange-4
+      margin: 0
 
 .mythic-dungeon-item
   margin: 1.3rem

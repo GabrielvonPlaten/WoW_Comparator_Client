@@ -80,6 +80,12 @@ export default new Vuex.Store({
       let obj = {...obj, ...state.playerOneMythics}
 
       return obj;
+    },
+
+    getRunsTwo: state => {
+      let obj = {...obj, ...state.playerTwoMythics}
+
+      return obj;
     }
   },
 })
