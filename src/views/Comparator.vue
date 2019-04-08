@@ -66,7 +66,7 @@ export default {
       playerTwoRealm: "",
       playerTwoName: "",
       access_token: "",
-      playerOneLoader: false,
+      current_season: 2,
 
       playerOneRegionSelected: 'EU',
       playerOneRegionOptions: [
@@ -106,22 +106,22 @@ export default {
 
   methods: {
     getPlayerOneData() {
-      let { playerOneRealm, playerOneName, playerOneRegionSelected, access_token } = this;
+      let { playerOneRealm, playerOneName, playerOneRegionSelected, current_season, access_token } = this;
 
       if (playerOneRealm && playerOneName) {
-        store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName})
+        store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName, season_number: current_season})
       } else {
-        store.dispatch('playerOneEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
+        store.dispatch('playerOneEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }
     },
 
     getPlayerTwoData() {
-      let { playerTwoRealm, playerTwoName, playerTwoRegionSelected, access_token } = this;
+      let { playerTwoRealm, playerTwoName, playerTwoRegionSelected, current_season, access_token } = this;
 
       if (playerTwoRealm && playerTwoName) {
-        store.dispatch('playerTwoData', {region: playerTwoRegionSelected, token: access_token, realm: playerTwoRealm, name: playerTwoName})
+        store.dispatch('playerTwoData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm: playerTwoRealm, name: playerTwoName})
       } else {
-        store.dispatch('playerTwoEmptyForm', {errData: "Please fill in both fields.", errColor: "orange"})
+        store.dispatch('playerTwoEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }
     },
   },

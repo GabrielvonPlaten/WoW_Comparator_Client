@@ -17,12 +17,13 @@ export default {
     return {
       btnClass: "router btn btn--comparator",
       buttons: [
-        { id: 0, name: "Talents", rName: "talents", active: false, },
-        { id: 1, name: "Mounts", rName: "mounts", active: false, },
-        { id: 2, name: "Stats", rName: "stats", active: true, }, // Default comparator router view
-        { id: 3, name: "Progress", rName: "progress", active: false, },
-        { id: 4, name: "Gear", rName: "gear", active: false,},
-        { id: 5, name: "Pets", rName: "pets", active: false,
+        { id: 0, name: "Gear", rName: "gear", active: false,},
+        { id: 1, name: "Raids", rName: "raids", active: false, },
+        { id: 2, name: "Mythics", rName: "mythics", active: false, },
+        { id: 3, name: "Stats", rName: "stats", active: true, }, // Default comparator router view
+        { id: 4, name: "Talents", rName: "talents", active: false, },
+        { id: 5, name: "Mounts", rName: "mounts", active: false, },
+        { id: 6, name: "Pets", rName: "pets", active: false,
         }
       ]
     }
