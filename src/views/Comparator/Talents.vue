@@ -4,8 +4,10 @@
       <Loader v-if="oneTalents === false"/>
       <div class="playerOne__talents" v-if="oneTalents">
         <playerOneAvatar />
-        <br>
-        <div class="active-spec oneList-container">
+
+        <div
+          v-if="oneTalents.talents[0].spec" 
+          class="active-spec oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[0].spec.name}}</h3>
           </div>
@@ -22,7 +24,9 @@
           </div>
         </div>
 
-        <div class="oneList-container">
+        <div
+          v-if="oneTalents.talents[1].spec" 
+          class="oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[1].spec.name}}</h3>
           </div>
@@ -37,7 +41,9 @@
           </ul>
         </div>
 
-        <div class="oneList-container">
+        <div
+          v-if="oneTalents.talents[2].spec"
+          class="oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[2].spec.name}}</h3>
           </div>
@@ -58,9 +64,10 @@
       <Loader v-if="twoTalents === false"/>
       <div class="playerTwo__talents" v-if="twoTalents">
         <playerTwoAvatar />
-        <br>
 
-        <div class="active-spec twoList-container">
+        <div
+          v-if="twoTalents.talents[0].spec" 
+          class="active-spec twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[0].spec.name}}</h3>
           </div>
@@ -77,7 +84,9 @@
           </div>
         </div>
 
-        <div class="twoList-container">
+        <div
+          v-if="twoTalents.talents[1].spec" 
+          class="twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[1].spec.name}}</h3>
           </div>
@@ -92,7 +101,9 @@
           </ul>
         </div>
 
-        <div class="twoList-container">
+        <div
+          v-if="twoTalents.talents[2].spec" 
+          class="twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[2].spec.name}}</h3>
           </div>
@@ -112,6 +123,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store';
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
@@ -127,13 +139,14 @@ export default {
 
   computed: {
     oneTalents() {
-      return this.$store.state.playerOneTalents
+      return store.state.playerOneTalents
     },
     
     twoTalents() {
-      return this.$store.state.playerTwoTalents
+      return store.state.playerTwoTalents
     },
 
+    // Sorting Player One Talents
     sortPlayerOneTalents__T0() {
       return _.sortBy(this.oneTalents.talents[0].talents, 'tier');
     },
