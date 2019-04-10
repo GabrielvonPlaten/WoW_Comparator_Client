@@ -12,6 +12,9 @@ import Mythics from './views/Comparator/Mythics.vue';
 import Gear from './views/Comparator/Gear.vue';
 import Pets from './views/Comparator/Pets.vue';
 
+// Admin
+import Dashboard from './views/Admin/Dashboard.vue';
+
 
 Vue.use(Router)
 
@@ -69,6 +72,11 @@ export default new Router({
           component: Pets
         },
       ]
+    },
+    {
+      path: '/admin/dashboard',
+      name: 'dashboard',
+      component: Dashboard
     }
   ]
 })
