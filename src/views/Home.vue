@@ -47,7 +47,8 @@ export default {
   },
 
   created() {
-    axios.get('http://localhost:5000/comparator/posts/api')
+    let url = '/api/posts';
+    axios.get(url)
       .then(res => this.posts = res.data)
       .catch(err => console.log(err));
   },
