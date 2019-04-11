@@ -13,14 +13,12 @@
       <a href="https://google.com" class="blog-post" v-for="(post, index) in posts" :key="index">
         <div class="blog_block">
           <div class="image-container">
-            <img :src="post.thumbnail">
+            <img :src="post.blocks.blocks[0].data.url">
           </div>
-
           <div class="blog_card-block">
             <h2 class="title-text">{{post.title}}</h2>
-            <p class="title-description">{{post.description}}</p>
-            <br>
-            <b class="title-date">{{post.date}}</b>
+            <p class="title-subtitle">{{post.subtitle}}</p>
+            <b class="title-date">{{post.blocks.time}}</b>
           </div>
         </div>
       </a>
@@ -49,7 +47,13 @@ export default {
   created() {
     let url = '/api/posts';
     axios.get(url)
-      .then(res => this.posts = res.data)
+      .then(res => {
+        this.posts = res.data
+        console.log(res.data)
+        res.data.forEach(post => {
+          console.log(post.blocks.blocks)
+        })
+      })
       .catch(err => console.log(err));
   },
 }
@@ -129,9 +133,9 @@ export default {
       font-weight: bold
       font-size: 1.36798em
 
-    .title-description
+    .title-subtitle
       font-size: 1.16961em
-      color: $description-color
+      color: $subtitle-color
 
     .title-date
       text-shadow: 0 2px 4px $text-shadow
