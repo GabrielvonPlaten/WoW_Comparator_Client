@@ -45,6 +45,12 @@ html, body
   &--blue
     +btn--blue
 
+  &--green
+    +btn--green
+
+  &--red
+    +btn--red
+
   &--purple
     +btn--purple
 

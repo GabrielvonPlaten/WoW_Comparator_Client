@@ -13,6 +13,7 @@ import Gear from './views/Comparator/Gear.vue';
 import Pets from './views/Comparator/Pets.vue';
 
 // Admin
+import AdminLogin from './views/Admin/Login.vue';
 import Dashboard from './views/Admin/Dashboard.vue';
 
 
@@ -77,6 +78,11 @@ export default new Router({
       path: '/admin/dashboard',
       name: 'dashboard',
       component: Dashboard
-    }
+    },
+    {
+      path: '/admin/login',
+      name: 'adminLogin',
+      component: AdminLogin
+    },
   ]
 })
