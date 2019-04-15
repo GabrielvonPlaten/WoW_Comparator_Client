@@ -5,7 +5,7 @@
         <div class="form-header">
           <h2>Admin Login</h2>
         </div>
-        <form class="form">
+        <form @submit.prevent="loginAdmin" class="form">
           <div class="form-separator">
             <label>Email</label><br>
             <input class="input-field" v-model="login.email"><br>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import adminService from '@/apis/adminService';
+
 export default {
   data() {
     return {
@@ -32,7 +34,18 @@ export default {
         password: ""
       }
     }
-  }
+  },
+
+  methods: {
+    loginAdmin() {
+      let { email, password } = this.login;
+      adminService.login(email, password)
+        .then(async res => {
+          await localStorage.setItem('token', res.token)
+          console.log(res)
+        })
+    }
+  },
 }
 </script>
 

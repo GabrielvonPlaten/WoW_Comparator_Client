@@ -14,13 +14,13 @@
 
 <script>
 import axios from 'axios';
-import EditorJS from '@editorjs/editorjs';
+import EditorJs from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import Embed from '@editorjs/embed';
 import SimpleImage from '@editorjs/simple-image';
 
-const editor = new EditorJS({
+const editor = new EditorJs({
   holderId: 'editorjs',
   tools: {
     header: {
