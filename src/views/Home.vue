@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       posts: [],
+      postError: null,
     }
   },
 
@@ -49,12 +50,8 @@ export default {
     axios.get(url)
       .then(res => {
         this.posts = res.data
-        console.log(res.data)
-        res.data.forEach(post => {
-          console.log(post.blocks.blocks)
-        })
       })
-      .catch(err => console.log(err));
+      .catch(err => this.postError = err);
   },
 }
 </script>
