@@ -43,9 +43,10 @@ export default {
       adminService.login(email, password)
         .then(async res => {
           await localStorage.setItem('token', res.token)
-          console.log(res)
+          store.dispatch('adminLogin', res)
           this.$router.go({ path: this.$router.path })
         })
+        .catch(err => console.log(err))
     }
   },
 }

@@ -56,6 +56,7 @@ export default new Vuex.Store({
 
   mutations,
   actions,
+  
   getters: {
     // GET GEAR
     getGearOne: state => {

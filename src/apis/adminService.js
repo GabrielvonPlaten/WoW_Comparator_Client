@@ -17,4 +17,13 @@ export default {
     .then(res => res.data)
     .catch(err => err)
   },
+
+  logout(token) {
+    let url = '/api/admin/logout'
+    return axios.post(url, {}, {
+      headers: { authorization: 'Bearer ' + token}
+    })
+    .then(res => res.data)
+    .catch(err => err)
+  }
 }

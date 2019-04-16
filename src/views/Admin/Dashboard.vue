@@ -9,16 +9,21 @@
       <div id="editorjs"></div> 
       <button>Submit</button>
     </form>
+    <button @click.prevent="logoutAdmin" class="btn btn--red logout-btn">Logout</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import adminService from '@/apis/adminService';
+import store from '@/Vuex/store'
+
 import EditorJs from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import Embed from '@editorjs/embed';
 import SimpleImage from '@editorjs/simple-image';
+
 
 const editor = new EditorJs({
   holderId: 'editorjs',
@@ -72,6 +77,15 @@ export default {
             .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
+    },
+
+    logoutAdmin() {
+      adminService.logout(localStorage.getItem('token'))
+        .then(async res => {
+          localStorage.removeItem('token')
+          store.dispatch('adminLogout');
+          this.$router.go({ path: this.$router.path })
+        })
     }
   },
 }

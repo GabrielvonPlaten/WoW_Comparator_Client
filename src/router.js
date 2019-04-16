@@ -100,7 +100,7 @@ router.beforeEach((to, from, next) => {
   // Check for required Auth guard
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // Check if user is NOT logged in
-    if (!store.state.adminData) {
+    if (store.state.adminData === false) {
       // Go to login page
       next({
         path: '/admin/login',
