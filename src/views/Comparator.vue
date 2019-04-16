@@ -134,7 +134,7 @@ export default {
 
 
 <style lang="sass">
-.comparator-form 
+.comparator-form
   display: flex
   justify-content: center
   background: $blue-5
