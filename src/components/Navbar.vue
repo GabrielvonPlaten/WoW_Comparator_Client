@@ -21,7 +21,7 @@ export default {
   },
 
   created() {
-    if (this.$store.state.adminData) {
+    if (store.state.adminData) {
       this.adminLoggedIn = true
     }
   },

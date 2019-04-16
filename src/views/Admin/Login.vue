@@ -33,7 +33,8 @@ export default {
       login: {
         email: "",
         password: ""
-      }
+      },
+      loginError: null,
     }
   },
 
@@ -46,7 +47,7 @@ export default {
           store.dispatch('adminLogin', res)
           this.$router.go({ path: this.$router.path })
         })
-        .catch(err => console.log(err))
+        .catch(err => this.loginError = err)
     }
   },
 }
