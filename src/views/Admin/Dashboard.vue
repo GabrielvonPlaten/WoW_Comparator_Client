@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Hello Admin</h2>
+    <h2>Hello {{adminData.name}}</h2>
     <form @submit.prevent="submitPost()">
       <input v-model="postContent.title">
       <label>Subtitle</label>
@@ -30,7 +30,9 @@ export default {
       postContent: {
         title: "",
         subtitle: "",
-      }
+      },
+
+      adminData: store.state.adminData
     }
   },
 
@@ -95,13 +97,13 @@ export default {
 <style lang="sass" scoped>
 
 form
-  with: 70%
+  width: 70%
+  padding: 1rem 3rem
   margin: 0 auto
 
 #editorjs
   color: $white-2
   border: 2px solid $white-1
-  width: 45%
   margin: 0 auto
 </style>
 
