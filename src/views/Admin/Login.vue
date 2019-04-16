@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store';
 import adminService from '@/apis/adminService';
 
 export default {
@@ -43,6 +44,7 @@ export default {
         .then(async res => {
           await localStorage.setItem('token', res.token)
           console.log(res)
+          this.$router.go({ path: this.$router.path })
         })
     }
   },

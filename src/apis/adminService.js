@@ -7,4 +7,14 @@ export default {
       .then(res => res.data)
       .catch(err => err)
   },
+
+  adminProfile(token) {
+    let url = '/api/admin/profile'
+    return axios.get(url, {
+      headers: { 
+        authorization: 'Bearer ' + token 
+      }})
+    .then(res => res.data)
+    .catch(err => err)
+  },
 }

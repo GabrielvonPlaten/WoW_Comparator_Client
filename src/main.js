@@ -11,8 +11,26 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+import adminService from '@/apis/adminService';
+
+let app;
+if (localStorage.getItem('token')) {
+  adminService.adminProfile(localStorage.getItem('token'))
+    .then(async res => {
+      await store.dispatch('adminLogin', {adminData: res})
+      console.log(res)
+      if (!app) {
+        new Vue({
+          router,
+          store,
+          render: h => h(App)
+        }).$mount('#app')
+      }
+    })
+} else {
+  new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app')
+}
