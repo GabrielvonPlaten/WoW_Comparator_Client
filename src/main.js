@@ -17,7 +17,7 @@ let app;
 if (localStorage.getItem('token')) {
   adminService.adminProfile(localStorage.getItem('token'))
     .then(async res => {
-      await store.dispatch('adminLogin', {adminData: res})
+      await store.dispatch('adminLogin', res)
       if (!app) {
         new Vue({
           router,
