@@ -84,11 +84,11 @@ export default {
 
 <style lang="sass" scoped>
 form
-  width: 40%
   padding: 1rem 3rem
   margin: 1.5rem auto
   background: $blue-6
-  border-radius: 0.4rem
+  border: 1px solid $blue-4
+  border-radius: 0.2rem
 
   .form-division
     margin: 1.2rem 0
