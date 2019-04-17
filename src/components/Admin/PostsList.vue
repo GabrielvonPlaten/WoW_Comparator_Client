@@ -45,8 +45,8 @@ export default {
 
 <style lang="sass" scoped>
 .postlists-container
-  margin: 1.5rem auto
-  background: $blue-6
+  margin: 1rem auto
+  background: $blue-8
   border: 1px solid $blue-4
   border-radius: 0.2rem
 
@@ -60,7 +60,6 @@ export default {
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr))
   color: $white-0
-  margin-top: 1rem
   width: 95%
   margin: 1rem auto 1rem auto
 

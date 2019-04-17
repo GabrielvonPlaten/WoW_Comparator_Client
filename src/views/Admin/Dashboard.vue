@@ -14,20 +14,20 @@
       <div>
         <PostsList v-if="views[0].active"/>
         <PostForm v-if="views[1].active" />
+        <Settings v-if="views[2].active" />
       </div>
     </div>
-    <button @click.prevent="logoutAdmin" class="btn btn--red logout-btn">Logout</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import adminService from '@/apis/adminService';
 import store from '@/Vuex/store'
 
 // Components
 import PostForm from '@/components/Admin/PostForm.vue'
 import PostsList from '@/components/Admin/PostsList.vue'
+import Settings from '@/components/Admin/Settings.vue'
 
 export default {
   data() {
@@ -37,21 +37,13 @@ export default {
       showPostView: false,
       views: [
         { id: 0, name: "All Posts", active: false },
-        { id: 1, name: "Create Post", active: true }
+        { id: 1, name: "Create Post", active: true }, // Active
+        { id: 2, name: "Settings", active: false},
       ]
     }
   },
 
   methods: {
-    logoutAdmin() {
-      adminService.logout(localStorage.getItem('token'))
-        .then(async res => {
-          localStorage.removeItem('token')
-          store.dispatch('adminLogout');
-          this.$router.go({ path: this.$router.path })
-        })
-    },
-
     switchView(x) {
       this.views.forEach(view => {
         if (view.id === x) {
@@ -66,6 +58,7 @@ export default {
   components: {
     PostForm,
     PostsList,
+    Settings,
   }
 }
 </script>

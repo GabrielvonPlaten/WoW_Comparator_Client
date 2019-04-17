@@ -73,7 +73,10 @@ export default {
       this.editor.save()
         .then(outputData => {
           axios.post('/api/create-post', {title, subtitle, outputData})
-            .then(res => console.log(res.data))
+            .then(res => {
+              window.alert('Your post has been added!')
+              location.reload()
+            })
             .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
@@ -84,9 +87,9 @@ export default {
 
 <style lang="sass" scoped>
 form
+  margin: 1rem auto
   padding: 1rem 3rem
-  margin: 1.5rem auto
-  background: $blue-6
+  background: $blue-8
   border: 1px solid $blue-4
   border-radius: 0.2rem
 
@@ -95,14 +98,13 @@ form
 
     label
       display: block
-      color: $cyan-4
+      color: $white-3
       font-size: 1.2rem
-      font-weight: 300
 
     input
-      width: 100%
+      width: 99%
       border: 1px solid $blue-4
-      background: $blue-7
+      background: $blue-6
       padding: 0.2rem 0.4rem
       font-size: 1.2rem
       color: $white-2
@@ -114,7 +116,7 @@ form
 #editorjs
   color: $white-2
   border: 1px solid $blue-4
-  background: $blue-7
+  background: $blue-6
   margin: 0 auto
   min-height: 70vh
 </style>
