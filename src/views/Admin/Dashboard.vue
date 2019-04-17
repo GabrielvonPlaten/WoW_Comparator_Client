@@ -36,8 +36,8 @@ export default {
       createPostView: true,
       showPostView: false,
       views: [
-        { id: 0, name: "All Posts", active: false },
-        { id: 1, name: "Create Post", active: true }, // Active
+        { id: 0, name: "All Posts", active: true }, // Active
+        { id: 1, name: "Create Post", active: false }, 
         { id: 2, name: "Settings", active: false},
       ]
     }

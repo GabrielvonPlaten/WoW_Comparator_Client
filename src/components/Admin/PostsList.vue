@@ -3,9 +3,11 @@
     <div class="postlists-container">
       <div class="postslist-title">
         <h2>All Posts</h2>
+        <p class="post-deleted">{{postDeleted}}</p>
+        <p class="post-error">{{postError}}</p>
       </div>
       <div class="recent-posts">
-        <a href="https://google.com" class="blog-post" v-for="(post, index) in posts" :key="index">
+        <div class="blog-post" v-for="(post, index) in posts" :key="index">
           <div class="blog_block">
             <div class="image-container">
               <img :src="post.blocks.blocks[0].data.url">
@@ -15,8 +17,27 @@
               <p class="title-subtitle">{{post.subtitle}}</p>
               <b class="title-date">{{post.blocks.time}}</b>
             </div>
+            <router-link :to="'/' + post._id" class="view-post-btn">View</router-link>
+            <button 
+              @click="confirmDeletion(index)"
+              v-if="confirmationBtns !== index" 
+              class="btn btn--red btn-delete"> 
+              Delete Post
+            </button>
+            <button 
+              class="btn btn--red btn-cancel"
+              v-if="confirmationBtns === index" 
+              @click="cancelDeletion">
+              No
+            </button>
+            <button
+              @click="deletePost(post._id)"
+              v-if="confirmationBtns === index" 
+              class="btn btn--red btn-delete">
+              Yes
+            </button>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </div>
@@ -29,6 +50,9 @@ export default {
   data() {
     return {
       posts: [],
+      confirmationBtns: null,
+      postDeleted: null,
+      postError: null,
     }
   },
 
@@ -40,6 +64,42 @@ export default {
       })
       .catch(err => console.log(err))
   },
+
+  methods: {
+    confirmDeletion(x) {
+      this.confirmationBtns = x
+    }, 
+
+    cancelDeletion() {
+      this.confirmationBtns = null
+    },
+
+    deletePost(_id) {
+      let token = localStorage.getItem('token');
+      let url = '/api/post/' + _id
+      axios.delete(url, {
+        headers: { authorization: 'Bearer ' + token } 
+      })
+        .then(res => {
+          this.postError = ""
+          this.postDeleted = "Post Deleted";
+          this.refreshPosts();
+        })
+        .catch(err => {
+          this.postDeleted = "";
+          this.postError = "Post could not be deleted"
+        })
+    },
+
+    refreshPosts() {
+      let url = '/api/posts'
+      axios.get(url)
+        .then(res => {
+          this.posts = res.data
+        })
+        .catch(err => console.log(err))
+    }
+  }
 }
 </script>
 
@@ -54,6 +114,10 @@ export default {
     h2
       color: $white-1
       font-size: 2rem
+      text-align: center
+      margin: 2rem 0 0 0
+
+    p
       text-align: center
 
 .recent-posts
@@ -73,6 +137,25 @@ export default {
     border-radius: 0.2rem
     border: 2px solid $post-border
     z-index: 20
+
+    .view-post-btn
+      color: $cyan-4
+      padding: 1rem
+      font-weight: 500
+
+    .btn-delete
+      background: none
+      border: 1px solid $red-4
+      padding: 0.2rem 0.4rem
+      font-weight: 500
+      margin: 1rem
+
+    .btn-cancel
+      background: $green-3
+      border: 1px solid $green-3
+      padding: 0.2rem 0.4rem
+      font-weight: 500
+      margin: 1rem
 
 .blog_block
   margin-bottom: 0
@@ -114,6 +197,13 @@ export default {
       border-bottom: 2px solid $post-border
 
 
+.post-deleted
+  color: $green-3
+  margin: 0.3rem
+
+.post-error
+  color: $red-3
+  margin: 0.3rem
 </style>
 
 
