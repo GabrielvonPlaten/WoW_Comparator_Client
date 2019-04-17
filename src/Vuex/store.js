@@ -58,30 +58,6 @@ export default new Vuex.Store({
   actions,
   
   getters: {
-    // GET GEAR
-    getGearOne: state => {
-      let obj = {...obj, ...state.playerOneGear.items};
-
-      delete obj["averageItemLevel"]; // App crashes if this is allowed through
-      delete obj["averageItemLevelEquipped"]; // App crashes if this is allowed through
-      delete obj["shirt"]; // Not needed
-      delete obj["tabard"]; // Not needed
-      // The first two items are also not needed for the app
-
-      return obj
-    },
-
-    getGearTwo: state => {
-      let obj = {...obj, ...state.playerTwoGear.items}
-
-      delete obj["averageItemLevel"];
-      delete obj["averageItemLevelEquipped"];
-      delete obj["shirt"];
-      delete obj["tabard"];
-
-      return obj
-    },
-
     // GET MYTHIC RUNS
     getRunsOne: state => {
       let obj = {...obj, ...state.playerOneMythics}

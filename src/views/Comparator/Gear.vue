@@ -102,7 +102,13 @@ export default {
     },
 
     gearOne() {
-      return store.getters.getGearOne
+      let obj = {...obj, ...store.state.playerOneGear.items}
+      delete obj["averageItemLevel"]; // App crashes if this is allowed through
+      delete obj["averageItemLevelEquipped"]; // App crashes if this is allowed through
+      delete obj["shirt"]; // Not needed
+      delete obj["tabard"]; // Not needed
+
+      return obj
     },
 
     twoCheckGearState() {
@@ -110,7 +116,13 @@ export default {
     },
 
     gearTwo() {
-      return store.getters.getGearTwo
+      let obj = {...obj, ...store.state.playerTwoGear.items}
+      delete obj["averageItemLevel"];
+      delete obj["averageItemLevelEquipped"]; 
+      delete obj["shirt"]; 
+      delete obj["tabard"];
+      
+      return obj
     },
   },
 
