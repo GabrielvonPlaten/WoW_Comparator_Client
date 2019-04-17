@@ -18,7 +18,7 @@
           <div class="blog_card-block">
             <h2 class="title-text">{{post.title}}</h2>
             <p class="title-subtitle">{{post.subtitle}}</p>
-            <b class="title-date">{{post.blocks.time}}</b>
+            <b class="title-date">{{formatDate(post.blocks.time)}}</b>
           </div>
         </div>
       </a>
@@ -37,14 +37,6 @@ export default {
     }
   },
 
-  filters: {
-    dateFormat(value) {
-      if (!value) return '';
-
-      value = new Date(value);
-    }
-  },
-
   created() {
     let url = '/api/posts';
     axios.get(url)
@@ -53,6 +45,18 @@ export default {
       })
       .catch(err => this.postError = err);
   },
+
+  methods: {
+    formatDate(val) {
+      let year = new Date(val);
+      let month = new Date(val);
+      let day = new Date(val);
+
+      let months = ["January", "February", "Mars", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      return `${day.getDate()} ${months[month.getMonth()]}, ${year.getUTCFullYear()}`
+    }
+  }
 }
 </script>
 
