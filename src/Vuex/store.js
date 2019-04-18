@@ -6,8 +6,11 @@ import * as playerTwoActions from './Actions/playerTwo_actions';
 import { playerOneMutations } from './Mutations/playerOne_mutations';
 import { playerTwoMutations } from './Mutations/playerTwo_mutations';
 
-const actions = {...actions, ...playerOneActions, ...playerTwoActions};
-const mutations = {...mutations, ...playerOneMutations, ...playerTwoMutations};
+import * as adminActions from './Actions/admin_actions';
+import { adminMutations } from './Mutations/admin_mutations';
+
+const actions = {...actions, ...playerOneActions, ...playerTwoActions, ...adminActions};
+const mutations = {...mutations, ...playerOneMutations, ...playerTwoMutations, ...adminMutations};
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -46,10 +49,14 @@ export default new Vuex.Store({
       message: "",
       color: "",
     },
+
+    // Admin Data
+    adminData: false,
   },
 
   mutations,
   actions,
+  
   getters: {
     // GET MYTHIC RUNS
     getRunsOne: state => {

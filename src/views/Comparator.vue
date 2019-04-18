@@ -134,7 +134,7 @@ export default {
 
 
 <style lang="sass">
-.comparator-form 
+.comparator-form
   display: flex
   justify-content: center
   background: $blue-5
@@ -148,7 +148,6 @@ export default {
   background-attachment: fixed
   background-blend-mode: soft-light
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25)
-
 
   .form-playerOne
     margin-right: 10rem

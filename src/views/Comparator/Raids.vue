@@ -279,7 +279,7 @@ span
     color: $white-3
 
   img
-    height: 70%
+    height: 50px
 
 .killed
   color: #2cf900

@@ -10,17 +10,15 @@
       </div>
     </div>
     <div class="recent-posts">
-      <a href="https://google.com" class="blog-post" v-for="(post, index) in posts" :key="index">
+      <a :href="'http://localhost:8080/post/' + post._id + '/' + post.slug" class="blog-post" v-for="(post, index) in posts" :key="index">
         <div class="blog_block">
           <div class="image-container">
-            <img :src="post.thumbnail">
+            <img :src="post.blocks.blocks[0].data.url">
           </div>
-
           <div class="blog_card-block">
             <h2 class="title-text">{{post.title}}</h2>
-            <p class="title-description">{{post.description}}</p>
-            <br>
-            <b class="title-date">{{post.date}}</b>
+            <p class="title-subtitle">{{post.subtitle}}</p>
+            <b class="title-date">{{formatDate(post.blocks.time)}}</b>
           </div>
         </div>
       </a>
@@ -35,23 +33,30 @@ export default {
   data() {
     return {
       posts: [],
-    }
-  },
-
-  filters: {
-    dateFormat(value) {
-      if (!value) return '';
-
-      value = new Date(value);
+      postError: null,
     }
   },
 
   created() {
     let url = '/api/posts';
     axios.get(url)
-      .then(res => this.posts = res.data)
-      .catch(err => console.log(err));
+      .then(res => {
+        this.posts = res.data
+      })
+      .catch(err => this.postError = err);
   },
+
+  methods: {
+    formatDate(val) {
+      let year = new Date(val);
+      let month = new Date(val);
+      let day = new Date(val);
+
+      let months = ["January", "February", "Mars", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      return `${day.getDate()} ${months[month.getMonth()]}, ${year.getUTCFullYear()}`
+    }
+  }
 }
 </script>
 
@@ -61,17 +66,19 @@ export default {
   padding: 1px 0
   height: 70vh
   background: url('https://www.blazingboost.com/skin/upload/front/services/5bf16cc8-d654-4e74-a267-456a0541888e.jpg')
+  // background: url('https://i.imgur.com/Ih7ir0F.jpg')
   background-attachment: fixed
+  background-position: center
   background-repeat: no-repeat
-  background-color: $blue-4
-  background-blend-mode: soft-light
+  background-color: $blue-2
+  background-blend-mode: overlay
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
   .jumbotron-btn
     padding: 0.8rem 1rem
-    transition: all 0.5s
     border: 2px solid $orange-4
     font-size: 16px
+    transition: all 0.27s
     &:hover
       background: $orange-5
 
@@ -120,7 +127,7 @@ export default {
   .blog_card-block
     margin: -2px
     padding: 1.16961rem
-    transition: 0.4s
+    transition: 0.3s
     &:hover
       color: $white-1
 
@@ -129,9 +136,9 @@ export default {
       font-weight: bold
       font-size: 1.36798em
 
-    .title-description
+    .title-subtitle
       font-size: 1.16961em
-      color: $description-color
+      color: $subtitle-color
 
     .title-date
       text-shadow: 0 2px 4px $text-shadow
