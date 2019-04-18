@@ -30,7 +30,7 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/post/:slug',
+      path: '/post/:id/:slug',
       name: 'post',
       component: Post,
     },

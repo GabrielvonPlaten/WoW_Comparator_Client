@@ -51,7 +51,7 @@ export default {
 
   created() {
     console.log(this.$route.params.slug)
-    let url = '/api/post/' + this.$route.params.slug
+    let url = '/api/post/' + this.$route.params.id + '/' + this.$route.params.slug
     axios.get(url)
       .then(res => {
         this.post = res.data.post
