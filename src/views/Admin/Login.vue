@@ -39,15 +39,19 @@ export default {
   },
 
   methods: {
-    loginAdmin() {
+    async loginAdmin() {
       let { email, password } = this.login;
-      adminService.login(email, password)
+      await adminService.login(email, password)
         .then(async res => {
+          console.log(res)
           await localStorage.setItem('token', res.token)
           store.dispatch('adminLogin', res)
           this.$router.go({ path: this.$router.path })
         })
-        .catch(err => this.loginError = err)
+        .catch(err => {
+          this.loginError = err
+          this.$router.go({ path: '/' })
+        })
     }
   },
 }

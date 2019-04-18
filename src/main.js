@@ -24,6 +24,14 @@ if (localStorage.getItem('token')) {
         }).$mount('#app')
       }
     })
+    .catch(() => {
+      localStorage.removeItem('token')
+      new Vue({
+        router,
+        store,
+        render: h => h(App)
+      }).$mount('#app')
+    })
 } else {
   new Vue({
     router,

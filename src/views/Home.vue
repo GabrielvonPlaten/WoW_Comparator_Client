@@ -66,17 +66,19 @@ export default {
   padding: 1px 0
   height: 70vh
   background: url('https://www.blazingboost.com/skin/upload/front/services/5bf16cc8-d654-4e74-a267-456a0541888e.jpg')
+  // background: url('https://i.imgur.com/Ih7ir0F.jpg')
   background-attachment: fixed
+  background-position: center
   background-repeat: no-repeat
-  background-color: $blue-4
-  background-blend-mode: soft-light
+  background-color: $blue-2
+  background-blend-mode: overlay
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
   .jumbotron-btn
     padding: 0.8rem 1rem
-    transition: all 0.5s
     border: 2px solid $orange-4
     font-size: 16px
+    transition: all 0.27s
     &:hover
       background: $orange-5
 
@@ -125,7 +127,7 @@ export default {
   .blog_card-block
     margin: -2px
     padding: 1.16961rem
-    transition: 0.4s
+    transition: 0.3s
     &:hover
       color: $white-1
 
