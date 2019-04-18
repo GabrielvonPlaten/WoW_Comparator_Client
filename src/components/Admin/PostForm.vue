@@ -72,7 +72,9 @@ export default {
 
       this.editor.save()
         .then(outputData => {
-          axios.post('/api/create-post', {title, subtitle, outputData})
+          axios.post('/api/create-post', {title, subtitle, outputData}, {
+            headers: { authorization: 'Bearer ' + localStorage.getItem('token') }
+          })
             .then(res => {
               window.alert('Your post has been added!')
               location.reload()

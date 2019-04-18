@@ -15,9 +15,9 @@
             <div class="blog_card-block">
               <h2 class="title-text">{{post.title}}</h2>
               <p class="title-subtitle">{{post.subtitle}}</p>
-              <b class="title-date">{{post.blocks.time}}</b>
+              <b class="title-date">{{formatDate(post.blocks.time)}}</b>
             </div>
-            <router-link :to="'/' + post._id" class="view-post-btn">View</router-link>
+            <router-link :to="'/post/' + post.slug" class="view-post-btn">View</router-link>
             <button 
               @click="confirmDeletion(index)"
               v-if="confirmationBtns !== index" 
@@ -98,6 +98,16 @@ export default {
           this.posts = res.data
         })
         .catch(err => console.log(err))
+    },
+
+    formatDate(val) {
+      let year = new Date(val);
+      let month = new Date(val);
+      let day = new Date(val);
+
+      let months = ["January", "February", "Mars", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      return `${day.getDate()} ${months[month.getMonth()]}, ${year.getUTCFullYear()}`
     }
   }
 }

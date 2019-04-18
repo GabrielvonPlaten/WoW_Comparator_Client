@@ -4,7 +4,7 @@ import store from '@/Vuex/store';
 
 import Home from './views/Home.vue'
 import Comparator from './views/Comparator.vue'
-import Post from './views/Post.vue';
+import Post from './views/Post/Post.vue';
 
 import Talents from './views/Comparator/Talents.vue';
 import Mounts from './views/Comparator/Mounts.vue';
@@ -30,7 +30,7 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/Post',
+      path: '/post/:slug',
       name: 'post',
       component: Post,
     },

@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="recent-posts">
-      <a href="https://google.com" class="blog-post" v-for="(post, index) in posts" :key="index">
+      <a :href="'http://localhost:8080/post/' + post.slug" class="blog-post" v-for="(post, index) in posts" :key="index">
         <div class="blog_block">
           <div class="image-container">
             <img :src="post.blocks.blocks[0].data.url">
