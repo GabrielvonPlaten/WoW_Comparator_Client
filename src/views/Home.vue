@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="recent-posts">
-      <a :href="'http://localhost:8080/post/' + post._id + '/' + post.slug" class="blog-post" v-for="(post, index) in posts" :key="index">
+      <router-link :to="'/post/' + post._id + '/' + post.slug" class="blog-post" v-for="(post, index) in posts" :key="index">
         <div class="blog_block">
           <div class="image-container">
             <img :src="post.blocks.blocks[0].data.url">
@@ -21,7 +21,7 @@
             <b class="title-date">{{formatDate(post.blocks.time)}}</b>
           </div>
         </div>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>

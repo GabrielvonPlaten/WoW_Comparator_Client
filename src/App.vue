@@ -68,4 +68,7 @@ html, body
   
   &:hover
     background: $hover-route
+
+a
+  color: $cyan-4
 </style>
