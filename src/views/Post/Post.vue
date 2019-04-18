@@ -29,7 +29,7 @@
             <div v-if="b.type === 'list'">
               <ol>
                 <li v-for="(i, index) in b.data.items" :key="index">
-                  <p>{{i}}</p>
+                  <p v-html="i"></p>
                 </li>
               </ol>
             </div>
@@ -60,7 +60,6 @@ export default {
     let url = '/api/post/' + this.$route.params.id + '/' + this.$route.params.slug
     axios.get(url)
       .then(res => {
-        console.log(res.data.post[0])
         this.post = res.data.post[0]
         this.author = res.data.author
       })
@@ -82,7 +81,6 @@ export default {
 }
 </script>
 
-
 <style lang="sass" scoped>
 .post-container
   margin: 2rem 0 3rem 0
@@ -94,8 +92,8 @@ export default {
     background-attachment: fixed
     background-repeat: no-repeat
     background-size: cover
-    background-color: $blue-5
-    background-blend-mode: soft-light
+    background-color: $blue-9
+    background-blend-mode: overlay
 
 .post-box
   width: 70%
@@ -133,7 +131,7 @@ export default {
       font-weight: 200
 
   p
-    color: $white-1
+    color: $white-0
     font-size: 1.1rem
     line-height: 1.5rem
     letter-spacing: 1px
@@ -151,9 +149,10 @@ export default {
     margin: 0
     color: $white-2
     font-size: 0.9rem
-    border-bottom: 1px solid $post-border
 
 ol
   list-style: disc
   color: $white-1
+
+
 </style>
