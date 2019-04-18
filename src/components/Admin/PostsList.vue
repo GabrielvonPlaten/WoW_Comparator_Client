@@ -17,7 +17,7 @@
               <p class="title-subtitle">{{post.subtitle}}</p>
               <b class="title-date">{{formatDate(post.blocks.time)}}</b>
             </div>
-            <router-link :to="'/post/' + post.slug" class="view-post-btn">View</router-link>
+            <router-link :to="'/post/' + post._id + '/' + post.slug" class="view-post-btn">View</router-link>
             <button 
               @click="confirmDeletion(index)"
               v-if="confirmationBtns !== index" 

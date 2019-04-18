@@ -2,21 +2,21 @@
   <div 
     v-if="post" 
     class="post-bg" 
-    :style="{ backgroundImage: 'url(' + post[0].blocks.blocks[0].data.url + ')' }">
+    :style="{ backgroundImage: 'url(' + post.blocks.blocks[0].data.url + ')' }">
     <div class="post-container">
       <div class="post-box">
         <div class="image-container">
-          <img :src="post[0].blocks.blocks[0].data.url">
+          <img :src="post.blocks.blocks[0].data.url">
         </div>
         <div class="post-content">
           <div class="post-header">
-            <h2 class="post-title">{{post[0].title}}</h2>
+            <h2 class="post-title">{{post.title}}</h2>
             <h3 class="post-date">
               <span style="color: #9d9d9d">By: </span>
               <span style="color: #E0E0E0">{{author}}</span>
-              <span style="color: #9d9d9d"> - </span> {{formatDate(post[0].blocks.time)}}</h3>
+              <span style="color: #9d9d9d"> - </span> {{formatDate(post.blocks.time)}}</h3>
           </div>
-          <div v-for="(b, index) in post[0].blocks.blocks" :key="index">
+          <div v-for="(b, index) in post.blocks.blocks" :key="index">
             <div v-if="b.type === 'paragraph'">
               <p v-html="b.data.text"></p>
             </div>
@@ -25,6 +25,13 @@
                 <img :src="b.data.url">
                 <p v-if="b.data.caption !== '<br>'">{{b.data.caption}}</p>
               </div>
+            </div>
+            <div v-if="b.type === 'list'">
+              <ol>
+                <li v-for="(i, index) in b.data.items" :key="index">
+                  <p>{{i}}</p>
+                </li>
+              </ol>
             </div>
             <div v-if="b.type === 'embed'">
               <div class="blog-image-container">
@@ -50,11 +57,11 @@ export default {
   },
 
   created() {
-    console.log(this.$route.params.slug)
     let url = '/api/post/' + this.$route.params.id + '/' + this.$route.params.slug
     axios.get(url)
       .then(res => {
-        this.post = res.data.post
+        console.log(res.data.post[0])
+        this.post = res.data.post[0]
         this.author = res.data.author
       })
       .catch(err => console.log(err))
@@ -145,4 +152,8 @@ export default {
     color: $white-2
     font-size: 0.9rem
     border-bottom: 1px solid $post-border
+
+ol
+  list-style: disc
+  color: $white-1
 </style>
