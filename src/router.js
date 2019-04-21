@@ -1,20 +1,27 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
+import store from '@/Vuex/store';
+
 import Home from './views/Home.vue'
 import Comparator from './views/Comparator.vue'
-import Blog from './views/Blog.vue';
+import Post from './views/Post/Post.vue';
 
 import Talents from './views/Comparator/Talents.vue';
 import Mounts from './views/Comparator/Mounts.vue';
 import Stats from './views/Comparator/Stats.vue';
-import Progress from './views/Comparator/Progress.vue';
+import Raids from './views/Comparator/Raids.vue';
+import Mythics from './views/Comparator/Mythics.vue';
 import Gear from './views/Comparator/Gear.vue';
 import Pets from './views/Comparator/Pets.vue';
+
+// Admin
+import AdminLogin from './views/Admin/Login.vue';
+import Dashboard from './views/Admin/Dashboard.vue';
 
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -23,9 +30,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/blog',
-      name: 'blog',
-      component: Blog,
+      path: '/post/:id/:slug',
+      name: 'post',
+      component: Post,
     },
     {
       path: '/comparator',
@@ -48,9 +55,14 @@ export default new Router({
           component: Stats
         },
         {
-          path: '/comparator/progress',
-          name: 'progress',
-          component: Progress
+          path: '/comparator/raids',
+          name: 'raids',
+          component: Raids
+        },
+        {
+          path: '/comparator/mythics',
+          name: 'mythics',
+          component: Mythics
         },
         {
           path: '/comparator/gear',
@@ -63,6 +75,60 @@ export default new Router({
           component: Pets
         },
       ]
-    }
+    },
+    {
+      path: '/admin/dashboard',
+      name: 'dashboard',
+      component: Dashboard,
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/admin/login',
+      name: 'adminLogin',
+      component: AdminLogin,
+      meta: {
+        requiresGuest: true,
+      }
+    },
   ]
-})
+});
+
+// Nav Guards
+router.beforeEach((to, from, next) => {
+  // Check for required Auth guard
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // Check if user is NOT logged in
+    if (store.state.adminData === false) {
+      // Go to login page
+      next({
+        path: '/admin/login',
+        query: {
+          redirect: to.fullPath
+        }
+      });
+    } else {
+      // Proceed to the dashboard
+      next();
+    }
+  } else if(to.matched.some(record => record.meta.requiresGuest)) {
+    if (store.state.adminData) {
+      // Go to login page
+      next({
+        path: '/',
+        query: {
+          redirect: to.fullPath
+        }
+      });
+    } else {
+      // Proceed to the dashboard
+      next();
+    }
+  } else {
+    // Proceed to the route
+    next();
+  }
+});
+
+export default router;

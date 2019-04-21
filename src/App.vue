@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar />
     <router-view/>
-    <Footer />  
+    <!-- <Footer />   -->
   </div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
   components: {
     Footer,
     Navbar,
-  }
+  },
+
 }
 </script>
 
@@ -26,25 +27,6 @@ html, body
     margin: 0
     height: 100%
     background-color: $blue-7
-
-#app
-  background: url('./assets/background_dot.svg')
-  background-repeat: repeat
-
-::-webkit-scrollbar
-    width: 7px
-
-/* Track */
-::-webkit-scrollbar-track
-    background: $blue-4 
- 
-/* Handle */
-::-webkit-scrollbar-thumb
-    background: $violet-8
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover
-    background: $violet-5
 
 // Lines
 .line
@@ -63,14 +45,30 @@ html, body
   &--blue
     +btn--blue
 
+  &--green
+    +btn--green
+
+  &--red
+    +btn--red
+
   &--purple
     +btn--purple
 
+  &--comparator
+    +btn--comparator
+
+  &--grid
+    +btn--grid
+
 .router
-  transition: 0.5s
+  transition: 0.4s
   &.router-link-exact-active
     background: $active-route
+    border: 2px solid transparent
   
   &:hover
     background: $hover-route
+
+a
+  color: $cyan-4
 </style>

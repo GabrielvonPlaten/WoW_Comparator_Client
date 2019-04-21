@@ -2,17 +2,18 @@
   <div>
     <div class="compViews__playerOne">
       <Loader v-if="oneTalents === false"/>
-      <div class="oneTalents-lists" v-if="oneTalents">
+      <div class="playerOne__talents" v-if="oneTalents">
         <playerOneAvatar />
-        <br>
 
-        <div class="active-spec oneList-container">
+        <div
+          v-if="oneTalents.talents[0].spec" 
+          class="active-spec oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[0].spec.name}}</h3>
           </div>
           <div class="pve-pvp-talents">
             <ul>
-              <li v-for="(talent, index) in oneTalents.talents[0].talents" :key="index">
+              <li v-for="(talent, index) in sortPlayerOneTalents__T0" :key="index">
                 <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
                 <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                   <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
@@ -23,12 +24,14 @@
           </div>
         </div>
 
-        <div class="oneList-container">
+        <div
+          v-if="oneTalents.talents[1].spec" 
+          class="oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[1].spec.name}}</h3>
           </div>
           <ul>
-            <li v-for="(talent, index) in oneTalents.talents[1].talents" :key="index">
+            <li v-for="(talent, index) in sortPlayerOneTalents__T1" :key="index">
               <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
               <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                 <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
@@ -38,12 +41,14 @@
           </ul>
         </div>
 
-        <div class="oneList-container">
+        <div
+          v-if="oneTalents.talents[2].spec"
+          class="oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[2].spec.name}}</h3>
           </div>
           <ul>
-            <li v-for="(talent, index) in oneTalents.talents[2].talents" :key="index">
+            <li v-for="(talent, index) in sortPlayerOneTalents__T2" :key="index">
               <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
               <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                 <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
@@ -57,17 +62,18 @@
 
     <div class="compViews__playerTwo">
       <Loader v-if="twoTalents === false"/>
-      <div class="twoTalents-lists" v-if="twoTalents">
+      <div class="playerTwo__talents" v-if="twoTalents">
         <playerTwoAvatar />
-        <br>
 
-        <div class="active-spec twoList-container">
+        <div
+          v-if="twoTalents.talents[0].spec" 
+          class="active-spec twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[0].spec.name}}</h3>
           </div>
           <div class="pve-pvp-talents">
             <ul>
-              <li v-for="(talent, index) in twoTalents.talents[0].talents" :key="index">
+              <li v-for="(talent, index) in sortPlayerTwoTalents__T0" :key="index">
                 <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
                 <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                   <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
@@ -78,12 +84,14 @@
           </div>
         </div>
 
-        <div class="twoList-container">
+        <div
+          v-if="twoTalents.talents[1].spec" 
+          class="twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[1].spec.name}}</h3>
           </div>
           <ul>
-            <li v-for="(talent, index) in twoTalents.talents[1].talents" :key="index">
+            <li v-for="(talent, index) in sortPlayerTwoTalents__T1" :key="index">
               <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
               <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                 <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
@@ -93,12 +101,14 @@
           </ul>
         </div>
 
-        <div class="twoList-container">
+        <div
+          v-if="twoTalents.talents[2].spec" 
+          class="twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[2].spec.name}}</h3>
           </div>
           <ul>
-            <li v-for="(talent, index) in twoTalents.talents[2].talents" :key="index">
+            <li v-for="(talent, index) in sortPlayerTwoTalents__T2" :key="index">
               <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
               <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                 <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
@@ -113,9 +123,12 @@
 </template>
 
 <script>
+import store from '@/Vuex/store';
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
+
+import _ from 'lodash';
 
 export default {
   data() {
@@ -126,12 +139,38 @@ export default {
 
   computed: {
     oneTalents() {
-      return this.$store.state.playerOneTalents
+      return store.state.playerOneTalents
     },
     
     twoTalents() {
-      return this.$store.state.playerTwoTalents
-    }
+      return store.state.playerTwoTalents
+    },
+
+    // Sorting Player One Talents
+    sortPlayerOneTalents__T0() {
+      return _.sortBy(this.oneTalents.talents[0].talents, 'tier');
+    },
+
+    sortPlayerOneTalents__T1() {
+      return _.sortBy(this.oneTalents.talents[1].talents, 'tier');
+    },
+
+    sortPlayerOneTalents__T2() {
+      return _.sortBy(this.oneTalents.talents[2].talents, 'tier');
+    },
+
+    // Sorting Player Two Talents
+    sortPlayerTwoTalents__T0() {
+      return _.sortBy(this.twoTalents.talents[0].talents, 'tier');
+    },
+
+    sortPlayerTwoTalents__T1() {
+      return _.sortBy(this.twoTalents.talents[1].talents, 'tier');
+    },
+
+    sortPlayerTwoTalents__T2() {
+      return _.sortBy(this.twoTalents.talents[2].talents, 'tier');
+    },
   },
 
   components: {
@@ -144,8 +183,12 @@ export default {
 
 <style lang="sass" scoped>
 
-.oneTalents-lists
+.playerOne__talents
+  padding: 0 3.4rem
+  border-right: 1px solid $blue-4
   text-align: right
+
+.compViews__playerOne
 
   .oneList-container
     background: $blue-7
@@ -186,11 +229,16 @@ export default {
   .active-spec
     border-style: solid
     border-width: 1px
-    border-color: $orange-5
+    border-color: $orange-4
     border-color: rgba(255, 222, 160, 0.8)
 
-.twoTalents-lists
+
+.playerTwo__talents
+  padding: 0 3.4rem
+  border-left: 1px solid $blue-4
   text-align: right
+
+.compViews__playerTwo
 
   .twoList-container
     background: $blue-7
@@ -230,7 +278,7 @@ export default {
   .active-spec
     border-style: solid
     border-width: 1px
-    border-color: $orange-5
+    border-color: $orange-4
     border-color: rgba(255, 222, 160, 0.8)
 
 .spec-info

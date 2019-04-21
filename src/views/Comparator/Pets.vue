@@ -6,79 +6,127 @@
         <playerOneAvatar />
         <div class="onePetInput-count">
           <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch">
-          <p>Collected: {{onePets.pets.numCollected}}</p>
+          <p>Pets Collected: {{onePets.pets.numCollected}}</p>
         </div>
         <ul>
-          <li v-for="(pet, index) in oneFilteredPets" :key="index">
+          <div v-for="(pet, index) in oneFilteredPets" :key="index">
             <div v-if="pet.qualityId === 3">
-              <div v-if="pet.isFavorite">
-                <div class="pets--rare"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
-              <div v-else>
-                <div class="pets--rare"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
+              <li v-if="pet.isFavorite" class="pets--rare">
+                <font-awesome-icon class="favorite-star" icon="star" />
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span> 
+                  </a>
+                </div>
+              </li>
+              <li v-else class="pets--rare">
+                <br>
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span> 
+                  </a>
+                </div>
+              </li>
             </div>
 
             <div v-if="pet.qualityId === 2">
-              <div v-if="pet.isFavorite">
-                <div class="pets--uncommon"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
-              <div v-else>
-                <div class="pets--uncommon"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
+              <li v-if="pet.isFavorite" class="pets--uncommon">
+                <font-awesome-icon class="favorite-star" icon="star" />
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span> 
+                  </a>
+                </div>
+              </li>
+              <li v-else class="pets--uncommon">
+                <br>
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
             </div>
 
             <div v-if="pet.qualityId === 1">
-              <div v-if="pet.isFavorite">
-                <div class="pets--common"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
-              <div v-else>
-                <div class="pets--common"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
+              <li v-if="pet.isFavorite" class="pets--common">
+                <font-awesome-icon class="favorite-star" icon="star" />
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
+              <li v-else class="pets--common">
+                <br>
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
             </div>
 
             <div v-if="pet.qualityId === 0">
-              <div v-if="pet.isFavorite">
-                <div class="pets--common"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
-              <div v-else>
-                <div class="pets--common"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  {{pet.name}} - LvL: {{pet.stats.level}} <font-awesome-icon icon="star" />
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
+              <li v-if="pet.isFavorite" class="pets--poor">
+                <font-awesome-icon class="favorite-star" icon="star" />
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
+              <li v-else class="pets--poor">
+                <br>
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
             </div>
 
-          </li>
+          </div>
         </ul>
       </div>
     </div>
@@ -88,79 +136,128 @@
       <div class="playerTwo__pets" v-if="twoPets">
         <playerTwoAvatar />
         <div class="twoPetsInput-count">
-          <p>Collected: {{twoPets.pets.numCollected}}</p>
+          <p>Pets Collected: {{twoPets.pets.numCollected}}</p>
           <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch">
         </div>
         <ul>
-          <li v-for="(pet, index) in twoFilteredPets" :key="index">
+          <div v-for="(pet, index) in twoFilteredPets" :key="index">
             <div v-if="pet.qualityId === 3">
-              <div v-if="pet.isFavorite">
-                <div class="pets--rare"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
-              <div v-else>
-                <div class="pets--rare"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
+              <li v-if="pet.isFavorite" class="pets--rare">
+                <font-awesome-icon class="favorite-star" icon="star" />
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span> 
+                  </a>
+                </div>
+              </li>
+              <li v-else class="pets--rare">
+                <br>
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span> 
+                  </a>
+                </div>
+              </li>
             </div>
 
             <div v-if="pet.qualityId === 2">
-              <div v-if="pet.isFavorite">
-                <div class="pets--uncommon"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
-              <div v-else>
-                <div class="pets--uncommon"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
+              <li v-if="pet.isFavorite" class="pets--uncommon">
+                <font-awesome-icon class="favorite-star" icon="star" />
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span> 
+                  </a>
+                </div>
+              </li>
+              <li v-else class="pets--uncommon">
+                <br>
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
             </div>
 
             <div v-if="pet.qualityId === 1">
-              <div v-if="pet.isFavorite">
-                <div class="pets--common"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
-              <div v-else>
-                <div class="pets--common"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
+              <li v-if="pet.isFavorite" class="pets--common">
+                <font-awesome-icon class="favorite-star" icon="star" />
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
+              <li v-else class="pets--common">
+                <br>
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
             </div>
 
             <div v-if="pet.qualityId === 0">
-              <div v-if="pet.isFavorite">
-                <div class="pets--common"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
-              <div v-else>
-                <div class="pets--common"></div>
-                <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                  <font-awesome-icon icon="star" /> {{pet.name}} - LvL: {{pet.stats.level}}
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
-                </a>
-              </div>
+              <li v-if="pet.isFavorite" class="pets--poor">
+                <font-awesome-icon class="favorite-star" icon="star" />
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
+              <li v-else class="pets--poor">
+                <br>
+                <div class="pets-align--center">
+                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
+                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <br>
+                    <span class="pet-truncate">
+                      <span class="pet-level">{{pet.stats.level}}</span>
+                      {{pet.name}}
+                    </span>
+                  </a>
+                </div>
+              </li>
             </div>
-          </li>
+
+          </div>
         </ul>
       </div>
     </div>
@@ -168,6 +265,7 @@
 </template>
 
 <script>
+import store from '@/Vuex/store'
 import playerOneAvatar from '@/components/OneAvatar.vue';
 import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
@@ -182,10 +280,10 @@ export default {
   computed: {
 
     onePets() {
-      return this.$store.state.playerOnePets
+      return store.state.playerOnePets
     },
     twoPets() {
-      return this.$store.state.playerTwoPets
+      return store.state.playerTwoPets
     },
 
     oneFilteredPets() {
@@ -218,25 +316,25 @@ export default {
 
 <style lang="sass" scoped>
 .pets--rare
-  width: 50px
-  height: 50px
-  border-radius: 50%
-  background-color: blue
-  margin-top: 2px
+  border: 2px solid #0f6bff
 
 .pets--uncommon
-  width: 50px
-  height: 50px
-  border-radius: 50%
-  background-color: green
-  margin-top: 2px
+  border: 2px solid green
 
 .pets--common
-  width: 50px
-  height: 50px
-  border-radius: 50%
-  background-color: $white-0
-  margin-top: 2px
+  border: 2px solid $white-0
+
+.pets--poor
+  border: 2px solid $poor
+
+.pet-level
+  color: #ffd686
+  font-weight: 600 // Bold
+  letter-spacing: 1px
+
+.favorite-star
+  display: flex
+  justify-content: flex-end
 
 // Player One Pets
 .onePetInput-count
@@ -253,13 +351,19 @@ export default {
     font-style: italic
     font-size: 1.1rem
     background: $blue-5
-    margin: 0.1rem 0 0.1rem 12.5rem
+    margin: 0.1rem 0 0.1rem 3.5%
     padding: 0.1rem 0.2rem
     position: relative
     top: 0.8rem
 
 .playerOne__pets
+  padding: 0 3.4rem
+  border-right: 1px solid $blue-4
+
   ul
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+
     li
       border-radius: 8px
       color: $white-0
@@ -268,27 +372,28 @@ export default {
       margin-top: 10px
       font-size: 1.2em
       font-weight: 200
-      text-align: right
       float: right
       width: 75%
+      height: 6.5rem
       &:hover
         background-color: $blue-4
 
-      a
-        text-decoration: none
-        color: $white-1
+      .pets-align--center
+        text-align: center
         position: relative
-        top: 1rem
+        bottom: 1rem
 
-      img
-        float: right
-        margin-left: 1em
+        a
+          margin-top: 1rem
+          text-decoration: none
+          color: $white-1
+          font-size: 1rem
 
-      .pets--rare, .pets--uncommon, .pets--common
-        float: left
+        img
+          width: 2.7rem
+          height: 2.7rem
 
     p
-      text-align: right
       color: $white-0
 
 // Player Two Pets
@@ -306,13 +411,19 @@ export default {
     font-style: italic
     font-size: 1.1rem
     background: $blue-5
-    margin: 0.1rem 12.5rem 0.1rem 0
+    margin: 0.1rem 3.5% 0.1rem 0
     padding: 0.1rem 0.2rem
     position: relative
     top: 0.8rem
 
 .playerTwo__pets
+  padding: 0 3.4rem
+  border-left: 1px solid $blue-4
+
   ul
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+
     li
       border-radius: 8px
       color: $white-0
@@ -321,28 +432,26 @@ export default {
       margin-top: 10px
       font-size: 1.2em
       font-weight: 200
-      text-align: left
       float: left
       width: 75%
+      height: 6.5rem
       &:hover
         background-color: $blue-4
 
-      a
-        text-decoration: none
-        color: $white-1
+      .pets-align--center
+        text-align: center
         position: relative
-        top: 1rem
+        bottom: 1rem
 
-      img
-        float: left
-        margin-right: 1em
+        a
+          margin-top: 1rem
+          text-decoration: none
+          color: $white-1
+          font-size: 1rem
 
-      .pets--rare, .pets--uncommon, .pets--common
-        float: right
-
-    p
-      text-align: left
-      color: $white-0
+        img
+          width: 2.7rem
+          height: 2.7rem
 
 .fa-star
   color: yellow
