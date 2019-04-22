@@ -146,13 +146,14 @@ export default {
     margin: 0
     
     li
+      border: 1px solid $blue-8
       border-radius: 4px
       color: $orange-4
       background-color: $blue-6
-      padding: 15px 10px 0px 10px
+      padding: 9px 10px 0px 10px
       width: 100%
-      height: 43px
-      margin-top: 15px
+      height: 40px
+      margin-top: 12px
       font-size: 1.2em
       font-weight: 400
       text-align: right
@@ -186,10 +187,11 @@ export default {
 
       img
         float: left
-        height: 43px
-        width: 43px
+        height: 40px
+        width: 40px
         position: relative
         bottom: 15%
+        border: 2px solid $blue-4
 
     p
       font-size: 1.2em
@@ -209,13 +211,14 @@ export default {
     margin: 0
 
     li
+      border: 1px solid $blue-8
       border-radius: 4px
       color: $orange-4
       background-color: $blue-6
-      padding: 15px 10px 0px 10px
+      padding: 9px 10px 0px 10px
       width: 100%
-      height: 43px
-      margin-top: 15px
+      height: 40px
+      margin-top: 12px
       font-size: 1.2em
       font-weight: 400
       text-align: left
@@ -248,9 +251,10 @@ export default {
         bottom: 10px
   
       img
+        border: 2px solid $blue-8
         float: right
-        height: 43px
-        width: 43px
+        height: 40px
+        width: 40px
         position: relative
         bottom: 15%
 
