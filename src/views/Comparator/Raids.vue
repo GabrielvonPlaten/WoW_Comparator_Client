@@ -5,14 +5,14 @@
       <div class="playerOne__progression" v-if="oneProg">
         <playerOneAvatar />
       
-        <button
-          class="btn btn--grid" 
-          :class="{'btn btn--grid grid__active--button': grid}" @click="activeGrid">Grid</button>
         <div :class="{'playerOne__raids grid__active': grid, 'playerOne__raids': !grid}">
-          <div class="raid_block">
-            <h2 class="raid-name">Uldir - 120</h2>
+          
+          <div :class="{'hideRaid': hideRaidBlock === 0}" class="raid_block">
             <div class="raid_card">
-              <div class="image-container"><img :src="Uldir[8].Background"></div>
+              <div class="image-container">
+                <img :src="Uldir[8].Background">
+                <h2 class="raid-name">Uldir</h2>
+              </div>
               <table class="table">
                 <tr class="card_overhead_text">
                   <th>Bosses</th>
@@ -27,18 +27,20 @@
                       <img :src="Uldir[index].bossImage">
                     </a>
                   </td>
-                  <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5}">{{boss.lfrKills}}x</span></td>
-                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5}">{{boss.normalKills}}x</span></td>
-                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5}">{{boss.heroicKills}}x</span></td>
-                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5}">{{boss.mythicKills}}x</span></td>
+                  <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}">{{boss.lfrKills}}x</span></td>
+                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}">{{boss.normalKills}}x</span></td>
+                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}">{{boss.heroicKills}}x</span></td>
+                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}">{{boss.mythicKills}}x</span></td>
                 </tr>
               </table>
             </div>
             </div>
             <div class="raid_block">
-              <h2 class="raid-name">Battle of Dazar'alor - 120</h2>
               <div class="raid_card">
-                <div class="image-container"><img :src="DazarAlor[9].Background"></div>
+                <div class="image-container">
+                  <img :src="DazarAlor[9].Background">
+                  <h2 class="raid-name">Battle of Dazar'alor</h2>
+                </div>
                 <table class="table">
                   <tr class="card_overhead_text">
                     <th>Bosses</th>
@@ -53,10 +55,38 @@
                         <img :src="DazarAlor[index].bossImage">
                       </a>
                     </td>
-                    <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5}">{{boss.lfrKills}}x</span></td>
-                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5}">{{boss.normalKills}}x</span></td>
-                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5}">{{boss.heroicKills}}x</span></td>
-                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5}">{{boss.mythicKills}}x</span></td>
+                    <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}">{{boss.lfrKills}}x</span></td>
+                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}">{{boss.normalKills}}x</span></td>
+                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}">{{boss.heroicKills}}x</span></td>
+                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}">{{boss.mythicKills}}x</span></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="raid_block">
+              <div class="raid_card">
+                <div class="image-container">
+                  <img :src="CrucibleOfStorms[2].Background">
+                  <h2 class="raid-name">Crucible of Storms</h2>
+                </div>
+                <table class="table">
+                  <tr class="card_overhead_text">
+                    <th>Bosses</th>
+                    <th>LFR</th>
+                    <th>Normal</th>
+                    <th>Heroic</th>
+                    <th>Mythic</th>
+                  </tr>
+                  <tr v-for="(boss, index) in oneProg.progression.raids[42].bosses" :key="index">
+                    <td> 
+                      <a :href="'//wowhead.com/npc=' + boss.id">
+                        <img :src="CrucibleOfStorms[index].bossImage">
+                      </a>
+                    </td>
+                    <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}">{{boss.lfrKills}}x</span></td>
+                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}">{{boss.normalKills}}x</span></td>
+                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}">{{boss.heroicKills}}x</span></td>
+                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}">{{boss.mythicKills}}x</span></td>
                   </tr>
                 </table>
               </div>
@@ -71,14 +101,13 @@
       <div class="playerTwo__progression" v-if="twoProg">
         <playerTwoAvatar />
         
-        <button
-          class="btn btn--grid" 
-          :class="{'btn btn--grid grid__active--button': grid}" @click="activeGrid">Grid</button>
         <div :class="{'playerTwo__raids grid__active': grid}">
           <div class="raid_block">
-            <h2 class="raid-name">Uldir - 120</h2>
             <div class="raid_card">
-              <div class="image-container"><img :src="Uldir[8].Background"></div>
+              <div class="image-container">
+                <img :src="Uldir[8].Background">
+                <h2 class="raid-name">Uldir</h2>
+              </div>
               <table class="table">
                 <tr class="card_overhead_text">
                   <th>Bosses</th>
@@ -93,18 +122,20 @@
                       <img :src="Uldir[index].bossImage">
                     </a>
                   </td>
-                  <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5}">{{boss.lfrKills}}x</span></td>
-                  <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5}">{{boss.normalKills}}x</span></td>
-                  <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5}">{{boss.heroicKills}}x</span></td>
-                  <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5}">{{boss.mythicKills}}x</span></td>
+                  <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}">{{boss.lfrKills}}x</span></td>
+                  <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}">{{boss.normalKills}}x</span></td>
+                  <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}">{{boss.heroicKills}}x</span></td>
+                  <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}">{{boss.mythicKills}}x</span></td>
                 </tr>
               </table>
             </div>
             </div>
             <div class="raid_block">
-              <h2 class="raid-name">Uldir - 120</h2>
               <div class="raid_card">
-                <div class="image-container"><img :src="DazarAlor[9].Background"></div>
+                <div class="image-container">
+                  <img :src="DazarAlor[9].Background">
+                  <h2 class="raid-name">Battle of Dazar'alor</h2>
+                </div>
                 <table class="table">
                   <tr class="card_overhead_text">
                     <th>Bosses</th>
@@ -119,10 +150,38 @@
                         <img :src="DazarAlor[index].bossImage">
                       </a>
                     </td>
-                    <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5}">{{boss.lfrKills}}x</span></td>
-                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5}">{{boss.normalKills}}x</span></td>
-                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5}">{{boss.heroicKills}}x</span></td>
-                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5}">{{boss.mythicKills}}x</span></td>
+                    <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}">{{boss.lfrKills}}x</span></td>
+                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}">{{boss.normalKills}}x</span></td>
+                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}">{{boss.heroicKills}}x</span></td>
+                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}">{{boss.mythicKills}}x</span></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="raid_block">
+              <div class="raid_card">
+                <div class="image-container">
+                  <img :src="CrucibleOfStorms[2].Background">
+                  <h2 class="raid-name">Crucible of Storms</h2>
+                </div>
+                <table class="table">
+                  <tr class="card_overhead_text">
+                    <th>Bosses</th>
+                    <th>LFR</th>
+                    <th>Normal</th>
+                    <th>Heroic</th>
+                    <th>Mythic</th>
+                  </tr>
+                  <tr v-for="(boss, index) in twoProg.progression.raids[42].bosses" :key="index">
+                    <td> 
+                      <a :href="'//wowhead.com/npc=' + boss.id">
+                        <img :src="CrucibleOfStorms[index].bossImage">
+                      </a>
+                    </td>
+                    <td><span :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}">{{boss.lfrKills}}x</span></td>
+                    <td><span :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}">{{boss.normalKills}}x</span></td>
+                    <td><span :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}">{{boss.heroicKills}}x</span></td>
+                    <td><span :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}">{{boss.mythicKills}}x</span></td>
                   </tr>
                 </table>
               </div>
@@ -140,7 +199,7 @@ import playerTwoAvatar from '@/components/TwoAvatar.vue';
 import Loader from '@/components/Loader.vue';
 
 // Uldir Bosses
-import Nazmir from '@/assets/raids/bfa/uldir/Nazmir.jpg';
+import Nazmir from '@/assets/raids/bfa/uldir/Nazmir.png';
 import Taloc from '@/assets/raids/bfa/uldir/01_Taloc.png';
 import MOTHER from '@/assets/raids/bfa/uldir/02_MOTHER.png';
 import Fetid from '@/assets/raids/bfa/uldir/03_Fetid.png';
@@ -151,7 +210,7 @@ import Mythrax from '@/assets/raids/bfa/uldir/07_Mythrax.png';
 import Ghuun from '@/assets/raids/bfa/uldir/08_G\'huun.png';
 
 // Battle of Dazar'alor 
-import Dazar from '@/assets/raids/bfa/bod/Dazar\'alor.jpg';
+import Dazar from '@/assets/raids/bfa/bod/BoDA.png';
 import Champions from '@/assets/raids/bfa/bod/01_Champions.png';
 import Grong from '@/assets/raids/bfa/bod/02_Grong.png';
 import Jadefire from '@/assets/raids/bfa/bod/03_Jadefire.png';
@@ -161,6 +220,10 @@ import Rastakhan from '@/assets/raids/bfa/bod/06_Rastakhan.png';
 import Mekkatorque from '@/assets/raids/bfa/bod/07_Mekkatorque.png';
 import Blockade from '@/assets/raids/bfa/bod/08_Blockade.png';
 import Jaina from '@/assets/raids/bfa/bod/09_Jaina.png';
+
+import Crucible from '@/assets/raids/bfa/cos/Crucible_of_Storms.png';
+import Cabal from '@/assets/raids/bfa/cos/01_Cabal.png';
+import Uunat from '@/assets/raids/bfa/cos/02_Uunat.png';
 
 export default {
   data() {
@@ -190,12 +253,18 @@ export default {
         { Background: Dazar}
       ],
 
-      grid: false,
+      CrucibleOfStorms: [
+        { Boss: "The Restless Cabal", bossImage: Cabal},
+        { Boss: "Uu'nat, Harbinger of the Void", bossImage: Uunat},
+        { Background: Crucible }
+      ],
+      hideRaidBlock: null,
     }
   },
 
   computed: {
     oneProg() {
+      console.log(store.state.playerOneProg)
       return store.state.playerOneProg
     },
 
@@ -205,8 +274,12 @@ export default {
   },
 
   methods: {
-    activeGrid() {
-      this.grid = !this.grid;
+    hideRaid(x) {
+      if (this.hideRaidBlock === x) {
+        this.hideRaidBlock = null;
+      } else {
+        this.hideRaidBlock = x
+      };
     }
   },
 
@@ -234,23 +307,33 @@ export default {
 .playerOne__raids, .playerTwo__raids
   margin: 0 auto
 
-
 span
   font-size: 1.3rem
 
 .raid_block
   margin: 1rem 1rem
+  overflow: hidden
+  transition: all 0.3s
+  border: 2px solid $post-border
+
+
+.hideRaid
+  height: 0px
 
 .raid-name
-  color: $orange-4
+  color: $orange-3
+  text-shadow: $text-shadow
   font-weight: 200
   margin: 0 0 0.4rem 0
   font-size: 1.5rem
+  position: relative
+  bottom: 2.2rem
+  left: 0.4rem
 
 .raid_card
   border-radius: 0.2rem
-  border: 2px solid $post-border
   width: 100%
+  background: $blue-8
 
   .image-container
     margin: -2px
@@ -261,11 +344,11 @@ span
 
     img
       width: 100%
-      // height: 20rem
+      height: 9rem
       border-bottom: 2px solid $post-border
 
 .table
-  color: $white-5
+  color: $white-6
   text-align: center
   border-collapse: collapse
   margin: 0 auto
@@ -275,7 +358,7 @@ span
     border-bottom: 2px solid $blue-5
 
   th
-    padding: 0.6rem 0.8rem
+    padding: 0.3rem 0.8rem
     color: $white-3
 
   img
@@ -285,7 +368,13 @@ span
   color: #2cf900
 
 .highKill
-  color: #ff6124
+  color: #ffc924
+
+.insaneKills
+  color: #ff7b24
+
+.getalife
+  color: #fd0000
 
 // Grid Classes
 .grid__active

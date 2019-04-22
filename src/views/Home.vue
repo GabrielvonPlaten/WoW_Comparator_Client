@@ -63,12 +63,16 @@ export default {
 
 <style lang="sass" scoped>
 .jumbotron
-  padding: 1px 0
-  height: 70vh
-  background: url('https://www.blazingboost.com/skin/upload/front/services/5bf16cc8-d654-4e74-a267-456a0541888e.jpg')
-  // background: url('https://i.imgur.com/Ih7ir0F.jpg')
+  // padding: 1px 0
+  padding: 1px
+  height: 74vh
+  // background: url('https://www.blazingboost.com/skin/upload/front/services/5bf16cc8-d654-4e74-a267-456a0541888e.jpg')
+  // background: url('https://i.imgur.com/IU6ge2L.png')
+  background: url('https://bnetcmsus-a.akamaihd.net/cms/blog_header/nh/NHY6SSZVXHC41545344020417.jpg')
+  // background: url('https://i.imgur.com/TXeokD6.jpg')
   background-attachment: fixed
   background-position: center
+  background-size: cover
   background-repeat: no-repeat
   background-color: $blue-2
   background-blend-mode: overlay
@@ -83,19 +87,22 @@ export default {
       background: $orange-5
 
   &__title
-    margin: 9% auto 0 auto
+    margin: 11% auto 0 auto
     text-align: center
     color: $white-0
     text-shadow: $text-shadow
 
     h1
       font-weight: normal
-      font-size: 2.6rem
+      font-size: 3rem
+      margin-bottom: 1rem
 
     p
       font-weight: 200
       font-size: 1.3rem
       max-width: 25%
+      letter-spacing: 1px
+      text-shadow: $text-shadow
       margin: 0 auto 2rem auto
 
 .recent-posts
@@ -155,7 +162,7 @@ export default {
 
     img
       width: 100%
-      height: auto
+      height: 14.5rem
       border-bottom: 2px solid $post-border
 
 
