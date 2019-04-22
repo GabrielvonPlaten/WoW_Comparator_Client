@@ -141,6 +141,7 @@ export default {
   margin-bottom: 1.5rem
   color: $orange-4
   padding: 0.7rem
+  padding-top: 4.1rem
   background: url('https://wow.4fansites.de/bilder/weltkarte/zandalar/zuldazar/zuldazar.jpg')
   background-repeat: no-repeat
   background-position: bottom
