@@ -68,7 +68,7 @@ export default {
   background-repeat: no-repeat
   background-attachment: fixed
   background-size: cover
-  height: 94vh
+  height: 100vh
   width: 100%
 
 .form-container

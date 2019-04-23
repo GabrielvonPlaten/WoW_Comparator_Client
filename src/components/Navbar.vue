@@ -43,10 +43,10 @@ export default {
   width: 100%
   height: 3.2rem
   position: fixed
-  background: rgba(22, 27, 51, 0.7)
+  background: $blue-9
   border-bottom: 1px solid $blue-4
   box-shadow: inset 0 0 0 250px rgba(22, 27, 51, 0.35)
-  z-index: 10
+  z-index: 20
 
 
 .username-name

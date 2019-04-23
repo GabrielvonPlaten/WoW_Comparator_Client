@@ -22,7 +22,7 @@
             <a
               v-if="i.azeriteEmpoweredItem === undefined || i.azeriteEmpoweredItem.azeritePowers.length === 0"
               target="_blank"
-              :rel="'&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + '&ilvl=' + i.itemLevel" 
+              :rel="'&gems=' + i.tooltipParams.gem0 + '&ench=' + i.tooltipParams.enchant + '&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + '&ilvl=' + i.itemLevel" 
               :href="'//www.wowhead.com/item=' + i.id"  
               :class="'gear-link q' + i.quality">
               {{i.name}}
@@ -31,7 +31,7 @@
             <a
               v-else
               target="_blank"
-              :rel="'&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + oneCheckGearState.class + ':' + 
+              :rel="'&gems=' + i.tooltipParams.gem0 + '&ench=' + i.tooltipParams.enchant + '&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + oneCheckGearState.class + ':' + 
               i.azeriteEmpoweredItem.azeritePowers[4].id + ':' + 
               i.azeriteEmpoweredItem.azeritePowers[3].id + ':' +
               i.azeriteEmpoweredItem.azeritePowers[2].id + ':' +
@@ -64,7 +64,7 @@
               <a
                 v-if="i.azeriteEmpoweredItem === undefined || i.azeriteEmpoweredItem.azeritePowers.length === 0"
                 target="_blank"
-                :rel="'&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + '&ilvl=' + i.itemLevel" 
+                :rel="'&gems=' + i.tooltipParams.gem0 + '&ench=' + i.tooltipParams.enchant + '&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + '&ilvl=' + i.itemLevel" 
                 :href="'//www.wowhead.com/item=' + i.id"  
                 :class="'gear-link q' + i.quality">
                 {{i.name}}
@@ -73,7 +73,7 @@
               <a
                 v-else
                 target="_blank"
-                :rel="'&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + twoCheckGearState.class + ':' + 
+                :rel="'&gems=' + i.tooltipParams.gem0 + '&ench=' + i.tooltipParams.enchant + '&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + twoCheckGearState.class + ':' + 
                 i.azeriteEmpoweredItem.azeritePowers[4].id + ':' + 
                 i.azeriteEmpoweredItem.azeritePowers[3].id + ':' +
                 i.azeriteEmpoweredItem.azeritePowers[2].id + ':' +

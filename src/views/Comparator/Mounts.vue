@@ -172,7 +172,7 @@ export default {
     li
       border-radius: 8px
       color: $white-0
-      background-color: $blue-5
+      background-color: $blue-6
       padding: 10px
       margin-top: 10px
       font-size: 1.2em
@@ -226,7 +226,7 @@ export default {
     li
       border-radius: 8px
       color: $white-0
-      background-color: $blue-5
+      background-color: $blue-6
       padding: 10px
       margin-top: 10px
       font-size: 1.2em

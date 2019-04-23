@@ -15,6 +15,7 @@ export const playerOneData = ({ commit }, info) => {
   commit(types.PLAYERONE_PROG, false);
   commit(types.PLAYERONE_TALENTS, false);
   commit(types.PLAYERONE_MYTHICS, false);
+  commit(types.PLAYERONE_MYTHIC_SCORE, false);
   commit(types.PLAYERONE_NO_MYTHICS, false);
   commit(types.PLAYERONE_REGION, false);
 
@@ -49,13 +50,24 @@ export const playerOneData = ({ commit }, info) => {
   axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=talents&locale=en_EU&access_token=${token}`)
     .then(res => commit(types.PLAYERONE_TALENTS, res.data))
     .catch(() => commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"}))
+}
+
+// Mythic Data
+export const playerOneMythicData = ({commit}, info) => {
+  let { token, realm, name, region, season_number} = info;
+
+  commit(types.PLAYERONE_MYTHICS, false);
+  commit(types.PLAYERONE_MYTHIC_SCORE, false)
+  commit(types.PLAYERONE_NO_MYTHICS, false);
 
   // Player One Mythics
   axios.get(`https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name}/mythic-keystone-profile/season/${season_number}?namespace=profile-${region}&locale=en_US&access_token=${token}`)
     .then(res => commit(types.PLAYERONE_MYTHICS, res.data))
     .catch(() => commit(types.PLAYERONE_NO_MYTHICS, {errMessage: "This player does not have a recorded M+ run this season.", errColor: "#2e72ba"}))
-}
 
+  axios.get(`https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_scores_by_season%3Acurrent`)
+    .then(res => commit(types.PLAYERONE_MYTHIC_SCORE, res.data))
+}
 
 export const playerOneEmptyForm = ({ commit }, payload) => {
   commit(types.PLAYERONE_ERROR, { errData: payload.errData, errColor: payload.errColor });

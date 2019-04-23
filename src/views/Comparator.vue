@@ -110,6 +110,7 @@ export default {
 
       if (playerOneRealm && playerOneName) {
         store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName, season_number: current_season})
+        store.dispatch('playerOneMythicData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName, season_number: current_season})
       } else {
         store.dispatch('playerOneEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }
@@ -120,6 +121,7 @@ export default {
 
       if (playerTwoRealm && playerTwoName) {
         store.dispatch('playerTwoData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm: playerTwoRealm, name: playerTwoName})
+        store.dispatch('playerTwoMythicData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm: playerTwoRealm, name: playerTwoName})
       } else {
         store.dispatch('playerTwoEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }

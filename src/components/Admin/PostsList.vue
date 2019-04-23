@@ -81,6 +81,7 @@ export default {
         headers: { authorization: 'Bearer ' + token } 
       })
         .then(res => {
+          this.confirmationBtns = null;
           this.postError = ""
           this.postDeleted = "Post Deleted";
           this.refreshPosts();

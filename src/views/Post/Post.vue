@@ -83,7 +83,7 @@ export default {
 
 <style lang="sass" scoped>
 .post-container
-  margin: 1.3rem 0 3rem 0
+  margin: 4.1rem 0 3rem 0
   padding: 1.3rem 0 3rem 0
 
 .post-bg
@@ -102,7 +102,7 @@ export default {
   position: relative
   z-index: 10
   background: $blue-7
-  box-shadow: 0 6px 10px rgba(0,0,0, .6), 0 10px 34px rgba(0,0,0, .6)
+  box-shadow: $box-shadow-6
 
   .image-container
     img

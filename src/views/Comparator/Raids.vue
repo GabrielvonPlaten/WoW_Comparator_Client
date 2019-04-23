@@ -359,7 +359,8 @@ span
 
   th
     padding: 0.3rem 0.8rem
-    color: $white-3
+    color: $white-0
+    font-weight: 200
 
   img
     height: 50px

@@ -14,6 +14,10 @@
           <label>Member Since</label>
           <h3>{{formatDate(adminData.createdAt)}}</h3>
         </div>
+        <div class="admin-info">
+          <label>Log Ins</label>
+          <h3>{{adminData.tokens.length}}</h3>
+        </div>
       </div>
       <div class="logout">
         <button @click.prevent="logoutAdmin" class="btn btn--red logout-btn">Logout</button>
