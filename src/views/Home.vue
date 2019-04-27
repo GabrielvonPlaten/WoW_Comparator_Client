@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="jumbotron">
+    <div class="jumbotron" :style="'background-image: url(' + jumbotronImage + ')'">
       <div class="jumbotron__title">
         <h1>WoW Comparator</h1>
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with other’s peoples characters!</p>
@@ -28,12 +28,14 @@
 
 <script>
 import axios from 'axios';
+import websiteStyles from '@/apis/website-styles';
 
 export default {
   data() {
     return {
       posts: [],
       postError: null,
+      jumbotronImage: null,
     }
   },
 
@@ -44,6 +46,10 @@ export default {
         this.posts = res.data
       })
       .catch(err => this.postError = err);
+
+    // Jumbotron Image
+    websiteStyles.getJumbotronBgImage()
+      .then(res => this.jumbotronImage = res.data.jumbotronBgImage)
   },
 
   methods: {
@@ -68,7 +74,7 @@ export default {
   height: 74vh
   // background: url('https://www.blazingboost.com/skin/upload/front/services/5bf16cc8-d654-4e74-a267-456a0541888e.jpg')
   // background: url('https://i.imgur.com/IU6ge2L.png')
-  background: url('https://bnetcmsus-a.akamaihd.net/cms/blog_header/nh/NHY6SSZVXHC41545344020417.jpg')
+  // background: url('https://bnetcmsus-a.akamaihd.net/cms/blog_header/nh/NHY6SSZVXHC41545344020417.jpg')
   // background: url('https://i.imgur.com/TXeokD6.jpg')
   background-attachment: fixed
   background-position: center

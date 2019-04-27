@@ -279,7 +279,7 @@ export default {
         this.hideRaidBlock = null;
       } else {
         this.hideRaidBlock = x
-      };
+      }
     }
   },
 
@@ -333,7 +333,7 @@ span
 .raid_card
   border-radius: 0.2rem
   width: 100%
-  background: $blue-8
+  background: $blue-9
 
   .image-container
     margin: -2px
@@ -344,7 +344,7 @@ span
 
     img
       width: 100%
-      height: 9rem
+      height: 10rem
       border-bottom: 2px solid $post-border
 
 .table
@@ -369,7 +369,7 @@ span
   color: #2cf900
 
 .highKill
-  color: #ffc924
+  color: #ffcd35
 
 .insaneKills
   color: #ff7b24

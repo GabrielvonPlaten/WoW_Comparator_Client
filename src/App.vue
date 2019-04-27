@@ -61,6 +61,9 @@ html, body
     +btn--grid
 
 .router
+  padding: 0.3rem 0.5rem
+  font-size: 0.9rem
+  text-transform: none
   transition: 0.4s
   &.router-link-exact-active
     background: $active-route

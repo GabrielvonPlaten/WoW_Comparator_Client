@@ -48,7 +48,6 @@ export default {
   box-shadow: inset 0 0 0 250px rgba(22, 27, 51, 0.35)
   z-index: 20
 
-
 .username-name
   h2
     color: $white-0
@@ -74,10 +73,5 @@ li
   margin: 1rem .1rem
   list-style: none
 
-.loggout-btn
-  border: 2px solid $red-3
-  background: none
-  &:hover
-    background: $red-3
 // The styles for the router-links can be found in App.vue
 </style>

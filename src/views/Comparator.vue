@@ -9,8 +9,8 @@
           v-text="playerOneError.message" 
         />
         <br>
-        <input v-model="playerOneRealm" type="text" placeholder="Realm"><br>
-        <input v-model="playerOneName" type="text" placeholder="Character">
+        <input v-model="playerOneName" type="text" placeholder="Character"><br>
+        <input v-model="playerOneRealm" type="text" placeholder="Realm">
         <div class="playerOne__buttons">
           <button class="btn btn--blue btn-playerOne">Search</button>
           <!-- Region Selection -->
@@ -33,8 +33,8 @@
           {{playerTwoError.message}}
         </span>
         <br>
-        <input v-model="playerTwoRealm" type="text" placeholder="Realm"><br>
-        <input v-model="playerTwoName" type="text" placeholder="Character">
+        <input v-model="playerTwoName" type="text" placeholder="Character"><br>
+        <input v-model="playerTwoRealm" type="text" placeholder="Realm">
         <div class="playerTwo__buttons">
           <!-- Region Selection -->
           <select v-model="playerTwoRegionSelected" class="playerTwo-region-selection">
@@ -193,7 +193,6 @@ export default {
     text-transform: capitalize
     border-radius: 0.1rem
     color: $white-1
-    font-style: italic
     font-size: 1.1rem
     border: 1px solid $blue-4
     background: $blue-5

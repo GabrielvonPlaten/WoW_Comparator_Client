@@ -18,6 +18,17 @@
           <label>Log Ins</label>
           <h3>{{adminData.tokens.length}}</h3>
         </div>
+        <div class="admin-info">
+          <label>Jumbotron Image</label>
+          <form @submit.prevent="updateJumbotronImage">
+            <p>Current Image: <a target="_blank" :href="jumbotronImage">{{jumbotronImage}}</a></p>
+            <input class="input-field" v-model="newJumbotronImage">
+            <br><br>
+            <button class="btn btn--green">Update</button>
+            <br>
+            <p>{{jumbotronMessage}}</p>
+          </form>
+        </div>
       </div>
       <div class="logout">
         <button @click.prevent="logoutAdmin" class="btn btn--red logout-btn">Logout</button>
@@ -28,18 +39,25 @@
 
 <script>
 import adminService from '@/apis/adminService';
+import websiteStyles from '@/apis/website-styles';
 import store from '@/Vuex/store';
 
 export default {
   data() {
     return {
       adminData: null,
+      jumbotronImage: null,
+      newJumbotronImage: "",
+      jumbotronMessage: null,
     }
   },
 
   created() {
     this.adminData = store.state.adminData
-    console.log(this.adminData)
+
+    // Jumbotron Image
+    websiteStyles.getJumbotronBgImage()
+      .then(res => this.jumbotronImage = res.data.jumbotronBgImage)
   },
 
   methods: {
@@ -58,6 +76,17 @@ export default {
       let day = new Date(value);
 
       return `${day.getDate()} / ${1 + month.getMonth()} / ${year.getUTCFullYear()}`
+    },
+
+    updateJumbotronImage() {
+      let token = localStorage.getItem('token');
+      websiteStyles.updateJumbotronImage(this.newJumbotronImage, token)
+        .then(res => {
+          this.jumbotronMessage = "Image Updated!"
+        })
+        .catch(() => {
+          this.jumbotronMessage = "Couldn't Update."
+        })
     }
   },
 }
@@ -86,6 +115,14 @@ export default {
     color: $white-1
     margin: 0.3rem 0 0 0
     font-weight: 300
+
+.input-field
+  background: none
+  border: 1px solid $blue-4
+  padding: 0.3rem
+  font-size: 1.2rem
+  color: $white-1
+  width: 100%
 </style>
 
 

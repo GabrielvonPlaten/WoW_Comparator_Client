@@ -9,7 +9,7 @@
           class="player_roles" 
           v-if="oneScores">
           <div class="player_roles_header">
-            <h3>Best Mythic+ Score for Season {{seasonNumberPlayerOne}}</h3>
+            <h3>All Mythic+ Runs During Season {{seasonNumberPlayerOne}}</h3>
 
             <div class="season_buttons">
               <label>Seasons - </label>
@@ -100,7 +100,7 @@
           class="player_roles" 
           v-if="twoScores">
           <div class="player_roles_header">
-            <h3>Best Mythic+ Score for Season {{seasonNumberPlayerTwo}}</h3>
+            <h3>All Mythic+ Runs During Season {{seasonNumberPlayerTwo}}</h3>
 
             <div class="season_buttons">
               <label>Seasons - </label>

@@ -209,13 +209,14 @@ export default {
 .compViews__playerOne
 
   .oneList-container
-    background: $blue-7
+    background: $blue-9
     border-color: $blue-4
     border-style: solid
-    margin: 0.5rem 0
+    margin: 0.7rem 0
     padding: 0.8rem
     border-width: 1px
     border-color: rgb(42, 54, 112)
+    box-shadow: $box-shadow-3
 
 
     ul
@@ -259,13 +260,14 @@ export default {
 .compViews__playerTwo
 
   .twoList-container
-    background: $blue-7
+    background: $blue-9
     border-color: $blue-4
     border-style: solid
-    margin: 0.5rem 0
+    margin: 0.7rem 0
     padding: 0.8rem
     border-width: 1px
     border-color: rgb(42, 54, 112)
+    box-shadow: $box-shadow-3
 
     ul
       display: grid
