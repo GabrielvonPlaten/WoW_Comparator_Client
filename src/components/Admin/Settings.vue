@@ -29,6 +29,12 @@
             <p>{{jumbotronMessage}}</p>
           </form>
         </div>
+        <div v-if="totalVisits" class="admin-info">
+          <label>Website Visits</label>
+          <p>{{totalVisits.websiteVisits}}</p>
+          <label>Comparator Queries</label>
+          <p>{{totalVisits.comparatorQueriesMade}}</p>
+        </div>
       </div>
       <div class="logout">
         <button @click.prevent="logoutAdmin" class="btn btn--red logout-btn">Logout</button>
@@ -38,6 +44,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import adminService from '@/apis/adminService';
 import websiteStyles from '@/apis/website-styles';
 import store from '@/Vuex/store';
@@ -49,6 +56,7 @@ export default {
       jumbotronImage: null,
       newJumbotronImage: "",
       jumbotronMessage: null,
+      totalVisits: null,
     }
   },
 
@@ -58,6 +66,11 @@ export default {
     // Jumbotron Image
     websiteStyles.getJumbotronBgImage()
       .then(res => this.jumbotronImage = res.data.jumbotronBgImage)
+
+    axios.get('/api/total-requests', {
+      headers: { authorization: 'Bearer ' + localStorage.getItem('token')}
+    })
+      .then(res => this.totalVisits = res.data);
   },
 
   methods: {

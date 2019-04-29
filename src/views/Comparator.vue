@@ -107,10 +107,14 @@ export default {
   methods: {
     getPlayerOneData() {
       let { playerOneRealm, playerOneName, playerOneRegionSelected, current_season, access_token } = this;
+      let realm = playerOneRealm.replace(/'/g, '');
 
       if (playerOneRealm && playerOneName) {
-        store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName, season_number: current_season})
-        store.dispatch('playerOneMythicData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName, season_number: current_season})
+        store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm, name: playerOneName, season_number: current_season})
+
+        store.dispatch('playerOneMythicData', {region: playerOneRegionSelected, token: access_token, realm, name: playerOneName, season_number: current_season})
+
+        axios.post('/api/comparator-queries-requests');
       } else {
         store.dispatch('playerOneEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }
@@ -118,10 +122,14 @@ export default {
 
     getPlayerTwoData() {
       let { playerTwoRealm, playerTwoName, playerTwoRegionSelected, current_season, access_token } = this;
+      let realm = playerTwoRealm.replace(/'/g, '');
 
       if (playerTwoRealm && playerTwoName) {
-        store.dispatch('playerTwoData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm: playerTwoRealm, name: playerTwoName})
-        store.dispatch('playerTwoMythicData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm: playerTwoRealm, name: playerTwoName})
+        store.dispatch('playerTwoData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm, name: playerTwoName})
+
+        store.dispatch('playerTwoMythicData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm, name: playerTwoName})
+
+        axios.post('/api/comparator-queries-requests');
       } else {
         store.dispatch('playerTwoEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }

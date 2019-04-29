@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Footer from '@/components/Footer.vue';
 import Navbar from '@/components/Navbar.vue';
 
@@ -15,6 +16,20 @@ export default {
     Footer,
     Navbar,
   },
+
+  created() {
+    let fullDay = 24*3600; 
+    let day = Date.now();
+    day = day.toString()
+    day = day.slice(0, -3);
+    day = Number(day)
+
+    if (!localStorage.getItem('visited') || day > (parseInt(localStorage.getItem('visited')) + fullDay)) {
+      let url = '/api/website-visits';
+      axios.post(url)
+        .then(localStorage.setItem('visited', day))
+    }
+  }
 
 }
 </script>
@@ -25,8 +40,7 @@ html, body
     font-family: 'Roboto', sans-serif
     padding: 0
     margin: 0
-    height: 100%
-    background-color: $blue-7
+    background-color: $blue-10
 
 // Lines
 .line

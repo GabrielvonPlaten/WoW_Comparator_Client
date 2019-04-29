@@ -204,7 +204,7 @@ export default {
 
     img
       width: 100%
-      height: auto
+      height: 14.8rem
       border-bottom: 2px solid $post-border
 
 

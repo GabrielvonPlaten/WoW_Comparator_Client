@@ -12,6 +12,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 let app;
+
 if (localStorage.getItem('token')) {
   adminService.adminProfile(localStorage.getItem('token'))
     .then(async res => {
