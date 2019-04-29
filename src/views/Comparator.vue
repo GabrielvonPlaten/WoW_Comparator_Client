@@ -114,7 +114,6 @@ export default {
 
         store.dispatch('playerOneMythicData', {region: playerOneRegionSelected, token: access_token, realm, name: playerOneName, season_number: current_season})
 
-        axios.post('/api/comparator-queries-requests');
       } else {
         store.dispatch('playerOneEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }
@@ -129,7 +128,6 @@ export default {
 
         store.dispatch('playerTwoMythicData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm, name: playerTwoName})
 
-        axios.post('/api/comparator-queries-requests');
       } else {
         store.dispatch('playerTwoEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }

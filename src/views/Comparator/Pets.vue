@@ -288,6 +288,7 @@ export default {
       return store.state.playerTwoPets
     },
 
+    // Filter Pets by name
     oneFilteredPets() {
       return this.onePets.pets.collected.filter(pet => {
         return pet.name.match(this.petSearch.toLowerCase()
@@ -297,6 +298,7 @@ export default {
       })
     },
 
+    // Filter Pets by name
     twoFilteredPets() {
       return this.twoPets.pets.collected.filter(pet => {
         return pet.name.match(this.petSearch.toLowerCase()

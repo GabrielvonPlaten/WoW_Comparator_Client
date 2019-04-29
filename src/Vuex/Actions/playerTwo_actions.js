@@ -23,7 +23,9 @@ export const playerTwoData = ({ commit }, info) => {
   axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=stats&locale=en_EU&access_token=${token}`)
     .then(res => {
       commit(types.PLAYERTWO_STATS, res.data);
-      commit(types.PLAYERTWO_REGION, region) })
+      commit(types.PLAYERTWO_REGION, region) 
+      axios.post('/api/comparator-queries-requests');
+    })
     .catch(() => commit(types.PLAYERTWO_ERROR, {errMessage: "Character not found", errColor: "red"} ))
 
   // Player Two Pets

@@ -54,7 +54,8 @@
               <span v-for="(affix, j) in run.keystone_affixes" :key="j">
                 <a
                   class="affix-name" 
-                  :href="'https://wowhead.com/affix=' + affix.id">  
+                  :href="'https://wowhead.com/affix=' + affix.id">
+                  <!-- There are currently 17 affixes that goes from 1 to 16 except of one which has an id of 117 -->
                   <div v-if="affix.id === 117">
                     <img class="affix-image" :src="affixIcons[17].icon">
                   </div>
@@ -73,7 +74,7 @@
                 <li v-for="(m, index) in run.members" :key="index">
                   <p
                     class="member-name" 
-                    :class="{sameMember: m.character.name === oneStats.name}">{{m.character.name}} - <span class="character-realm">{{m.character.realm.slug}}</span></p>
+                    :class="{sameMember: m.character.name === oneStats.name}">{{m.character.name}}<span class="character-realm"> - {{m.character.realm.slug}}</span></p>
                   <p>iLvL: <span class="member-itemlevel">{{m.equipped_item_level}}</span></p>
                 </li>
               </ul>
@@ -149,6 +150,7 @@
                 <a
                   class="affix-name" 
                   :href="'https://wowhead.com/affix=' + affix.id">  
+                  <!-- There are currently 17 affixes that goes from 1 to 16 except of one which has an id of 117 -->
                   <div v-if="affix.id === 117">
                     <img class="affix-image" :src="affixIcons[17].icon">
                   </div>
@@ -164,7 +166,7 @@
                 <li v-for="(m, index) in run.members" :key="index">
                   <p
                     class="member-name" 
-                    :class="{sameMember: m.character.name === twoStats.name}">{{m.character.name}} - <span class="character-realm">{{m.character.realm.slug}}</span></p>
+                    :class="{sameMember: m.character.name === twoStats.name}">{{m.character.name}}<span class="character-realm"> - {{m.character.realm.slug}}</span></p>
                   <p>iLvL: <span class="member-itemlevel">{{m.equipped_item_level}}</span></p>
                 </li>
               </ul>
@@ -275,6 +277,7 @@ export default {
       return store.state.playerOneStats
     },
 
+    // Raider.io M+ Scores
     oneScores() {
       return store.state.playerOneMythicScore
     },
@@ -283,14 +286,17 @@ export default {
       return store.state.playerTwoStats
     },
 
+    // Raider.io M+ Scores
     twoScores() {
       return store.state.playerTwoMythicScore
     },
 
+    // No Mythic Runs
     oneNoMythicRuns() {
       return store.state.playerOneMythicError
     },
 
+    // No Mythic Runs
     twoNoMythicRuns() {
       return store.state.playerTwoMythicError
     },
@@ -333,16 +339,6 @@ export default {
       });
       console.log(icon)
       return icon
-    },
-
-    async getMemberInfo(val) {
-      let response = axios.get(`${val}&access_token=${this.access_token}`)
-        .then(res => res.data)
-
-      let data = await response.then(res => res.role.type);
-      console.log(data)
-      
-      return data
     },
 
     async changeSeason(season_number, player) {

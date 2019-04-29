@@ -67,6 +67,7 @@ export default {
     websiteStyles.getJumbotronBgImage()
       .then(res => this.jumbotronImage = res.data.jumbotronBgImage)
 
+    // Get total-requests API
     axios.get('/api/total-requests', {
       headers: { authorization: 'Bearer ' + localStorage.getItem('token')}
     })

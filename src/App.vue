@@ -18,6 +18,9 @@ export default {
   },
 
   created() {
+    // First visit will send a POST request to the back end and a localStorage item will be created
+    // with the UNIX timestamp of the current as a value
+    // If the next visist happens after 24 hours, the process will repeat
     let fullDay = 24*3600; 
     let day = Date.now();
     day = day.toString()
