@@ -23,8 +23,10 @@ export const playerOneData = ({ commit }, info) => {
   axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=stats&locale=en_EU&access_token=${token}`)
     .then(res => {
       commit(types.PLAYERONE_STATS, res.data);   
-      commit(types.PLAYERONE_REGION, region); 
-      axios.post('/api/comparator-queries-requests')
+      commit(types.PLAYERONE_REGION, region);
+
+      let url = '/api/comparator-queries-requests';
+      axios.post(url)
     })
     .catch(() => { commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"})})
 

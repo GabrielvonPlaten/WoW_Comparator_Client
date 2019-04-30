@@ -68,7 +68,8 @@ export default {
       .then(res => this.jumbotronImage = res.data.jumbotronBgImage)
 
     // Get total-requests API
-    axios.get('/api/total-requests', {
+    let url = '/api/total-requests'
+    axios.get(url, {
       headers: { authorization: 'Bearer ' + localStorage.getItem('token')}
     })
       .then(res => this.totalVisits = res.data);
