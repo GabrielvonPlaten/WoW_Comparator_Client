@@ -9,7 +9,7 @@
     </div>
     <ul>
       <li><router-link to="/" class="router btn btn--purple">Home</router-link></li>
-      <li><router-link to="/comparator/stats" class="router btn btn--purple">Compare</router-link></li>
+      <li><router-link to="/compare/stats" class="router btn btn--purple">Compare</router-link></li>
       <li v-if="adminLoggedIn">
         <router-link to="/admin/dashboard" class="router btn btn--purple">Dashboard</router-link>
       </li>
