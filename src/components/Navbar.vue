@@ -9,7 +9,7 @@
     </div>
     <ul>
       <li><router-link to="/" class="router btn btn--purple">Home</router-link></li>
-      <li><router-link to="/comparator/stats" class="router btn btn--purple">Compare</router-link></li>
+      <li><router-link to="/compare/stats" class="router btn btn--purple">Compare</router-link></li>
       <li v-if="adminLoggedIn">
         <router-link to="/admin/dashboard" class="router btn btn--purple">Dashboard</router-link>
       </li>
@@ -43,11 +43,10 @@ export default {
   width: 100%
   height: 3.2rem
   position: fixed
-  background: rgba(22, 27, 51, 0.7)
+  background: $blue-9
   border-bottom: 1px solid $blue-4
   box-shadow: inset 0 0 0 250px rgba(22, 27, 51, 0.35)
-  z-index: 10
-
+  z-index: 20
 
 .username-name
   h2
@@ -74,10 +73,5 @@ li
   margin: 1rem .1rem
   list-style: none
 
-.loggout-btn
-  border: 2px solid $red-3
-  background: none
-  &:hover
-    background: $red-3
 // The styles for the router-links can be found in App.vue
 </style>

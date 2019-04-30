@@ -9,7 +9,7 @@
       <div class="playerOne__gear" v-if="oneCheckGearState">
         <playerOneAvatar />
         <ul>
-          <p>iLvL: {{this.$store.state.playerOneGear.items.averageItemLevel}}</p>
+          <p class="playerItemLevel">iLvL: {{this.$store.state.playerOneGear.items.averageItemLevel}}</p>
           <li v-for="(i, index) in gearOne" :key="index">
             <span class="item-itemLevel">{{index}} - {{i.itemLevel}}</span>
             <img
@@ -22,7 +22,7 @@
             <a
               v-if="i.azeriteEmpoweredItem === undefined || i.azeriteEmpoweredItem.azeritePowers.length === 0"
               target="_blank"
-              :rel="'&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + '&ilvl=' + i.itemLevel" 
+              :rel="'&gems=' + i.tooltipParams.gem0 + '&ench=' + i.tooltipParams.enchant + '&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + '&ilvl=' + i.itemLevel" 
               :href="'//www.wowhead.com/item=' + i.id"  
               :class="'gear-link q' + i.quality">
               {{i.name}}
@@ -31,7 +31,7 @@
             <a
               v-else
               target="_blank"
-              :rel="'&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + oneCheckGearState.class + ':' + 
+              :rel="'&gems=' + i.tooltipParams.gem0 + '&ench=' + i.tooltipParams.enchant + '&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + oneCheckGearState.class + ':' + 
               i.azeriteEmpoweredItem.azeritePowers[4].id + ':' + 
               i.azeriteEmpoweredItem.azeritePowers[3].id + ':' +
               i.azeriteEmpoweredItem.azeritePowers[2].id + ':' +
@@ -51,7 +51,7 @@
       <div class="playerTwo__gear" v-if="twoCheckGearState">
         <playerTwoAvatar />
         <ul>
-          <p>iLvL: {{this.$store.state.playerTwoGear.items.averageItemLevel}}</p>
+          <p class="playerItemLevel">iLvL: {{this.$store.state.playerTwoGear.items.averageItemLevel}}</p>
           <li v-for="(i, index) in gearTwo" :key="index">
             <span class="item-itemLevel">{{i.itemLevel}} - {{index}}</span>
             <img
@@ -64,7 +64,7 @@
               <a
                 v-if="i.azeriteEmpoweredItem === undefined || i.azeriteEmpoweredItem.azeritePowers.length === 0"
                 target="_blank"
-                :rel="'&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + '&ilvl=' + i.itemLevel" 
+                :rel="'&gems=' + i.tooltipParams.gem0 + '&ench=' + i.tooltipParams.enchant + '&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + '&ilvl=' + i.itemLevel" 
                 :href="'//www.wowhead.com/item=' + i.id"  
                 :class="'gear-link q' + i.quality">
                 {{i.name}}
@@ -73,7 +73,7 @@
               <a
                 v-else
                 target="_blank"
-                :rel="'&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + twoCheckGearState.class + ':' + 
+                :rel="'&gems=' + i.tooltipParams.gem0 + '&ench=' + i.tooltipParams.enchant + '&bonus=' + i.bonusLists[0] + ':' + i.bonusLists[1] + ':' + i.bonusLists[2] + ':' + i.bonusLists[3] + '&azerite-powers=' + twoCheckGearState.class + ':' + 
                 i.azeriteEmpoweredItem.azeritePowers[4].id + ':' + 
                 i.azeriteEmpoweredItem.azeritePowers[3].id + ':' +
                 i.azeriteEmpoweredItem.azeritePowers[2].id + ':' +
@@ -146,22 +146,24 @@ export default {
     margin: 0
     
     li
-      border: 1px solid $blue-8
+      border: 1px solid $blue-5
       border-radius: 4px
-      color: $orange-4
-      background-color: $blue-6
+      color: $orange-3
+      background-color: $blue-9
       padding: 9px 10px 0px 10px
       width: 100%
-      height: 40px
+      height: 39px
       margin-top: 12px
       font-size: 1.2em
       font-weight: 400
       text-align: right
       float: right
       list-style-position: inside
-      transition: all 0.2s
+      box-shadow: $box-shadow-2
+      transition: all 0.3s
       &:hover
-        background-color: $blue-5
+        background-color: $blue-6
+        border: 1px solid $blue-8
 
       a
         margin: .5% 0 0 2%
@@ -183,11 +185,11 @@ export default {
         border-image-width: 44px
         border-image-outset: 0px 6px 0px 6px
         position: relative
-        bottom: 10px
+        bottom: 7px
 
       img
         float: left
-        height: 40px
+        height: 39px
         width: 40px
         position: relative
         bottom: 15%
@@ -195,7 +197,7 @@ export default {
 
     p
       font-size: 1.2em
-      color: $orange-4
+      color: $orange-3
       text-align: right
       
 .separation-item
@@ -211,22 +213,24 @@ export default {
     margin: 0
 
     li
-      border: 1px solid $blue-8
+      border: 1px solid $blue-5
       border-radius: 4px
-      color: $orange-4
-      background-color: $blue-6
+      color: $orange-3
+      background-color: $blue-9
       padding: 9px 10px 0px 10px
       width: 100%
-      height: 40px
+      height: 39px
       margin-top: 12px
       font-size: 1.2em
       font-weight: 400
       text-align: left
       float: left
       list-style-position: inside
+      box-shadow: $box-shadow-2
       transition: all 0.2s
       &:hover
-        background-color: $blue-5
+        background-color: $blue-6
+        border: 1px solid $blue-8
         
       a
         margin: .5% 2% 0 0
@@ -248,28 +252,31 @@ export default {
         border-image-width: 44px
         border-image-outset: 0px 6px 0px 6px
         position: relative
-        bottom: 10px
+        bottom: 7px
   
       img
-        border: 2px solid $blue-8
         float: right
         height: 40px
-        width: 40px
+        width: 39px
         position: relative
         bottom: 15%
+        border: 2px solid $blue-4
 
     p
       font-size: 1.2em
-      color: $orange-4
+      color: $orange-3
       text-align: left
 
-.no-items
-  color: $poor
+
+.playerItemLevel
+  text-shadow: $text-shadow
 
 .item-itemLevel
   position: relative
   top: 0.2rem
   text-transform: capitalize
 
+.no-items
+  color: $poor
 
 </style>
