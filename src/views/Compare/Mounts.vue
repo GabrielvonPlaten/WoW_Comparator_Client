@@ -13,7 +13,7 @@
             <div v-if="mount.qualityId === 4">
               <li class="mounts--epic">
                 <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
                   <p>{{mount.name}}</p>
                 </a>
               </li>
@@ -21,7 +21,7 @@
             <div v-else-if="mount.qualityId === 3">
              <li class="mounts--rare">
                 <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
                   <p>{{mount.name}}</p>
                 </a>
               </li>
@@ -29,7 +29,7 @@
             <div v-else-if="mount.qualityId === 1">
              <li class="mounts--common">
                 <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
                   <p>{{mount.name}}</p>
                 </a>
               </li>
@@ -52,7 +52,7 @@
             <div v-if="mount.qualityId === 4">
               <li class="mounts--epic">
                 <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
                   <p>{{mount.name}}</p>
                 </a>
               </li>
@@ -60,7 +60,7 @@
             <div v-else-if="mount.qualityId === 3">
              <li class="mounts--rare">
                 <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
                   <p>{{mount.name}}</p>
                 </a>
               </li>
@@ -68,7 +68,7 @@
             <div v-else-if="mount.qualityId === 1">
              <li class="mounts--common">
                 <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + mount.icon + '.jpg'">
+                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
                   <p>{{mount.name}}</p>
                 </a>
               </li>
@@ -170,15 +170,15 @@ export default {
     grid-template-columns: repeat(4, 1fr)
 
     li
-      border-radius: 8px
+      border-radius: 3px
       color: $white-0
-      background-color: $blue-5
+      background-color: $blue-6
       padding: 10px
       margin-top: 10px
       font-size: 1.2em
       font-weight: 200
       float: right
-      width: 75%
+      width: 80%
       height: 6.5rem
       text-align: center
       &:hover
@@ -224,15 +224,15 @@ export default {
     grid-template-columns: repeat(4, 1fr)
 
     li
-      border-radius: 8px
+      border-radius: 3px
       color: $white-0
-      background-color: $blue-5
+      background-color: $blue-6
       padding: 10px
       margin-top: 10px
       font-size: 1.2em
       font-weight: 200
       float: left
-      width: 75%
+      width: 80%
       height: 6.5rem
       text-align: center
       &:hover

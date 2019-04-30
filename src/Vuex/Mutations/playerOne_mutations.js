@@ -34,6 +34,10 @@ export const playerOneMutations = {
     state.playerOneMythics = data.best_runs
   },
 
+  [types.PLAYERONE_MYTHIC_SCORE] (state, data) {
+    state.playerOneMythicScore = data
+  },
+
   [types.PLAYERONE_NO_MYTHICS] (state, data) {
     state.playerOneMythicError = data
   },

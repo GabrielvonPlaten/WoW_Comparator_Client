@@ -34,6 +34,10 @@ export const playerTwoMutations = {
     state.playerTwoMythics = data.best_runs
   },
 
+  [types.PLAYERTWO_MYTHIC_SCORE] (state, data) {
+    state.playerTwoMythicScore = data
+  },
+
   [types.PLAYERTWO_NO_MYTHICS] (state, data) {
     state.playerTwoMythicError = data;
   },

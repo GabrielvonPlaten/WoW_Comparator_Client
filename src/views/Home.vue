@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="jumbotron">
+    <div class="jumbotron" :style="'background-image: url(' + jumbotronImage + ')'">
       <div class="jumbotron__title">
         <h1>WoW Comparator</h1>
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with other’s peoples characters!</p>
@@ -28,22 +28,31 @@
 
 <script>
 import axios from 'axios';
+import websiteStyles from '@/apis/website-styles';
 
 export default {
   data() {
     return {
       posts: [],
       postError: null,
+      jumbotronImage: null,
+      access_token: null,
     }
   },
 
-  created() {
+  async created() {
     let url = '/api/posts';
     axios.get(url)
       .then(res => {
         this.posts = res.data
       })
       .catch(err => this.postError = err);
+
+    // Jumbotron Image
+    websiteStyles.getJumbotronBgImage()
+      .then(res => this.jumbotronImage = res.data.jumbotronBgImage)
+
+
   },
 
   methods: {
@@ -63,13 +72,8 @@ export default {
 
 <style lang="sass" scoped>
 .jumbotron
-  // padding: 1px 0
   padding: 1px
   height: 74vh
-  // background: url('https://www.blazingboost.com/skin/upload/front/services/5bf16cc8-d654-4e74-a267-456a0541888e.jpg')
-  // background: url('https://i.imgur.com/IU6ge2L.png')
-  background: url('https://bnetcmsus-a.akamaihd.net/cms/blog_header/nh/NHY6SSZVXHC41545344020417.jpg')
-  // background: url('https://i.imgur.com/TXeokD6.jpg')
   background-attachment: fixed
   background-position: center
   background-size: cover
@@ -121,7 +125,7 @@ export default {
     background: $blue-7
     color: $white-3
     text-decoration: none
-    box-shadow: 0 4px 8px rgba(0,0,0, .6), 0 8px 32px rgba(0,0,0, .4)
+    box-shadow: $box-shadow-5
     border-radius: 0.2rem
     border: 2px solid $post-border
     z-index: 20
@@ -135,13 +139,13 @@ export default {
     margin: -2px
     padding: 1.16961rem
     transition: 0.3s
-    &:hover
-      color: $white-1
 
     .title-text
       text-shadow: 0 2px 4px $text-shadow
       font-weight: bold
       font-size: 1.36798em
+      color: $white-0
+      transition: all 0.3s
 
     .title-subtitle
       font-size: 1.16961em
@@ -162,10 +166,12 @@ export default {
 
     img
       width: 100%
-      height: 14.5rem
+      height: 14.8rem
       border-bottom: 2px solid $post-border
 
-
+.blog_block:hover
+  .title-text
+    color: $orange-2
 </style>
 
 

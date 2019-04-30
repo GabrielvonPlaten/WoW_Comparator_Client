@@ -15,6 +15,7 @@ export const playerTwoData = ({ commit }, info) => {
   commit(types.PLAYERTWO_PROG, false);
   commit(types.PLAYERTWO_TALENTS, false);
   commit(types.PLAYERTWO_MYTHICS, false);
+  commit(types.PLAYERTWO_MYTHIC_SCORE, false)
   commit(types.PLAYERTWO_NO_MYTHICS, false);
   commit(types.PLAYERTWO_REGION, false);
 
@@ -22,7 +23,9 @@ export const playerTwoData = ({ commit }, info) => {
   axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=stats&locale=en_EU&access_token=${token}`)
     .then(res => {
       commit(types.PLAYERTWO_STATS, res.data);
-      commit(types.PLAYERTWO_REGION, region) })
+      commit(types.PLAYERTWO_REGION, region) 
+      axios.post('/api/comparator-queries-requests');
+    })
     .catch(() => commit(types.PLAYERTWO_ERROR, {errMessage: "Character not found", errColor: "red"} ))
 
   // Player Two Pets
@@ -49,12 +52,24 @@ export const playerTwoData = ({ commit }, info) => {
   axios.get(`https://${region}.api.blizzard.com/wow/character/${realm}/${name}?fields=talents&locale=en_EU&access_token=${token}`)
     .then(res => commit(types.PLAYERTWO_TALENTS, res.data))
     .catch(() => commit(types.PLAYERTWO_ERROR, {errMessage: "Character not found", errColor: "red"} ))
+};
+
+// Mythic Data
+export const playerTwoMythicData = ({commit}, info) => {
+  let { token, realm, name, region, season_number} = info;
+
+  commit(types.PLAYERTWO_MYTHICS, false);
+  commit(types.PLAYERTWO_MYTHIC_SCORE, false)
+  commit(types.PLAYERTWO_NO_MYTHICS, false);
 
   // Player Two Mythics
   axios.get(`https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name}/mythic-keystone-profile/season/${season_number}?namespace=profile-${region}&locale=en_US&access_token=${token}`)
     .then(res => commit(types.PLAYERTWO_MYTHICS, res.data))
     .catch(() => commit(types.PLAYERTWO_NO_MYTHICS, {errMessage: "This player does not have a recorded M+ run this season.", errColor: "#2e72ba"}))
-};
+
+  axios.get(`https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_scores_by_season%3Acurrent`)
+    .then(res => commit(types.PLAYERTWO_MYTHIC_SCORE, res.data))
+}
 
 export const playerTwoEmptyForm = ({ commit }, payload) => {
   commit(types.PLAYERTWO_ERROR, { errMessage: payload.errMessage, errColor: payload.errColor });

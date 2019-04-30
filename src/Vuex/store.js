@@ -30,6 +30,7 @@ export default new Vuex.Store({
     playerOneTalents: null,
     playerOneRegion: null,
     playerOneMythics: null,
+    playerOneMythicScore: null,
     playerOneMythicError: null,
     playerOneError: {
       message: "",
@@ -44,6 +45,7 @@ export default new Vuex.Store({
     playerTwoTalents: null,
     playerTwoRegion: null,
     playerTwoMythics: null,
+    playerTwoMythicScore: null,
     playerTwoMythicError: null,
     playerTwoError: {
       message: "",

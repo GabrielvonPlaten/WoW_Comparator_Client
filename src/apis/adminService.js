@@ -12,8 +12,6 @@ export default {
       headers: { 
         authorization: 'Bearer ' + token 
       }})
-    .then(res => res.data)
-    .catch(err => err)
   },
 
   logout(token) {

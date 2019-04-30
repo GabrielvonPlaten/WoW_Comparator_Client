@@ -43,9 +43,9 @@ export default {
       let { email, password } = this.login;
       await adminService.login(email, password)
         .then(async res => {
-          console.log(res)
-          await localStorage.setItem('token', res.token)
-          store.dispatch('adminLogin', res)
+          console.log(res.data)
+          await localStorage.setItem('token', res.data.token)
+          store.dispatch('adminLogin', res.data)
           this.$router.go({ path: this.$router.path })
         })
         .catch(err => {
@@ -68,7 +68,7 @@ export default {
   background-repeat: no-repeat
   background-attachment: fixed
   background-size: cover
-  height: 94vh
+  height: 100vh
   width: 100%
 
 .form-container

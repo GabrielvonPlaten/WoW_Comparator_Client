@@ -81,6 +81,7 @@ export default {
         headers: { authorization: 'Bearer ' + token } 
       })
         .then(res => {
+          this.confirmationBtns = null;
           this.postError = ""
           this.postDeleted = "Post Deleted";
           this.refreshPosts();
@@ -203,7 +204,7 @@ export default {
 
     img
       width: 100%
-      height: auto
+      height: 14.8rem
       border-bottom: 2px solid $post-border
 
 
