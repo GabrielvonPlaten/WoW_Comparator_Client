@@ -25,8 +25,8 @@ export const playerOneData = ({ commit }, info) => {
       commit(types.PLAYERONE_STATS, res.data);   
       commit(types.PLAYERONE_REGION, region);
 
-      let url = '/api/comparator-queries-requests';
-      axios.post(url)
+      let url = '/api/queries-made';
+      axios.patch(url)
     })
     .catch(() => { commit(types.PLAYERONE_ERROR, {errData: "Character not found", errColor: "red"})})
 

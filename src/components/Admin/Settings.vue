@@ -21,7 +21,7 @@
         <div class="admin-info">
           <label>Jumbotron Image</label>
           <form @submit.prevent="updateJumbotronImage">
-            <p>Current Image: <a target="_blank" :href="jumbotronImage">{{jumbotronImage}}</a></p>
+            <p>Current Image: <a target="_blank" :href="jumbotronImage.backgroundImage">{{jumbotronImage.backgroundImage}}</a></p>
             <input class="input-field" v-model="newJumbotronImage">
             <br><br>
             <button class="btn btn--green">Update</button>
@@ -29,11 +29,11 @@
             <p>{{jumbotronMessage}}</p>
           </form>
         </div>
-        <div v-if="totalVisits" class="admin-info">
+        <div v-if="websiteVisits && queriesMade" class="admin-info">
           <label>Website Visits</label>
-          <p>{{totalVisits.websiteVisits}}</p>
-          <label>Comparator Queries</label>
-          <p>{{totalVisits.comparatorQueriesMade}}</p>
+          <p>{{websiteVisits.visits}}</p>
+          <label>Queries Made</label>
+          <p>{{queriesMade.queries}}</p>
         </div>
       </div>
       <div class="logout">
@@ -53,10 +53,11 @@ export default {
   data() {
     return {
       adminData: null,
-      jumbotronImage: null,
+      jumbotronImage: [],
       newJumbotronImage: "",
       jumbotronMessage: null,
-      totalVisits: null,
+      websiteVisits: null,
+      queriesMade: null,
     }
   },
 
@@ -65,14 +66,18 @@ export default {
 
     // Jumbotron Image
     websiteStyles.getJumbotronBgImage()
-      .then(res => this.jumbotronImage = res.data.jumbotronBgImage)
+      .then(res => this.jumbotronImage = res.data[0])
 
-    // Get total-requests API
-    let url = '/api/total-requests'
-    axios.get(url, {
-      headers: { authorization: 'Bearer ' + localStorage.getItem('token')}
-    })
-      .then(res => this.totalVisits = res.data);
+    // Get total numbers of visits to the website
+    let url = ['/api/website-visits', '/api/queries-made'];
+    axios.get(url[0], {
+      headers: { authorization: 'Bearer ' + localStorage.getItem('token')}})
+      .then(res => this.websiteVisits = res.data[0]);
+
+    // Get total number of searches for characters
+    axios.get(url[1], {
+      headers: { authorization: 'Bearer ' + localStorage.getItem('token')}})
+      .then(res => this.queriesMade = res.data[0]);
   },
 
   methods: {
@@ -95,7 +100,7 @@ export default {
 
     updateJumbotronImage() {
       let token = localStorage.getItem('token');
-      websiteStyles.updateJumbotronImage(this.newJumbotronImage, token)
+      websiteStyles.updateJumbotronImage(this.newJumbotronImage, this.jumbotronImage._id, token)
         .then(res => {
           this.jumbotronMessage = "Image Updated!"
         })

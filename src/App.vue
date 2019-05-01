@@ -29,7 +29,7 @@ export default {
 
     if (!localStorage.getItem('visited') || day > (parseInt(localStorage.getItem('visited')) + fullDay)) {
       let url = '/api/website-visits';
-      axios.post(url)
+      axios.patch(url)
         .then(localStorage.setItem('visited', day))
     }
   }

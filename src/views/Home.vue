@@ -50,7 +50,7 @@ export default {
 
     // Jumbotron Image
     websiteStyles.getJumbotronBgImage()
-      .then(res => this.jumbotronImage = res.data.jumbotronBgImage)
+      .then(res => this.jumbotronImage = res.data[0].backgroundImage)
 
 
   },
