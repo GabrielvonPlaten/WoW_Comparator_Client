@@ -3,16 +3,16 @@ import Router from 'vue-router';
 import store from '@/Vuex/store';
 
 import Home from './views/Home.vue'
-import Comparator from './views/Comparator.vue'
-import Post from './views/Post.vue';
+import Compare from './views/Compare.vue'
+import Post from './views/Post/Post.vue';
 
-import Talents from './views/Comparator/Talents.vue';
-import Mounts from './views/Comparator/Mounts.vue';
-import Stats from './views/Comparator/Stats.vue';
-import Raids from './views/Comparator/Raids.vue';
-import Mythics from './views/Comparator/Mythics.vue';
-import Gear from './views/Comparator/Gear.vue';
-import Pets from './views/Comparator/Pets.vue';
+import Talents from './views/Compare/Talents.vue';
+import Mounts from './views/Compare/Mounts.vue';
+import Stats from './views/Compare/Stats.vue';
+import Raids from './views/Compare/Raids.vue';
+import Mythics from './views/Compare/Mythics.vue';
+import Gear from './views/Compare/Gear.vue';
+import Pets from './views/Compare/Pets.vue';
 
 // Admin
 import AdminLogin from './views/Admin/Login.vue';
@@ -30,47 +30,47 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/Post',
+      path: '/post/:id/:slug',
       name: 'post',
       component: Post,
     },
     {
-      path: '/comparator',
-      name: 'comparator',
-      component: Comparator,
+      path: '/compare',
+      name: 'compare',
+      component: Compare,
       children: [
         {
-          path: '/comparator/Talents',
+          path: '/compare/Talents',
           name: 'talents',
           component: Talents
         },
         {
-          path: '/comparator/mounts',
+          path: '/compare/mounts',
           name: 'mounts',
           component: Mounts
         },
         {
-          path: '/comparator/stats',
+          path: '/compare/stats',
           name: 'stats',
           component: Stats
         },
         {
-          path: '/comparator/raids',
+          path: '/compare/raids',
           name: 'raids',
           component: Raids
         },
         {
-          path: '/comparator/mythics',
+          path: '/compare/mythics',
           name: 'mythics',
           component: Mythics
         },
         {
-          path: '/comparator/gear',
+          path: '/compare/gear',
           name: 'gear',
           component: Gear
         },
         {
-          path: '/comparator/pets',
+          path: '/compare/pets',
           name: 'pets',
           component: Pets
         },

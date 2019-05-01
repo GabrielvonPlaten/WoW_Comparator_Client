@@ -9,8 +9,8 @@
           v-text="playerOneError.message" 
         />
         <br>
-        <input v-model="playerOneRealm" type="text" placeholder="Realm"><br>
-        <input v-model="playerOneName" type="text" placeholder="Character">
+        <input v-model="playerOneName" type="text" placeholder="Character"><br>
+        <input v-model="playerOneRealm" type="text" placeholder="Realm">
         <div class="playerOne__buttons">
           <button class="btn btn--blue btn-playerOne">Search</button>
           <!-- Region Selection -->
@@ -33,8 +33,8 @@
           {{playerTwoError.message}}
         </span>
         <br>
-        <input v-model="playerTwoRealm" type="text" placeholder="Realm"><br>
-        <input v-model="playerTwoName" type="text" placeholder="Character">
+        <input v-model="playerTwoName" type="text" placeholder="Character"><br>
+        <input v-model="playerTwoRealm" type="text" placeholder="Realm">
         <div class="playerTwo__buttons">
           <!-- Region Selection -->
           <select v-model="playerTwoRegionSelected" class="playerTwo-region-selection">
@@ -107,9 +107,13 @@ export default {
   methods: {
     getPlayerOneData() {
       let { playerOneRealm, playerOneName, playerOneRegionSelected, current_season, access_token } = this;
+      let realm = playerOneRealm.replace(/'/g, '');
 
       if (playerOneRealm && playerOneName) {
-        store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm: playerOneRealm, name: playerOneName, season_number: current_season})
+        store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm, name: playerOneName, season_number: current_season})
+
+        store.dispatch('playerOneMythicData', {region: playerOneRegionSelected, token: access_token, realm, name: playerOneName, season_number: current_season})
+
       } else {
         store.dispatch('playerOneEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }
@@ -117,9 +121,13 @@ export default {
 
     getPlayerTwoData() {
       let { playerTwoRealm, playerTwoName, playerTwoRegionSelected, current_season, access_token } = this;
+      let realm = playerTwoRealm.replace(/'/g, '');
 
       if (playerTwoRealm && playerTwoName) {
-        store.dispatch('playerTwoData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm: playerTwoRealm, name: playerTwoName})
+        store.dispatch('playerTwoData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm, name: playerTwoName})
+
+        store.dispatch('playerTwoMythicData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm, name: playerTwoName})
+
       } else {
         store.dispatch('playerTwoEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
       }
@@ -141,6 +149,7 @@ export default {
   margin-bottom: 1.5rem
   color: $orange-4
   padding: 0.7rem
+  padding-top: 4.1rem
   background: url('https://wow.4fansites.de/bilder/weltkarte/zandalar/zuldazar/zuldazar.jpg')
   background-repeat: no-repeat
   background-position: bottom
@@ -190,7 +199,6 @@ export default {
     text-transform: capitalize
     border-radius: 0.1rem
     color: $white-1
-    font-style: italic
     font-size: 1.1rem
     border: 1px solid $blue-4
     background: $blue-5

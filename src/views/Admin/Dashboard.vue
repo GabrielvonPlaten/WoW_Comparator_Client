@@ -64,6 +64,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.admin-dashboard-bg
+  padding-top: 3.2rem
 
 .dashboard-greet-message
   color: $white-2

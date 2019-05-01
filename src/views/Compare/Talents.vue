@@ -10,7 +10,10 @@
           class="active-spec oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[0].spec.name}}</h3>
-          </div>
+            <img
+              class="spec-image" 
+              :src="'https://render-eu.worldofwarcraft.com/icons/56/' + oneTalents.talents[0].spec.icon + '.jpg'">
+            </div>
           <div class="pve-pvp-talents">
             <ul>
               <li v-for="(talent, index) in sortPlayerOneTalents__T0" :key="index">
@@ -29,6 +32,9 @@
           class="oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[1].spec.name}}</h3>
+            <img
+              class="spec-image" 
+              :src="'https://render-eu.worldofwarcraft.com/icons/56/' + oneTalents.talents[1].spec.icon + '.jpg'">
           </div>
           <ul>
             <li v-for="(talent, index) in sortPlayerOneTalents__T1" :key="index">
@@ -46,6 +52,9 @@
           class="oneList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{oneTalents.talents[2].spec.name}}</h3>
+            <img
+              class="spec-image" 
+              :src="'https://render-eu.worldofwarcraft.com/icons/56/' + oneTalents.talents[2].spec.icon + '.jpg'">
           </div>
           <ul>
             <li v-for="(talent, index) in sortPlayerOneTalents__T2" :key="index">
@@ -70,6 +79,9 @@
           class="active-spec twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[0].spec.name}}</h3>
+            <img
+              class="spec-image" 
+              :src="'https://render-eu.worldofwarcraft.com/icons/56/' + twoTalents.talents[0].spec.icon + '.jpg'">
           </div>
           <div class="pve-pvp-talents">
             <ul>
@@ -89,6 +101,9 @@
           class="twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[1].spec.name}}</h3>
+            <img
+              class="spec-image" 
+              :src="'https://render-eu.worldofwarcraft.com/icons/56/' + twoTalents.talents[1].spec.icon + '.jpg'">
           </div>
           <ul>
             <li v-for="(talent, index) in sortPlayerTwoTalents__T1" :key="index">
@@ -106,6 +121,9 @@
           class="twoList-container">
           <div class="spec-info">
             <h3 class="spec-name">{{twoTalents.talents[2].spec.name}}</h3>
+            <img
+              class="spec-image" 
+              :src="'https://render-eu.worldofwarcraft.com/icons/56/' + twoTalents.talents[2].spec.icon + '.jpg'">
           </div>
           <ul>
             <li v-for="(talent, index) in sortPlayerTwoTalents__T2" :key="index">
@@ -191,13 +209,14 @@ export default {
 .compViews__playerOne
 
   .oneList-container
-    background: $blue-7
+    background: $blue-9
     border-color: $blue-4
     border-style: solid
-    margin: 0.5rem 0
+    margin: 0.7rem 0
     padding: 0.8rem
     border-width: 1px
     border-color: rgb(42, 54, 112)
+    box-shadow: $box-shadow-3
 
 
     ul
@@ -241,13 +260,14 @@ export default {
 .compViews__playerTwo
 
   .twoList-container
-    background: $blue-7
+    background: $blue-9
     border-color: $blue-4
     border-style: solid
-    margin: 0.5rem 0
+    margin: 0.7rem 0
     padding: 0.8rem
     border-width: 1px
     border-color: rgb(42, 54, 112)
+    box-shadow: $box-shadow-3
 
     ul
       display: grid
@@ -282,16 +302,26 @@ export default {
     border-color: rgba(255, 222, 160, 0.8)
 
 .spec-info
-  text-align: center
+  display: flex
+  justify-content: center
   margin-bottom: 1rem
 
   .spec-name
-    margin: 0
+    margin: 0 0 1rem 0
     padding: 0
     color: $white-0
+    font-weight: 200
+    font-size: 1.4rem
 
   p
     margin: 0
     padding: 0
+
+  .spec-image
+    width: 30px
+    height: 30px
+    margin-left: 1rem
+    position: relative
+    bottom: 0.3rem
 </style>
 

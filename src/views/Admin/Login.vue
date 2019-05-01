@@ -39,15 +39,18 @@ export default {
   },
 
   methods: {
-    loginAdmin() {
+    async loginAdmin() {
       let { email, password } = this.login;
-      adminService.login(email, password)
+      await adminService.login(email, password)
         .then(async res => {
-          await localStorage.setItem('token', res.token)
-          store.dispatch('adminLogin', res)
+          await localStorage.setItem('token', res.data.token)
+          store.dispatch('adminLogin', res.data)
           this.$router.go({ path: this.$router.path })
         })
-        .catch(err => this.loginError = err)
+        .catch(err => {
+          this.loginError = err
+          this.$router.go({ path: '/' })
+        })
     }
   },
 }
@@ -64,7 +67,7 @@ export default {
   background-repeat: no-repeat
   background-attachment: fixed
   background-size: cover
-  height: 94vh
+  height: 100vh
   width: 100%
 
 .form-container

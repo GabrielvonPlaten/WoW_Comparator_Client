@@ -4,6 +4,7 @@
       <Loader v-if="onePets === false"/>
       <div class="playerOne__pets" v-if="onePets">
         <playerOneAvatar />
+
         <div class="onePetInput-count">
           <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch">
           <p>Pets Collected: {{onePets.pets.numCollected}}</p>
@@ -15,7 +16,7 @@
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -28,7 +29,7 @@
                 <br>
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -44,7 +45,7 @@
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -57,7 +58,7 @@
                 <br>
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -73,7 +74,7 @@
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -86,7 +87,7 @@
                 <br>
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -102,7 +103,7 @@
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -115,7 +116,7 @@
                 <br>
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -139,6 +140,7 @@
           <p>Pets Collected: {{twoPets.pets.numCollected}}</p>
           <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch">
         </div>
+
         <ul>
           <div v-for="(pet, index) in twoFilteredPets" :key="index">
             <div v-if="pet.qualityId === 3">
@@ -146,7 +148,7 @@
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -159,7 +161,7 @@
                 <br>
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -175,7 +177,7 @@
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -188,7 +190,7 @@
                 <br>
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -204,7 +206,7 @@
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -217,7 +219,7 @@
                 <br>
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -233,7 +235,7 @@
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -246,7 +248,7 @@
                 <br>
                 <div class="pets-align--center">
                   <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://wow.zamimg.com/images/wow/icons/large/' + pet.icon + '.jpg'" onerror="https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg">
+                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
                     <br>
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
@@ -286,6 +288,7 @@ export default {
       return store.state.playerTwoPets
     },
 
+    // Filter Pets by name
     oneFilteredPets() {
       return this.onePets.pets.collected.filter(pet => {
         return pet.name.match(this.petSearch.toLowerCase()
@@ -295,6 +298,7 @@ export default {
       })
     },
 
+    // Filter Pets by name
     twoFilteredPets() {
       return this.twoPets.pets.collected.filter(pet => {
         return pet.name.match(this.petSearch.toLowerCase()
@@ -319,7 +323,7 @@ export default {
   border: 2px solid #0f6bff
 
 .pets--uncommon
-  border: 2px solid green
+  border: 2px solid #1eff00 
 
 .pets--common
   border: 2px solid $white-0
@@ -365,15 +369,15 @@ export default {
     grid-template-columns: repeat(4, 1fr)
 
     li
-      border-radius: 8px
+      border-radius: 3px
       color: $white-0
-      background-color: $blue-5
+      background-color: $blue-6
       padding: 10px
       margin-top: 10px
       font-size: 1.2em
       font-weight: 200
+      width: 80%
       float: right
-      width: 75%
       height: 6.5rem
       &:hover
         background-color: $blue-4
@@ -425,15 +429,14 @@ export default {
     grid-template-columns: repeat(4, 1fr)
 
     li
-      border-radius: 8px
+      border-radius: 3px
       color: $white-0
-      background-color: $blue-5
+      background-color: $blue-6
       padding: 10px
       margin-top: 10px
       font-size: 1.2em
       font-weight: 200
-      float: left
-      width: 75%
+      width: 80%
       height: 6.5rem
       &:hover
         background-color: $blue-4

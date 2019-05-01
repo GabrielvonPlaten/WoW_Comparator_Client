@@ -9,12 +9,12 @@
     </div>
     <ul>
       <li><router-link to="/" class="router btn btn--purple">Home</router-link></li>
-      <li><router-link to="/comparator/stats" class="router btn btn--purple">Compare</router-link></li>
+      <li><router-link to="/compare/stats" class="router btn btn--purple">Compare</router-link></li>
       <li v-if="adminLoggedIn">
         <router-link to="/admin/dashboard" class="router btn btn--purple">Dashboard</router-link>
       </li>
     </ul>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -38,40 +38,40 @@ export default {
 
 
 <style lang="sass" scoped>
+
 #nav
-  height: 3.6rem
-  background-color: $blue-7
+  width: 100%
+  height: 3.2rem
+  position: fixed
+  background: $blue-9
   border-bottom: 1px solid $blue-4
+  box-shadow: inset 0 0 0 250px rgba(22, 27, 51, 0.35)
+  z-index: 20
 
-  .username-name
-    h2
-      color: $white-0
-      font-weight: 200
-      font-size: 1.1rem
-      position: absolute
-      padding-left: 1rem
-      padding-top: 0.2rem
+.username-name
+  h2
+    color: $white-0
+    font-weight: 200
+    font-size: 1.1rem
+    position: absolute
+    padding-left: 1rem
+    padding-top: 0.2rem
 
-    svg
-      clear: both
-      color: $yellow-4
-      font-size: 0.9rem
+  svg
+    clear: both
+    color: $yellow-4
+    font-size: 0.9rem
 
-  ul
-    padding: 0
-    margin: 0 1.7rem 0 0
-    display: flex
-    justify-content: flex-end
+ul
+  padding: 0
+  margin: 0 1.5rem 0 0
+  display: flex
+  justify-content: flex-end
 
 
-  li
-    margin: 1.2rem .3rem
-    list-style: none
+li
+  margin: 1rem .1rem
+  list-style: none
 
-  .loggout-btn
-    border: 2px solid $red-3
-    background: none
-    &:hover
-      background: $red-3
 // The styles for the router-links can be found in App.vue
 </style>
