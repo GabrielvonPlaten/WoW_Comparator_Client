@@ -24,7 +24,9 @@ export const playerTwoData = ({ commit }, info) => {
     .then(res => {
       commit(types.PLAYERTWO_STATS, res.data);
       commit(types.PLAYERTWO_REGION, region) 
-      axios.post('/api/comparator-queries-requests');
+      
+      let url = '/api/queries-made';
+      axios.patch(url)
     })
     .catch(() => commit(types.PLAYERTWO_ERROR, {errMessage: "Character not found", errColor: "red"} ))
 
