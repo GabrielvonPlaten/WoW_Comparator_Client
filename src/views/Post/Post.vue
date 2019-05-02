@@ -20,6 +20,9 @@
             <div v-if="b.type === 'paragraph'">
               <p v-html="b.data.text"></p>
             </div>
+            <div v-if="b.type === 'header'">
+              <h2 class="post-content-header" v-html="b.data.text"></h2>
+            </div>
             <div v-if="b.type === 'image' && index > 0">
               <div class="blog-image-container">
                 <img :src="b.data.url">
@@ -153,5 +156,8 @@ ol
   list-style: disc
   color: $white-1
 
-
+.post-content-header
+  color: $white-0
+  margin-top: 3.4rem
+  font-size: 2rem
 </style>
