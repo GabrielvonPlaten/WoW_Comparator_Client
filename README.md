@@ -4,19 +4,19 @@ Examples characters to compare. First name is the Character's name, the second i
 All characters are in the EU region.
 
 
-Extremus - Tyrande
+**Extremus - Tyrande**
 
-Paralilubiti - Tyrande
+**Paralilubiti - Tyrande**
 
-Bélsel - Tyrande
+**Bélsel - Tyrande**
 
-Randorx - Tyrande
+**Randorx - Tyrande**
 
-Metapelo - Tyrande
+**Metapelo - Tyrande**
 
-Jinnara - Tyrande
+**Jinnara - Tyrande**
 
-Sixties - Tyrande
+**Sixties - Tyrande**
 
-Gabrantthh - Tyrande
+**Gabrantthh - Tyrande**
 
