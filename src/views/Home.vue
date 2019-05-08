@@ -3,7 +3,7 @@
     <div class="jumbotron" :style="'background-image: url(' + jumbotronImage + ')'">
       <div class="jumbotron__title">
         <h1>WoW Comparator</h1>
-        <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with other’s peoples characters!</p>
+        <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with others people's characters!</p>
         <br>
         <router-link to="/comparator/stats" class="btn btn--purple jumbotron-btn">Compare</router-link>
         <br>
