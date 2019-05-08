@@ -5,7 +5,7 @@
         <h1>WoW Comparator</h1>
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with others people's characters!</p>
         <br>
-        <router-link to="/comparator/stats" class="btn btn--purple jumbotron-btn">Compare</router-link>
+        <router-link to="/compare/stats" class="btn btn--purple jumbotron-btn">Compare</router-link>
         <br>
       </div>
     </div>
