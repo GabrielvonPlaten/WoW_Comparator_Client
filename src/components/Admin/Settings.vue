@@ -58,6 +58,7 @@ export default {
       jumbotronMessage: null,
       websiteVisits: null,
       queriesMade: null,
+      accessToken: "",
     }
   },
 
@@ -69,7 +70,7 @@ export default {
       .then(res => this.jumbotronImage = res.data[0])
 
     // Get total numbers of visits to the website
-    let url = ['/api/website-visits', '/api/queries-made'];
+    let url = ['/api/website-visits', '/api/queries-made', '/api/comparator'];
     axios.get(url[0], {
       headers: { authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(res => this.websiteVisits = res.data[0]);
@@ -78,6 +79,9 @@ export default {
     axios.get(url[1], {
       headers: { authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(res => this.queriesMade = res.data[0]);
+
+    axios.get(url[2])
+      .then(res => this.accessToken = res.data.access_token);
   },
 
   methods: {
@@ -107,7 +111,7 @@ export default {
         .catch(() => {
           this.jumbotronMessage = "Couldn't Update."
         })
-    }
+    },
   },
 }
 </script>

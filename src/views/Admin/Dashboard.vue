@@ -95,6 +95,21 @@ export default {
     .active-btn
       background: $active-route
       color: $white-1
+
+  
+// Media Queries
+@media only screen and (max-width: 1200px)
+  .admin-views
+    width: 80%
+
+@media only screen and (max-width: 950px)
+  .admin-views
+    width: 85%
+
+@media only screen and (max-width: 800px)
+  .admin-views
+    width: 95%
+
 </style>
 
 

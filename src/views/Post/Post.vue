@@ -160,4 +160,36 @@ ol
   color: $white-0
   margin-top: 3.4rem
   font-size: 2rem
+
+// Media Queries
+@media only screen and (max-width: 1440px) 
+  .post-box
+    width: 90%
+
+@media only screen and (max-width: 1024px)
+  .post-box
+
+    // Post's header image
+    .image-container
+      img
+        height: 36rem
+
+  .post-content
+    width: 80%
+
+@media only screen and (max-width: 690px)
+  .post-box
+    .image-container
+      img
+        height: 28rem
+
+   
+@media only screen and (max-width: 425px)
+  .post-box
+    .image-container
+      img
+        height: 20rem
+
+  .post-content
+    width: 90%
 </style>

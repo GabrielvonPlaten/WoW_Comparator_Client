@@ -74,4 +74,16 @@ li
   list-style: none
 
 // The styles for the router-links can be found in App.vue
+
+// Media Queries
+@media only screen and (max-width: 500px)
+  .username-name
+    padding-top: 0.2rem
+
+    h2
+      width: 50%
+      font-size: 0.8rem
+    
+    svg
+      font-size: 0.8rem
 </style>

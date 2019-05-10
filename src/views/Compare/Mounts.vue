@@ -6,7 +6,7 @@
         <playerOneAvatar />
         <div class="oneMountInput-count">
           <input v-if="oneMounts || twoMounts" type="text" placeholder="Search..." v-model="mountSearch">
-          <p>Mounts Collected: {{oneMounts.mounts.numCollected}}</p>
+          <p>Collected: {{oneMounts.mounts.numCollected}}</p>
         </div>
         <ul>
           <div v-for="(mount, index) in oneFilteredMounts" :key="index">
@@ -44,7 +44,7 @@
       <div class="playerTwo__mounts" v-if="twoMounts">
         <playerTwoAvatar />
         <div class="twoMountInput-count">
-          <p>Mounts  Collected: {{twoMounts.mounts.numCollected}}</p>
+          <p>Collected: {{twoMounts.mounts.numCollected}}</p>
           <input v-if="oneMounts || twoMounts" type="text" placeholder="Search..." v-model="mountSearch">
         </div>
         <ul>
@@ -248,4 +248,21 @@ export default {
         width: 2.7rem
         height: 2.7rem
 
+// Media Queries
+@media only screen and (max-width: 1075px)
+  .playerOne__mounts, .playerTwo__mounts
+    padding: 0 1.4rem
+
+    ul
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+
+
+@media only screen and (max-width: 768px)
+  .playerOne__mounts, .playerTwo__mounts
+    padding: 0 1rem
+
+    ul
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
 </style>

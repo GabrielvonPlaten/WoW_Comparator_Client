@@ -63,4 +63,17 @@ export default {
       a
         padding: 0.3rem 1.2rem
         font-size: 16px
+
+@media only screen and (max-width: 820px)
+  .comparator-buttons
+    width: 20%
+    margin: 0 auto
+
+    ul
+
+      li
+
+        a
+          padding: 0.3rem 0.8rem
+          font-size: 14px
 </style>

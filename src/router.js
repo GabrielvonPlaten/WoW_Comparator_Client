@@ -5,6 +5,7 @@ import store from '@/Vuex/store';
 import Home from './views/Home.vue'
 import Compare from './views/Compare.vue'
 import Post from './views/Post/Post.vue';
+import UserLogin from './views/User/Login.vue';
 
 import Talents from './views/Compare/Talents.vue';
 import Mounts from './views/Compare/Mounts.vue';
@@ -33,6 +34,11 @@ const router = new Router({
       path: '/post/:id/:slug',
       name: 'post',
       component: Post,
+    },
+    {
+      path: '/user/login',
+      name: 'login',
+      component: UserLogin,
     },
     {
       path: '/compare',

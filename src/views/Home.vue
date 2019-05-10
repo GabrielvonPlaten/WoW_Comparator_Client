@@ -111,7 +111,7 @@ export default {
 
 .recent-posts
   display: grid
-  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr))
+  grid-template-columns: repeat(4, 1fr)
   color: $white-0
   margin-top: 1rem
   width: 90%
@@ -172,6 +172,33 @@ export default {
 .blog_block:hover
   .title-text
     color: $orange-2
+
+// Media Queries
+@media only screen and (max-width: 1024px)
+
+  .jumbotron__title
+    margin-top: 20%
+
+    p
+      max-width: 50%
+
+  .recent-posts
+    width: 98%
+    grid-template-columns: repeat(3, 1fr)
+
+  .blog_block
+    .image-container
+      img
+        height: 12rem
+@media only screen and (max-width: 768px)
+  .recent-posts
+    grid-template-columns: repeat(2, 1fr)
+
+  .blog_block
+    .image-container
+      img
+        height: 13rem
+
 </style>
 
 
