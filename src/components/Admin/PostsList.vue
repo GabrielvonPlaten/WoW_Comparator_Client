@@ -215,6 +215,7 @@ export default {
 .post-error
   color: $red-3
   margin: 0.3rem
+
 </style>
 
 

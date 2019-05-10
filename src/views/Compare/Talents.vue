@@ -20,7 +20,7 @@
                 <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
                 <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                   <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
-                  <span>{{talent.spell.name}}</span>
+                  <span class="talent-name">{{talent.spell.name}}</span>
                 </a>
               </li>
             </ul>
@@ -41,7 +41,7 @@
               <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
               <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                 <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
-                <span>{{talent.spell.name}}</span>
+                <span class="talent-name">{{talent.spell.name}}</span>
               </a>
             </li>
           </ul>
@@ -61,7 +61,7 @@
               <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
               <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                 <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
-                <span>{{talent.spell.name}}</span>
+                <span class="talent-name">{{talent.spell.name}}</span>
               </a>
             </li>
           </ul>
@@ -89,7 +89,7 @@
                 <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
                 <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                   <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
-                  <span>{{talent.spell.name}}</span>
+                  <span class="talent-name">{{talent.spell.name}}</span>
                 </a>
               </li>
             </ul>
@@ -110,7 +110,7 @@
               <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
               <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                 <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
-                <span>{{talent.spell.name}}</span>
+                <span class="talent-name">{{talent.spell.name}}</span>
               </a>
             </li>
           </ul>
@@ -130,7 +130,7 @@
               <span class="talent-tier">{{talentTier[talent.tier]}} - </span>
               <a target="_blank" class="q" :href="'//www.wowhead.com/spell=' + talent.spell.id">
                 <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + talent.spell.icon + '.jpg'" @error="'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg'">
-                <span>{{talent.spell.name}}</span>
+                <span class="talent-name">{{talent.spell.name}}</span>
               </a>
             </li>
           </ul>
@@ -323,5 +323,12 @@ export default {
     margin-left: 1rem
     position: relative
     bottom: 0.3rem
+
+@media only screen and (max-width: 1075px)
+  .playerOne__talents, .playerTwo__talents
+    padding: 0 1rem
+
+  .talent-name
+    display: none
 </style>
 

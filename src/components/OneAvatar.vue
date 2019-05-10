@@ -66,5 +66,12 @@ export default {
 
 .avatarImg
   border: 1px solid $violet-3
+
+
+// Media Queris
+@media only screen and (max-width: 748px) 
+  .avatarImg
+    width: 45%
+
 </style>
 

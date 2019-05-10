@@ -391,8 +391,20 @@ span
 
 // Media Queries
 @media only screen and (max-width: 1440px) 
-  .playerOne__raids, .playerTwo__raids
-    grid-template-columns: 1fr
-  
+  .playerOne__progression, .playerTwo__progression
+    margin: 0
+    padding: 0
 
+  .raid_block
+    margin: 1rem 0.3rem
+
+  .raid_card
+    .image-container
+      img
+        height: 6.5rem
+
+
+  .table
+    img
+      height: 35px
 </style>
