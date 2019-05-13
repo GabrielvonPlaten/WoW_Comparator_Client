@@ -86,7 +86,13 @@ Although the community is small, lately, finding questions about Vue or asking t
 
 https://medium.freecodecamp.org/i-just-asked-23-000-developers-what-they-think-of-javascript-heres-what-i-learned-9a06b61998fa
 
+## Styling
 
+All styling was done using Sass
+
+## Responsiveness
+
+The website works with devices as small as 768px for now.
 
 
 
