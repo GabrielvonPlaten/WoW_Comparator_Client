@@ -1,22 +1,27 @@
 <template>
   <div>
-    <div class="login-bg">
+    <div class="register-bg">
       <div class="form-container">
         <div class="form-header">
-          <h2>Login</h2>
+          <h2>Register</h2>
         </div>
-        <form @submit.prevent="loginUser" class="form">
+        <form @submit.prevent="registerUser" class="form">
+          <div class="form-separator">
+            <label>Name</label><br>
+            <input class="input-field" v-model="register.name"><br>
+          </div>
           <div class="form-separator">
             <label>Email</label><br>
-            <input class="input-field" v-model="login.email"><br>
+            <input class="input-field" v-model="register.email"><br>
           </div>
           <div class="form-separator">
             <label>Passord</label><br>
-            <input class="input-field" v-model="login.password" type="password">
+            <input class="input-field" v-model="register.password" type="password">
           </div>
           <br>
-          <button class="btn btn--green btn-form">Login</button>
+          <button class="btn btn--green btn-form">Register</button>
           <button class="btn btn--red btn-form">Cancel</button>
+          <router-link to="/login">Login</router-link>
         </form>
       </div>
     </div>
@@ -30,7 +35,8 @@ import userService from '@/apis/userService';
 export default {
   data() {
     return {
-      login: {
+      register: {
+        name: "",
         email: "",
         password: ""
       },
@@ -39,11 +45,12 @@ export default {
   },
 
   methods: {
-    async loginUser() {
-      let { email, password } = this.login;
-      await userService.login(email, password)
+    async registerUser(e) {
+      e.preventDefault();
+      let { name, email, password } = this.register;
+      await userService.register(name, email, password)
         .then(async res => {
-          await localStorage.setItem('token', res.data.token)
+          await localStorage.setItem('userToken', res.data.token)
           store.dispatch('userLogin', res.data)
           this.$router.go({ path: this.$router.path })
         })
@@ -62,7 +69,7 @@ export default {
   padding: 0
   margin: 0
 
-.login-bg
+.register-bg
   background-image: url('../../assets/bgs/admin-login-bg.jpg')
   background-repeat: no-repeat
   background-attachment: fixed
@@ -72,7 +79,7 @@ export default {
 
 .form-container
   width: 400px
-  height: 500px
+  height: 600px
   background: inherit
   position: absolute
   overflow: hidden
@@ -85,7 +92,7 @@ export default {
 
 .form-container:before
   width: 450px
-  height: 550px
+  height: 600px
   content: ""
   position: absolute
   top: -25px
@@ -143,4 +150,3 @@ export default {
     margin: 0.7rem auto
     padding: 0.6rem 1rem
 </style>
-

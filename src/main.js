@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './Vuex/store'
 import adminService from '@/apis/adminService';
+import userService from '@/apis/userService';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBook, faHome, faCogs, faStar, faCrown, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -14,9 +15,9 @@ Vue.config.productionTip = false
 let app;
 
 if (localStorage.getItem('token')) {
-  adminService.adminProfile(localStorage.getItem('token'))
+  userService.profile(localStorage.getItem('token'))
     .then(async res => {
-      await store.dispatch('adminLogin', res.data)
+      await store.dispatch('userLogin', res.data)
       if (!app) {
         new Vue({
           router,
