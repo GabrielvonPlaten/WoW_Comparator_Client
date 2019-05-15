@@ -1,7 +1,9 @@
 <template>
   <div id="nav">
     <div class="username-name">
-      <h2 class="dashboard-greet-message">{{adminData.name}}
+      <h2 class="dashboard-greet-message">
+        {{adminData.name}}
+        {{userData.name}}
         <span v-if="adminLoggedIn">
           <font-awesome-icon icon="crown" />
         </span>
@@ -13,6 +15,11 @@
       <li v-if="adminLoggedIn">
         <router-link to="/admin/dashboard" class="router btn btn--purple">Dashboard</router-link>
       </li>
+      <li v-if="userLoggedIn && !adminLoggedIn">
+        <router-link to="/profile" class="router btn btn--purple">Profile</router-link>
+      </li>
+      <li v-if="!userLoggedIn"><router-link to="/login" class="router btn btn--purple">Login</router-link></li>
+      <li v-if="!userLoggedIn"><router-link to="/register" class="router btn btn--purple">Register</router-link></li>
     </ul>
   </div>
 </template>
@@ -24,13 +31,18 @@ export default {
   data() {
     return {
       adminLoggedIn: false,
-      adminData: store.state.adminData
+      userLoggedIn: false,
+      adminData: store.state.adminData,
+      userData: store.state.userData
     }
   },
 
   created() {
     if (store.state.adminData) {
-      this.adminLoggedIn = true
+      this.adminLoggedIn = true;
+      this.userLoggedIn = true;
+    } else if (store.state.userData) {
+      this.userLoggedIn = true
     }
   },
 }
@@ -74,4 +86,16 @@ li
   list-style: none
 
 // The styles for the router-links can be found in App.vue
+
+// Media Queries
+@media only screen and (max-width: 500px)
+  .username-name
+    padding-top: 0.2rem
+
+    h2
+      width: 50%
+      font-size: 0.8rem
+    
+    svg
+      font-size: 0.8rem
 </style>

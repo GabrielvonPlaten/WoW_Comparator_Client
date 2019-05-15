@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="admin-login-bg">
+    <div class="login-bg">
       <div class="form-container">
         <div class="form-header">
-          <h2>Admin Login</h2>
+          <h2>Login</h2>
         </div>
-        <form @submit.prevent="loginAdmin" class="form">
+        <form @submit.prevent="loginUser" class="form">
           <div class="form-separator">
             <label>Email</label><br>
             <input class="input-field" v-model="login.email"><br>
@@ -17,6 +17,10 @@
           <br>
           <button class="btn btn--green btn-form">Login</button>
           <button class="btn btn--red btn-form">Cancel</button>
+          <div class="form-separate">
+            <p>New User?</p>
+            <router-link to="/register" class="router btn btn--purple login-register-btn">Register</router-link>
+          </div>
         </form>
       </div>
     </div>
@@ -25,7 +29,7 @@
 
 <script>
 import store from '@/Vuex/store';
-import adminService from '@/apis/adminService';
+import userService from '@/apis/userService';
 
 export default {
   data() {
@@ -39,12 +43,12 @@ export default {
   },
 
   methods: {
-    async loginAdmin() {
+    async loginUser() {
       let { email, password } = this.login;
-      await adminService.login(email, password)
+      await userService.login(email, password)
         .then(async res => {
-          await localStorage.setItem('adminToken', res.data.token)
-          store.dispatch('adminLogin', res.data)
+          await localStorage.setItem('userToken', res.data.token)
+          store.dispatch('userLogin', res.data)
           this.$router.go({ path: this.$router.path })
         })
         .catch(err => {
@@ -62,7 +66,7 @@ export default {
   padding: 0
   margin: 0
 
-.admin-login-bg
+.login-bg
   background-image: url('../../assets/bgs/admin-login-bg.jpg')
   background-repeat: no-repeat
   background-attachment: fixed
@@ -72,11 +76,11 @@ export default {
 
 .form-container
   width: 400px
-  height: 500px
+  height: 570px
   background: inherit
   position: absolute
   overflow: hidden
-  top: 50%
+  top: 45%
   left: 48.5%
   margin-left: -175px
   margin-top: -250px
@@ -85,7 +89,7 @@ export default {
 
 .form-container:before
   width: 450px
-  height: 550px
+  height: 600px
   content: ""
   position: absolute
   top: -25px
@@ -142,5 +146,18 @@ export default {
     width: 90%
     margin: 0.7rem auto
     padding: 0.6rem 1rem
+
+  .form-separate
+    p
+      margin: 0.7rem auto 0 auto
+      padding: 0.6rem 1rem 0 1rem
+      
+    .login-register-btn
+      display: block
+      width: 80%
+      margin: 0.7rem auto
+      padding: 0.3rem 0.7rem
+      text-align: center
+      font-size: 1rem
 </style>
 

@@ -9,8 +9,11 @@ import { playerTwoMutations } from './Mutations/playerTwo_mutations';
 import * as adminActions from './Actions/admin_actions';
 import { adminMutations } from './Mutations/admin_mutations';
 
-const actions = {...actions, ...playerOneActions, ...playerTwoActions, ...adminActions};
-const mutations = {...mutations, ...playerOneMutations, ...playerTwoMutations, ...adminMutations};
+import * as userActions from './Actions/user_actions';
+import { userMutations } from './Mutations/user_mutations';
+
+const actions = {...actions, ...playerOneActions, ...playerTwoActions, ...adminActions, ...userActions};
+const mutations = {...mutations, ...playerOneMutations, ...playerTwoMutations, ...adminMutations, ...userMutations};
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -54,6 +57,7 @@ export default new Vuex.Store({
 
     // Admin Data
     adminData: false,
+    userData: false,
   },
 
   mutations,

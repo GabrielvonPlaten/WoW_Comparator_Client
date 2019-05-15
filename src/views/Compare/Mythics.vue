@@ -64,7 +64,7 @@
                   </div>
                 </a>
               </span>
-              <h3>{{run.dungeon.name}}
+              <h3 class="dungeon-name">{{run.dungeon.name}}
                 <span> +{{run.keystone_level}}</span>
               </h3>
             </div>
@@ -143,7 +143,7 @@
               <p :class="{withinTimeRun: run.is_completed_within_time, failedRun: !run.is_completed_within_time}">{{durationTime(run.duration)}}</p>
             </div>
             <div class="dungeon-item-title">
-              <h3>{{run.dungeon.name}}
+              <h3 class="dungeon-name">{{run.dungeon.name}}
                 <span> +{{run.keystone_level}}</span>
               </h3>
               <span v-for="(affix, j) in run.keystone_affixes" :key="j">
@@ -552,5 +552,18 @@ export default {
   font-weight: 300
 
 
+// Media Queries
+@media only screen and (max-width: 1075px)
+  .playerOne__mythics, .playerTwo__mythics
+    padding: 0 0
+
+    .dungeon-item-title
+      h3
+        margin: 0 0.5rem
+        width: 100px
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+        font-size: 1.2rem
 </style>
 

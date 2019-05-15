@@ -1,5 +1,5 @@
 <template>
-  <div class="comparator">
+  <div>
     <div class="comparator-form">
       <form @submit.prevent="getPlayerOneData()" class="form form-playerOne">
         <label>Player One</label>
@@ -258,4 +258,14 @@ ul
     color: $white-0
     font-weight: 300
     
+
+// Media Queries
+@media only screen and (max-width: 1024px)
+  .comparator-form 
+
+    .form-playerOne
+      margin-right: 0
+
+    .form-playerTwo
+      margin-left: 0
 </style>
