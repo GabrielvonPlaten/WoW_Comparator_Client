@@ -21,7 +21,10 @@
           <br>
           <button class="btn btn--green btn-form">Register</button>
           <button class="btn btn--red btn-form">Cancel</button>
-          <router-link to="/login">Login</router-link>
+          <div class="form-separate">
+            <p>Already an user?</p>
+            <router-link to="/login" class="router btn btn--purple login-register-btn">Login</router-link>
+          </div>
         </form>
       </div>
     </div>
@@ -82,7 +85,7 @@ export default {
   background: inherit
   position: absolute
   overflow: hidden
-  top: 50%
+  top: 45%
   left: 48.5%
   margin-left: -175px
   margin-top: -250px
@@ -91,7 +94,7 @@ export default {
 
 .form-container:before
   width: 450px
-  height: 600px
+  height: 650px
   content: ""
   position: absolute
   top: -25px
@@ -118,7 +121,7 @@ export default {
 .form
   position: absolute
   left: 50%
-  top: 35%
+  top: 40%
   color: $white-3
   margin-top: 4rem
   width: 100%
@@ -148,4 +151,17 @@ export default {
     width: 90%
     margin: 0.7rem auto
     padding: 0.6rem 1rem
+
+  .form-separate
+    p
+      margin: 0.7rem auto 0 auto
+      padding: 0.6rem 1rem 0 1rem
+      
+    .login-register-btn
+      display: block
+      width: 80%
+      margin: 0.7rem auto
+      padding: 0.3rem 0.7rem
+      text-align: center
+      font-size: 1rem
 </style>
