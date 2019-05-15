@@ -72,12 +72,12 @@ export default {
     // Get total numbers of visits to the website
     let url = ['/api/website-visits', '/api/queries-made', '/api/comparator'];
     axios.get(url[0], {
-      headers: { authorization: 'Bearer ' + localStorage.getItem('token')}})
+      headers: { authorization: 'Bearer ' + localStorage.getItem('adminToken')}})
       .then(res => this.websiteVisits = res.data[0]);
 
     // Get total number of searches for characters
     axios.get(url[1], {
-      headers: { authorization: 'Bearer ' + localStorage.getItem('token')}})
+      headers: { authorization: 'Bearer ' + localStorage.getItem('adminToken')}})
       .then(res => this.queriesMade = res.data[0]);
 
     axios.get(url[2])
@@ -86,9 +86,9 @@ export default {
 
   methods: {
     logoutAdmin() {
-      adminService.logout(localStorage.getItem('token'))
+      adminService.logout(localStorage.getItem('adminToken'))
         .then(async res => {
-          localStorage.removeItem('token')
+          localStorage.removeItem('adminToken')
           store.dispatch('adminLogout');
           this.$router.go({ path: this.$router.path })
         })
@@ -103,7 +103,7 @@ export default {
     },
 
     updateJumbotronImage() {
-      let token = localStorage.getItem('token');
+      let token = localStorage.getItem('adminToken');
       websiteStyles.updateJumbotronImage(this.newJumbotronImage, this.jumbotronImage._id, token)
         .then(res => {
           this.jumbotronMessage = "Image Updated!"

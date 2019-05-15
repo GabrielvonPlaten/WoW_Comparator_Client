@@ -43,7 +43,7 @@ export default {
       let { email, password } = this.login;
       await adminService.login(email, password)
         .then(async res => {
-          await localStorage.setItem('token', res.data.token)
+          await localStorage.setItem('adminToken', res.data.token)
           store.dispatch('adminLogin', res.data)
           this.$router.go({ path: this.$router.path })
         })

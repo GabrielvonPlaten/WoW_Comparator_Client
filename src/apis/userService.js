@@ -14,6 +14,27 @@ export default {
       }})
   },
 
+  register(name, email, password) {
+    let url = '/api/register';
+    return axios.post(url, { name, email, password })
+  },
+
+  addChar(name, realm, region, token) {
+    let url = '/api/addFavoriteChar';
+
+    return axios.patch(url, { name, realm, region}, {
+      headers: { authorization: 'Bearer ' + token}
+    })
+  },
+
+  async removeChar(id) {
+    let url = '/api/getFavoriteChar/' + id;
+
+    return await axios.delete(url, {
+      headers: { authorization: 'Bearer ' + localStorage.getItem('token')}
+    })
+  },
+
   logout(token) {
     let url = '/api/logout'
     return axios.post(url, {}, {
@@ -21,5 +42,5 @@ export default {
     })
     .then(res => res.data)
     .catch(err => err)
-  }
+  },
 }

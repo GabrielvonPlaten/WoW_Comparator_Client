@@ -46,7 +46,6 @@ export default {
 
   methods: {
     async registerUser(e) {
-      e.preventDefault();
       let { name, email, password } = this.register;
       await userService.register(name, email, password)
         .then(async res => {

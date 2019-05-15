@@ -17,6 +17,7 @@
           <br>
           <button class="btn btn--green btn-form">Login</button>
           <button class="btn btn--red btn-form">Cancel</button>
+          <router-link to="/register">Register</router-link>
         </form>
       </div>
     </div>
@@ -43,7 +44,7 @@ export default {
       let { email, password } = this.login;
       await userService.login(email, password)
         .then(async res => {
-          await localStorage.setItem('token', res.data.token)
+          await localStorage.setItem('userToken', res.data.token)
           store.dispatch('userLogin', res.data)
           this.$router.go({ path: this.$router.path })
         })

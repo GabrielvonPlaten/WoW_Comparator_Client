@@ -15,7 +15,7 @@
       <li v-if="adminLoggedIn">
         <router-link to="/admin/dashboard" class="router btn btn--purple">Dashboard</router-link>
       </li>
-      <li v-if="userLoggedIn">
+      <li v-if="userLoggedIn && !adminLoggedIn">
         <router-link to="/profile" class="router btn btn--purple">Profile</router-link>
       </li>
       <li v-if="!userLoggedIn"><router-link to="/login" class="router btn btn--purple">Login</router-link></li>
@@ -39,7 +39,8 @@ export default {
 
   created() {
     if (store.state.adminData) {
-      this.adminLoggedIn = true
+      this.adminLoggedIn = true;
+      this.userLoggedIn = true;
     } else if (store.state.userData) {
       this.userLoggedIn = true
     }

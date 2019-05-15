@@ -144,12 +144,21 @@ router.beforeEach((to, from, next) => {
   } else if(to.matched.some(record => record.meta.requiresGuest)) {
     if (store.state.adminData || store.state.userData) {
       // Go to login page
-      next({
-        path: '/profile',
-        query: {
-          redirect: to.fullPath
-        }
-      });
+      if(store.state.userData) {
+        next({
+          path: '/profile',
+          query: {
+            redirect: to.fullPath
+          }
+        });
+      } else if (store.state.adminData) {
+        next({
+          path: '/admin/dashboard',
+          query: {
+            redirect: to.fullPath
+          }
+        });
+      }
     } else {
       // Proceed to the dashboard
       next();
