@@ -56,7 +56,7 @@ export default {
       let region = this.charRegionSelected;
 
       console.log(realm);
-      userService.addChar(name, realm, region, localStorage.getItem('token'))
+      userService.addChar(name, realm, region, localStorage.getItem('userToken'))
         .then(res => {
           location.reload();
         })
