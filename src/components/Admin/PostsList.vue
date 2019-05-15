@@ -75,7 +75,7 @@ export default {
     },
 
     deletePost(_id) {
-      let token = localStorage.getItem('token');
+      let token = localStorage.getItem('adminToken');
       let url = '/api/post/' + _id
       axios.delete(url, {
         headers: { authorization: 'Bearer ' + token } 
