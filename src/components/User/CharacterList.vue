@@ -69,7 +69,6 @@ export default {
     await axios.get(url)
       .then(res => this.access_token = res.data.access_token)
 
-    console.log(this.access_token)
     this.getChar()
   },
 

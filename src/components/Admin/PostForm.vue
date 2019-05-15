@@ -66,7 +66,6 @@ export default {
 
   methods: {
     submitPost() {
-      console.log(this.editor);
       let title = this.postContent.title;
       let subtitle = this.postContent.subtitle
 
