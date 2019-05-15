@@ -5,7 +5,9 @@ import store from '@/Vuex/store';
 import Home from './views/Home.vue'
 import Compare from './views/Compare.vue'
 import Post from './views/Post/Post.vue';
+import UserRegister from './views/User/Register.vue';
 import UserLogin from './views/User/Login.vue';
+import UserProfile from './views/User/Profile.vue';
 
 import Talents from './views/Compare/Talents.vue';
 import Mounts from './views/Compare/Mounts.vue';
@@ -18,6 +20,8 @@ import Pets from './views/Compare/Pets.vue';
 // Admin
 import AdminLogin from './views/Admin/Login.vue';
 import Dashboard from './views/Admin/Dashboard.vue';
+
+
 
 
 Vue.use(Router)
@@ -36,9 +40,28 @@ const router = new Router({
       component: Post,
     },
     {
-      path: '/user/login',
+      path: '/register',
+      name: 'register',
+      component: UserRegister,
+      meta: {
+        requiresGuest: true,
+      }
+    },
+    {
+      path: '/login',
       name: 'login',
       component: UserLogin,
+      meta: {
+        requiresGuest: true,
+      }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: UserProfile,
+      meta: {
+        requiresAuth: true,
+      }
     },
     {
       path: '/compare',
@@ -106,27 +129,36 @@ router.beforeEach((to, from, next) => {
   // Check for required Auth guard
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // Check if user is NOT logged in
-    if (store.state.adminData === false) {
-      // Go to login page
-      next({
-        path: '/admin/login',
-        query: {
-          redirect: to.fullPath
-        }
-      });
-    } else {
+    if (store.state.adminData || store.state.userData) {
       // Proceed to the dashboard
       next();
-    }
-  } else if(to.matched.some(record => record.meta.requiresGuest)) {
-    if (store.state.adminData) {
+    } else {
       // Go to login page
       next({
-        path: '/',
+        path: '/login',
         query: {
           redirect: to.fullPath
         }
       });
+    }
+  } else if(to.matched.some(record => record.meta.requiresGuest)) {
+    if (store.state.adminData || store.state.userData) {
+      // Go to login page
+      if(store.state.userData) {
+        next({
+          path: '/profile',
+          query: {
+            redirect: to.fullPath
+          }
+        });
+      } else if (store.state.adminData) {
+        next({
+          path: '/admin/dashboard',
+          query: {
+            redirect: to.fullPath
+          }
+        });
+      }
     } else {
       // Proceed to the dashboard
       next();

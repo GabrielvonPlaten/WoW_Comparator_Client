@@ -26,3 +26,7 @@ export const PLAYERTWO_ERROR = "PLAYERTWO_ERROR";
 // Admin Mutation Types
 export const ADMIN_LOGIN = "ADMIN_LOGIN";
 export const ADMIN_LOGOUT = "ADMIN_LOGOUT";
+
+// User
+export const USER_LOGIN = "USER_LOGIN";
+export const USER_LOGOUT = "USER_LOGOUT";
