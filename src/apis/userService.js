@@ -31,7 +31,7 @@ export default {
     let url = '/api/getFavoriteChar/' + id;
 
     return await axios.delete(url, {
-      headers: { authorization: 'Bearer ' + localStorage.getItem('token')}
+      headers: { authorization: 'Bearer ' + localStorage.getItem('userToken')}
     })
   },
 
