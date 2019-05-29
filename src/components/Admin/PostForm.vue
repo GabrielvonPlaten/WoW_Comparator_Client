@@ -66,14 +66,13 @@ export default {
 
   methods: {
     submitPost() {
-      console.log(this.editor);
       let title = this.postContent.title;
       let subtitle = this.postContent.subtitle
 
       this.editor.save()
         .then(outputData => {
           axios.post('/api/create-post', {title, subtitle, outputData}, {
-            headers: { authorization: 'Bearer ' + localStorage.getItem('token') }
+            headers: { authorization: 'Bearer ' + localStorage.getItem('adminToken') }
           })
             .then(res => {
               window.alert('Your post has been added!')
