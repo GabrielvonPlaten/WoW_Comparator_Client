@@ -32,32 +32,6 @@ When I created the route for the comparator view, I began to fetch the player's 
 
 The documentation I followed: https://vuex.vuejs.org/guide/
 
-### The Syntax
-
-Vue.js is always been describe as the combination of Angular and React.js. Angular for its similar syntax and React for its simplicity and almost similar project structure.
-
-For me, it has been easier to follow Vue's syntax than React's, in terms of learning it and debugging than JSX. I find it easier to look at something that resembles more like HTML than see a combination of JS and HTML.
-
-A loop in JSX
-```jsx
-<ul>
-  { this.props.obj.map((item, index) (
-    <li key="index">{item.name}</li>
-  )) }
-</ul>
-``` 
-
-Same loop in Vue
-```html
-<ul>
-  <li v-for="(item, index) in obj" :key="index">
-    {{ item.name }}
-  </li>
-</ul>
-```
-
-I also knew that, when I have to go back to React again in the future, I wouldn't be so lost because of the similarities Vue has to React.
-
 ### Rising Popularity
 
 Although not as popular as React, Vue is getting more momentum and it has become a well-known framework by now. However, the community is still very small and you got to have luck on your side if you wanna know the solution of any of your Vue problems. While developing WoW Comparator, I had to ask about best way to organize my Vuex store, alternative image if any errors ocurr, and how to refactor a lot of my code.
@@ -72,7 +46,7 @@ All styling was done using Sass
 
 ## Responsiveness
 
-The website works with devices as small as 768px for now.
+The website works with devices as small as 768px.
 
 
 
