@@ -21,6 +21,9 @@ You can visit the website at https://wow-comparator.com
 
 **Gabrantthh - Tyrande**
 
+# Stack used
+The website is built using MongoDB, Exrpess, Vue, and Node.
+
 # Made using Vue.js 2
 
 https://vuejs.org/
