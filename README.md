@@ -25,27 +25,7 @@ You can visit the website at https://wow-comparator.com
 
 https://vuejs.org/
 
-Vue.js is a progressive JavaScript front-end framework made by former Google engineer Evan You. The reason why I chose to build WoW Comparator with Vue was because of my little previous experience with Vue and I wanted to improve my skills. Vue's simplicity, syntax, and rising popularity were also contributing factors.
-
-## Easy to learn
-
-When I started to building the website, I did so knowing little about the the framework. To help me started, U used **Vue UI** to generate a boilerplate with Vue Router and a Vuex Store to get me started.
-
-### __Routing__
-The process of adding new routes has been very simple, and guarding a few of them, too. I just need to define the path of the route, name, and component which will be used.
-
-Example: 
-```javascript
-const router = new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-  ]});
-```
+Vue.js is a progressive JavaScript front-end framework made by former Google engineer Evan You. The reason why I chose to build WoW Comparator with Vue was because of my little previous experience with Vue and I wanted to learn a new JS framework. Vue's simplicity, syntax, and rising popularity were also contributing factors.
 
 ### __Vuex__
 When I created the route for the comparator view, I began to fetch the player's character data and display it onto the view. I started working on the Vuex Store as soon as possible, knowing that with a few more requests would be overwhelming for me to handle. The Vuex documentation was easy to follow and in the same day I got the hang of it.
