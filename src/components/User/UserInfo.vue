@@ -14,9 +14,8 @@
     </div>
     <div>
       <label>Logout</label>
-      <p>
-        <button class="btn btn--red" @click="logoutUser">Logout</button>
-      </p>
+      <br><br>
+      <button class="btn btn--red" @click="logoutUser">Logout</button>
     </div>
   </div>
 </template>
@@ -62,7 +61,6 @@ export default {
   max-height: 25rem
 
   .user-info
-    border-bottom: 1px solid $blue-4
     width: 40%
     margin-bottom: 1.3rem
 

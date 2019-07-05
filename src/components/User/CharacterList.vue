@@ -1,8 +1,10 @@
 <template>
   <div>
     <div>
-      <h2 v-if="charList.length > 0" class="bookmarked-title">Bookedmarked Characters</h2>
-      <h2 v-if="charList.length === 0" class="bookmarked-title">You have no bookmarked characters</h2>
+      <div class="bookmark-title">
+        <h2 v-if="charList.length > 0" class="bookmarked-title">Bookedmarked Characters</h2>
+        <h2 v-if="charList.length === 0" class="bookmarked-title">You have no bookmarked characters</h2>
+      </div>
       <ul class="character-list" v-if="characters">
         <li class="character-item" v-for="(char, index) in getCharactersByLastUpdate" :key="index">
           <div>
@@ -10,7 +12,7 @@
               class="avatarImg"
               ref="img"
               :src="'http://render-' + char.region + '.worldofwarcraft.com/character/' + char.thumbnail" @error="changeAvatarUrl(char.race, char.gender)">
-              <button class="btn btn--red remove-char-btn" @click="removeChar(char.id)">X</button>
+              <button class="btn btn--red remove-char-btn" @click="removeCharacter(char.id)">X</button>
               <br>
               <h2>{{char.name}}</h2>
               <h3 class="char-realm">{{char.realm}}</h3>
@@ -92,8 +94,8 @@ export default {
       return lastLogin
     },
 
-    async removeChar(id) {
-      await userService.removeChar(id)
+    async removeCharacter(id) {
+      await userService.removeCharacter(id)
         .then(async () => {
           location.reload()
         })
@@ -113,6 +115,10 @@ export default {
   width: 100%
   border: 1px solid $blue-4
   background: $blue-9
+  margin-bottom: 2rem
+
+  .bookmark-title
+    background: $blue-10
 
   h2
     margin: 0

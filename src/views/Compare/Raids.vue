@@ -5,7 +5,7 @@
       <div class="playerOne__progression" v-if="oneProg">
         <playerOneAvatar />
       
-        <div :class="{'playerOne__raids grid__active': grid, 'playerOne__raids': !grid}">
+        <div class="playerOne__raids">
           
           <div :class="{'hideRaid': hideRaidBlock === 0}" class="raid_block">
             <div class="raid_card">
@@ -101,7 +101,7 @@
       <div class="playerTwo__progression" v-if="twoProg">
         <playerTwoAvatar />
         
-        <div :class="{'playerTwo__raids grid__active': grid}">
+        <div class="playerTwo__raids">
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
@@ -264,7 +264,6 @@ export default {
 
   computed: {
     oneProg() {
-      console.log(store.state.playerOneProg)
       return store.state.playerOneProg
     },
 

@@ -129,7 +129,6 @@ export default {
       delete obj["shirt"]; // Not needed
       delete obj["tabard"]; // Not needed
 
-      console.log(obj)
       return obj
     },
 
