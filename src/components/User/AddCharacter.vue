@@ -55,7 +55,7 @@ export default {
       let realm = charRealm.replace(/'/g, '');
       let region = this.charRegionSelected;
 
-      userService.addChar(name, realm, region, localStorage.getItem('userToken'))
+      userService.addCharacter(name, realm, region, localStorage.getItem('userToken'))
         .then(res => {
           location.reload();
         })
@@ -66,20 +66,19 @@ export default {
 
 <style lang="sass">
 .addCharForm
-  width: 20%
   margin: 1rem auto
-  text-align: center
   background: $blue-9
   border: 1px solid $blue-4
-  width: 60%
+  width: 100%
 
   h2
     font-size: 1.3rem
     font-weight: 200
+    margin: 1rem 2rem 0 2rem
 
 .form-container
   width: 30%
-  margin: 0 auto
+  margin: 0 2rem
 
   .form-division
     margin: 0.6rem 0
@@ -87,6 +86,9 @@ export default {
     label
       float: left
       color: rgba(110, 150, 255, 0.9)
+
+    input
+      width: 100%
 
 .add-char-btn
   margin-top: 0.7rem

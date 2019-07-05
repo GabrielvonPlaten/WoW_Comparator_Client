@@ -337,7 +337,6 @@ export default {
           return i.icon
         }
       });
-      console.log(icon)
       return icon
     },
 

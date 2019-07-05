@@ -127,8 +127,8 @@ export default {
 
     label 
       color: $orange-4
-      font-size: 1rem
-      font-weight: 400
+      font-size: 0.87rem
+      font-weight: 500
       margin-bottom: 0.64rem
       display: block
       float: left
@@ -137,7 +137,8 @@ export default {
     .input-field
       width: 95%
       background: $white-2
-      padding: 0.4rem
+      padding: 0.3rem
+      letter-spacing: 1px
       font-size: 1rem
       border: none
 
@@ -149,12 +150,13 @@ export default {
 
   .form-separate
     p
-      margin: 0.7rem auto 0 auto
+      margin: 1rem auto 0 auto
       padding: 0.6rem 1rem 0 1rem
+      text-align: center
       
     .login-register-btn
       display: block
-      width: 80%
+      width: 60%
       margin: 0.7rem auto
       padding: 0.3rem 0.7rem
       text-align: center
