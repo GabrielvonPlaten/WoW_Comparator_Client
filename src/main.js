@@ -14,6 +14,7 @@ Vue.config.productionTip = false
 
 let app;
 
+// I'm sorry
 if (!localStorage.getItem('userToken')) {
   adminService.adminProfile(localStorage.getItem('adminToken'))
     .then(async res => {

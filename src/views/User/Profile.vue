@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="user-profile-background">
     <div class="user-profile">
       <UserInfo />
       <div class="user-favorite-char-list">
-        <CharacterList />
         <AddCharacterForm />
+        <CharacterList />
       </div>
     </div>
   </div>
@@ -35,6 +35,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.user-profile-background
+  min-height: 100vh
+  background: url('https://i.imgur.com/GC0EF2H.jpg')
+  background-attachment: fixed
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+  background-color: $blue-4
+  background-blend-mode: overlay
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+
 .user-profile
   display: flex
   justify-content: space-around

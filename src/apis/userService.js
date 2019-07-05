@@ -19,7 +19,7 @@ export default {
     return axios.post(url, { name, email, password })
   },
 
-  addChar(name, realm, region, token) {
+  addCharacter(name, realm, region, token) {
     let url = '/api/addFavoriteChar';
 
     return axios.patch(url, { name, realm, region}, {
@@ -27,7 +27,7 @@ export default {
     })
   },
 
-  async removeChar(id) {
+  async removeCharacter(id) {
     let url = '/api/getFavoriteChar/' + id;
 
     return await axios.delete(url, {
