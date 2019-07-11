@@ -1,5 +1,7 @@
 # WoW Comparator Client
 
+Server Repo: https://github.com/GabrielvonPlaten/WoW_Comparator_Server
+
 Examples characters to compare. First name is the Character's name, the second is the name of the Realm. 
 All characters are in the EU region.
 
@@ -23,6 +25,17 @@ You can visit the website at https://wow-comparator.com
 
 # Stack used
 The website is built using MongoDB, Exrpess, Vue, and Node.
+
+To install
+
+git clone https://github.com/GabrielvonPlaten/WoW_Comparator_Client.git
+
+cd WoW_Comparator_Client
+
+npm / yarn install
+
+npm / yarn run serve
+
 
 # Made using Vue.js 2
 
