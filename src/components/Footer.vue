@@ -32,11 +32,11 @@ export default {
 
 <style lang="sass" scoped>
 footer
-  min-height: 10vh
+  min-height: 24vh
   text-align: center
   background: $blue-9
   color: $white-3
-  padding: 0.5rem 0 1rem 0
+  padding: 1rem 0
 
   h3
     font-size: 2rem

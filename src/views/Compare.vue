@@ -275,6 +275,7 @@ export default {
   color: $white-0
   display: grid
   grid-template-columns: 1fr 1fr
+  margin-bottom: 4rem
 
 .compViews__playerOne
   width: 100%
