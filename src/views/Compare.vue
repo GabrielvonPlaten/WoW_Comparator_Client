@@ -5,42 +5,47 @@
         <label>Player One</label>
         <span
           class="search-error"
-          :style="{color: playerOneError.color}" v-if="playerOneError.message"
-          v-text="playerOneError.message" 
+          :style="{color: playerOneError.color}"
+          v-if="playerOneError.message"
+          v-text="playerOneError.message"
         />
-        <br>
-        <input v-model="playerOneName" type="text" placeholder="Character"><br>
-        <input v-model="playerOneRealm" type="text" placeholder="Realm">
+        <br />
+        <input v-model="playerOneName" type="text" placeholder="Character" />
+        <br />
+        <input v-model="playerOneRealm" type="text" placeholder="Realm" />
         <div class="playerOne__buttons">
           <button class="btn btn--blue btn-playerOne">Search</button>
           <!-- Region Selection -->
           <select v-model="playerOneRegionSelected" class="playerOne-region-selection">
-            <option 
-              v-for="(option, index) in playerOneRegionOptions" :key="index" 
-              v-bind:value="option.value">
-              {{ option.text }}
-            </option>
+            <option
+              v-for="(option, index) in playerOneRegionOptions"
+              :key="index"
+              v-bind:value="option.value"
+            >{{ option.text }}</option>
           </select>
         </div>
       </form>
 
       <form @submit.prevent="getPlayerTwoData()" class="form form-playerTwo">
         <label>Player Two</label>
-        <br>
+        <br />
         <span
           class="search-error"
-          :style="{color: playerTwoError.color}" v-if="playerTwoError.message">
-          {{playerTwoError.message}}
-        </span>
-        <br>
-        <input v-model="playerTwoName" type="text" placeholder="Character"><br>
-        <input v-model="playerTwoRealm" type="text" placeholder="Realm">
+          :style="{color: playerTwoError.color}"
+          v-if="playerTwoError.message"
+        >{{playerTwoError.message}}</span>
+        <br />
+        <input v-model="playerTwoName" type="text" placeholder="Character" />
+        <br />
+        <input v-model="playerTwoRealm" type="text" placeholder="Realm" />
         <div class="playerTwo__buttons">
           <!-- Region Selection -->
           <select v-model="playerTwoRegionSelected" class="playerTwo-region-selection">
-            <option v-for="(option, index) in playerTwoRegionOptions" :key="index" v-bind:value="option.value">
-              {{ option.text }}
-            </option>
+            <option
+              v-for="(option, index) in playerTwoRegionOptions"
+              :key="index"
+              v-bind:value="option.value"
+            >{{ option.text }}</option>
           </select>
           <button class="btn btn--blue btn-playerTwo">Search</button>
         </div>
@@ -54,9 +59,9 @@
 </template>
 
 <script>
-import store from '@/Vuex/store'
-import axios from 'axios';
-import ComparatorButtons from '@/components/ComparatorButtons.vue';
+import store from "@/Vuex/store";
+import axios from "axios";
+import ComparatorButtons from "@/components/ComparatorButtons.vue";
 
 export default {
   data() {
@@ -66,78 +71,117 @@ export default {
       playerTwoRealm: "",
       playerTwoName: "",
       access_token: "",
-      current_season: 2,
+      current_season: 3,
 
-      playerOneRegionSelected: 'EU',
+      playerOneRegionSelected: "EU",
       playerOneRegionOptions: [
-        { text: 'EU', value: 'EU' },
-        { text: 'US', value: 'US' },
-        { text: 'KR', value: 'KR'},
-        { text: 'TW', value: 'TW'},
-        { text: 'CN', value: 'CN'}
+        { text: "EU", value: "EU" },
+        { text: "US", value: "US" },
+        { text: "KR", value: "KR" },
+        { text: "TW", value: "TW" },
+        { text: "CN", value: "CN" }
       ],
 
-      playerTwoRegionSelected: 'EU',
+      playerTwoRegionSelected: "EU",
       playerTwoRegionOptions: [
-        { text: 'EU', value: 'EU' },
-        { text: 'US', value: 'US' },
-        { text: 'KR', value: 'KR'},
-        { text: 'TW', value: 'TW'},
-        { text: 'CN', value: 'CN'}
+        { text: "EU", value: "EU" },
+        { text: "US", value: "US" },
+        { text: "KR", value: "KR" },
+        { text: "TW", value: "TW" },
+        { text: "CN", value: "CN" }
       ]
-    }
+    };
   },
 
   computed: {
     playerOneError() {
-      return store.state.playerOneError
+      return store.state.playerOneError;
     },
 
     playerTwoError() {
-      return store.state.playerTwoError
+      return store.state.playerTwoError;
     }
   },
 
   created() {
-    let url = '/api/comparator/'
-    axios.get(url)
-      .then(res => this.access_token = res.data.access_token)
+    let url = "/api/comparator/";
+    axios.get(url).then(res => (this.access_token = res.data.access_token));
   },
 
   methods: {
     getPlayerOneData() {
-      let { playerOneRealm, playerOneName, playerOneRegionSelected, current_season, access_token } = this;
-      let realm = playerOneRealm.replace(/'/g, '');
+      let {
+        playerOneRealm,
+        playerOneName,
+        playerOneRegionSelected,
+        current_season,
+        access_token
+      } = this;
+      let realm = playerOneRealm.replace(/'/g, "");
 
       if (playerOneRealm && playerOneName) {
-        store.dispatch('playerOneData', {region: playerOneRegionSelected, token: access_token, realm, name: playerOneName, season_number: current_season})
+        store.dispatch("playerOneData", {
+          region: playerOneRegionSelected,
+          token: access_token,
+          realm,
+          name: playerOneName,
+          season_number: current_season
+        });
 
-        store.dispatch('playerOneMythicData', {region: playerOneRegionSelected, token: access_token, realm, name: playerOneName, season_number: current_season})
-
+        store.dispatch("playerOneMythicData", {
+          region: playerOneRegionSelected,
+          token: access_token,
+          realm,
+          name: playerOneName,
+          season_number: current_season
+        });
       } else {
-        store.dispatch('playerOneEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
+        store.dispatch("playerOneEmptyForm", {
+          errMessage: "Please fill in both fields.",
+          errColor: "orange"
+        });
       }
     },
 
     getPlayerTwoData() {
-      let { playerTwoRealm, playerTwoName, playerTwoRegionSelected, current_season, access_token } = this;
-      let realm = playerTwoRealm.replace(/'/g, '');
+      let {
+        playerTwoRealm,
+        playerTwoName,
+        playerTwoRegionSelected,
+        current_season,
+        access_token
+      } = this;
+      let realm = playerTwoRealm.replace(/'/g, "");
 
       if (playerTwoRealm && playerTwoName) {
-        store.dispatch('playerTwoData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm, name: playerTwoName})
+        store.dispatch("playerTwoData", {
+          region: playerTwoRegionSelected,
+          season_number: current_season,
+          token: access_token,
+          realm,
+          name: playerTwoName
+        });
 
-        store.dispatch('playerTwoMythicData', {region: playerTwoRegionSelected, season_number: current_season, token: access_token, realm, name: playerTwoName})
-
+        store.dispatch("playerTwoMythicData", {
+          region: playerTwoRegionSelected,
+          season_number: current_season,
+          token: access_token,
+          realm,
+          name: playerTwoName
+        });
       } else {
-        store.dispatch('playerTwoEmptyForm', {errMessage: "Please fill in both fields.", errColor: "orange"})
+        store.dispatch("playerTwoEmptyForm", {
+          errMessage: "Please fill in both fields.",
+          errColor: "orange"
+        });
       }
-    },
+    }
   },
 
   components: {
-    ComparatorButtons,
+    ComparatorButtons
   }
-}
+};
 </script>
 
 

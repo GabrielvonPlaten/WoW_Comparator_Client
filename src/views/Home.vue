@@ -4,16 +4,21 @@
       <div class="jumbotron__title">
         <h1>WoW Comparator</h1>
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with others people's characters!</p>
-        <br>
+        <br />
         <router-link to="/compare/stats" class="btn btn--purple jumbotron-btn">Compare</router-link>
-        <br>
+        <br />
       </div>
     </div>
     <div class="recent-posts">
-      <router-link :to="'/post/' + post._id + '/' + post.slug" class="blog-post" v-for="(post, index) in posts" :key="index">
+      <router-link
+        :to="'/post/' + post._id + '/' + post.slug"
+        class="blog-post"
+        v-for="(post, index) in posts"
+        :key="index"
+      >
         <div class="blog_block">
           <div class="image-container">
-            <img :src="post.blocks.blocks[0].data.url">
+            <img :src="post.blocks.blocks[0].data.url" />
           </div>
           <div class="blog_card-block">
             <h2 class="title-text">{{post.title}}</h2>
@@ -27,8 +32,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import websiteStyles from '@/apis/website-styles';
+import axios from "axios";
+import websiteStyles from "@/apis/website-styles";
 
 export default {
   data() {
@@ -36,23 +41,23 @@ export default {
       posts: [],
       postError: null,
       jumbotronImage: null,
-      access_token: null,
-    }
+      access_token: null
+    };
   },
 
   async created() {
-    let url = '/api/posts';
-    axios.get(url)
+    let url = "/api/posts";
+    axios
+      .get(url)
       .then(res => {
-        this.posts = res.data
+        this.posts = res.data;
       })
-      .catch(err => this.postError = err);
+      .catch(err => (this.postError = err));
 
     // Jumbotron Image
-    websiteStyles.getJumbotronBgImage()
-      .then(res => this.jumbotronImage = res.data[0].backgroundImage)
-
-
+    websiteStyles
+      .getJumbotronBgImage()
+      .then(res => (this.jumbotronImage = res.data[0].backgroundImage));
   },
 
   methods: {
@@ -61,19 +66,34 @@ export default {
       let month = new Date(val);
       let day = new Date(val);
 
-      let months = ["January", "February", "Mars", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      let months = [
+        "January",
+        "February",
+        "Mars",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
 
-      return `${day.getDate()} ${months[month.getMonth()]}, ${year.getUTCFullYear()}`
+      return `${day.getDate()} ${
+        months[month.getMonth()]
+      }, ${year.getUTCFullYear()}`;
     }
   }
-}
+};
 </script>
 
 
 <style lang="sass" scoped>
 .jumbotron
   padding: 1px
-  height: 74vh
+  height: 76vh
   background-attachment: fixed
   background-position: center
   background-size: cover
@@ -113,9 +133,8 @@ export default {
   display: grid
   grid-template-columns: repeat(4, 1fr)
   color: $white-0
-  margin-top: 1rem
   width: 90%
-  margin: 1rem auto -20rem auto
+  margin: 1rem auto 4rem auto
   position: relative
   top: -110px
 
