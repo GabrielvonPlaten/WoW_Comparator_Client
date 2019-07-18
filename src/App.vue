@@ -1,50 +1,56 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view/>
-    <!-- <Footer />   -->
+    <div class="body-container">
+      <router-view />
+    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import Footer from '@/components/Footer.vue';
-import Navbar from '@/components/Navbar.vue';
+import axios from "axios";
+import Footer from "@/components/Footer.vue";
+import Navbar from "@/components/Navbar.vue";
 
 export default {
   components: {
     Footer,
-    Navbar,
+    Navbar
   },
 
   created() {
     // First visit will send a POST request to the back end and a localStorage item will be created
     // with the UNIX timestamp of the current as a value
     // If the next visist happens after 24 hours, the process will repeat
-    let fullDay = 24*3600; 
+    let fullDay = 24 * 3600;
     let day = Date.now();
-    day = day.toString()
+    day = day.toString();
     day = day.slice(0, -3);
-    day = Number(day)
+    day = Number(day);
 
-    if (!localStorage.getItem('visited') || day > (parseInt(localStorage.getItem('visited')) + fullDay)) {
-      let url = '/api/website-visits';
-      axios.patch(url)
-        .then(localStorage.setItem('visited', day))
+    if (
+      !localStorage.getItem("visited") ||
+      day > parseInt(localStorage.getItem("visited")) + fullDay
+    ) {
+      let url = "/api/website-visits";
+      axios.patch(url).then(localStorage.setItem("visited", day));
     }
   }
-
-}
+};
 </script>
 
 
 <style lang="sass">
 html, body
-    font-family: 'Roboto', sans-serif
-    padding: 0
-    margin: 0
-    background-color: $blue-10
+  font-family: 'Roboto', sans-serif
+  padding: 0
+  margin: 0
+  background-color: $blue-10
 
+.body-container 
+  min-height: 75vh
+  
 // Lines
 .line
   +line

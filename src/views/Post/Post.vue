@@ -1,20 +1,23 @@
 <template>
-  <div 
-    v-if="post" 
-    class="post-bg" 
-    :style="{ backgroundImage: 'url(' + post.blocks.blocks[0].data.url + ')' }">
+  <div
+    v-if="post"
+    class="post-bg"
+    :style="{ backgroundImage: 'url(' + post.blocks.blocks[0].data.url + ')' }"
+  >
     <div class="post-container">
       <div class="post-box">
         <div class="image-container">
-          <img :src="post.blocks.blocks[0].data.url">
+          <img :src="post.blocks.blocks[0].data.url" />
         </div>
         <div class="post-content">
           <div class="post-header">
             <h2 class="post-title">{{post.title}}</h2>
             <h3 class="post-date">
-              <span style="color: #9d9d9d">By: </span>
+              <span style="color: #9d9d9d">By:</span>
               <span style="color: #E0E0E0">{{author}}</span>
-              <span style="color: #9d9d9d"> - </span> {{formatDate(post.blocks.time)}}</h3>
+              <span style="color: #9d9d9d">-</span>
+              {{formatDate(post.blocks.time)}}
+            </h3>
           </div>
           <div v-for="(b, index) in post.blocks.blocks" :key="index">
             <div v-if="b.type === 'paragraph'">
@@ -25,7 +28,7 @@
             </div>
             <div v-if="b.type === 'image' && index > 0">
               <div class="blog-image-container">
-                <img :src="b.data.url">
+                <img :src="b.data.url" />
                 <p v-if="b.data.caption !== '<br>'">{{b.data.caption}}</p>
               </div>
             </div>
@@ -38,7 +41,14 @@
             </div>
             <div v-if="b.type === 'embed'">
               <div class="blog-image-container">
-                <iframe :width="b.data.width" :height="b.data.height" :src="b.data.embed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe
+                  :width="b.data.width"
+                  :height="b.data.height"
+                  :src="b.data.embed"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
               </div>
             </div>
           </div>
@@ -49,24 +59,26 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
     return {
       post: null,
-      author: null,
-    }
+      author: null
+    };
   },
 
   created() {
-    let url = '/api/post/' + this.$route.params.id + '/' + this.$route.params.slug
-    axios.get(url)
+    let url =
+      "/api/post/" + this.$route.params.id + "/" + this.$route.params.slug;
+    axios
+      .get(url)
       .then(res => {
-        this.post = res.data.post[0]
-        this.author = res.data.author
+        this.post = res.data.post[0];
+        this.author = res.data.author;
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   },
 
   methods: {
@@ -74,14 +86,28 @@ export default {
       let year = new Date(val);
       let month = new Date(val);
       let day = new Date(val);
-  
-      let months = ["January", "February", "Mars", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  
-      return `${day.getDate()} ${months[month.getMonth()]}, ${year.getUTCFullYear()}`
-    },
-  }
 
-}
+      let months = [
+        "January",
+        "February",
+        "Mars",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+
+      return `${day.getDate()} ${
+        months[month.getMonth()]
+      }, ${year.getUTCFullYear()}`;
+    }
+  }
+};
 </script>
 
 <style lang="sass" scoped>
@@ -90,13 +116,13 @@ export default {
   padding: 1.3rem 0 3rem 0
 
 .post-bg
-    padding: 1px 0
-    height: auto
-    background-attachment: fixed
-    background-repeat: no-repeat
-    background-size: cover
-    background-color: $blue-9
-    background-blend-mode: overlay
+  padding: 1px 0
+  height: auto
+  background-attachment: fixed
+  background-repeat: no-repeat
+  background-size: cover
+  background-color: $blue-9
+  background-blend-mode: overlay
 
 .post-box
   width: 70%
