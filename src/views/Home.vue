@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="jumbotron" :style="'background-image: url(' + jumbotronImage + ')'">
+    <div class="jumbotron" :style="`background-image: url(${jumbotronImage})`">
       <div class="jumbotron__title">
         <h1>WoW Comparator</h1>
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with others people's characters!</p>
@@ -11,7 +11,7 @@
     </div>
     <div class="recent-posts">
       <router-link
-        :to="'/post/' + post._id + '/' + post.slug"
+        :to="`/post/${post._id}/${post.slug}`"
         class="blog-post"
         v-for="(post, index) in posts"
         :key="index"
