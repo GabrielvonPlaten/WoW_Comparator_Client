@@ -51,6 +51,10 @@ html, body
 .body-container 
   min-height: 75vh
   
+ul
+  padding: 0
+  margin: 0
+
 // Lines
 .line
   +line
