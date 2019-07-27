@@ -22,7 +22,7 @@
                 </tr>
                 <tr v-for="(boss, index) in oneProg.progression.raids[40].bosses" :key="index">
                   <td>
-                    <a :href="'//wowhead.com/npc=' + boss.id">
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
                       <img :src="Uldir[index].bossImage" />
                     </a>
                   </td>
@@ -66,7 +66,7 @@
                 </tr>
                 <tr v-for="(boss, index) in oneProg.progression.raids[41].bosses" :key="index">
                   <td>
-                    <a :href="'//wowhead.com/npc=' + boss.id">
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
                       <img :src="DazarAlor[index].bossImage" />
                     </a>
                   </td>
@@ -110,7 +110,7 @@
                 </tr>
                 <tr v-for="(boss, index) in oneProg.progression.raids[42].bosses" :key="index">
                   <td>
-                    <a :href="'//wowhead.com/npc=' + boss.id">
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
                       <img :src="CrucibleOfStorms[index].bossImage" />
                     </a>
                   </td>
@@ -154,7 +154,7 @@
                 </tr>
                 <tr v-for="(boss, index) in oneProg.progression.raids[43].bosses" :key="index">
                   <td>
-                    <a :href="'//wowhead.com/npc=' + boss.id">
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
                       <img :src="AzsharasEternalPalace[index].bossImage" />
                     </a>
                   </td>
@@ -209,7 +209,7 @@
                 </tr>
                 <tr v-for="(boss, index) in twoProg.progression.raids[40].bosses" :key="index">
                   <td>
-                    <a :href="'//wowhead.com/npc=' + boss.id">
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
                       <img :src="Uldir[index].bossImage" />
                     </a>
                   </td>
@@ -253,7 +253,7 @@
                 </tr>
                 <tr v-for="(boss, index) in twoProg.progression.raids[41].bosses" :key="index">
                   <td>
-                    <a :href="'//wowhead.com/npc=' + boss.id">
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
                       <img :src="DazarAlor[index].bossImage" />
                     </a>
                   </td>
@@ -297,7 +297,7 @@
                 </tr>
                 <tr v-for="(boss, index) in twoProg.progression.raids[42].bosses" :key="index">
                   <td>
-                    <a :href="'//wowhead.com/npc=' + boss.id">
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
                       <img :src="CrucibleOfStorms[index].bossImage" />
                     </a>
                   </td>
@@ -342,7 +342,7 @@
                 </tr>
                 <tr v-for="(boss, index) in twoProg.progression.raids[43].bosses" :key="index">
                   <td>
-                    <a :href="'//wowhead.com/npc=' + boss.id">
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
                       <img :src="AzsharasEternalPalace[index].bossImage" />
                     </a>
                   </td>
