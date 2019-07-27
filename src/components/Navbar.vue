@@ -10,22 +10,30 @@
       </h2>
     </div>
     <ul>
-      <li><router-link to="/" class="router btn btn--purple">Home</router-link></li>
-      <li><router-link to="/compare/stats" class="router btn btn--purple">Compare</router-link></li>
+      <li>
+        <router-link to="/" class="router btn btn--purple">Home</router-link>
+      </li>
+      <li>
+        <router-link to="/compare/stats" class="router btn btn--purple">Compare</router-link>
+      </li>
       <li v-if="adminLoggedIn">
         <router-link to="/admin/dashboard" class="router btn btn--purple">Dashboard</router-link>
       </li>
       <li v-if="userLoggedIn && !adminLoggedIn">
         <router-link to="/profile" class="router btn btn--purple">Profile</router-link>
       </li>
-      <li v-if="!userLoggedIn"><router-link to="/login" class="router btn btn--purple">Login</router-link></li>
-      <li v-if="!userLoggedIn"><router-link to="/register" class="router btn btn--purple">Register</router-link></li>
+      <li v-if="!userLoggedIn">
+        <router-link to="/login" class="router btn btn--purple">Login</router-link>
+      </li>
+      <li v-if="!userLoggedIn">
+        <router-link to="/register" class="router btn btn--purple">Register</router-link>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-import store from '@/Vuex/store'
+import store from "@/Vuex/store";
 
 export default {
   data() {
@@ -34,7 +42,7 @@ export default {
       userLoggedIn: false,
       adminData: store.state.adminData,
       userData: store.state.userData
-    }
+    };
   },
 
   created() {
@@ -42,10 +50,10 @@ export default {
       this.adminLoggedIn = true;
       this.userLoggedIn = true;
     } else if (store.state.userData) {
-      this.userLoggedIn = true
+      this.userLoggedIn = true;
     }
-  },
-}
+  }
+};
 </script>
 
 

@@ -22,7 +22,7 @@
           </a>
           <a
             target="_blank"
-            :href="'https://www.raidbots.com/simbot/quick?region=eu&realm=' + oneScores.realm + '&name=' + oneScores.name"
+            :href="`https://www.raidbots.com/simbot/quick?region=eu&realm=${oneScores.realm}&name=${oneScores.name}`"
           >
             <img class="third_party_logos" :src="raidbotsIcon" />
           </a>
@@ -54,7 +54,7 @@
             </div>
             <div class="dungeon-item-title">
               <span v-for="(affix, j) in run.keystone_affixes" :key="j">
-                <a class="affix-name" :href="'https://wowhead.com/affix=' + affix.id">
+                <a class="affix-name" :href="`https://wowhead.com/affix=${affix.id}`">
                   <!-- There are currently 18 affixes that goes from 1 to 16 except for two which has an id of 117 and 119-->
                   <div v-if="affix.id === 117">
                     <img class="affix-image" :src="affixIcons[17].icon" />
@@ -92,7 +92,7 @@
         <div v-if="oneNoMythicRuns">
           <h2
             class="errorMessage"
-            :style="'color:' + oneNoMythicRuns.errColor"
+            :style="`color:${oneNoMythicRuns.errColor}`"
           >{{oneNoMythicRuns.errMessage}}</h2>
         </div>
       </div>
@@ -120,7 +120,7 @@
           </a>
           <a
             target="_blank"
-            :href="'https://www.raidbots.com/simbot/quick?region=eu&realm=' + twoScores.realm + '&name=' + twoScores.name"
+            :href="`https://www.raidbots.com/simbot/quick?region=eu&realm=${twoScores.realm}&name=${twoScores.name}`"
           >
             <img class="third_party_logos" :src="raidbotsIcon" />
           </a>
@@ -156,7 +156,7 @@
                 <span>+{{run.keystone_level}}</span>
               </h3>
               <span v-for="(affix, j) in run.keystone_affixes" :key="j">
-                <a class="affix-name" :href="'https://wowhead.com/affix=' + affix.id">
+                <a class="affix-name" :href="`https://wowhead.com/affix=${affix.id}`">
                   <!-- There are currently 18 affixes that goes from 1 to 16 except for two which has an id of 117 and 119-->
                   <div v-if="affix.id === 117">
                     <img class="affix-image" :src="affixIcons[17].icon" />
@@ -190,7 +190,7 @@
         <div v-if="twoNoMythicRuns">
           <h2
             class="errorMessage"
-            :style="'color:' + twoNoMythicRuns.errColor"
+            :style="`color:${twoNoMythicRuns.errColor}`"
           >{{twoNoMythicRuns.errMessage}}</h2>
         </div>
       </div>

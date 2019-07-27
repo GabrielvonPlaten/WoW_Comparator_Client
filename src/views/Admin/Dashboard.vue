@@ -4,15 +4,15 @@
       <div class="dashboard-view-btns">
         <ul>
           <li v-for="(v, index) in views" :key="index">
-            <button @click="switchView(v.id)" 
-              :class="{'active-btn btn btn--purple btn-view': v.active, 'btn btn--purple btn-view': !v.active }">
-              {{v.name}}
-            </button>
+            <button
+              @click="switchView(v.id)"
+              :class="{'active-btn btn btn--purple btn-view': v.active, 'btn btn--purple btn-view': !v.active }"
+            >{{v.name}}</button>
           </li>
         </ul>
       </div>
       <div>
-        <PostsList v-if="views[0].active"/>
+        <PostsList v-if="views[0].active" />
         <PostForm v-if="views[1].active" />
         <Settings v-if="views[2].active" />
       </div>
@@ -21,13 +21,13 @@
 </template>
 
 <script>
-import axios from 'axios';
-import store from '@/Vuex/store'
+import axios from "axios";
+import store from "@/Vuex/store";
 
 // Components
-import PostForm from '@/components/Admin/PostForm.vue'
-import PostsList from '@/components/Admin/PostsList.vue'
-import Settings from '@/components/Admin/Settings.vue'
+import PostForm from "@/components/Admin/PostForm.vue";
+import PostsList from "@/components/Admin/PostsList.vue";
+import Settings from "@/components/Admin/Settings.vue";
 
 export default {
   data() {
@@ -37,30 +37,30 @@ export default {
       showPostView: false,
       views: [
         { id: 0, name: "All Posts", active: true }, // Active
-        { id: 1, name: "Create Post", active: false }, 
-        { id: 2, name: "Settings", active: false},
+        { id: 1, name: "Create Post", active: false },
+        { id: 2, name: "Settings", active: false }
       ]
-    }
+    };
   },
 
   methods: {
     switchView(x) {
       this.views.forEach(view => {
         if (view.id === x) {
-          view.active = true
+          view.active = true;
         } else {
-          view.active = false
+          view.active = false;
         }
-      })
+      });
     }
   },
 
   components: {
     PostForm,
     PostsList,
-    Settings,
+    Settings
   }
-}
+};
 </script>
 
 <style lang="sass" scoped>

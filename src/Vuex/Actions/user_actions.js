@@ -5,5 +5,5 @@ export const userLogin = ({ commit }, payload) => {
 };
 
 export const userLogout = ({ commit }) => {
-  commit(types.USER_LOGOUT, false)
-}
+  commit(types.USER_LOGOUT, false);
+};

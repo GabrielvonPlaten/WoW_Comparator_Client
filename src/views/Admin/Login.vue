@@ -7,14 +7,17 @@
         </div>
         <form @submit.prevent="loginAdmin" class="form">
           <div class="form-separator">
-            <label>Email</label><br>
-            <input class="input-field" v-model="login.email"><br>
+            <label>Email</label>
+            <br />
+            <input class="input-field" v-model="login.email" />
+            <br />
           </div>
           <div class="form-separator">
-            <label>Passord</label><br>
-            <input class="input-field" v-model="login.password" type="password">
+            <label>Passord</label>
+            <br />
+            <input class="input-field" v-model="login.password" type="password" />
           </div>
-          <br>
+          <br />
           <button class="btn btn--green btn-form">Login</button>
           <button class="btn btn--red btn-form">Cancel</button>
         </form>
@@ -24,8 +27,8 @@
 </template>
 
 <script>
-import store from '@/Vuex/store';
-import adminService from '@/apis/adminService';
+import store from "@/Vuex/store";
+import adminService from "@/apis/adminService";
 
 export default {
   data() {
@@ -34,26 +37,27 @@ export default {
         email: "",
         password: ""
       },
-      loginError: null,
-    }
+      loginError: null
+    };
   },
 
   methods: {
     async loginAdmin() {
       let { email, password } = this.login;
-      await adminService.login(email, password)
+      await adminService
+        .login(email, password)
         .then(async res => {
-          await localStorage.setItem('adminToken', res.data.token)
-          store.dispatch('adminLogin', res.data)
-          this.$router.go({ path: this.$router.path })
+          await localStorage.setItem("adminToken", res.data.token);
+          store.dispatch("adminLogin", res.data);
+          this.$router.go({ path: this.$router.path });
         })
         .catch(err => {
-          this.loginError = err
-          this.$router.go({ path: '/' })
-        })
+          this.loginError = err;
+          this.$router.go({ path: "/" });
+        });
     }
-  },
-}
+  }
+};
 </script>
 
 

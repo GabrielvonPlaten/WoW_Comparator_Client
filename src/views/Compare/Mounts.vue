@@ -1,35 +1,40 @@
 <template>
   <div>
     <div class="compViews__playerOne">
-      <Loader v-if="oneMounts === false"/>
+      <Loader v-if="oneMounts === false" />
       <div class="playerOne__mounts" v-if="oneMounts">
         <playerOneAvatar />
         <div class="oneMountInput-count">
-          <input v-if="oneMounts || twoMounts" type="text" placeholder="Search..." v-model="mountSearch">
+          <input
+            v-if="oneMounts || twoMounts"
+            type="text"
+            placeholder="Search..."
+            v-model="mountSearch"
+          />
           <p>Collected: {{oneMounts.mounts.numCollected}}</p>
         </div>
         <ul>
           <div v-for="(mount, index) in oneFilteredMounts" :key="index">
             <div v-if="mount.qualityId === 4">
               <li class="mounts--epic">
-                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
+                <a target="_blank" :href="`//www.wowhead.com/item=${mount.itemId}`">
+                  <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${mount.icon}.jpg`" />
                   <p>{{mount.name}}</p>
                 </a>
               </li>
             </div>
             <div v-else-if="mount.qualityId === 3">
-             <li class="mounts--rare">
-                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
+              <li class="mounts--rare">
+                <a target="_blank" :href="`//www.wowhead.com/item=${mount.itemId}`">
+                  <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${mount.icon}.jpg`" />
                   <p>{{mount.name}}</p>
                 </a>
               </li>
             </div>
             <div v-else-if="mount.qualityId === 1">
-             <li class="mounts--common">
-                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
+              <li class="mounts--common">
+                <a target="_blank" :href="`//www.wowhead.com/item=${mount.itemId}`">
+                  <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${mount.icon}.jpg`" />
                   <p>{{mount.name}}</p>
                 </a>
               </li>
@@ -40,35 +45,40 @@
     </div>
 
     <div class="compViews__playerTwo">
-      <Loader v-if="twoMounts === false"/>
+      <Loader v-if="twoMounts === false" />
       <div class="playerTwo__mounts" v-if="twoMounts">
         <playerTwoAvatar />
         <div class="twoMountInput-count">
           <p>Collected: {{twoMounts.mounts.numCollected}}</p>
-          <input v-if="oneMounts || twoMounts" type="text" placeholder="Search..." v-model="mountSearch">
+          <input
+            v-if="oneMounts || twoMounts"
+            type="text"
+            placeholder="Search..."
+            v-model="mountSearch"
+          />
         </div>
         <ul>
           <div v-for="(mount, index) in twoFilteredMounts" :key="index">
             <div v-if="mount.qualityId === 4">
               <li class="mounts--epic">
-                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
+                <a target="_blank" :href="`//www.wowhead.com/item=${mount.itemId}`">
+                  <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${mount.icon}.jpg`" />
                   <p>{{mount.name}}</p>
                 </a>
               </li>
             </div>
             <div v-else-if="mount.qualityId === 3">
-             <li class="mounts--rare">
-                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
+              <li class="mounts--rare">
+                <a target="_blank" :href="`//www.wowhead.com/item=${mount.itemId}`">
+                  <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${mount.icon}.jpg`" />
                   <p>{{mount.name}}</p>
                 </a>
               </li>
             </div>
             <div v-else-if="mount.qualityId === 1">
-             <li class="mounts--common">
-                <a target="_blank" :href="'//www.wowhead.com/item=' + mount.itemId">
-                  <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + mount.icon + '.jpg'">
+              <li class="mounts--common">
+                <a target="_blank" :href="`//www.wowhead.com/item=${mount.itemId}`">
+                  <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${mount.icon}.jpg`" />
                   <p>{{mount.name}}</p>
                 </a>
               </li>
@@ -81,52 +91,58 @@
 </template>
 
 <script>
-import store from '@/Vuex/store'
-import playerOneAvatar from '@/components/OneAvatar.vue';
-import playerTwoAvatar from '@/components/TwoAvatar.vue';
-import Loader from '@/components/Loader.vue';
+import store from "@/Vuex/store";
+import playerOneAvatar from "@/components/OneAvatar.vue";
+import playerTwoAvatar from "@/components/TwoAvatar.vue";
+import Loader from "@/components/Loader.vue";
 
 export default {
   data() {
     return {
-      mountSearch: "",
-    }
+      mountSearch: ""
+    };
   },
 
   computed: {
     oneMounts() {
-      return store.state.playerOneMounts
+      return store.state.playerOneMounts;
     },
 
     twoMounts() {
-      return store.state.playerTwoMounts
+      return store.state.playerTwoMounts;
     },
 
     oneFilteredMounts() {
       return this.oneMounts.mounts.collected.filter(mount => {
-        return mount.name.match(this.mountSearch.toLowerCase()
-          .split(' ')
-          .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(' '));
-      })
+        return mount.name.match(
+          this.mountSearch
+            .toLowerCase()
+            .split(" ")
+            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+            .join(" ")
+        );
+      });
     },
 
     twoFilteredMounts() {
       return this.twoMounts.mounts.collected.filter(mount => {
-        return mount.name.match(this.mountSearch.toLowerCase()
-          .split(' ')
-          .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(' '));
-      })
+        return mount.name.match(
+          this.mountSearch
+            .toLowerCase()
+            .split(" ")
+            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+            .join(" ")
+        );
+      });
     }
   },
 
   components: {
     playerOneAvatar,
     playerTwoAvatar,
-    Loader,
+    Loader
   }
-}
+};
 </script>
 
 

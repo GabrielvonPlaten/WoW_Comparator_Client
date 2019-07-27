@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="compViews__playerOne">
-      <Loader v-if="onePets === false"/>
+      <Loader v-if="onePets === false" />
       <div class="playerOne__pets" v-if="onePets">
         <playerOneAvatar />
 
         <div class="onePetInput-count">
-          <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch">
+          <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch" />
           <p>Collected: {{onePets.pets.numCollected}}</p>
         </div>
         <ul>
@@ -15,26 +15,26 @@
               <li v-if="pet.isFavorite" class="pets--rare">
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
-                    </span> 
+                    </span>
                   </a>
                 </div>
               </li>
               <li v-else class="pets--rare">
-                <br>
+                <br />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
-                    </span> 
+                    </span>
                   </a>
                 </div>
               </li>
@@ -44,22 +44,22 @@
               <li v-if="pet.isFavorite" class="pets--uncommon">
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
-                    </span> 
+                    </span>
                   </a>
                 </div>
               </li>
               <li v-else class="pets--uncommon">
-                <br>
+                <br />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -73,9 +73,9 @@
               <li v-if="pet.isFavorite" class="pets--common">
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -84,11 +84,11 @@
                 </div>
               </li>
               <li v-else class="pets--common">
-                <br>
+                <br />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -102,9 +102,9 @@
               <li v-if="pet.isFavorite" class="pets--poor">
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -113,11 +113,11 @@
                 </div>
               </li>
               <li v-else class="pets--poor">
-                <br>
+                <br />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -126,19 +126,18 @@
                 </div>
               </li>
             </div>
-
           </div>
         </ul>
       </div>
     </div>
 
     <div class="compViews__playerTwo">
-      <Loader v-if="twoPets === false"/>
+      <Loader v-if="twoPets === false" />
       <div class="playerTwo__pets" v-if="twoPets">
         <playerTwoAvatar />
         <div class="twoPetsInput-count">
           <p>Collected: {{twoPets.pets.numCollected}}</p>
-          <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch">
+          <input v-if="onePets || twoPets" type="text" placeholder="Search..." v-model="petSearch" />
         </div>
 
         <ul>
@@ -147,26 +146,26 @@
               <li v-if="pet.isFavorite" class="pets--rare">
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
-                    </span> 
+                    </span>
                   </a>
                 </div>
               </li>
               <li v-else class="pets--rare">
-                <br>
+                <br />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
-                    </span> 
+                    </span>
                   </a>
                 </div>
               </li>
@@ -176,22 +175,22 @@
               <li v-if="pet.isFavorite" class="pets--uncommon">
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
-                    </span> 
+                    </span>
                   </a>
                 </div>
               </li>
               <li v-else class="pets--uncommon">
-                <br>
+                <br />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -205,9 +204,9 @@
               <li v-if="pet.isFavorite" class="pets--common">
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -216,11 +215,11 @@
                 </div>
               </li>
               <li v-else class="pets--common">
-                <br>
+                <br />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -234,9 +233,9 @@
               <li v-if="pet.isFavorite" class="pets--poor">
                 <font-awesome-icon class="favorite-star" icon="star" />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -245,11 +244,11 @@
                 </div>
               </li>
               <li v-else class="pets--poor">
-                <br>
+                <br />
                 <div class="pets-align--center">
-                  <a target="_blank" :href="'//www.wowhead.com/npc=' + pet.creatureId">
-                    <img :src="'https://render-eu.worldofwarcraft.com/icons/56/' + pet.icon + '.jpg'">
-                    <br>
+                  <a target="_blank" :href="`//www.wowhead.com/npc=${pet.creatureId}`">
+                    <img :src="`https://render-eu.worldofwarcraft.com/icons/56/${pet.icon}.jpg`" />
+                    <br />
                     <span class="pet-truncate">
                       <span class="pet-level">{{pet.stats.level}}</span>
                       {{pet.name}}
@@ -258,7 +257,6 @@
                 </div>
               </li>
             </div>
-
           </div>
         </ul>
       </div>
@@ -267,54 +265,59 @@
 </template>
 
 <script>
-import store from '@/Vuex/store'
-import playerOneAvatar from '@/components/OneAvatar.vue';
-import playerTwoAvatar from '@/components/TwoAvatar.vue';
-import Loader from '@/components/Loader.vue';
+import store from "@/Vuex/store";
+import playerOneAvatar from "@/components/OneAvatar.vue";
+import playerTwoAvatar from "@/components/TwoAvatar.vue";
+import Loader from "@/components/Loader.vue";
 
 export default {
   data() {
     return {
-      petSearch: "",
-    }
+      petSearch: ""
+    };
   },
 
   computed: {
-
     onePets() {
-      return store.state.playerOnePets
+      return store.state.playerOnePets;
     },
     twoPets() {
-      return store.state.playerTwoPets
+      return store.state.playerTwoPets;
     },
 
     // Filter Pets by name
     oneFilteredPets() {
       return this.onePets.pets.collected.filter(pet => {
-        return pet.name.match(this.petSearch.toLowerCase()
-          .split(' ')
-          .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(' '));
-      })
+        return pet.name.match(
+          this.petSearch
+            .toLowerCase()
+            .split(" ")
+            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+            .join(" ")
+        );
+      });
     },
 
     // Filter Pets by name
     twoFilteredPets() {
       return this.twoPets.pets.collected.filter(pet => {
-        return pet.name.match(this.petSearch.toLowerCase()
-          .split(' ')
-          .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(' '));
-      })
+        return pet.name.match(
+          this.petSearch
+            .toLowerCase()
+            .split(" ")
+            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+            .join(" ")
+        );
+      });
     }
   },
 
   components: {
     playerOneAvatar,
     playerTwoAvatar,
-    Loader,
+    Loader
   }
-}
+};
 </script>
 
 
