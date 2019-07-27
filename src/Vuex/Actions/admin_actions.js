@@ -5,5 +5,5 @@ export const adminLogin = ({ commit }, payload) => {
 };
 
 export const adminLogout = ({ commit }) => {
-  commit(types.ADMIN_LOGOUT, false)
-}
+  commit(types.ADMIN_LOGOUT, false);
+};

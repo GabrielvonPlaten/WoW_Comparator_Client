@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 import _ from 'lodash';
+
 import * as playerOneActions from './Actions/playerOne_actions';
 import * as playerTwoActions from './Actions/playerTwo_actions';
 import { playerOneMutations } from './Mutations/playerOne_mutations';
@@ -12,9 +13,21 @@ import { adminMutations } from './Mutations/admin_mutations';
 import * as userActions from './Actions/user_actions';
 import { userMutations } from './Mutations/user_mutations';
 
-const actions = {...actions, ...playerOneActions, ...playerTwoActions, ...adminActions, ...userActions};
-const mutations = {...mutations, ...playerOneMutations, ...playerTwoMutations, ...adminMutations, ...userMutations};
-Vue.use(Vuex)
+const actions = {
+  ...actions,
+  ...playerOneActions,
+  ...playerTwoActions,
+  ...adminActions,
+  ...userActions
+};
+const mutations = {
+  ...mutations,
+  ...playerOneMutations,
+  ...playerTwoMutations,
+  ...adminMutations,
+  ...userMutations
+};
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -36,8 +49,8 @@ export default new Vuex.Store({
     playerOneMythicScore: null,
     playerOneMythicError: null,
     playerOneError: {
-      message: "",
-      color: "",
+      message: '',
+      color: ''
     },
 
     playerTwoStats: null,
@@ -51,30 +64,30 @@ export default new Vuex.Store({
     playerTwoMythicScore: null,
     playerTwoMythicError: null,
     playerTwoError: {
-      message: "",
-      color: "",
+      message: '',
+      color: ''
     },
 
     // Admin Data
     adminData: false,
-    userData: false,
+    userData: false
   },
 
   mutations,
   actions,
-  
+
   getters: {
     // GET MYTHIC RUNS
     getRunsOne: state => {
-      let obj = {...obj, ...state.playerOneMythics}
+      let obj = { ...obj, ...state.playerOneMythics };
 
       return obj;
     },
 
     getRunsTwo: state => {
-      let obj = {...obj, ...state.playerTwoMythics}
+      let obj = { ...obj, ...state.playerTwoMythics };
 
       return obj;
     }
-  },
-})
+  }
+});

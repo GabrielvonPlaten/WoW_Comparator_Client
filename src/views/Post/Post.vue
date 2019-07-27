@@ -2,7 +2,7 @@
   <div
     v-if="post"
     class="post-bg"
-    :style="{ backgroundImage: 'url(' + post.blocks.blocks[0].data.url + ')' }"
+    :style="{ backgroundImage: `url(${post.blocks.blocks[0].data.url})` }"
   >
     <div class="post-container">
       <div class="post-box">
@@ -70,8 +70,7 @@ export default {
   },
 
   created() {
-    let url =
-      "/api/post/" + this.$route.params.id + "/" + this.$route.params.slug;
+    let url = `/api/post/${this.$route.params.id}/${this.$route.params.slug}`;
     axios
       .get(url)
       .then(res => {
