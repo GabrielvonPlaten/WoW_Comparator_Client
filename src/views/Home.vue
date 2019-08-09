@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="jumbotron" :style="`background-image: url(${jumbotronImage})`">
-      <div class="jumbotron__title">
+      <div class="jumbotron__title animation">
         <h1>WoW Comparator</h1>
         <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with others people's characters!</p>
         <br />
@@ -47,7 +47,7 @@ export default {
 
   async created() {
     let url = "/api/posts";
-    axios
+    await axios
       .get(url)
       .then(res => {
         this.posts = res.data;
@@ -58,6 +58,19 @@ export default {
     websiteStyles
       .getJumbotronBgImage()
       .then(res => (this.jumbotronImage = res.data[0].backgroundImage));
+  },
+
+  mounted() {
+    const element = document.querySelectorAll(".animation");
+    const observer = new IntersectionObserver(entries => {
+      console.log(entries);
+      if (entries[0].intersectionRatio) {
+        entries[0].target.style.opacity = 1;
+        entries[0].target.style.transform = "translateY(0)";
+      }
+    });
+
+    observer.observe(element[0]);
   },
 
   methods: {
@@ -159,22 +172,22 @@ export default {
     padding: 1.16961rem
     transition: 0.3s
 
-    .title-text
-      text-shadow: 0 2px 4px $text-shadow
-      font-weight: bold
-      font-size: 1.36798em
-      color: $white-0
-      transition: all 0.3s
+  .title-text
+    text-shadow: 0 2px 4px $text-shadow
+    font-weight: bold
+    font-size: 1.36798em
+    color: $white-0
+    transition: all 0.3s
 
-    .title-subtitle
-      font-size: 1.16961em
-      color: $subtitle-color
+  .title-subtitle
+    font-size: 1.16961em
+    color: $subtitle-color
 
-    .title-date
-      text-shadow: 0 2px 4px $text-shadow
-      font-weight: 200
-      font-size: 1rem
-      color: $orange-4
+  .title-date
+    text-shadow: 0 2px 4px $text-shadow
+    font-weight: 200
+    font-size: 1rem
+    color: $orange-4
 
   .image-container
     margin: -2px
@@ -191,6 +204,12 @@ export default {
 .blog_block:hover
   .title-text
     color: $orange-2
+
+// Animations
+.animation
+  opacity: 0
+  transition: all 2.2s 0.2s ease-out
+  transform: translateY(100px)
 
 // Media Queries
 @media only screen and (max-width: 1024px)

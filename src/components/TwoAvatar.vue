@@ -10,7 +10,9 @@
     <h2>{{twoInfo.guild}}</h2>
     <h2>
       {{twoInfo.level}} -
-      <span :style="{color: classColor[twoInfo.class]}">{{classes[twoInfo.class]}}</span>
+      <span
+        :style="{color: classColor[twoInfo.class]}"
+      >{{classes[twoInfo.class]}}</span>
     </h2>
     <p class="lastUpdated">{{lastModified}}</p>
   </div>
@@ -60,10 +62,10 @@ export default {
   computed: {
     twoInfo() {
       // Format the Unix Timestamp into DD/MM/YYYY date format
-      let d = store.state.playerTwoStats.lastModified; // Unix Timestamp
-      let day = new Date(d);
-      let month = new Date(d);
-      let year = new Date(d);
+      const d = store.state.playerTwoStats.lastModified; // Unix Timestamp
+      const day = new Date(d);
+      const month = new Date(d);
+      const year = new Date(d);
 
       this.lastModified = `Last activity: ${day.getDate()}/${1 +
         month.getMonth()}/${year.getFullYear()}`;

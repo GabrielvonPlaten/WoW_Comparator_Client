@@ -277,7 +277,7 @@ export default {
   },
 
   created() {
-    let url = "/api/comparator/";
+    const url = "/api/comparator/";
     axios.get(url).then(res => {
       this.access_token = res.data.access_token;
     });
@@ -317,7 +317,7 @@ export default {
     getRunsOne() {
       // The API response is ordered by date in ascending order
       // Sort by dungeon level in ascending order with lodash then sort by descending order
-      let runs_obj = _.sortBy(
+      const runs_obj = _.sortBy(
         store.getters.getRunsOne,
         "keystone_level"
       ).reverse();
@@ -325,7 +325,7 @@ export default {
     },
 
     getRunsTwo() {
-      let runs_obj = _.sortBy(
+      const runs_obj = _.sortBy(
         store.getters.getRunsTwo,
         "keystone_level"
       ).reverse();
@@ -335,7 +335,7 @@ export default {
 
   methods: {
     durationTime(val) {
-      let hour = new Date(val),
+      const hour = new Date(val),
         minute = new Date(val),
         seconds = new Date(val);
 
@@ -345,7 +345,7 @@ export default {
     },
 
     completedAt(val) {
-      let day = new Date(val),
+      const day = new Date(val),
         month = new Date(val),
         year = new Date(val);
 
@@ -353,7 +353,7 @@ export default {
     },
 
     getAffixImg(id) {
-      let icon = this.affixIcons.map(i => {
+      const icon = this.affixIcons.map(i => {
         if (i.id === id) {
           return i.icon;
         }
@@ -365,7 +365,7 @@ export default {
       // 0 is Player 1
       if (player === 0) {
         let { realm, name, region } = this.oneScores;
-        let access_token = this.access_token;
+        const access_token = this.access_token;
 
         await store.dispatch("playerOneMythicData", {
           region,
@@ -377,7 +377,7 @@ export default {
         this.seasonNumberPlayerOne = season_number;
       } else {
         let { realm, name, region } = this.twoScores;
-        let access_token = this.access_token;
+        const access_token = this.access_token;
 
         await store.dispatch("playerTwoMythicData", {
           region,

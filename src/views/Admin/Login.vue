@@ -43,7 +43,7 @@ export default {
 
   methods: {
     async loginAdmin() {
-      let { email, password } = this.login;
+      const { email, password } = this.login;
       await adminService
         .login(email, password)
         .then(async res => {
