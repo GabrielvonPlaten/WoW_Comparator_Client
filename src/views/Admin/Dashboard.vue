@@ -46,11 +46,7 @@ export default {
   methods: {
     switchView(x) {
       this.views.forEach(view => {
-        if (view.id === x) {
-          view.active = true;
-        } else {
-          view.active = false;
-        }
+        view.id === x ? (view.active = true) : (view.active = false);
       });
     }
   },

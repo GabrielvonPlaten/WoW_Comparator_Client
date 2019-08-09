@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export default {
   login(email, password) {
-    let url = '/api/login';
+    const url = '/api/login';
     return axios.post(url, { email, password });
   },
 
   profile(token) {
-    let url = '/api/profile';
+    const url = '/api/profile';
     return axios.get(url, {
       headers: {
         authorization: 'Bearer ' + token
@@ -16,12 +16,12 @@ export default {
   },
 
   register(name, email, password) {
-    let url = '/api/register';
+    const url = '/api/register';
     return axios.post(url, { name, email, password });
   },
 
   addCharacter(name, realm, region, token) {
-    let url = '/api/addFavoriteChar';
+    const url = '/api/addFavoriteChar';
 
     return axios.patch(
       url,
@@ -33,7 +33,7 @@ export default {
   },
 
   async removeCharacter(id) {
-    let url = '/api/getFavoriteChar/' + id;
+    const url = '/api/getFavoriteChar/' + id;
 
     return await axios.delete(url, {
       headers: { authorization: 'Bearer ' + localStorage.getItem('userToken') }
@@ -41,7 +41,7 @@ export default {
   },
 
   logout(token) {
-    let url = '/api/logout';
+    const url = '/api/logout';
     return axios
       .post(
         url,

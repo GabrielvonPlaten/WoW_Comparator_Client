@@ -11,13 +11,18 @@
             <img
               class="avatarImg"
               ref="img"
-              :src="'http://render-' + char.region + '.worldofwarcraft.com/character/' + char.thumbnail" @error="changeAvatarUrl(char.race, char.gender)">
-              <button class="btn btn--red remove-char-btn" @click="removeCharacter(char.id)">X</button>
-              <br>
-              <h2>{{char.name}}</h2>
-              <h3 class="char-realm">{{char.realm}}</h3>
-              <h2>{{char.level}} - <span :style="{color: classColor[char.class]}">{{classes[char.class]}}</span></h2>
-              <p>{{lastUpdated(char.lastModified)}}</p>
+              :src="'http://render-' + char.region + '.worldofwarcraft.com/character/' + char.thumbnail"
+              @error="changeAvatarUrl(char.race, char.gender)"
+            />
+            <button class="btn btn--red remove-char-btn" @click="removeCharacter(char.id)">X</button>
+            <br />
+            <h2>{{char.name}}</h2>
+            <h3 class="char-realm">{{char.realm}}</h3>
+            <h2>
+              {{char.level}} -
+              <span :style="{color: classColor[char.class]}">{{classes[char.class]}}</span>
+            </h2>
+            <p>{{lastUpdated(char.lastModified)}}</p>
           </div>
         </li>
       </ul>
@@ -26,9 +31,9 @@
 </template>
 
 <script>
-import store from '@/Vuex/store'
-import axios from 'axios';
-import userService from '@/apis/userService';
+import store from "@/Vuex/store";
+import axios from "axios";
+import userService from "@/apis/userService";
 
 export default {
   data() {
@@ -40,68 +45,104 @@ export default {
       regions: [],
       ids: [],
 
-      classes: ['', 'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Deathknight', 'Shaman', 'Mage', 'Warlock', 'Monk', 'Druid', 'Demonhunter'],
+      classes: [
+        "",
+        "Warrior",
+        "Paladin",
+        "Hunter",
+        "Rogue",
+        "Priest",
+        "Deathknight",
+        "Shaman",
+        "Mage",
+        "Warlock",
+        "Monk",
+        "Druid",
+        "Demonhunter"
+      ],
 
-      classColor: ['', '#C79C6E', '#F58CBA', '#ABD473', '#FFF569', '#FFFFFF', '#C41F3B', '#0070DE', '#69CCF0', '#9482C9', '#00FF96', '#FF7D0A', '#A330C9'],
-    }
+      classColor: [
+        "",
+        "#C79C6E",
+        "#F58CBA",
+        "#ABD473",
+        "#FFF569",
+        "#FFFFFF",
+        "#C41F3B",
+        "#0070DE",
+        "#69CCF0",
+        "#9482C9",
+        "#00FF96",
+        "#FF7D0A",
+        "#A330C9"
+      ]
+    };
   },
 
   computed: {
     insetAvatar(thumbnail) {
       // inset.jpg is a bigger version of the player avatar image
-      return thumbnail.replace('avatar.jpg', 'inset.jpg')
+      return thumbnail.replace("avatar.jpg", "inset.jpg");
     },
 
     getCharactersByLastUpdate() {
-      // The API response is ordered by date in ascending order 
+      // The API response is ordered by date in ascending order
       // Sort by dungeon level in ascending order with lodash then sort by descending order
-      let char = _.sortBy(this.characters, 'lastModified').reverse()
+      const char = _.sortBy(this.characters, "lastModified").reverse();
       return char;
     },
 
     sortIds() {
-      this.ids.sort(function (a, b) {
-        return a - b
-      })
-    },
+      this.ids.sort(function(a, b) {
+        return a - b;
+      });
+    }
   },
 
   async created() {
-    let url = '/api/comparator';
-    await axios.get(url)
-      .then(res => this.access_token = res.data.access_token)
+    const url = "/api/comparator";
+    await axios
+      .get(url)
+      .then(res => (this.access_token = res.data.access_token));
 
-    this.getChar()
+    this.getChar();
   },
 
   methods: {
     getChar() {
-       this.charList.forEach( async (c, index) => {
-         await axios.get(`https://${c.character.region}.api.blizzard.com/wow/character/${c.character.realm}/${c.character.name}?locale=en_US&access_token=${this.access_token}`)
+      this.charList.forEach(async (c, index) => {
+        await axios
+          .get(
+            `https://${c.character.region}.api.blizzard.com/wow/character/${c.character.realm}/${c.character.name}?locale=en_US&access_token=${this.access_token}`
+          )
           .then(async res => {
-            let response = res.data;
-            await this.characters.push({...response, region: c.character.region, id: c._id});
-          })
-       })
+            const response = res.data;
+            await this.characters.push({
+              ...response,
+              region: c.character.region,
+              id: c._id
+            });
+          });
+      });
     },
 
     lastUpdated(date) {
-      let day = new Date(date);
-      let month = new Date(date);
-      let year= new Date(date);
+      const day = new Date(date);
+      const month = new Date(date);
+      const year = new Date(date);
 
-      let lastLogin = `${day.getDate()}/${1 + month.getMonth()}/${year.getFullYear()}`
-      return lastLogin
+      const lastLogin = `${day.getDate()}/${1 +
+        month.getMonth()}/${year.getFullYear()}`;
+      return lastLogin;
     },
 
     async removeCharacter(id) {
-      await userService.removeCharacter(id)
-        .then(async () => {
-          location.reload()
-        })
+      await userService.removeCharacter(id).then(async () => {
+        location.reload();
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="sass">

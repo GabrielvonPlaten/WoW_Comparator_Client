@@ -30,11 +30,7 @@ export default {
   methods: {
     activeRoute(x) {
       this.buttons.forEach(button => {
-        if (button.id === x) {
-          button.active = true;
-        } else {
-          button.active = false;
-        }
+        button.id === x ? (button.active = true) : (button.active = false);
       });
     }
   }

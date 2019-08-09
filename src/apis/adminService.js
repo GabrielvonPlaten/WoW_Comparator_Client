@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export default {
   login(email, password) {
-    let url = '/api/admin/login';
+    const url = '/api/admin/login';
     return axios.post(url, { email, password });
   },
 
   adminProfile(token) {
-    let url = '/api/admin/profile';
+    const url = '/api/admin/profile';
     return axios.get(url, {
       headers: {
         authorization: 'Bearer ' + token
@@ -16,7 +16,7 @@ export default {
   },
 
   logout(token) {
-    let url = '/api/admin/logout';
+    const url = '/api/admin/logout';
     return axios
       .post(
         url,

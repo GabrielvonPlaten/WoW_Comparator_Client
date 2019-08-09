@@ -71,7 +71,6 @@ export default {
     });
 
     observer.observe(element[0]);
-    console.log(element);
   },
 
   methods: {

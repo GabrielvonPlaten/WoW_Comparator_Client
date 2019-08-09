@@ -6,7 +6,7 @@
         <playerOneAvatar />
 
         <div class="playerOne__raids">
-          <div :class="{'hideRaid': hideRaidBlock === 0}" class="raid_block">
+          <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
                 <img :src="Uldir[8].Background" />
@@ -463,8 +463,7 @@ export default {
         { Boss: "Za'qul", bossImage: Zaqul },
         { Boss: "Queen Azshara", bossImage: Aszhara },
         { Background: Palace }
-      ],
-      hideRaidBlock: null
+      ]
     };
   },
 
@@ -475,16 +474,6 @@ export default {
 
     twoProg() {
       return store.state.playerTwoProg;
-    }
-  },
-
-  methods: {
-    hideRaid(x) {
-      if (this.hideRaidBlock === x) {
-        this.hideRaidBlock = null;
-      } else {
-        this.hideRaidBlock = x;
-      }
     }
   },
 
@@ -520,10 +509,6 @@ span
   overflow: hidden
   transition: all 0.3s
   border: 2px solid $post-border
-
-
-.hideRaid
-  height: 0px
 
 .raid-name
   color: $orange-3

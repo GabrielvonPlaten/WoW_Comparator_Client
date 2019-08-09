@@ -10,7 +10,7 @@
         <div class="blog-post" v-for="(post, index) in posts" :key="index">
           <div class="blog_block">
             <div class="image-container">
-              <img :src="post.blocks.blocks[0].data.url">
+              <img :src="post.blocks.blocks[0].data.url" />
             </div>
             <div class="blog_card-block">
               <h2 class="title-text">{{post.title}}</h2>
@@ -18,24 +18,21 @@
               <b class="title-date">{{formatDate(post.blocks.time)}}</b>
             </div>
             <router-link :to="'/post/' + post._id + '/' + post.slug" class="view-post-btn">View</router-link>
-            <button 
+            <button
               @click="confirmDeletion(index)"
-              v-if="confirmationBtns !== index" 
-              class="btn btn--red btn-delete"> 
-              Delete Post
-            </button>
-            <button 
+              v-if="confirmationBtns !== index"
+              class="btn btn--red btn-delete"
+            >Delete Post</button>
+            <button
               class="btn btn--red btn-cancel"
-              v-if="confirmationBtns === index" 
-              @click="cancelDeletion">
-              No
-            </button>
+              v-if="confirmationBtns === index"
+              @click="cancelDeletion"
+            >No</button>
             <button
               @click="deletePost(post._id)"
-              v-if="confirmationBtns === index" 
-              class="btn btn--red btn-delete">
-              Yes
-            </button>
+              v-if="confirmationBtns === index"
+              class="btn btn--red btn-delete"
+            >Yes</button>
           </div>
         </div>
       </div>
@@ -44,7 +41,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
@@ -52,66 +49,84 @@ export default {
       posts: [],
       confirmationBtns: null,
       postDeleted: null,
-      postError: null,
-    }
+      postError: null
+    };
   },
 
   created() {
-    let url = '/api/posts'
-    axios.get(url)
+    const url = "/api/posts";
+    axios
+      .get(url)
       .then(res => {
-        this.posts = res.data
+        this.posts = res.data;
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   },
 
   methods: {
     confirmDeletion(x) {
-      this.confirmationBtns = x
-    }, 
+      this.confirmationBtns = x;
+    },
 
     cancelDeletion() {
-      this.confirmationBtns = null
+      this.confirmationBtns = null;
     },
 
     deletePost(_id) {
-      let token = localStorage.getItem('adminToken');
-      let url = '/api/post/' + _id
-      axios.delete(url, {
-        headers: { authorization: 'Bearer ' + token } 
-      })
+      const token = localStorage.getItem("adminToken");
+      const url = "/api/post/" + _id;
+      axios
+        .delete(url, {
+          headers: { authorization: "Bearer " + token }
+        })
         .then(res => {
           this.confirmationBtns = null;
-          this.postError = ""
+          this.postError = "";
           this.postDeleted = "Post Deleted";
           this.refreshPosts();
         })
         .catch(err => {
           this.postDeleted = "";
-          this.postError = "Post could not be deleted"
-        })
+          this.postError = "Post could not be deleted";
+        });
     },
 
     refreshPosts() {
-      let url = '/api/posts'
-      axios.get(url)
+      const url = "/api/posts";
+      axios
+        .get(url)
         .then(res => {
-          this.posts = res.data
+          this.posts = res.data;
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
     },
 
     formatDate(val) {
-      let year = new Date(val);
-      let month = new Date(val);
-      let day = new Date(val);
+      const year = new Date(val);
+      const month = new Date(val);
+      const day = new Date(val);
 
-      let months = ["January", "February", "Mars", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const months = [
+        "January",
+        "February",
+        "Mars",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
 
-      return `${day.getDate()} ${months[month.getMonth()]}, ${year.getUTCFullYear()}`
+      return `${day.getDate()} ${
+        months[month.getMonth()]
+      }, ${year.getUTCFullYear()}`;
     }
   }
-}
+};
 </script>
 
 <style lang="sass" scoped>

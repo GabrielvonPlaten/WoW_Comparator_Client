@@ -104,20 +104,21 @@ export default {
   },
 
   created() {
-    let url = "/api/comparator/";
+    const url = "/api/comparator/";
     axios.get(url).then(res => (this.access_token = res.data.access_token));
   },
 
   methods: {
+    // Search for Player One's Character
     getPlayerOneData() {
-      let {
+      const {
         playerOneRealm,
         playerOneName,
         playerOneRegionSelected,
         current_season,
         access_token
       } = this;
-      let realm = playerOneRealm.replace(/'/g, "");
+      const realm = playerOneRealm.replace(/'/g, "");
 
       if (playerOneRealm && playerOneName) {
         store.dispatch("playerOneData", {
@@ -143,15 +144,16 @@ export default {
       }
     },
 
+    // Search for Player Two's Character
     getPlayerTwoData() {
-      let {
+      const {
         playerTwoRealm,
         playerTwoName,
         playerTwoRegionSelected,
         current_season,
         access_token
       } = this;
-      let realm = playerTwoRealm.replace(/'/g, "");
+      const realm = playerTwoRealm.replace(/'/g, "");
 
       if (playerTwoRealm && playerTwoName) {
         store.dispatch("playerTwoData", {
