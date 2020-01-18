@@ -196,9 +196,8 @@ export default {
   color: $orange-4
   padding: 0.7rem
   padding-top: 4.1rem
-  background: url('https://wow.4fansites.de/bilder/weltkarte/zandalar/zuldazar/zuldazar.jpg')
+  background: url('https://i.imgur.com/FTQBpx1.jpg')
   background-repeat: no-repeat
-  background-position: bottom
   background-color: $blue-6
   background-attachment: fixed
   background-blend-mode: soft-light

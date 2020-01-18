@@ -9,8 +9,8 @@
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
-                <img :src="Uldir[8].Background" />
-                <h2 class="raid-name">Uldir</h2>
+                <img :src="AzsharasEternalPalace[8].Background" />
+                <h2 class="raid-name">Azshara's Eternal Place</h2>
               </div>
               <table class="table">
                 <tr class="card_overhead_text">
@@ -20,10 +20,10 @@
                   <th>Heroic</th>
                   <th>Mythic</th>
                 </tr>
-                <tr v-for="(boss, index) in oneProg.progression.raids[40].bosses" :key="index">
+                <tr v-for="(boss, index) in oneProg.progression.raids[43].bosses" :key="index">
                   <td>
                     <a :href="`//wowhead.com/npc=${boss.id}`">
-                      <img :src="Uldir[index].bossImage" />
+                      <img :src="AzsharasEternalPalace[index].bossImage" />
                     </a>
                   </td>
                   <td>
@@ -50,50 +50,7 @@
               </table>
             </div>
           </div>
-          <div class="raid_block">
-            <div class="raid_card">
-              <div class="image-container">
-                <img :src="DazarAlor[9].Background" />
-                <h2 class="raid-name">Battle of Dazar'alor</h2>
-              </div>
-              <table class="table">
-                <tr class="card_overhead_text">
-                  <th>Bosses</th>
-                  <th>LFR</th>
-                  <th>Normal</th>
-                  <th>Heroic</th>
-                  <th>Mythic</th>
-                </tr>
-                <tr v-for="(boss, index) in oneProg.progression.raids[41].bosses" :key="index">
-                  <td>
-                    <a :href="`//wowhead.com/npc=${boss.id}`">
-                      <img :src="DazarAlor[index].bossImage" />
-                    </a>
-                  </td>
-                  <td>
-                    <span
-                      :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}"
-                    >{{boss.lfrKills}}x</span>
-                  </td>
-                  <td>
-                    <span
-                      :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}"
-                    >{{boss.normalKills}}x</span>
-                  </td>
-                  <td>
-                    <span
-                      :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}"
-                    >{{boss.heroicKills}}x</span>
-                  </td>
-                  <td>
-                    <span
-                      :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}"
-                    >{{boss.mythicKills}}x</span>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
+
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
@@ -138,11 +95,12 @@
               </table>
             </div>
           </div>
+
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
-                <img :src="AzsharasEternalPalace[8].Background" />
-                <h2 class="raid-name">Azshara's Eternal Place</h2>
+                <img :src="DazarAlor[9].Background" />
+                <h2 class="raid-name">Battle of Dazar'alor</h2>
               </div>
               <table class="table">
                 <tr class="card_overhead_text">
@@ -152,10 +110,55 @@
                   <th>Heroic</th>
                   <th>Mythic</th>
                 </tr>
-                <tr v-for="(boss, index) in oneProg.progression.raids[43].bosses" :key="index">
+                <tr v-for="(boss, index) in oneProg.progression.raids[41].bosses" :key="index">
                   <td>
                     <a :href="`//wowhead.com/npc=${boss.id}`">
-                      <img :src="AzsharasEternalPalace[index].bossImage" />
+                      <img :src="DazarAlor[index].bossImage" />
+                    </a>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}"
+                    >{{boss.lfrKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}"
+                    >{{boss.normalKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}"
+                    >{{boss.heroicKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}"
+                    >{{boss.mythicKills}}x</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="raid_block">
+            <div class="raid_card">
+              <div class="image-container">
+                <img :src="Uldir[8].Background" />
+                <h2 class="raid-name">Uldir</h2>
+              </div>
+              <table class="table">
+                <tr class="card_overhead_text">
+                  <th>Bosses</th>
+                  <th>LFR</th>
+                  <th>Normal</th>
+                  <th>Heroic</th>
+                  <th>Mythic</th>
+                </tr>
+                <tr v-for="(boss, index) in oneProg.progression.raids[40].bosses" :key="index">
+                  <td>
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
+                      <img :src="Uldir[index].bossImage" />
                     </a>
                   </td>
                   <td>
@@ -196,8 +199,8 @@
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
-                <img :src="Uldir[8].Background" />
-                <h2 class="raid-name">Uldir</h2>
+                <img :src="AzsharasEternalPalace[8].Background" />
+                <h2 class="raid-name">Azshara's Eternal Place</h2>
               </div>
               <table class="table">
                 <tr class="card_overhead_text">
@@ -207,10 +210,10 @@
                   <th>Heroic</th>
                   <th>Mythic</th>
                 </tr>
-                <tr v-for="(boss, index) in twoProg.progression.raids[40].bosses" :key="index">
+                <tr v-for="(boss, index) in twoProg.progression.raids[43].bosses" :key="index">
                   <td>
                     <a :href="`//wowhead.com/npc=${boss.id}`">
-                      <img :src="Uldir[index].bossImage" />
+                      <img :src="AzsharasEternalPalace[index].bossImage" />
                     </a>
                   </td>
                   <td>
@@ -237,50 +240,7 @@
               </table>
             </div>
           </div>
-          <div class="raid_block">
-            <div class="raid_card">
-              <div class="image-container">
-                <img :src="DazarAlor[9].Background" />
-                <h2 class="raid-name">Battle of Dazar'alor</h2>
-              </div>
-              <table class="table">
-                <tr class="card_overhead_text">
-                  <th>Bosses</th>
-                  <th>LFR</th>
-                  <th>Normal</th>
-                  <th>Heroic</th>
-                  <th>Mythic</th>
-                </tr>
-                <tr v-for="(boss, index) in twoProg.progression.raids[41].bosses" :key="index">
-                  <td>
-                    <a :href="`//wowhead.com/npc=${boss.id}`">
-                      <img :src="DazarAlor[index].bossImage" />
-                    </a>
-                  </td>
-                  <td>
-                    <span
-                      :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}"
-                    >{{boss.lfrKills}}x</span>
-                  </td>
-                  <td>
-                    <span
-                      :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}"
-                    >{{boss.normalKills}}x</span>
-                  </td>
-                  <td>
-                    <span
-                      :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}"
-                    >{{boss.heroicKills}}x</span>
-                  </td>
-                  <td>
-                    <span
-                      :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}"
-                    >{{boss.mythicKills}}x</span>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
+
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
@@ -329,8 +289,8 @@
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
-                <img :src="AzsharasEternalPalace[8].Background" />
-                <h2 class="raid-name">Azshara's Eternal Place</h2>
+                <img :src="DazarAlor[9].Background" />
+                <h2 class="raid-name">Battle of Dazar'alor</h2>
               </div>
               <table class="table">
                 <tr class="card_overhead_text">
@@ -340,10 +300,55 @@
                   <th>Heroic</th>
                   <th>Mythic</th>
                 </tr>
-                <tr v-for="(boss, index) in twoProg.progression.raids[43].bosses" :key="index">
+                <tr v-for="(boss, index) in twoProg.progression.raids[41].bosses" :key="index">
                   <td>
                     <a :href="`//wowhead.com/npc=${boss.id}`">
-                      <img :src="AzsharasEternalPalace[index].bossImage" />
+                      <img :src="DazarAlor[index].bossImage" />
+                    </a>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}"
+                    >{{boss.lfrKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}"
+                    >{{boss.normalKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}"
+                    >{{boss.heroicKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}"
+                    >{{boss.mythicKills}}x</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="raid_block">
+            <div class="raid_card">
+              <div class="image-container">
+                <img :src="Uldir[8].Background" />
+                <h2 class="raid-name">Uldir</h2>
+              </div>
+              <table class="table">
+                <tr class="card_overhead_text">
+                  <th>Bosses</th>
+                  <th>LFR</th>
+                  <th>Normal</th>
+                  <th>Heroic</th>
+                  <th>Mythic</th>
+                </tr>
+                <tr v-for="(boss, index) in twoProg.progression.raids[40].bosses" :key="index">
+                  <td>
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
+                      <img :src="Uldir[index].bossImage" />
                     </a>
                   </td>
                   <td>
@@ -469,6 +474,7 @@ export default {
 
   computed: {
     oneProg() {
+      console.log(store.state.playerOneProg);
       return store.state.playerOneProg;
     },
 

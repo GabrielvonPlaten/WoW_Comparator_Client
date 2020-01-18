@@ -54,8 +54,8 @@ export default {
       text-align: center
 
       a
-        padding: 0.3rem 1.2rem
-        font-size: 16px
+        padding: 0.2rem 1rem
+        font-size: 14px
 
 @media only screen and (max-width: 820px)
   .comparator-buttons

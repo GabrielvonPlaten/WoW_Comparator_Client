@@ -70,10 +70,11 @@ export default {
   },
 
   created() {
-    let url = `/api/post/${this.$route.params.id}/${this.$route.params.slug}`;
+    const url = `/api/post/${this.$route.params.id}/${this.$route.params.slug}`;
     axios
       .get(url)
       .then(res => {
+        console.log(res);
         this.post = res.data.post[0];
         this.author = res.data.author;
       })
@@ -82,11 +83,11 @@ export default {
 
   methods: {
     formatDate(val) {
-      let year = new Date(val);
-      let month = new Date(val);
-      let day = new Date(val);
+      const year = new Date(val);
+      const month = new Date(val);
+      const day = new Date(val);
 
-      let months = [
+      const months = [
         "January",
         "February",
         "Mars",

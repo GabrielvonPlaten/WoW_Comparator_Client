@@ -7,14 +7,17 @@
         </div>
         <form @submit.prevent="loginUser" class="form">
           <div class="form-separator">
-            <label>Email</label><br>
-            <input class="input-field" v-model="login.email"><br>
+            <label>Email</label>
+            <br />
+            <input class="input-field" v-model="login.email" />
+            <br />
           </div>
           <div class="form-separator">
-            <label>Passord</label><br>
-            <input class="input-field" v-model="login.password" type="password">
+            <label>Passord</label>
+            <br />
+            <input class="input-field" v-model="login.password" type="password" />
           </div>
-          <br>
+          <br />
           <button class="btn btn--green btn-form">Login</button>
           <button class="btn btn--red btn-form">Cancel</button>
           <div class="form-separate">
@@ -28,8 +31,8 @@
 </template>
 
 <script>
-import store from '@/Vuex/store';
-import userService from '@/apis/userService';
+import store from "@/Vuex/store";
+import userService from "@/apis/userService";
 
 export default {
   data() {
@@ -38,26 +41,28 @@ export default {
         email: "",
         password: ""
       },
-      loginError: null,
-    }
+      loginError: null
+    };
   },
 
   methods: {
     async loginUser() {
-      let { email, password } = this.login;
-      await userService.login(email, password)
+      const { email, password } = this.login;
+
+      await userService
+        .login(email, password)
         .then(async res => {
-          await localStorage.setItem('userToken', res.data.token)
-          store.dispatch('userLogin', res.data)
-          this.$router.go({ path: this.$router.path })
+          await localStorage.setItem("userToken", res.data.token);
+          store.dispatch("userLogin", res.data);
+          this.$router.go({ path: this.$router.path });
         })
         .catch(err => {
-          this.loginError = err
-          this.$router.go({ path: '/' })
-        })
+          this.loginError = err;
+          this.$router.go({ path: "/" });
+        });
     }
-  },
-}
+  }
+};
 </script>
 
 
