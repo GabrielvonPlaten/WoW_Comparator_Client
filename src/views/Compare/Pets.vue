@@ -279,7 +279,6 @@ export default {
 
   computed: {
     onePets() {
-      console.log(store.state.playerOnePets);
       return store.state.playerOnePets;
     },
     twoPets() {

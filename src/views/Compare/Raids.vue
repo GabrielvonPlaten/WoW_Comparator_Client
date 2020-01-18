@@ -474,7 +474,6 @@ export default {
 
   computed: {
     oneProg() {
-      console.log(store.state.playerOneProg);
       return store.state.playerOneProg;
     },
 

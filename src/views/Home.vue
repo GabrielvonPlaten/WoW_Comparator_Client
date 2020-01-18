@@ -65,7 +65,6 @@ export default {
   mounted() {
     const element = document.querySelectorAll(".animation");
     const observer = new IntersectionObserver(entries => {
-      console.log(entries);
       if (entries[0].intersectionRatio) {
         entries[0].target.style.opacity = 1;
         entries[0].target.style.transform = "translateY(0)";
@@ -210,7 +209,7 @@ export default {
 .animation
   opacity: 0
   transition: all 2.2s 0.2s ease-out
-  transform: translateY(100px)
+  transform: translateY(60px)
 
 // Media Queries
 @media only screen and (max-width: 1024px)

@@ -74,7 +74,6 @@ export default {
     axios
       .get(url)
       .then(res => {
-        console.log(res);
         this.post = res.data.post[0];
         this.author = res.data.author;
       })
