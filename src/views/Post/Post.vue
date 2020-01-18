@@ -135,7 +135,6 @@ export default {
   .image-container
     img
       width: 100%
-      height: 48rem
       border-bottom: 2px solid $post-border
 
 
