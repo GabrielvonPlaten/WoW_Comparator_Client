@@ -4,18 +4,15 @@
     <div class="body-container">
       <router-view />
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import Footer from "@/components/Footer.vue";
 import Navbar from "@/components/Navbar.vue";
 
 export default {
   components: {
-    Footer,
     Navbar
   },
 
@@ -43,7 +40,7 @@ export default {
 
 <style lang="sass">
 html, body
-  font-family: 'Roboto', sans-serif
+  font-family: 'Open Sans', 'Roboto', sans-serif
   padding: 0
   margin: 0
   background-color: $blue-10

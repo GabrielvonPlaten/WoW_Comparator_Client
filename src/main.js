@@ -4,18 +4,6 @@ import router from './router';
 import store from './Vuex/store';
 import adminService from '@/apis/adminService';
 import userService from '@/apis/userService';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faBook,
-  faHome,
-  faCogs,
-  faStar,
-  faCrown,
-  faExclamationCircle
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faBook, faHome, faCogs, faStar, faCrown, faExclamationCircle);
-Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 

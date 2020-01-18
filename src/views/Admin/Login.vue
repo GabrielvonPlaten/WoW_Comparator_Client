@@ -97,7 +97,7 @@ export default {
   bottom: 0
   right: 0
   background: inherit
-  box-shadow: inset 0 0 0 250px rgba(22, 27, 51, 0.35)
+  box-shadow: inset 0 0 0 250px rgba(0, 0, 0, 0.3)
   filter: blur(5px)
 
 .form-header

@@ -3,9 +3,11 @@
     <div class="jumbotron" :style="`background-image: url(${jumbotronImage})`">
       <div class="jumbotron__title animation">
         <h1>WoW Comparator</h1>
-        <p>Compare your World of Warcraft character’s stats, gear, mounts, and progress with others people's characters!</p>
+        <p
+          class="jumbotron__subtitle"
+        >Compare your World of Warcraft character’s stats, gear, mounts, and progress with others people's characters!</p>
         <br />
-        <router-link to="/compare/stats" class="btn btn--purple jumbotron-btn">Compare</router-link>
+        <router-link to="/compare/stats" class="btn jumbotron-btn">Compare</router-link>
         <br />
       </div>
     </div>
@@ -115,8 +117,8 @@ export default {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
   .jumbotron-btn
-    padding: 0.8rem 1rem
-    border: 2px solid $orange-4
+    padding: 0.9rem 1.2rem
+    border: 1px solid $orange-4
     font-size: 16px
     transition: all 0.27s
     &:hover
@@ -133,13 +135,13 @@ export default {
       font-size: 3rem
       margin-bottom: 1rem
 
-    p
-      font-weight: 200
-      font-size: 1.3rem
-      max-width: 25%
-      letter-spacing: 1px
-      text-shadow: $text-shadow
-      margin: 0 auto 2rem auto
+  &__subtitle
+    font-weight: 200
+    font-size: 1.05rem
+    max-width: 25%
+    letter-spacing: 1px
+    text-shadow: $text-shadow
+    margin: 0 auto 2rem auto
 
 .recent-posts
   display: grid
@@ -197,7 +199,6 @@ export default {
 
     img
       width: 100%
-      height: 14.8rem
       border-bottom: 2px solid $post-border
 
 .blog_block:hover

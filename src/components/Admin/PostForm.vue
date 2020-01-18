@@ -66,8 +66,8 @@ export default {
 
   methods: {
     submitPost() {
-      let title = this.postContent.title;
-      let subtitle = this.postContent.subtitle
+      const title = this.postContent.title;
+      const subtitle = this.postContent.subtitle
 
       this.editor.save()
         .then(outputData => {
