@@ -9,6 +9,51 @@
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
+                <img :src="NyAlotha[12].Background" />
+                <h2 class="raid-name">Ny'Alotha, the Waking City</h2>
+              </div>
+              <table class="table">
+                <tr class="card_overhead_text">
+                  <th>Bosses</th>
+                  <th>LFR</th>
+                  <th>Normal</th>
+                  <th>Heroic</th>
+                  <th>Mythic</th>
+                </tr>
+                <tr v-for="(boss, index) in oneProg.progression.raids[44].bosses" :key="index">
+                  <td>
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
+                      <img :src="NyAlotha[index].bossImage" />
+                    </a>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}"
+                    >{{boss.lfrKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}"
+                    >{{boss.normalKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}"
+                    >{{boss.heroicKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}"
+                    >{{boss.mythicKills}}x</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="raid_block">
+            <div class="raid_card">
+              <div class="image-container">
                 <img :src="AzsharasEternalPalace[8].Background" />
                 <h2 class="raid-name">Azshara's Eternal Place</h2>
               </div>
@@ -196,6 +241,51 @@
         <playerTwoAvatar />
 
         <div class="playerTwo__raids">
+          <div class="raid_block">
+            <div class="raid_card">
+              <div class="image-container">
+                <img :src="NyAlotha[12].Background" />
+                <h2 class="raid-name">Ny'Alotha, the Waking City</h2>
+              </div>
+              <table class="table">
+                <tr class="card_overhead_text">
+                  <th>Bosses</th>
+                  <th>LFR</th>
+                  <th>Normal</th>
+                  <th>Heroic</th>
+                  <th>Mythic</th>
+                </tr>
+                <tr v-for="(boss, index) in twoProg.progression.raids[44].bosses" :key="index">
+                  <td>
+                    <a :href="`//wowhead.com/npc=${boss.id}`">
+                      <img :src="NyAlotha[index].bossImage" />
+                    </a>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.lfrKills > 0, highKill: boss.lfrKills > 5, insaneKills: boss.lfrKills > 10, getalife: boss.lfrKills > 20}"
+                    >{{boss.lfrKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.normalKills > 0, highKill: boss.normalKills > 5, insaneKills: boss.normalKills > 10, getalife: boss.normalKills > 20}"
+                    >{{boss.normalKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.heroicKills > 0, highKill: boss.heroicKills > 5, insaneKills: boss.heroicKills > 10, getalife: boss.heroicKills > 20}"
+                    >{{boss.heroicKills}}x</span>
+                  </td>
+                  <td>
+                    <span
+                      :class="{killed: boss.mythicKills > 0, highKill: boss.mythicKills > 5, insaneKills: boss.mythicKills > 10, getalife: boss.mythicKills > 20}"
+                    >{{boss.mythicKills}}x</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
           <div class="raid_block">
             <div class="raid_card">
               <div class="image-container">
@@ -414,6 +504,7 @@ import Crucible from "@/assets/raids/bfa/cos/Crucible_of_Storms.png";
 import Cabal from "@/assets/raids/bfa/cos/01_Cabal.png";
 import Uunat from "@/assets/raids/bfa/cos/02_Uunat.png";
 
+// Azshara's Eternal Palace
 import Palace from "@/assets/raids/bfa/aep/aepBG.png";
 import Sivara from "@/assets/raids/bfa/aep/01_sivara.png";
 import Monstrosity from "@/assets/raids/bfa/aep/02_monstrosity.png";
@@ -423,6 +514,21 @@ import Orgozoa from "@/assets/raids/bfa/aep/05_orgozoa.png";
 import Court from "@/assets/raids/bfa/aep/06_court.png";
 import Zaqul from "@/assets/raids/bfa/aep/07_zaqul.png";
 import Aszhara from "@/assets/raids/bfa/aep/08_azshara.png";
+
+// Ny'Alotha the Waking City
+import NyAlotha from "@/assets/raids/bfa/nwc/nwcBG.png";
+import Wrathion from "@/assets/raids/bfa/nwc/01_Wrathion.png";
+import Maut from "@/assets/raids/bfa/nwc/02_Maut.png";
+import Skitra from "@/assets/raids/bfa/nwc/03_Skitra.png";
+import Xanesh from "@/assets/raids/bfa/nwc/04_Xanesh.png";
+import Hivemind from "@/assets/raids/bfa/nwc/05_Hivemind.png";
+import Shadhar from "@/assets/raids/bfa/nwc/06_Shadhar.png";
+import Raden from "@/assets/raids/bfa/nwc/07_Raden.png";
+import Vexiona from "@/assets/raids/bfa/nwc/08_Vexiona.png";
+import Drestagath from "@/assets/raids/bfa/nwc/09_Drestagath.png";
+import Ilginoth from "@/assets/raids/bfa/nwc/10_Ilgynoth.png";
+import Carapace from "@/assets/raids/bfa/nwc/11_Carapace.png";
+import Nzoth from "@/assets/raids/bfa/nwc/12_Nzoth.png";
 
 export default {
   data() {
@@ -468,6 +574,22 @@ export default {
         { Boss: "Za'qul", bossImage: Zaqul },
         { Boss: "Queen Azshara", bossImage: Aszhara },
         { Background: Palace }
+      ],
+
+      NyAlotha: [
+        { Boss: "Wrathion", bossImage: Wrathion },
+        { Boss: "Maut", bossImage: Maut },
+        { Boss: "Skitra", bossImage: Skitra },
+        { Boss: "Xanesh", bossImage: Xanesh },
+        { Boss: "Hivemind", bossImage: Hivemind },
+        { Boss: "Shad'har", bossImage: Shadhar },
+        { Boss: "Drestagath", bossImage: Drestagath },
+        { Boss: "Il'ginoth", bossImage: Ilginoth },
+        { Boss: "Vexiona", bossImage: Vexiona },
+        { Boss: "Rad-en", bossImage: Raden },
+        { Boss: "Carapace", bossImage: Carapace },
+        { Boss: "N'zoth", bossImage: Nzoth },
+        { Background: NyAlotha }
       ]
     };
   },

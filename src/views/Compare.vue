@@ -71,7 +71,7 @@ export default {
       playerTwoRealm: "",
       playerTwoName: "",
       access_token: "",
-      current_season: 3,
+      current_season: 4,
 
       playerOneRegionSelected: "EU",
       playerOneRegionOptions: [
