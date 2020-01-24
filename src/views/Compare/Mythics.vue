@@ -14,6 +14,7 @@
               <button class="btn btn--blue" @click="changeSeason(1, 0)">1</button>
               <button class="btn btn--blue" @click="changeSeason(2, 0)">2</button>
               <button class="btn btn--blue" @click="changeSeason(3, 0)">3</button>
+              <button class="btn btn--blue" @click="changeSeason(4, 0)">4</button>
             </div>
           </div>
 
@@ -112,6 +113,7 @@
               <button class="btn btn--blue" @click="changeSeason(1, 1)">1</button>
               <button class="btn btn--blue" @click="changeSeason(2, 1)">2</button>
               <button class="btn btn--blue" @click="changeSeason(3, 1)">3</button>
+              <button class="btn btn--blue" @click="changeSeason(4, 1)">4</button>
             </div>
           </div>
 
@@ -266,8 +268,8 @@ export default {
       healer,
       dps,
 
-      seasonNumberPlayerOne: 3,
-      seasonNumberPlayerTwo: 3,
+      seasonNumberPlayerOne: 4,
+      seasonNumberPlayerTwo: 4,
 
       raiderioLogo,
       raidbotsIcon,
