@@ -8,21 +8,19 @@ All characters are in the EU region.
 
 You can visit the website at http://wow-comparator.com
 
-**Extremus - Tyrande**
-
-**Paralilubiti - Tyrande**
+**Ätrides - Tyrande**
 
 **Bélsel - Tyrande**
 
 **Randorx - Tyrande**
 
-**Metapelo - Tyrande**
+**Coka - Tyrande**
 
 **Jinnara - Tyrande**
 
-**Sixties - Tyrande**
+**Naiyah - Tyrande**
 
-**Gabrantthh - Tyrande**
+**Kouranuruhay - Tyrande**
 
 # Stack used
 The website is built using MongoDB, Exrpess, Vue, and Node.
