@@ -3,10 +3,10 @@
 Server Repo: https://github.com/GabrielvonPlaten/WoW_Comparator_Server
 _____
 
+Website Is Currently Down
+
 Examples characters to compare. First name is the Character's name, the second is the name of the Realm. 
 All characters are in the EU region.
-
-You can visit the website at http://wow-comparator.com
 
 **Ätrides - Tyrande**
 
