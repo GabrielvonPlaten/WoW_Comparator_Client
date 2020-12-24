@@ -14,14 +14,6 @@ You can visit the website at http://wow-comparator.com
 
 **Randorx - Tyrande**
 
-**Coka - Tyrande**
-
-**Jinnara - Tyrande**
-
-**Naiyah - Tyrande**
-
-**Kouranuruhay - Tyrande**
-
 # Stack used
 The website is built using MongoDB, Exrpess, Vue, and Node.
 
